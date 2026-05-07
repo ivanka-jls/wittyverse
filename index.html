@@ -122,15 +122,58 @@
     z-index: 1;
   }
 
-  /* Grid of variations */
-  .grid {
+  /* Featured (current direction) */
+  .featured {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 20px 24px 30px;
+  }
+
+  /* Archive (pre-v1 explorations) */
+  .archive-section {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 24px 70px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
   }
+  .archive-heading {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .archive-eyebrow {
+    display: inline-block;
+    background: rgba(0,0,0,0.3);
+    color: var(--cream);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+  .archive-note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: rgba(255,244,230,0.65);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .card.archived {
+    opacity: 0.85;
+    padding: 20px 22px 18px;
+    box-shadow: 0 5px 0 var(--ink), 0 8px 16px rgba(0,0,0,0.2);
+  }
+  .card.archived:hover { opacity: 1; }
+  .card.archived .card-title { font-size: 24px; }
+  .card.archived .card-desc { font-size: 13px; }
+  .card.archived .card-cta { font-size: 14px; padding: 9px 18px; }
 
   .card {
     background: var(--cream);
@@ -263,8 +306,11 @@
   }
   .foot a { color: var(--lime); text-decoration: underline; text-underline-offset: 3px; }
 
-  @media (max-width: 720px) {
-    .grid { grid-template-columns: 1fr; }
+  @media (max-width: 960px) {
+    .archive-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .archive-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -272,70 +318,29 @@
 
 <div class="topbar">
   <div class="marquee">
-    <span>Wittyverse design explorations</span>
-    <span>Iterating with Johnny</span>
+    <span>Wittyverse storefront — v1 live</span>
+    <span>Stable copy v5.2 (canon-flipped 2026-05-07)</span>
     <span>Cycle 247 catalog</span>
     <span>Hand-inspected before export</span>
-    <span>Wittyverse design explorations</span>
-    <span>Iterating with Johnny</span>
+    <span>Wittyverse storefront — v1 live</span>
+    <span>Stable copy v5.2 (canon-flipped 2026-05-07)</span>
     <span>Cycle 247 catalog</span>
     <span>Hand-inspected before export</span>
   </div>
 </div>
 
 <section class="hero">
-  <div class="hero-eyebrow">Design Explorations</div>
-  <h1 class="hero-title">Wittyverse<br><span class="accent">Variations</span></h1>
-  <p class="hero-sub">Four directions for the storefront. Click any card to open.</p>
+  <div class="hero-eyebrow">Wittyverse Storefront</div>
+  <h1 class="hero-title">The future,<br><span class="accent">v1.</span></h1>
+  <p class="hero-sub">First version of the future Wittyverse website. More iterations to come.</p>
 </section>
 
-<section class="grid">
-
-  <a class="card" href="v13-candybar-feastables.html">
-    <div class="card-corner">v13</div>
-    <h2 class="card-title">Candybar<br>Feastables</h2>
-    <div class="card-meta">Pink · Lime · Cocoa · Bagel Fat One</div>
-    <p class="card-desc">Feastables-style layout. Pink-dominant with cocoa borders, purple-gradient starry hero, floating product packages, splash banner, 6-up UGC grid. The structural source for v19.</p>
-    <div class="card-tags">
-      <span class="card-tag" style="background:#FF3D7F;color:#fff;border-color:#3E2723">Pink</span>
-      <span class="card-tag lime">Lime</span>
-      <span class="card-tag" style="background:#3E2723;color:#FFF4E6">Cocoa</span>
-    </div>
-    <span class="card-cta">Open →</span>
-  </a>
-
-  <a class="card" href="v17-remixed-dark-grid.html">
-    <div class="card-corner">v17</div>
-    <h2 class="card-title">Remixed<br>Dark Grid</h2>
-    <div class="card-meta">Dark · Orange · Teal · Lilita + Big Shoulders</div>
-    <p class="card-desc">Dark Tron-grid background, orange marquee at top with ★ separators, canister product render, warning sidebar. Source of the marquee and the Lilita One + Big Shoulders Display + Inter font stack used in v19.</p>
-    <div class="card-tags">
-      <span class="card-tag dark">Ink</span>
-      <span class="card-tag orange">Orange</span>
-      <span class="card-tag" style="background:#2DB88A;color:#1A0A2E">Teal</span>
-    </div>
-    <span class="card-cta">Open →</span>
-  </a>
-
-  <a class="card" href="v18-the-pulp.html">
-    <div class="card-corner">v18</div>
-    <h2 class="card-title">The Pulp</h2>
-    <div class="card-meta">Pulp Magazine · Bowlby + Anton + Vollkorn</div>
-    <p class="card-desc">Pulp-mag aesthetic — italic skewX on display text, halftone overlay, ✦ stars, "Astounding!" pulp shouts, drop caps, dramatic stacked shadows. Source of the vibe (skew + halftone + pulp drama) used in v19.</p>
-    <div class="card-tags">
-      <span class="card-tag purple">Purple</span>
-      <span class="card-tag orange">Orange</span>
-      <span class="card-tag" style="background:#2DB88A;color:#1A0A2E">Teal</span>
-      <span class="card-tag" style="background:#F5EFDF;color:#1A0A2E">Paper</span>
-    </div>
-    <span class="card-cta">Open →</span>
-  </a>
-
-  <a class="card latest" href="v19-purple-pulp-feastables.html">
-    <div class="card-corner">v19 · v5.2</div>
+<section class="featured">
+  <a class="card latest" href="v1-purple-pulp-feastables.html">
+    <div class="card-corner">v1 · current</div>
     <h2 class="card-title">Purple Pulp<br>Feastables</h2>
-    <div class="card-meta">Combined · Stable copy v5.2 · Canon-flipped</div>
-    <p class="card-desc">The synthesis. v13's layout, v17's fonts (Lilita One + Big Shoulders) and marquee, v18's pulp polish (italic skew, halftone, stacked shadows). Palette: lime + purple from v13, orange from v17/v18. <strong>Copy refreshed to stable v5.2</strong> — Winston is now Earth-born (found portal in Himalayan cave); Charlotte / JLS Trading anchor removed; trust strip uses the four canon props; About uses Winston's letter excerpt.</p>
+    <div class="card-meta">Stable copy v5.2 · Canon-flipped 2026-05-07</div>
+    <p class="card-desc">First version of the future Wittyverse website. Purple-gradient starry hero, marquee, Lilita One + Big Shoulders Display fonts, italic-skew display text, halftone overlay, four-prop trust grid, Winston About excerpt, Field Notes promo. <strong>Copy from stable v5.2</strong> — Winston is Earth-born (found portal in Himalayan cave); no Charlotte / JLS Trading anchor.</p>
     <div class="card-tags">
       <span class="card-tag purple">Purple</span>
       <span class="card-tag lime">Lime</span>
@@ -344,7 +349,57 @@
     </div>
     <span class="card-cta">Open →</span>
   </a>
+</section>
 
+<section class="archive-section">
+  <div class="archive-heading">
+    <span class="archive-eyebrow">Pre-v1 Explorations</span>
+    <p class="archive-note">Earlier directions from the design sprint with Johnny. Pre-canon-flip copy, kept here for reference. v1 above is the synthesis of these three.</p>
+  </div>
+
+  <div class="archive-grid">
+
+    <a class="card archived" href="v13-candybar-feastables.html">
+      <div class="card-corner">v13</div>
+      <h2 class="card-title">Candybar<br>Feastables</h2>
+      <div class="card-meta">Layout source for v1</div>
+      <p class="card-desc">Feastables-style layout. Pink-dominant, purple-gradient starry hero, floating product packages, splash banner, 6-up UGC grid. The structural source for v1.</p>
+      <div class="card-tags">
+        <span class="card-tag" style="background:#FF3D7F;color:#fff;border-color:#3E2723">Pink</span>
+        <span class="card-tag lime">Lime</span>
+        <span class="card-tag" style="background:#3E2723;color:#FFF4E6">Cocoa</span>
+      </div>
+      <span class="card-cta">Open →</span>
+    </a>
+
+    <a class="card archived" href="v17-remixed-dark-grid.html">
+      <div class="card-corner">v17</div>
+      <h2 class="card-title">Remixed<br>Dark Grid</h2>
+      <div class="card-meta">Font + marquee source for v1</div>
+      <p class="card-desc">Dark Tron-grid background, orange marquee with ★ separators, canister product render. Source of the Lilita One + Big Shoulders Display font stack and the marquee used in v1.</p>
+      <div class="card-tags">
+        <span class="card-tag dark">Ink</span>
+        <span class="card-tag orange">Orange</span>
+        <span class="card-tag" style="background:#2DB88A;color:#1A0A2E">Teal</span>
+      </div>
+      <span class="card-cta">Open →</span>
+    </a>
+
+    <a class="card archived" href="v18-the-pulp.html">
+      <div class="card-corner">v18</div>
+      <h2 class="card-title">The Pulp</h2>
+      <div class="card-meta">Vibe source for v1</div>
+      <p class="card-desc">Pulp-mag aesthetic — italic skewX, halftone overlay, ✦ stars, drop caps, dramatic stacked shadows. Source of the pulp polish (skew + halftone + drama) used in v1.</p>
+      <div class="card-tags">
+        <span class="card-tag purple">Purple</span>
+        <span class="card-tag orange">Orange</span>
+        <span class="card-tag" style="background:#2DB88A;color:#1A0A2E">Teal</span>
+        <span class="card-tag" style="background:#F5EFDF;color:#1A0A2E">Paper</span>
+      </div>
+      <span class="card-cta">Open →</span>
+    </a>
+
+  </div>
 </section>
 
 <div class="foot">
