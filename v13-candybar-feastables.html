@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WITTYVERSE — Sourced From The Other Side</title>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pink: #FF3D7F;
+    --pink-deep: #D81B60;
+    --cream: #FFF4E6;
+    --cream-deep: #FFE0B2;
+    --cocoa: #3E2723;
+    --cocoa-light: #5D4037;
+    --lime: #9EE83D;
+    --lime-deep: #7CB342;
+    --sky: #4FC3F7;
+    --sky-deep: #29B6F6;
+    --yellow: #FFC107;
+    --white: #FFFFFF;
+    --shadow: rgba(62,39,35,0.3);
+  }
+
+  body {
+    background: var(--pink);
+    color: var(--cocoa);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ====== TOP STRIP ====== */
+  .top-strip {
+    background: var(--cocoa);
+    color: var(--cream);
+    text-align: center;
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ====== HEADER ====== */
+  .site-header {
+    background: var(--pink);
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 32px;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-shadow:
+      2px 2px 0 var(--cocoa),
+      4px 4px 0 var(--lime);
+    line-height: 1;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--white);
+  }
+  .nav-links a:hover { color: var(--lime); }
+  .nav-links a.collab {
+    color: var(--yellow);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--white);
+    font-weight: 800;
+    font-size: 13px;
+  }
+  .icon-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    position: relative;
+    background: radial-gradient(ellipse at center, #6A1B9A 0%, #1A0A2E 80%);
+    min-height: 480px;
+    overflow: hidden;
+    padding: 50px 24px;
+    border-bottom: 6px solid var(--cocoa);
+  }
+  .hero-stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, white, transparent),
+      radial-gradient(1px 1px at 80% 30%, white, transparent),
+      radial-gradient(2px 2px at 30% 70%, white, transparent),
+      radial-gradient(1px 1px at 90% 80%, white, transparent),
+      radial-gradient(1px 1px at 50% 10%, white, transparent),
+      radial-gradient(2px 2px at 70% 60%, white, transparent),
+      radial-gradient(1px 1px at 25% 50%, white, transparent),
+      radial-gradient(1px 1px at 60% 25%, white, transparent),
+      radial-gradient(2px 2px at 15% 85%, white, transparent),
+      radial-gradient(1px 1px at 85% 15%, white, transparent);
+    background-size: 100% 100%;
+    opacity: 0.7;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--cocoa);
+    color: var(--cream);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    border: 3px solid var(--white);
+  }
+  .hero-headline {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 88px;
+    color: var(--white);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    text-shadow:
+      4px 4px 0 var(--cocoa),
+      8px 8px 0 var(--pink-deep);
+    margin-bottom: 18px;
+  }
+  .hero-headline .word-other {
+    color: var(--lime);
+    text-shadow:
+      4px 4px 0 var(--cocoa),
+      8px 8px 0 var(--pink-deep);
+  }
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--cocoa);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 24px;
+    padding: 14px 44px;
+    border-radius: 40px;
+    border: 4px solid var(--cocoa);
+    box-shadow: 0 6px 0 var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .hero-cta:hover {
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 var(--cocoa);
+  }
+  .hero-sig {
+    margin-top: 28px;
+    font-size: 12px;
+    color: rgba(255,244,230,0.6);
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+
+  /* Floating product visuals */
+  .hero-product {
+    position: absolute;
+    z-index: 3;
+  }
+  .hero-product.left {
+    left: 5%;
+    top: 30%;
+    transform: rotate(-12deg);
+  }
+  .hero-product.right {
+    right: 5%;
+    top: 35%;
+    transform: rotate(15deg);
+  }
+  .hero-product .package {
+    width: 110px;
+    height: 160px;
+    border-radius: 12px;
+    border: 4px solid var(--cocoa);
+    background: var(--white);
+    padding: 14px 8px;
+    text-align: center;
+    box-shadow: 0 8px 0 var(--cocoa), 0 12px 24px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-product.left .package { background: var(--sky); }
+  .hero-product.right .package { background: var(--yellow); }
+  .hero-product .pkg-brand {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 14px;
+    color: var(--cocoa);
+    line-height: 1;
+  }
+  .hero-product .pkg-name {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 18px;
+    color: var(--cocoa);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .hero-product .pkg-tag {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--cocoa);
+    background: var(--white);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 2px solid var(--cocoa);
+    align-self: center;
+  }
+
+  /* Cloud decorations */
+  .cloud {
+    position: absolute;
+    z-index: 2;
+    color: var(--white);
+    opacity: 0.85;
+  }
+  .cloud-1 { top: 10%; left: 8%; }
+  .cloud-2 { top: 20%; right: 12%; }
+
+  /* ====== DISPATCH STRIP ====== */
+  .dispatch-strip {
+    background: var(--cream);
+    border-top: 6px solid var(--cocoa);
+    border-bottom: 6px solid var(--cocoa);
+    padding: 18px 0;
+    overflow: hidden;
+  }
+  .dispatch-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .dispatch-label {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 26px;
+    color: var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+  }
+  .dispatch-items {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    justify-content: space-around;
+  }
+  .dispatch-item {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 22px;
+    color: var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: var(--pink);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+  }
+
+  /* ====== SHOP SECTION ====== */
+  .shop-section {
+    background: var(--pink);
+    padding: 50px 0;
+  }
+  .shop-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .shop-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  .shop-title-block { flex-shrink: 0; max-width: 220px; }
+  .shop-title {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 32px;
+    color: var(--white);
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 var(--cocoa);
+    margin-bottom: 8px;
+  }
+  .shop-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .shop-all-btn {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--cocoa);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 16px;
+    padding: 8px 22px;
+    border-radius: 30px;
+    border: 3px solid var(--cocoa);
+    box-shadow: 0 4px 0 var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .product-rail {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    flex: 1;
+  }
+  .product-card {
+    background: var(--cream);
+    border: 4px solid var(--cocoa);
+    border-radius: 16px;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 6px 0 var(--cocoa);
+    transition: transform 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 0 var(--cocoa);
+  }
+  .product-image-frame {
+    background: var(--white);
+    border: 3px solid var(--cocoa);
+    border-radius: 12px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .product-package {
+    width: 80px;
+    height: 110px;
+    border-radius: 8px;
+    border: 3px solid var(--cocoa);
+    padding: 8px 6px;
+    text-align: center;
+    box-shadow: 4px 4px 0 var(--cocoa);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: rotate(-4deg);
+  }
+  .product-package.bg-sky { background: var(--sky); }
+  .product-package.bg-yellow { background: var(--yellow); }
+  .product-package.bg-pink { background: var(--pink); color: var(--white); }
+  .product-package.bg-lime { background: var(--lime); }
+  .product-package .pp-brand {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 9px;
+    color: var(--cocoa);
+    line-height: 1;
+  }
+  .product-package.bg-pink .pp-brand { color: var(--white); }
+  .product-package .pp-name {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 12px;
+    color: var(--cocoa);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .product-package.bg-pink .pp-name { color: var(--white); }
+  .product-package .pp-tag {
+    font-size: 7px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--cocoa);
+    background: var(--white);
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1.5px solid var(--cocoa);
+    align-self: center;
+    line-height: 1.2;
+  }
+  .product-package.bg-pink .pp-tag { color: var(--pink); }
+  .product-name-card {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 17px;
+    color: var(--cocoa);
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .product-price-card {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--cocoa);
+    margin-bottom: 12px;
+  }
+  .product-add-btn {
+    display: block;
+    width: 100%;
+    background: var(--pink);
+    color: var(--white);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 30px;
+    border: 3px solid var(--cocoa);
+    box-shadow: 0 3px 0 var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: auto;
+  }
+  .product-meta {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--cocoa);
+    opacity: 0.5;
+    margin-top: 6px;
+  }
+
+  /* ====== TASTE BANNER ====== */
+  .taste-banner {
+    background: var(--pink);
+    position: relative;
+    padding: 80px 24px;
+    overflow: hidden;
+    border-top: 6px solid var(--cocoa);
+    border-bottom: 6px solid var(--cocoa);
+  }
+  .taste-splash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg,
+      transparent 20%,
+      var(--cocoa) 30%,
+      var(--cocoa-light) 60%,
+      var(--cocoa) 90%,
+      transparent 100%);
+    clip-path: polygon(0 30%, 5% 25%, 12% 35%, 22% 28%, 35% 38%, 50% 30%, 65% 40%, 78% 32%, 90% 42%, 100% 35%, 100% 70%, 90% 65%, 78% 75%, 65% 68%, 50% 78%, 35% 70%, 22% 80%, 12% 72%, 5% 82%, 0 75%);
+    z-index: 1;
+  }
+  .taste-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .taste-eyebrow {
+    display: inline-block;
+    background: var(--white);
+    color: var(--pink);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 14px;
+    padding: 4px 16px;
+    border-radius: 8px;
+    border: 3px solid var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    transform: rotate(-2deg);
+  }
+  .taste-headline {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 80px;
+    color: var(--white);
+    line-height: 0.95;
+    text-transform: uppercase;
+    text-shadow:
+      4px 4px 0 var(--cocoa),
+      8px 8px 16px rgba(0,0,0,0.3);
+  }
+
+  /* ====== UGC GRID ====== */
+  .ugc-section {
+    background: var(--pink);
+    padding: 50px 0;
+  }
+  .ugc-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .ugc-card {
+    aspect-ratio: 9/16;
+    background: var(--cocoa);
+    border: 3px solid var(--cocoa);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    color: var(--white);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .ugc-card.bg-1 { background: linear-gradient(135deg, #FF6B9D 0%, #C2185B 100%); }
+  .ugc-card.bg-2 { background: linear-gradient(135deg, #4FC3F7 0%, #0288D1 100%); }
+  .ugc-card.bg-3 { background: linear-gradient(135deg, #FFC107 0%, #E65100 100%); }
+  .ugc-card.bg-4 { background: linear-gradient(135deg, #9EE83D 0%, #558B2F 100%); }
+  .ugc-card.bg-5 { background: linear-gradient(135deg, #BA68C8 0%, #6A1B9A 100%); }
+  .ugc-card.bg-6 { background: linear-gradient(135deg, #FF8A65 0%, #BF360C 100%); }
+
+  .ugc-card .ugc-emoji {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 24px;
+  }
+  .ugc-card .ugc-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.5);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .ugc-card .ugc-quote {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  .ugc-card .ugc-author {
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  /* ====== WHERE TO ORDER ====== */
+  .order-section {
+    background: var(--pink);
+    padding: 60px 0;
+    border-top: 6px solid var(--cocoa);
+    border-bottom: 6px solid var(--cocoa);
+    position: relative;
+    overflow: hidden;
+  }
+  .order-bg-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .order-bg-line {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 90px;
+    color: var(--pink-deep);
+    white-space: nowrap;
+    line-height: 1;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .order-bg-line:nth-child(even) { transform: translateX(-50px); }
+
+  .order-card {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+    background: transparent;
+    text-align: center;
+  }
+  .order-headline {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 64px;
+    color: var(--white);
+    text-shadow:
+      4px 4px 0 var(--cocoa),
+      8px 8px 0 var(--pink-deep);
+    line-height: 0.95;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .order-grid {
+    background: var(--white);
+    border: 5px solid var(--cocoa);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 0 var(--cocoa);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .order-cell {
+    text-align: center;
+  }
+  .order-cell .order-cell-label {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 18px;
+    color: var(--cocoa);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .order-cell .order-cell-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cocoa-light);
+  }
+  .order-cta {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--cocoa);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 22px;
+    padding: 12px 40px;
+    border-radius: 40px;
+    border: 4px solid var(--cocoa);
+    box-shadow: 0 6px 0 var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+
+  /* ====== MISSION SECTION ====== */
+  .mission-section {
+    background: var(--sky);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 6px solid var(--cocoa);
+    border-bottom: 6px solid var(--cocoa);
+  }
+  .mission-tornedge-top {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: var(--pink);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 95% 60%, 90% 100%, 85% 50%, 80% 90%, 75% 60%, 70% 100%, 65% 70%, 60% 100%, 55% 60%, 50% 90%, 45% 50%, 40% 100%, 35% 60%, 30% 90%, 25% 50%, 20% 100%, 15% 70%, 10% 90%, 5% 60%, 0 100%);
+  }
+  .mission-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+  .mission-portrait {
+    text-align: center;
+  }
+  .mission-portrait .portrait-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 6px solid var(--cocoa);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .mission-portrait svg { width: 100%; height: 100%; }
+  .mission-content {
+    text-align: center;
+  }
+  .mission-headline {
+    background: var(--cocoa);
+    color: var(--white);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 32px;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+  .mission-headline-2 {
+    background: var(--white);
+    color: var(--cocoa);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 32px;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    line-height: 1;
+    border: 4px solid var(--cocoa);
+    margin-bottom: 18px;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+  .mission-body-line {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 22px;
+    color: var(--cocoa);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .mission-sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cocoa);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mission-cta {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--cocoa);
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 20px;
+    padding: 12px 36px;
+    border-radius: 40px;
+    border: 4px solid var(--cocoa);
+    box-shadow: 0 6px 0 var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .mission-polaroid {
+    background: var(--white);
+    padding: 12px 12px 32px;
+    border: 4px solid var(--cocoa);
+    transform: rotate(4deg);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    max-width: 200px;
+    margin-left: auto;
+  }
+  .mission-polaroid .polaroid-image {
+    background: var(--cream);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .mission-polaroid .polaroid-caption {
+    text-align: center;
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 13px;
+    color: var(--cocoa);
+    text-transform: uppercase;
+  }
+
+  /* ====== FOOTER ====== */
+  .footer {
+    background: var(--sky);
+    padding: 50px 0 30px;
+    border-top: 6px solid var(--cocoa);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.5fr;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  .footer-col h4 {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 18px;
+    color: var(--cocoa);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 6px; }
+  .footer-col a {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .footer-col a:hover { color: var(--pink-deep); }
+  .footer-newsletter h4 { color: var(--cocoa); }
+  .footer-newsletter p {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cocoa);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .footer-newsletter .nl-form {
+    display: flex;
+    gap: 6px;
+  }
+  .footer-newsletter .nl-input {
+    flex: 1;
+    padding: 10px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border: 3px solid var(--cocoa);
+    border-radius: 30px;
+    background: var(--white);
+    color: var(--cocoa);
+  }
+  .footer-newsletter .nl-btn {
+    padding: 10px 20px;
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 14px;
+    background: var(--pink);
+    color: var(--white);
+    border: 3px solid var(--cocoa);
+    border-radius: 30px;
+    box-shadow: 0 3px 0 var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  .footer-newsletter .nl-note {
+    font-size: 10px;
+    color: var(--cocoa-light);
+    margin-top: 6px;
+  }
+  .footer-mega-logo {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .footer-mega-logo .mega-text {
+    font-family: 'Bagel Fat One', cursive;
+    font-size: 110px;
+    color: var(--white);
+    line-height: 0.9;
+    text-shadow:
+      6px 6px 0 var(--cocoa),
+      12px 12px 0 var(--pink);
+    letter-spacing: 4px;
+  }
+  .footer-bottom {
+    border-top: 3px solid var(--cocoa);
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cocoa);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .footer-bottom a { color: var(--cocoa); margin-left: 14px; }
+  .footer-compliance {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cocoa);
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP STRIP -->
+<div class="top-strip">FREE SHIPPING ON ORDERS $50+ · DISPATCHED FROM CHARLOTTE EVERY TUESDAY</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">WITTYVERSE</div>
+    <nav class="nav-links">
+      <a href="#">Shop</a>
+      <a href="#">Our Story</a>
+      <a href="#">Sourcing</a>
+      <a href="#" class="collab">★ Cycle 247 Drop</a>
+    </nav>
+    <div class="header-icons">
+      <span class="icon-circle">?</span>
+      <span class="icon-circle">♡</span>
+      <span class="icon-circle">⌂</span>
+      <span>Bag (0)</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stars"></div>
+  <svg class="cloud cloud-1" width="80" height="50" viewBox="0 0 80 50">
+    <ellipse cx="20" cy="30" rx="20" ry="15" fill="white"/>
+    <ellipse cx="40" cy="25" rx="22" ry="18" fill="white"/>
+    <ellipse cx="60" cy="32" rx="18" ry="14" fill="white"/>
+  </svg>
+  <svg class="cloud cloud-2" width="100" height="60" viewBox="0 0 100 60">
+    <ellipse cx="25" cy="35" rx="22" ry="16" fill="white"/>
+    <ellipse cx="50" cy="28" rx="26" ry="20" fill="white"/>
+    <ellipse cx="75" cy="35" rx="22" ry="16" fill="white"/>
+  </svg>
+
+  <!-- Floating product packages -->
+  <div class="hero-product left">
+    <div class="package">
+      <div class="pkg-brand">WITTYVERSE</div>
+      <div class="pkg-name">Dehydrated<br>Water</div>
+      <div class="pkg-tag">Just Add</div>
+    </div>
+  </div>
+  <div class="hero-product right">
+    <div class="package">
+      <div class="pkg-brand">WITTYVERSE</div>
+      <div class="pkg-name">Headlight<br>Fluid</div>
+      <div class="pkg-tag">Aged</div>
+    </div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">★ Currently In Stock · Restocked Tuesdays ★</div>
+    <h1 class="hero-headline">
+      Sourced From<br>
+      <span class="word-other">The Other Side</span>
+    </h1>
+    <div class="hero-sub">Gag Gifts · Hand-Inspected Before Export</div>
+    <a href="#" class="hero-cta">Browse Catalog →</a>
+    <div class="hero-sig">© Wittyverse Operations · Operated By Winston, Dr. W. Yeti PhD</div>
+  </div>
+</section>
+
+<!-- DISPATCH STRIP -->
+<div class="dispatch-strip">
+  <div class="dispatch-inner">
+    <div class="dispatch-label">Dispatch Schedule</div>
+    <div class="dispatch-items">
+      <div class="dispatch-item">Charlotte NC</div>
+      <div class="dispatch-item">Tuesdays 09:00 EST</div>
+      <div class="dispatch-item">Free Over $50</div>
+      <div class="dispatch-item">11.4K Orders YTD</div>
+    </div>
+  </div>
+</div>
+
+<!-- SHOP SECTION -->
+<section class="shop-section">
+  <div class="shop-inner">
+    <div class="shop-header">
+      <div class="shop-title-block">
+        <div class="shop-title">Shop The<br>Catalog</div>
+        <div class="shop-sub">Hand-inspected before export. Every cycle.</div>
+        <a href="#" class="shop-all-btn">Shop All →</a>
+      </div>
+      <div class="product-rail">
+        <div class="product-card">
+          <div class="product-image-frame">
+            <div class="product-package bg-sky">
+              <div class="pp-brand">WITTYVERSE</div>
+              <div class="pp-name">Dehydrated<br>Water</div>
+              <div class="pp-tag">Just Add</div>
+            </div>
+          </div>
+          <div class="product-name-card">Dehydrated Water</div>
+          <div class="product-price-card">$14.95</div>
+          <button class="product-add-btn">Add to Bag</button>
+          <div class="product-meta">O.O.P.S. #DH-001</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-frame">
+            <div class="product-package bg-yellow">
+              <div class="pp-brand">WITTYVERSE</div>
+              <div class="pp-name">Child<br>Chucker</div>
+              <div class="pp-tag">WY-69</div>
+            </div>
+          </div>
+          <div class="product-name-card">Child Chucker</div>
+          <div class="product-price-card">$29.99</div>
+          <button class="product-add-btn">Add to Bag</button>
+          <div class="product-meta">O.O.P.S. #CC-069</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-frame">
+            <div class="product-package bg-pink">
+              <div class="pp-brand">WITTYVERSE</div>
+              <div class="pp-name">Headlight<br>Fluid</div>
+              <div class="pp-tag">Aged</div>
+            </div>
+          </div>
+          <div class="product-name-card">Headlight Fluid</div>
+          <div class="product-price-card">$24.99</div>
+          <button class="product-add-btn">Add to Bag</button>
+          <div class="product-meta">O.O.P.S. #HF-003</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image-frame">
+            <div class="product-package bg-lime">
+              <div class="pp-brand">WITTYVERSE</div>
+              <div class="pp-name">Shart<br>Survival<br>Kit</div>
+              <div class="pp-tag">SOS</div>
+            </div>
+          </div>
+          <div class="product-name-card">Shart Survival Kit</div>
+          <div class="product-price-card">$19.99</div>
+          <button class="product-add-btn">Add to Bag</button>
+          <div class="product-meta">O.O.P.S. #SK-044</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TASTE / IMPORT BANNER -->
+<section class="taste-banner">
+  <div class="taste-splash"></div>
+  <div class="taste-content">
+    <div class="taste-eyebrow">WITTYVERSE</div>
+    <h2 class="taste-headline">A Laugh For<br>Every Occasion</h2>
+  </div>
+</section>
+
+<!-- UGC GRID -->
+<section class="ugc-section">
+  <div class="ugc-grid">
+    <div class="ugc-card bg-1">
+      <div class="ugc-emoji">🤣</div>
+      <div class="ugc-tag">Gift</div>
+      <div class="ugc-quote">"The Child Chucker had the room crying laughing for fifteen minutes."</div>
+      <div class="ugc-author">— Sarah K. · Charlotte</div>
+    </div>
+    <div class="ugc-card bg-2">
+      <div class="ugc-emoji">😂</div>
+      <div class="ugc-tag">Review</div>
+      <div class="ugc-quote">"My mechanic quoted me $80 for the headlight fluid. He was so confused."</div>
+      <div class="ugc-author">— Dave B.</div>
+    </div>
+    <div class="ugc-card bg-3">
+      <div class="ugc-emoji">⭐</div>
+      <div class="ugc-tag">5 stars</div>
+      <div class="ugc-quote">"Standing ovation at our white elephant. Standing. Ovation."</div>
+      <div class="ugc-author">— Anonymous</div>
+    </div>
+    <div class="ugc-card bg-4">
+      <div class="ugc-emoji">🎁</div>
+      <div class="ugc-tag">Gift</div>
+      <div class="ugc-quote">"Read every label out loud. Discovered new jokes for an hour."</div>
+      <div class="ugc-author">— Marcus T.</div>
+    </div>
+    <div class="ugc-card bg-5">
+      <div class="ugc-emoji">📦</div>
+      <div class="ugc-tag">Unbox</div>
+      <div class="ugc-quote">"The packaging is half the joke. Twelve laughs before opening."</div>
+      <div class="ugc-author">— Rachel P.</div>
+    </div>
+    <div class="ugc-card bg-6">
+      <div class="ugc-emoji">🔄</div>
+      <div class="ugc-tag">Repeat</div>
+      <div class="ugc-quote">"Came back for the survival kit. Already plotting next cycle's order."</div>
+      <div class="ugc-author">— Jordan A.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TO ORDER -->
+<section class="order-section">
+  <div class="order-bg-text">
+    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
+    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
+    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
+    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
+  </div>
+  <div class="order-card">
+    <h2 class="order-headline">Where To Order</h2>
+    <div class="order-grid">
+      <div class="order-cell">
+        <div class="order-cell-label">Direct Only</div>
+        <div class="order-cell-value">wittyverse.com is the only Earth-side outlet. No retail partners.</div>
+      </div>
+      <div class="order-cell">
+        <div class="order-cell-label">Charlotte NC</div>
+        <div class="order-cell-value">Earth-side fulfillment. Operations by JLS Trading Co.</div>
+      </div>
+      <div class="order-cell">
+        <div class="order-cell-label">Tuesdays</div>
+        <div class="order-cell-value">All shipments dispatched Tuesday 09:00 EST. No exceptions.</div>
+      </div>
+    </div>
+    <a href="#" class="order-cta">Browse Catalog →</a>
+  </div>
+</section>
+
+<!-- MISSION SECTION -->
+<section class="mission-section">
+  <div class="mission-tornedge-top"></div>
+  <div class="mission-inner">
+    <!-- Left: Winston portrait -->
+    <div class="mission-portrait">
+      <div class="portrait-circle">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <radialGradient id="fur" cx="50%" cy="40%">
+              <stop offset="0%" style="stop-color:#FFFFFF"/>
+              <stop offset="100%" style="stop-color:#E0E0E0"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="100" cy="120" rx="75" ry="80" fill="url(#fur)"/>
+          <ellipse cx="100" cy="100" rx="55" ry="55" fill="url(#fur)"/>
+          <circle cx="80" cy="95" r="5" fill="#3E2723"/>
+          <circle cx="120" cy="95" r="5" fill="#3E2723"/>
+          <ellipse cx="100" cy="115" rx="8" ry="5" fill="#3E2723"/>
+          <path d="M 85 130 Q 100 138 115 130" stroke="#3E2723" stroke-width="2" fill="none"/>
+          <rect x="65" y="80" width="70" height="22" rx="4" fill="#3E2723" opacity="0.85"/>
+          <line x1="73" y1="91" x2="93" y2="91" stroke="white" stroke-width="2"/>
+          <line x1="107" y1="91" x2="127" y2="91" stroke="white" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Center: Mission copy -->
+    <div class="mission-content">
+      <div class="mission-headline">On A Mission To</div>
+      <br>
+      <div class="mission-headline-2">Raise The Standard</div>
+      <div class="mission-body-line">Of Gag Gifting</div>
+      <p class="mission-sub">Hand-inspected before export. Built to keep, not throw away. Every surface packed with jokes. Twelve years and still enjoying the work.</p>
+      <a href="#" class="mission-cta">Read Our Story →</a>
+    </div>
+
+    <!-- Right: Polaroid -->
+    <div class="mission-polaroid">
+      <div class="polaroid-image">
+        <svg viewBox="0 0 100 100" width="80" height="80">
+          <rect x="20" y="40" width="60" height="40" rx="3" fill="#8B4A0F" stroke="#3E2723" stroke-width="2"/>
+          <text x="50" y="58" text-anchor="middle" font-family="Bagel Fat One" font-size="8" fill="white">DOCK</text>
+          <text x="50" y="70" text-anchor="middle" font-family="Bagel Fat One" font-size="6" fill="white">CYCLE 247</text>
+          <line x1="15" y1="80" x2="85" y2="80" stroke="#3E2723" stroke-width="3"/>
+          <circle cx="35" cy="35" r="6" fill="#FFC107"/>
+          <circle cx="65" cy="30" r="4" fill="#FFC107"/>
+        </svg>
+      </div>
+      <div class="polaroid-caption">The Dock,<br>Tuesday Cycle 247</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Shop All</a></li>
+          <li><a href="#">Hydration</a></li>
+          <li><a href="#">Household</a></li>
+          <li><a href="#">Field Provisions</a></li>
+          <li><a href="#">Latest Drop</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get To Know</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Field Notes</a></li>
+          <li><a href="#">Sourcing</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Field Notes</h4>
+        <p>A short letter, every other Sunday. What arrived. What sold out.</p>
+        <div class="nl-form">
+          <input class="nl-input" type="text" placeholder="your@email.address">
+          <button class="nl-btn">Sign Up</button>
+        </div>
+        <div class="nl-note">You can leave whenever you like.</div>
+      </div>
+    </div>
+
+    <div class="footer-mega-logo">
+      <div class="mega-text">WITTYVERSE</div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Witty Yeti</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+    <div class="footer-compliance">O.O.P.S. compliant · NAGs filing current · Earth-side operations by JLS Trading Co., Charlotte, NC</div>
+  </div>
+</footer>
+
+</body>
+</html>
