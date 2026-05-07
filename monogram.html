@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wittyverse — Monogram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --purple: #6A1B9A;
+    --purple-darker: #1A0A2E;
+    --lime: #9EE83D;
+    --orange: #FF6B2C;
+    --ink: #1A0A2E;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--purple-darker);
+  }
+
+  /* Square PFP container — fills the smaller viewport dimension */
+  .pfp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vmin;
+    height: 100vmin;
+    background: radial-gradient(ellipse at center, var(--purple) 0%, var(--purple-darker) 80%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Stars (same as v1 hero) */
+  .pfp::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, white, transparent),
+      radial-gradient(1px 1px at 80% 30%, white, transparent),
+      radial-gradient(2px 2px at 30% 70%, white, transparent),
+      radial-gradient(1px 1px at 90% 80%, white, transparent),
+      radial-gradient(1px 1px at 50% 10%, white, transparent),
+      radial-gradient(2px 2px at 70% 60%, white, transparent),
+      radial-gradient(1px 1px at 25% 50%, white, transparent),
+      radial-gradient(1px 1px at 60% 25%, white, transparent),
+      radial-gradient(2px 2px at 15% 85%, white, transparent),
+      radial-gradient(1px 1px at 85% 15%, white, transparent);
+    background-size: 100% 100%;
+    opacity: 0.7;
+  }
+
+  /* Halftone (same as v1 hero) */
+  .pfp::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+  }
+
+  /* The W — Lilita One, orange, stacked ink+lime shadow, skewed (same as v1 .logo) */
+  .mono {
+    position: relative;
+    z-index: 2;
+    font-family: 'Lilita One', cursive;
+    font-size: 70vmin;
+    line-height: 0.85;
+    color: var(--orange);
+    letter-spacing: 0;
+    text-shadow:
+      1.2vmin 1.2vmin 0 var(--ink),
+      2.4vmin 2.4vmin 0 var(--lime);
+    transform: skewX(-5deg);
+    /* Slight optical centering — the skew + heavy shadow shifts visual weight bottom-right,
+       so nudge up-left a touch */
+    margin-top: -1vmin;
+    margin-left: -1.5vmin;
+  }
+</style>
+</head>
+<body>
+  <div class="pfp">
+    <span class="mono">W</span>
+  </div>
+</body>
+</html>
