@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wittyverse — Background</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --purple: #6A1B9A;
+    --purple-darker: #1A0A2E;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--purple-darker);
+  }
+
+  .pfp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vmin;
+    height: 100vmin;
+    background: radial-gradient(ellipse at center, var(--purple) 0%, var(--purple-darker) 80%);
+    overflow: hidden;
+  }
+
+  .pfp::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, white, transparent),
+      radial-gradient(1px 1px at 80% 30%, white, transparent),
+      radial-gradient(2px 2px at 30% 70%, white, transparent),
+      radial-gradient(1px 1px at 90% 80%, white, transparent),
+      radial-gradient(1px 1px at 50% 10%, white, transparent),
+      radial-gradient(2px 2px at 70% 60%, white, transparent),
+      radial-gradient(1px 1px at 25% 50%, white, transparent),
+      radial-gradient(1px 1px at 60% 25%, white, transparent),
+      radial-gradient(2px 2px at 15% 85%, white, transparent),
+      radial-gradient(1px 1px at 85% 15%, white, transparent);
+    background-size: 100% 100%;
+    opacity: 0.7;
+  }
+
+  .pfp::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="pfp"></div>
+</body>
+</html>
