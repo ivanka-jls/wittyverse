@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WITTYVERSE — Sourced From The Other Side</title>
+<title>Wittyverse — Gag gifts, sourced from the other side.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -649,28 +649,28 @@
     transform: skewX(-7deg);
   }
 
-  /* ====== UGC GRID ====== */
+  /* ====== TRUST PROPS GRID ====== */
   .ugc-section {
     background: var(--purple-mid);
     padding: 60px 0;
   }
   .ugc-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
   }
   .ugc-card {
-    aspect-ratio: 9/16;
+    aspect-ratio: 3/4;
     background: var(--ink);
     border: 3px solid var(--ink);
     border-radius: 14px;
     overflow: hidden;
     position: relative;
     color: var(--white);
-    padding: 14px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -706,19 +706,20 @@
   .ugc-card .ugc-quote {
     font-family: 'Big Shoulders Display', sans-serif;
     font-style: italic;
-    font-size: 14px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 10px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.6);
     text-transform: uppercase;
   }
   .ugc-card .ugc-author {
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    opacity: 0.9;
-    letter-spacing: 0.04em;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.95;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
   }
 
   /* ====== WHERE TO ORDER ====== */
@@ -1095,7 +1096,7 @@
   /* ====== RESPONSIVE ====== */
   @media (max-width: 1024px) {
     .product-rail { grid-template-columns: repeat(2, 1fr); }
-    .ugc-grid { grid-template-columns: repeat(3, 1fr); }
+    .ugc-grid { grid-template-columns: repeat(2, 1fr); }
     .order-grid { grid-template-columns: 1fr; }
     .mission-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
     .mission-polaroid { margin: 0 auto; }
@@ -1108,7 +1109,7 @@
     .header-icons span:not(.icon-circle) { display: none; }
     .shop-header { flex-direction: column; }
     .product-rail { grid-template-columns: 1fr 1fr; }
-    .ugc-grid { grid-template-columns: 1fr 1fr; }
+    .ugc-grid { grid-template-columns: 1fr; }
     .dispatch-inner { flex-direction: column; gap: 16px; }
     .dispatch-items { flex-wrap: wrap; gap: 12px; justify-content: center; }
     .footer-grid { grid-template-columns: 1fr; }
@@ -1121,12 +1122,12 @@
 <div class="topbar">
   <div class="marquee">
     <span>Free shipping on orders over $50</span>
-    <span>Dispatched from Charlotte every Tuesday</span>
-    <span>Cycle 247 catalog now live</span>
+    <span>Dispatched Tuesdays</span>
+    <span>Restocked Tuesdays</span>
     <span>Hand-inspected before export</span>
     <span>Free shipping on orders over $50</span>
-    <span>Dispatched from Charlotte every Tuesday</span>
-    <span>Cycle 247 catalog now live</span>
+    <span>Dispatched Tuesdays</span>
+    <span>Restocked Tuesdays</span>
     <span>Hand-inspected before export</span>
   </div>
 </div>
@@ -1136,10 +1137,10 @@
   <div class="header-inner">
     <div class="logo">WITTYVERSE</div>
     <nav class="nav-links">
-      <a href="#">Shop</a>
-      <a href="#">Our Story</a>
-      <a href="#">Sourcing</a>
-      <a href="#" class="collab">✦ Cycle 247 Drop</a>
+      <a href="#">Catalog</a>
+      <a href="#">About</a>
+      <a href="#">Field Notes</a>
+      <a href="#">Help</a>
     </nav>
     <div class="header-icons">
       <span class="icon-circle">?</span>
@@ -1182,26 +1183,26 @@
   </div>
 
   <div class="hero-inner">
-    <div class="hero-eyebrow">Currently In Stock · Restocked Tuesdays</div>
+    <div class="hero-eyebrow">Cycle 247</div>
     <h1 class="hero-headline">
-      Sourced From<br>
-      <span class="word-other">The Other Side</span>
+      Gag gifts,<br>
+      sourced from<br>
+      <span class="word-other">the other side.</span>
     </h1>
-    <div class="hero-sub">Gag Gifts · Hand-Inspected Before Export</div>
-    <a href="#" class="hero-cta">Browse Catalog →</a>
-    <div class="hero-sig">© Wittyverse Operations · Operated by <strong>Winston, Dr. W. Yeti PhD</strong></div>
+    <div class="hero-sub">Currently in stock · Restocked Tuesdays</div>
+    <a href="#" class="hero-cta">Browse the catalog →</a>
+    <div class="hero-sig">Hand-inspected before export by <strong>Winston, Dr. W. Yeti PhD</strong></div>
   </div>
 </section>
 
-<!-- DISPATCH STRIP -->
+<!-- STATS STRIP -->
 <div class="dispatch-strip">
   <div class="dispatch-inner">
-    <div class="dispatch-label">Dispatch Schedule</div>
     <div class="dispatch-items">
-      <div class="dispatch-item">Charlotte NC</div>
-      <div class="dispatch-item">Tuesdays 09:00 EST</div>
-      <div class="dispatch-item">Free Over $50</div>
-      <div class="dispatch-item">11.4K Orders YTD</div>
+      <div class="dispatch-item">2.4M items sent</div>
+      <div class="dispatch-item">128 in this cycle</div>
+      <div class="dispatch-item">4.8 stars · 11,000 reviews</div>
+      <div class="dispatch-item">Ten minutes · per gift</div>
     </div>
   </div>
 </div>
@@ -1211,9 +1212,9 @@
   <div class="shop-inner">
     <div class="shop-header">
       <div class="shop-title-block">
-        <div class="shop-title">Shop The<br>Catalog</div>
-        <div class="shop-sub">Hand-inspected before export. Every cycle.</div>
-        <a href="#" class="shop-all-btn">Shop All →</a>
+        <div class="shop-title">The catalog,<br>this cycle.</div>
+        <div class="shop-sub">Restocked Tuesdays. Hand-inspected before export.</div>
+        <a href="#" class="shop-all-btn">Browse →</a>
       </div>
       <div class="product-rail">
         <div class="product-card">
@@ -1225,7 +1226,7 @@
             </div>
           </div>
           <div class="product-name-card">Dehydrated Water</div>
-          <div class="product-price-card">$14.95</div>
+          <div class="product-price-card">$14.99</div>
           <button class="product-add-btn">Add to Bag</button>
           <div class="product-meta">O.O.P.S. #DH-001</div>
         </div>
@@ -1239,7 +1240,7 @@
             </div>
           </div>
           <div class="product-name-card">Child Chucker</div>
-          <div class="product-price-card">$29.99</div>
+          <div class="product-price-card">$34.99</div>
           <button class="product-add-btn">Add to Bag</button>
           <div class="product-meta">O.O.P.S. #CC-069</div>
         </div>
@@ -1281,53 +1282,41 @@
   <div class="taste-splash"></div>
   <div class="taste-content">
     <div class="taste-eyebrow">WITTYVERSE</div>
-    <h2 class="taste-headline">A Laugh For<br>Every Occasion</h2>
+    <h2 class="taste-headline">Jokes on every<br>surface.</h2>
   </div>
 </section>
 
-<!-- UGC GRID -->
+<!-- TRUST PROPS GRID -->
 <section class="ugc-section">
   <div class="ugc-grid">
     <div class="ugc-card bg-1">
-      <div class="ugc-emoji">🤣</div>
-      <div class="ugc-tag">Gift</div>
-      <div class="ugc-quote">"The Child Chucker had the room crying laughing for fifteen minutes."</div>
-      <div class="ugc-author">— Sarah K. · Charlotte</div>
+      <div class="ugc-emoji">✦</div>
+      <div class="ugc-tag">Trust 1</div>
+      <div class="ugc-quote">Jokes on every surface.</div>
+      <div class="ugc-author">Front, back, inside, fine print. The standard is ten minutes of laughter, not five seconds.</div>
     </div>
     <div class="ugc-card bg-2">
-      <div class="ugc-emoji">😂</div>
-      <div class="ugc-tag">Review</div>
-      <div class="ugc-quote">"My mechanic quoted me $80 for the headlight fluid. He was so confused."</div>
-      <div class="ugc-author">— Dave B.</div>
+      <div class="ugc-emoji">✦</div>
+      <div class="ugc-tag">Trust 2</div>
+      <div class="ugc-quote">Built to keep.</div>
+      <div class="ugc-author">Sturdy materials, intentional design. These belong on shelves, not in trash bags.</div>
     </div>
     <div class="ugc-card bg-3">
-      <div class="ugc-emoji">⭐</div>
-      <div class="ugc-tag">5 stars</div>
-      <div class="ugc-quote">"Standing ovation at our white elephant. Standing. Ovation."</div>
-      <div class="ugc-author">— Anonymous</div>
+      <div class="ugc-emoji">✦</div>
+      <div class="ugc-tag">Trust 3</div>
+      <div class="ugc-quote">Each item has provenance.</div>
+      <div class="ugc-author">Sourced from manufacturing partners on the other side. Hand-inspected before export. The story is in the card.</div>
     </div>
     <div class="ugc-card bg-4">
-      <div class="ugc-emoji">🎁</div>
-      <div class="ugc-tag">Gift</div>
-      <div class="ugc-quote">"Read every label out loud. Discovered new jokes for an hour."</div>
-      <div class="ugc-author">— Marcus T.</div>
-    </div>
-    <div class="ugc-card bg-5">
-      <div class="ugc-emoji">📦</div>
-      <div class="ugc-tag">Unbox</div>
-      <div class="ugc-quote">"The packaging is half the joke. Twelve laughs before opening."</div>
-      <div class="ugc-author">— Rachel P.</div>
-    </div>
-    <div class="ugc-card bg-6">
-      <div class="ugc-emoji">🔄</div>
-      <div class="ugc-tag">Repeat</div>
-      <div class="ugc-quote">"Came back for the survival kit. Already plotting next cycle's order."</div>
-      <div class="ugc-author">— Jordan A.</div>
+      <div class="ugc-emoji">✦</div>
+      <div class="ugc-tag">Trust 4</div>
+      <div class="ugc-quote">Easy returns.</div>
+      <div class="ugc-author">Write the desk. We'll sort it.</div>
     </div>
   </div>
 </section>
 
-<!-- WHERE TO ORDER -->
+<!-- FIELD NOTES PROMO -->
 <section class="order-section">
   <div class="order-bg-text">
     <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
@@ -1336,22 +1325,22 @@
     <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
   </div>
   <div class="order-card">
-    <h2 class="order-headline">Where To Order</h2>
+    <h2 class="order-headline">The Field Notes.</h2>
     <div class="order-grid">
       <div class="order-cell">
-        <div class="order-cell-label">Direct Only</div>
-        <div class="order-cell-value">wittyverse.com is the only Earth-side outlet. No retail partners.</div>
+        <div class="order-cell-label">Bi-Weekly</div>
+        <div class="order-cell-value">A short letter every other Sunday — new arrivals, restocks, the occasional regulatory advisory.</div>
       </div>
       <div class="order-cell">
-        <div class="order-cell-label">Charlotte NC</div>
-        <div class="order-cell-value">Earth-side fulfillment. Operations by JLS Trading Co.</div>
+        <div class="order-cell-label">Two a Month</div>
+        <div class="order-cell-value">Two emails a month. Unsubscribe whenever.</div>
       </div>
       <div class="order-cell">
-        <div class="order-cell-label">Tuesdays</div>
-        <div class="order-cell-value">All shipments dispatched Tuesday 09:00 EST. No exceptions.</div>
+        <div class="order-cell-label">From Winston</div>
+        <div class="order-cell-value">Written by Winston, Dr. W. Yeti PhD. Reaches you direct.</div>
       </div>
     </div>
-    <a href="#" class="order-cta">Browse Catalog →</a>
+    <a href="#" class="order-cta">Subscribe →</a>
   </div>
 </section>
 
@@ -1382,14 +1371,14 @@
       </div>
     </div>
 
-    <!-- Center: Mission copy -->
+    <!-- Center: About copy -->
     <div class="mission-content">
-      <div class="mission-headline">On A Mission To</div>
+      <div class="mission-headline">About</div>
       <br>
-      <div class="mission-headline-2">Raise The Standard</div>
-      <div class="mission-body-line">Of Gag Gifting</div>
-      <p class="mission-sub">Hand-inspected before export. Built to keep, not throw away. Every surface packed with jokes. Twelve years and still enjoying the work.</p>
-      <a href="#" class="mission-cta">Read Our Story →</a>
+      <div class="mission-headline-2">This Place</div>
+      <div class="mission-body-line">Operated by Winston, Dr. W. Yeti PhD</div>
+      <p class="mission-sub">I'm Winston, and Wittyverse is the storefront I run on this side. The manufacturers I work with on the other side produce the catalog; items cross on Tuesdays; the warehouse on this side handles your end of things.</p>
+      <a href="#" class="mission-cta">Read more →</a>
     </div>
 
     <!-- Right: Polaroid -->
@@ -1415,41 +1404,40 @@
 
     <div class="footer-grid">
       <div class="footer-col">
-        <h4>Shop</h4>
+        <h4>The Catalog</h4>
         <ul>
-          <li><a href="#">Shop All</a></li>
-          <li><a href="#">Hydration</a></li>
-          <li><a href="#">Household</a></li>
-          <li><a href="#">Field Provisions</a></li>
-          <li><a href="#">Latest Drop</a></li>
+          <li><a href="#">Everything in stock</a></li>
+          <li><a href="#">Just arrived</a></li>
+          <li><a href="#">Returned to me</a></li>
+          <li><a href="#">Gift cards</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Info</h4>
+        <h4>Help</h4>
         <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Shipping</a></li>
           <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Write to Winston</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Get To Know</h4>
+        <h4>About</h4>
         <ul>
-          <li><a href="#">Our Story</a></li>
+          <li><a href="#">This place</a></li>
+          <li><a href="#">How I source</a></li>
           <li><a href="#">Field Notes</a></li>
-          <li><a href="#">Sourcing</a></li>
           <li><a href="#">Press</a></li>
         </ul>
       </div>
       <div class="footer-col footer-newsletter">
-        <h4>Field Notes</h4>
-        <p>A short letter, every other Sunday. What arrived. What sold out.</p>
+        <h4>Stay in touch</h4>
+        <p>A short letter every other Sunday — new arrivals, restocks, the occasional regulatory advisory. Two emails a month.</p>
         <div class="nl-form">
           <input class="nl-input" type="text" placeholder="your@email.address">
-          <button class="nl-btn">Sign Up</button>
+          <button class="nl-btn">Subscribe</button>
         </div>
-        <div class="nl-note">You can leave whenever you like.</div>
+        <div class="nl-note">Unsubscribe whenever.</div>
       </div>
     </div>
 
@@ -1465,7 +1453,7 @@
         <a href="#">Accessibility</a>
       </span>
     </div>
-    <div class="footer-compliance">O.O.P.S. compliant · NAGs filing current · Earth-side operations by JLS Trading Co., Charlotte, NC</div>
+    <div class="footer-compliance">O.O.P.S. manifest filed, Cycle 247 · NAGs quarterly audit current · Patent Office registrations on file</div>
   </div>
 </footer>
 
