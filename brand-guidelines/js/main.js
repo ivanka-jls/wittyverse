@@ -157,14 +157,22 @@ function initSideNav() {
   if (initialId && linkByHref.has(initialId)) setActive(initialId);
 }
 
+function syncTopbarHeight() {
+  const h = document.getElementById('topbar')?.offsetHeight || 64;
+  document.documentElement.style.setProperty('--topbar-height', `${h}px`);
+}
+
 async function init() {
   appState.tokens = await loadJSON('data/tokens.json');
   appState.voice = await loadJSON('data/voice.json');
   appState.changelog = await loadJSON('data/changelog.json');
   applyCurrentPresets();
   renderToggleUI();
+  syncTopbarHeight();
+  window.addEventListener('resize', syncTopbarHeight);
   initSideNav();
   document.dispatchEvent(new CustomEvent('app-ready'));
+  document.body.dataset.appReady = '1';
 }
 
 // Expose for surfaces.js
