@@ -104,6 +104,16 @@ function assert(name, condition, expected, actual) {
   assert('scroll-margin-top rule exists for main > section', hasRule, true, hasRule);
 }
 
+// === Surface overlay structural tests ===
+
+// Test: surface-overlay module exports the expected functions
+{
+  const mod = await import(`./js/surfaces.js?t=${Date.now()}`);
+  assert('surfaces.js exports openSurfaceOverlay', typeof mod.openSurfaceOverlay === 'function', 'function', typeof mod.openSurfaceOverlay);
+  assert('surfaces.js exports closeSurfaceOverlay', typeof mod.closeSurfaceOverlay === 'function', 'function', typeof mod.closeSurfaceOverlay);
+  assert('surfaces.js exports cycleSurface', typeof mod.cycleSurface === 'function', 'function', typeof mod.cycleSurface);
+}
+
 document.getElementById('summary').textContent = `${passed} passed, ${failed} failed`;
 document.getElementById('summary').className = 'summary ' + (failed === 0 ? 'pass' : 'fail');
 document.getElementById('results').textContent = results.join('\n');

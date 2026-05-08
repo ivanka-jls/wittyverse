@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.2",
+    "date": "2026-05-08",
+    "changes": [
+      "Added sticky left side-nav with scroll-spy (8 top-level + 6 sub-sections under Visual System)",
+      "Added click-to-expand overlay viewer for the 6 Surface mockups, with compare-lab toggles available inside the overlay",
+      "Cycle between surfaces with ← / → arrows or on-screen chevrons; ESC / backdrop-click to close",
+      "Layout extended to 1440px on desktop to accommodate the rail; mobile (<720px) unchanged"
+    ]
+  },
+  {
     "version": "0.1",
     "date": "2026-05-08",
     "changes": [
