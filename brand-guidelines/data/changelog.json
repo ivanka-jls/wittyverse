@@ -3,9 +3,14 @@
     "version": "0.1",
     "date": "2026-05-08",
     "changes": [
-      "Initial brand-guidelines page scaffold",
-      "Canon palette imported from existing index.html",
-      "Voice schema seeded with TBD placeholders"
+      "Initial brand-guidelines page scaffold + canon visual language",
+      "Visual system documented: full color palette + WCAG contrast ratios, type scale, spacing scale, layout grid",
+      "Logo + Avatar/Small-Size Mark coverage at 16/32/48/96px",
+      "6 surface mockups (homepage hero, product card, footer, IG, X, YouTube) — each demonstrates a different canon pairing",
+      "Compare Lab toggle infrastructure wired (URL state, draft badge); ready for v5.1 voice draft when added",
+      "Strategy, Customer, Voice, Imagery, Iconography ship as clearly-marked placeholders — to be drafted later",
+      "Asset gallery with 8 existing Wittyverse explorations",
+      "Discoverable from main wittyverse index (Brand Reference card)"
     ]
   }
 ]
