@@ -97,12 +97,69 @@ function applyCurrentPresets() {
   // voice changes are picked up by surface re-renderers via the event
 }
 
+function initSideNav() {
+  const links = document.querySelectorAll('.side-nav a[href^="#"]');
+  if (!links.length) return;
+
+  for (const link of links) {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', `#${id}`);
+    });
+  }
+
+  const linkByHref = new Map();
+  for (const link of links) {
+    linkByHref.set(link.getAttribute('href').slice(1), link);
+  }
+  const sections = Array.from(linkByHref.keys())
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    for (const link of links) {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+    }
+    const link = linkByHref.get(id);
+    if (link) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'location');
+    }
+  };
+
+  const visible = new Set();
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) visible.add(entry.target.id);
+      else visible.delete(entry.target.id);
+    }
+    for (const section of sections) {
+      if (visible.has(section.id)) {
+        setActive(section.id);
+        return;
+      }
+    }
+  }, {
+    rootMargin: '-30% 0px -60% 0px',
+    threshold: 0
+  });
+
+  for (const section of sections) observer.observe(section);
+}
+
 async function init() {
   appState.tokens = await loadJSON('data/tokens.json');
   appState.voice = await loadJSON('data/voice.json');
   appState.changelog = await loadJSON('data/changelog.json');
   applyCurrentPresets();
   renderToggleUI();
+  initSideNav();
   document.dispatchEvent(new CustomEvent('app-ready'));
 }
 

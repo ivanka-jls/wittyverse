@@ -73,6 +73,37 @@ function assert(name, condition, expected, actual) {
   assert('applyTokensToCSS handles type group', fakeRoot.style.getPropertyValue('--type-display') === 'Arial', 'Arial', fakeRoot.style.getPropertyValue('--type-display'));
 }
 
+// === Side-nav structural tests ===
+
+// Test: side-nav exists in the DOM after page loads
+{
+  const res = await fetch('index.html');
+  const html = await res.text();
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+
+  const nav = doc.querySelector('aside.side-nav');
+  assert('side-nav element exists in index.html', !!nav, true, !!nav);
+
+  const items = doc.querySelectorAll('.side-nav-list > li > a, .side-nav-sublist > li > a');
+  assert('side-nav has 14 link items (8 top-level + 6 sub)', items.length === 14, 14, items.length);
+
+  const orphans = [];
+  for (const a of items) {
+    const id = a.getAttribute('href')?.slice(1);
+    if (!id || !doc.getElementById(id)) orphans.push(a.getAttribute('href'));
+  }
+  assert('no orphan side-nav links (all hrefs resolve to section IDs)', orphans.length === 0, [], orphans);
+}
+
+// Test: scroll-margin-top is set on every targeted section via CSS
+{
+  const res = await fetch('styles.css');
+  const css = await res.text();
+  const hasRule = /main\s*>\s*section[\s\S]*?scroll-margin-top/.test(css);
+  assert('scroll-margin-top rule exists for main > section', hasRule, true, hasRule);
+}
+
 document.getElementById('summary').textContent = `${passed} passed, ${failed} failed`;
 document.getElementById('summary').className = 'summary ' + (failed === 0 ? 'pass' : 'fail');
 document.getElementById('results').textContent = results.join('\n');

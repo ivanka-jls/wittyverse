@@ -16,4 +16,6 @@
   --font-display: 'Big Shoulders Display', sans-serif;
   --font-accent:  'Lilita One', sans-serif;
   --font-body:    'Inter', system-ui, sans-serif;
+
+  --topbar-height: 64px;
 }
