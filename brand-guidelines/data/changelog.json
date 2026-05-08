@@ -1,0 +1,11 @@
+[
+  {
+    "version": "0.1",
+    "date": "2026-05-08",
+    "changes": [
+      "Initial brand-guidelines page scaffold",
+      "Canon palette imported from existing index.html",
+      "Voice schema seeded with TBD placeholders"
+    ]
+  }
+]
