@@ -370,6 +370,35 @@ h4 {
   color: var(--color-ink);
 }
 
+/* Layout, Spacing, Grid */
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.spacing-tile {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(26,10,46,0.15);
+}
+.spacing-tile:last-child { border-bottom: none; }
+.spacing-bar {
+  height: 14px;
+  background: var(--color-purple);
+  border: 2px solid var(--color-ink);
+  border-radius: 4px;
+}
+.spacing-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+}
+
 /* Imagery */
 .imagery-thumbs {
   display: grid;

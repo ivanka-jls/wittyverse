@@ -418,7 +418,68 @@
           </div>
         </div>
       </section>
-      <section id="layout"><h3>Layout, Spacing, Grid</h3><div class="placeholder">TBD — Task 18</div></section>
+      <section id="layout">
+        <h3>Layout, Spacing, Grid</h3>
+
+        <div class="color-card">
+          <h4>Spacing Scale</h4>
+          <p class="section-subtitle">Base unit 4px. Use the listed steps; avoid intermediate values.</p>
+          <div class="spacing-scale">
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 4px"></div><div class="spacing-label">4</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 8px"></div><div class="spacing-label">8</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 12px"></div><div class="spacing-label">12</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 16px"></div><div class="spacing-label">16</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 24px"></div><div class="spacing-label">24</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 32px"></div><div class="spacing-label">32</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 48px"></div><div class="spacing-label">48</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 64px"></div><div class="spacing-label">64</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 96px"></div><div class="spacing-label">96</div></div>
+            <div class="spacing-tile"><div class="spacing-bar" style="width: 128px"></div><div class="spacing-label">128</div></div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <h4>Grid &amp; Container</h4>
+          <table class="type-scale-table">
+            <thead>
+              <tr><th>Token</th><th>Value</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Max-width (page)</td><td><code>1200px</code></td><td>Outer container for topbar, main, footer.</td></tr>
+              <tr><td>Gutters</td><td><code>24px</code> desktop · <code>16px</code> mobile</td><td>Horizontal padding on the container.</td></tr>
+              <tr><td>Section spacing</td><td><code>64px</code></td><td>Vertical rhythm between top-level sections.</td></tr>
+              <tr><td>Card padding</td><td><code>24-28px</code></td><td>Cream cards with ink border + hard ink shadow.</td></tr>
+              <tr><td>Card radius</td><td><code>20px</code></td><td>Outer cards. Inner cards use 12-14px.</td></tr>
+              <tr><td>Card shadow</td><td><code>0 8px 0 ink</code> + soft drop</td><td>Hard offset shadow is signature; no soft-only shadows.</td></tr>
+              <tr><td>Mobile breakpoint</td><td><code>720px</code></td><td>Multi-col grids collapse to single column below this.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="color-card">
+          <h4>Composition Principles</h4>
+          <div class="type-rules-grid">
+            <div>
+              <h5 class="type-rules-heading">Do</h5>
+              <ul class="type-rules-list type-rules-do">
+                <li>Compose asymmetrically — off-centered hero CTAs, tilted display type.</li>
+                <li>Use hard ink shadows (0 4-8px 0 ink) as the brand's signature depth.</li>
+                <li>Layer flat color blocks over a purple-gradient backdrop.</li>
+                <li>Use the ✦ star and pipe (|) as decorative separators in the brand chrome.</li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="type-rules-heading">Don't</h5>
+              <ul class="type-rules-list type-rules-dont">
+                <li>Don't use soft drop-shadows alone — pair with the hard offset shadow.</li>
+                <li>Don't justify text or center long-form body copy.</li>
+                <li>Don't use thin hairline borders — minimum 2px, brand standard 3-4px.</li>
+                <li>Don't break out of the spacing scale for "almost-right" gaps.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
     <section id="surfaces"><h2>Surfaces — Compare Lab</h2><div class="placeholder">TBD — Task 19</div></section>
     <section id="asset-gallery"><h2>Asset Gallery</h2><div class="placeholder">TBD — Task 20</div></section>
