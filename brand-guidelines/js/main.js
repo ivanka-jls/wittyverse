@@ -161,9 +161,22 @@ function renderChangelog() {
   `).join('');
 }
 
+function renderVersionDisplay() {
+  const latest = (appState.changelog || [])[0];
+  if (!latest) return;
+  const version = `v${latest.version}`;
+  const updated = `Updated ${latest.date}`;
+  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+  setText('version-display', version);
+  setText('last-updated-display', updated);
+  setText('footer-version', version);
+  setText('footer-updated', `Last updated ${latest.date}`);
+}
+
 document.addEventListener('app-ready', renderQuickReference);
 document.addEventListener('app-ready', renderVoiceSection);
 document.addEventListener('app-ready', renderChangelog);
+document.addEventListener('app-ready', renderVersionDisplay);
 document.addEventListener('preset-change', () => document.dispatchEvent(new CustomEvent('app-ready')));
 
 init().catch(err => {
