@@ -1760,6 +1760,12 @@ h4 {
     color: var(--color-orange);
   }
 
+  .side-nav-list > li > a:focus-visible,
+  .side-nav-sublist > li > a:focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 2px;
+  }
+
   .side-nav-list > li > a.active,
   .side-nav-sublist > li > a.active {
     background: var(--color-lime);

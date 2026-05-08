@@ -151,6 +151,10 @@ function initSideNav() {
   });
 
   for (const section of sections) observer.observe(section);
+
+  // Seed initial active state (observer doesn't fire on load, only on changes)
+  const initialId = window.location.hash?.slice(1) || sections[0]?.id;
+  if (initialId && linkByHref.has(initialId)) setActive(initialId);
 }
 
 async function init() {
