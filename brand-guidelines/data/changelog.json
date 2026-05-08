@@ -1,5 +1,14 @@
 [
   {
+    "version": "0.3",
+    "date": "2026-05-08",
+    "changes": [
+      "Strategy & Positioning section now ships real content from the audited brand bible §1 (Positioning, Onliness, Why This Position, Sacrifices, Category Frame)",
+      "Removed placeholder banner from Strategy & Positioning; section is no longer marked as a stub",
+      "Added link to brand-bible.md (audited 2026-05-08) under Strategy canon links"
+    ]
+  },
+  {
     "version": "0.2",
     "date": "2026-05-08",
     "changes": [
