@@ -114,6 +114,38 @@ function assert(name, condition, expected, actual) {
   assert('surfaces.js exports cycleSurface', typeof mod.cycleSurface === 'function', 'function', typeof mod.cycleSurface);
 }
 
+// === Surface overlay behavior tests ===
+{
+  // Wait for app-ready so getCurrentPresetData() has tokens/voice loaded
+  await new Promise(resolve => {
+    if (document.body.dataset.appReady === '1') return resolve();
+    document.addEventListener('app-ready', () => resolve(), { once: true });
+    // Safety timeout — proceed even if event already fired before listener
+    setTimeout(resolve, 1500);
+  });
+  const mod = await import(`./js/surfaces.js?t=${Date.now()}`);
+  // openSurfaceOverlay with a valid key opens the overlay
+  mod.openSurfaceOverlay('homepage_hero');
+  const host = document.getElementById('surface-overlay-host');
+  assert('openSurfaceOverlay opens host', !!host && host.classList.contains('is-open'), true, !!host && host.classList.contains('is-open'));
+  assert('body scroll locked when overlay open', document.body.style.overflow === 'hidden', 'hidden', document.body.style.overflow);
+
+  // cycleSurface advances the title
+  const titleBefore = document.getElementById('surface-overlay-title')?.textContent;
+  mod.cycleSurface(1);
+  const titleAfter = document.getElementById('surface-overlay-title')?.textContent;
+  assert('cycleSurface(1) changes the overlay title', titleBefore !== titleAfter, 'title to change', `${titleBefore} -> ${titleAfter}`);
+
+  // closeSurfaceOverlay closes and restores body scroll
+  mod.closeSurfaceOverlay();
+  assert('closeSurfaceOverlay removes is-open class', !host.classList.contains('is-open'), true, !host.classList.contains('is-open'));
+  assert('closeSurfaceOverlay restores body scroll', document.body.style.overflow === '', '""', `"${document.body.style.overflow}"`);
+
+  // openSurfaceOverlay with invalid key is a no-op
+  mod.openSurfaceOverlay('not_a_real_surface');
+  assert('openSurfaceOverlay with invalid key does NOT open', !host.classList.contains('is-open'), true, !host.classList.contains('is-open'));
+}
+
 document.getElementById('summary').textContent = `${passed} passed, ${failed} failed`;
 document.getElementById('summary').className = 'summary ' + (failed === 0 ? 'pass' : 'fail');
 document.getElementById('results').textContent = results.join('\n');

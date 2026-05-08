@@ -177,14 +177,7 @@ export function renderAllSurfaces() {
   const data = getCurrentPresetData();
   const draftBadge = data.isCanon ? '' : '<div class="draft-badge">Draft preview</div>';
 
-  const surfaces = [
-    { key: 'homepage_hero',  label: 'Homepage Hero',  role: 'Primary anchor — purple ground' },
-    { key: 'product_card',   label: 'Product Card',   role: 'Neutral surface + orange CTA' },
-    { key: 'footer',         label: 'Footer',         role: 'Dark anchor — ink ground' },
-    { key: 'instagram_post', label: 'Instagram Post', role: 'Brand-on-platform — white chrome' },
-    { key: 'x_post',         label: 'X Post + Card',  role: 'Brand-on-platform — white chrome' },
-    { key: 'youtube_video',  label: 'YouTube Video',  role: 'Branded thumbnail vs neutral chrome' }
-  ];
+  const surfaces = SURFACE_ORDER.map(key => ({ key, ...SURFACE_LABELS[key] }));
 
   container.innerHTML = surfaces.map(s => `
     <article class="surface-cell" tabindex="0" role="button"
@@ -194,8 +187,7 @@ export function renderAllSurfaces() {
         <div class="surface-cell-role">${s.role}</div>
       </div>
       <button class="surface-expand-btn" type="button"
-              aria-label="Expand ${s.label}"
-              data-surface-key="${s.key}">↗</button>
+              aria-label="Expand ${s.label}">↗</button>
       ${draftBadge}
       ${renderers[s.key](data)}
     </article>
