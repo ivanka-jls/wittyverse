@@ -119,6 +119,21 @@ export function getCurrentPresetData() {
   };
 }
 
+document.addEventListener('app-ready', () => {
+  const data = getCurrentPresetData();
+  const voiceEl = document.getElementById('quick-voice');
+  if (voiceEl && data.voice?.rules?.personality?.[0]) {
+    voiceEl.textContent = data.voice.rules.personality[0];
+  }
+  const rulesEl = document.getElementById('quick-rules');
+  if (rulesEl) {
+    const dos = (data.voice?.rules?.do || []).slice(0, 2).map(s => `<li>✓ ${s}</li>`);
+    const donts = (data.voice?.rules?.dont || []).slice(0, 1).map(s => `<li>✗ ${s}</li>`);
+    rulesEl.innerHTML = [...dos, ...donts].join('');
+  }
+});
+document.addEventListener('preset-change', () => document.dispatchEvent(new CustomEvent('app-ready')));
+
 init().catch(err => {
   console.error('[brand-guidelines] init failed:', err);
 });
