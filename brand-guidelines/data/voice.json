@@ -1,0 +1,48 @@
+{
+  "version": "0.1",
+  "presets": {
+    "canon": {
+      "label": "Canon",
+      "rules": {
+        "personality": ["TBD — draft from canon/03-content-strategy.md"],
+        "do": ["TBD"],
+        "dont": ["TBD"]
+      },
+      "messaging": {
+        "tagline": "TBD",
+        "value_prop": "TBD",
+        "boilerplate": "TBD"
+      },
+      "surfaces": {
+        "homepage_hero": {
+          "headline": "TBD",
+          "subline": "TBD",
+          "cta": "TBD"
+        },
+        "product_card": {
+          "name": "TBD",
+          "description": "TBD",
+          "price": "$TBD",
+          "cta": "Add to cart"
+        },
+        "footer": {
+          "tagline": "TBD",
+          "small_print": "TBD"
+        },
+        "instagram_post": {
+          "caption": "TBD"
+        },
+        "x_post": {
+          "post_text": "TBD",
+          "card_title": "TBD",
+          "card_description": "TBD"
+        },
+        "youtube_video": {
+          "title": "TBD",
+          "channel_name": "Wittyverse"
+        }
+      }
+    }
+  },
+  "active_preset": "canon"
+}
