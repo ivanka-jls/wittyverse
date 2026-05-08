@@ -184,7 +184,117 @@
           </ul>
         </div>
       </section>
-      <section id="color"><h3>Color</h3><div class="placeholder">TBD — Task 14</div></section>
+      <section id="color">
+        <h3>Color</h3>
+
+        <div class="color-card">
+          <h4>Palette</h4>
+          <div class="palette-grid">
+            <div class="color-tile" style="background: var(--color-purple)">
+              <div class="color-tile-name">Purple</div>
+              <div class="color-tile-hex">#6A1B9A</div>
+              <div class="color-tile-rgb">rgb(106, 27, 154)</div>
+            </div>
+            <div class="color-tile" style="background: var(--color-purple-deep)">
+              <div class="color-tile-name">Purple Deep</div>
+              <div class="color-tile-hex">#401A75</div>
+              <div class="color-tile-rgb">rgb(64, 26, 117)</div>
+            </div>
+            <div class="color-tile color-tile--dark" style="background: var(--color-purple-darker)">
+              <div class="color-tile-name">Purple Darker</div>
+              <div class="color-tile-hex">#1A0A2E</div>
+              <div class="color-tile-rgb">rgb(26, 10, 46)</div>
+            </div>
+            <div class="color-tile color-tile--light" style="background: var(--color-lime)">
+              <div class="color-tile-name">Lime</div>
+              <div class="color-tile-hex">#9EE83D</div>
+              <div class="color-tile-rgb">rgb(158, 232, 61)</div>
+            </div>
+            <div class="color-tile" style="background: var(--color-orange)">
+              <div class="color-tile-name">Orange</div>
+              <div class="color-tile-hex">#FF6B2C</div>
+              <div class="color-tile-rgb">rgb(255, 107, 44)</div>
+            </div>
+            <div class="color-tile color-tile--light" style="background: var(--color-cream)">
+              <div class="color-tile-name">Cream</div>
+              <div class="color-tile-hex">#FFF4E6</div>
+              <div class="color-tile-rgb">rgb(255, 244, 230)</div>
+            </div>
+            <div class="color-tile color-tile--dark" style="background: var(--color-ink)">
+              <div class="color-tile-name">Ink</div>
+              <div class="color-tile-hex">#1A0A2E</div>
+              <div class="color-tile-rgb">rgb(26, 10, 46)</div>
+            </div>
+          </div>
+
+          <div class="why">
+            <strong>Why:</strong> Purple anchors the brand world; lime + orange create the high-contrast pop pair (CTA + accent) that signals energy; ink + cream are the high-legibility text pair across light/dark surfaces.
+          </div>
+        </div>
+
+        <div class="color-card">
+          <h4>Pairings</h4>
+          <p class="section-subtitle">Canonical color combinations and their roles.</p>
+          <div class="pairings-grid">
+            <div class="pairing-tile" style="background: var(--color-ink); color: var(--color-lime);">
+              <div class="pairing-label">Primary CTA</div>
+              <div class="pairing-sample">Lime on Ink</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--color-purple); color: var(--color-cream);">
+              <div class="pairing-label">Hero / brand chrome</div>
+              <div class="pairing-sample">Cream on Purple</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--color-cream); color: var(--color-ink);">
+              <div class="pairing-label">Body / cards</div>
+              <div class="pairing-sample">Ink on Cream</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--color-lime); color: var(--color-ink);">
+              <div class="pairing-label">Active / Highlight</div>
+              <div class="pairing-sample">Ink on Lime</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--color-orange); color: var(--color-ink);">
+              <div class="pairing-label">Accent / Marquee</div>
+              <div class="pairing-sample">Ink on Orange</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--color-purple-deep); color: var(--color-lime);">
+              <div class="pairing-label">Pulled-quote / Why box</div>
+              <div class="pairing-sample">Lime on Purple Deep</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <h4>Accessibility (WCAG 2.1)</h4>
+          <p class="section-subtitle">Contrast ratios for the canon pairings. Body copy must meet AA (4.5:1) at minimum.</p>
+          <table class="contrast-table">
+            <thead>
+              <tr><th>Pairing</th><th>Ratio</th><th>Normal</th><th>Large</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Ink on Cream</td><td>17.16:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Ink on White</td><td>18.64:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Cream on Ink</td><td>17.16:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Lime on Ink</td><td>12.48:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Cream on Purple</td><td>8.65:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Lime on Purple</td><td>6.29:1</td><td><span class="badge pass">AA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Orange on Ink</td><td>6.56:1</td><td><span class="badge pass">AA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Ink on Lime</td><td>12.48:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
+              <tr><td>Orange on Cream <em>(decorative only)</em></td><td>2.62:1</td><td><span class="badge fail">FAIL</span></td><td><span class="badge fail">FAIL</span></td></tr>
+            </tbody>
+          </table>
+
+          <div class="dark-light-note">
+            <h4>Dark / Light Mode Notes</h4>
+            <p>The page is purposefully dark-leaning (purple gradient background) by default — Wittyverse is a "lights down, neon up" brand. For longer-form text surfaces (blog, docs, product pages) flip to a cream-dominant background with ink text — same palette, just a different anchor. Avoid switching mid-page.</p>
+            <ul>
+              <li>✓ Default surfaces (hero, marquee, social): purple-dark anchor with cream/lime text</li>
+              <li>✓ Long-form surfaces (article, doc): cream anchor with ink text, purple/orange as accents only</li>
+              <li>✗ Don't use orange on cream for body copy (fails AA — decorative use only)</li>
+              <li>✗ Don't auto-invert via OS preference; the brand has a default mood</li>
+            </ul>
+          </div>
+        </div>
+      </section>
       <section id="typography"><h3>Typography</h3><div class="placeholder">TBD — Task 15</div></section>
       <section id="imagery"><h3>Imagery &amp; Illustration</h3><div class="placeholder">TBD — Task 16</div></section>
       <section id="iconography"><h3>Iconography</h3><div class="placeholder">TBD — Task 17</div></section>
