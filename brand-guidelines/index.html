@@ -295,7 +295,74 @@
           </div>
         </div>
       </section>
-      <section id="typography"><h3>Typography</h3><div class="placeholder">TBD — Task 15</div></section>
+      <section id="typography">
+        <h3>Typography</h3>
+
+        <div class="color-card">
+          <h4>Type Specimens</h4>
+          <div class="type-specimen">
+            <div class="type-specimen-label">Display · Big Shoulders Display 900 italic, skewX(-6deg)</div>
+            <div class="type-specimen-sample type-display">WITTYVERSE LOUD &amp; CRISP</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-specimen-label">Accent · Lilita One regular</div>
+            <div class="type-specimen-sample type-accent">Lilita Accent Sample 0123</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-specimen-label">Body · Inter 400 / 600 / 800</div>
+            <div class="type-specimen-sample type-body">Inter sets the body, the labels, and the workhorse copy. The quick brown fox jumps over the lazy dog 0123456789.</div>
+          </div>
+
+          <div class="why">
+            <strong>Why:</strong> Big Shoulders Display + skew gives the brand its pulp-mag swagger; Lilita One adds a chunky retro-toy beat for accents and corner labels; Inter does the heavy lifting on long-form readability without competing with the display voice.
+          </div>
+        </div>
+
+        <div class="color-card">
+          <h4>Type Scale</h4>
+          <p class="section-subtitle">Display sizes use clamp() for fluid scaling. Body copy is fixed-pixel for predictable reading rhythm.</p>
+          <table class="type-scale-table">
+            <thead>
+              <tr><th>Token</th><th>Use</th><th>Size</th><th>Weight / Style</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Hero</td><td>Landing-page H1</td><td><code>clamp(48px, 7vw, 88px)</code></td><td>Display 900 italic, skewX(-6deg)</td></tr>
+              <tr><td>H2</td><td>Section header</td><td><code>clamp(36px, 5vw, 56px)</code></td><td>Display 900 italic, skewX(-6deg)</td></tr>
+              <tr><td>H3</td><td>Sub-section header</td><td><code>clamp(24px, 3vw, 32px)</code></td><td>Display 800 italic, skewX(-5deg)</td></tr>
+              <tr><td>H4</td><td>Card / sub-block label</td><td>18-22px</td><td>Display 800 italic uppercase</td></tr>
+              <tr><td>Card title</td><td>Cards, surface labels</td><td>32px</td><td>Display 900 italic, skewX(-5deg)</td></tr>
+              <tr><td>CTA</td><td>Buttons</td><td>16-18px</td><td>Display 900 italic uppercase</td></tr>
+              <tr><td>Body</td><td>Paragraph copy</td><td>14-16px</td><td>Inter 400-500, line-height 1.55-1.6</td></tr>
+              <tr><td>Eyebrow / Label</td><td>Small caps above headings</td><td>11px</td><td>Inter 800 uppercase, letter-spacing 0.14em</td></tr>
+              <tr><td>Caption</td><td>Hex codes, small print</td><td>11-13px</td><td>Inter 600-700</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="color-card">
+          <h4>Pairings &amp; Don'ts</h4>
+          <div class="type-rules-grid">
+            <div>
+              <h5 class="type-rules-heading">Do</h5>
+              <ul class="type-rules-list type-rules-do">
+                <li>Pair Display headline + Inter subline (never Display + Display).</li>
+                <li>Use Lilita One sparingly — corner badges, eyebrows, "v1" markers.</li>
+                <li>Use the skewX(-5deg/-6deg) tilt on all Display-set headlines.</li>
+                <li>Reserve uppercase for Display + eyebrows. Body stays sentence case.</li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="type-rules-heading">Don't</h5>
+              <ul class="type-rules-list type-rules-dont">
+                <li>Don't run body copy in Big Shoulders or Lilita.</li>
+                <li>Don't lower the skew below -4deg or above -7deg — it loses its punch.</li>
+                <li>Don't combine 3+ display weights in the same composition.</li>
+                <li>Don't justify body text — left-align everywhere.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="imagery"><h3>Imagery &amp; Illustration</h3><div class="placeholder">TBD — Task 16</div></section>
       <section id="iconography"><h3>Iconography</h3><div class="placeholder">TBD — Task 17</div></section>
       <section id="layout"><h3>Layout, Spacing, Grid</h3><div class="placeholder">TBD — Task 18</div></section>
