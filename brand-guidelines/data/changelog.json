@@ -1,5 +1,14 @@
 [
   {
+    "version": "0.4",
+    "date": "2026-05-08",
+    "changes": [
+      "Customer section now ships real content from the audited brand bible §2 (Tier 1/Tier 2 profile, Decision Drivers, Decision Journey, Anti-Persona)",
+      "Removed placeholder banner from Customer; section is no longer marked as a stub",
+      "Added cross-link to the new brand-bible page under Customer canon links"
+    ]
+  },
+  {
     "version": "0.3",
     "date": "2026-05-08",
     "changes": [
