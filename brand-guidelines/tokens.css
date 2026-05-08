@@ -1,0 +1,19 @@
+:root {
+  /* Populated by JS at runtime from tokens.json (active_preset).
+     These fallbacks ensure pre-JS render still looks correct. */
+  --color-purple:        #6A1B9A;
+  --color-purple-mid:    #5C27A3;
+  --color-purple-deep:   #401A75;
+  --color-purple-darker: #1A0A2E;
+  --color-lime:          #9EE83D;
+  --color-lime-deep:     #7CB342;
+  --color-orange:        #FF6B2C;
+  --color-orange-deep:   #E55A1A;
+  --color-cream:         #FFF4E6;
+  --color-white:         #FFFFFF;
+  --color-ink:           #1A0A2E;
+
+  --font-display: 'Big Shoulders Display', sans-serif;
+  --font-accent:  'Lilita One', sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+}
