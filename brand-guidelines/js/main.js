@@ -150,8 +150,20 @@ function renderVoiceSection() {
   setText('sample-yt-title',      v.surfaces?.youtube_video?.title);
 }
 
+function renderChangelog() {
+  const el = document.getElementById('changelog-list');
+  if (!el) return;
+  el.innerHTML = (appState.changelog || []).map(entry => `
+    <li class="changelog-entry">
+      <div class="changelog-version">v${entry.version} <span class="changelog-date">— ${entry.date}</span></div>
+      <ul class="changelog-changes">${entry.changes.map(c => `<li>${c}</li>`).join('')}</ul>
+    </li>
+  `).join('');
+}
+
 document.addEventListener('app-ready', renderQuickReference);
 document.addEventListener('app-ready', renderVoiceSection);
+document.addEventListener('app-ready', renderChangelog);
 document.addEventListener('preset-change', () => document.dispatchEvent(new CustomEvent('app-ready')));
 
 init().catch(err => {
