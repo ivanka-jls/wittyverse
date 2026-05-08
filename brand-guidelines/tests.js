@@ -1,4 +1,4 @@
-import { getStateFromURL, setStateInURL } from './js/main.js';
+import { getStateFromURL, setStateInURL, loadJSON, applyTokensToCSS } from './js/main.js';
 
 const results = [];
 let passed = 0, failed = 0;
@@ -49,6 +49,28 @@ function assert(name, condition, expected, actual) {
 {
   const result = setStateInURL({});
   assert('setStateInURL with empty state returns ""', result === '', '""', `"${result}"`);
+}
+
+// === JSON loader tests ===
+
+// Test 7: loadJSON fetches and parses tokens.json
+{
+  const data = await loadJSON('data/tokens.json');
+  assert('loadJSON returns object', typeof data === 'object', 'object', typeof data);
+  assert('tokens.json has presets.canon', !!data.presets?.canon, true, !!data.presets?.canon);
+  assert('canon has color.purple', data.presets.canon.color.purple === '#6A1B9A', '#6A1B9A', data.presets.canon.color.purple);
+}
+
+// Test 8: applyTokensToCSS sets CSS vars
+{
+  const fakeRoot = document.createElement('div');
+  applyTokensToCSS({
+    color: { primary: '#FF0000', secondary: '#00FF00' },
+    type:  { display: 'Arial' }
+  }, fakeRoot);
+  assert('applyTokensToCSS sets --color-primary', fakeRoot.style.getPropertyValue('--color-primary') === '#FF0000', '#FF0000', fakeRoot.style.getPropertyValue('--color-primary'));
+  assert('applyTokensToCSS converts underscores to hyphens', fakeRoot.style.getPropertyValue('--color-secondary') === '#00FF00', '#00FF00', fakeRoot.style.getPropertyValue('--color-secondary'));
+  assert('applyTokensToCSS handles type group', fakeRoot.style.getPropertyValue('--type-display') === 'Arial', 'Arial', fakeRoot.style.getPropertyValue('--type-display'));
 }
 
 document.getElementById('summary').textContent = `${passed} passed, ${failed} failed`;
