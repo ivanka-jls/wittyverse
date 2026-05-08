@@ -198,6 +198,90 @@ h4 {
   margin-bottom: 16px;
 }
 
+/* Voice & Messaging */
+#voice .voice-personality,
+#voice .voice-do,
+#voice .voice-dont,
+#voice .voice-messaging,
+#voice .voice-samples {
+  margin-bottom: 20px;
+}
+.voice-attrs {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.voice-attrs li {
+  background: var(--color-purple);
+  color: var(--color-cream);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 0 var(--color-ink);
+}
+.voice-rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.voice-do ul,
+.voice-dont ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-ink);
+}
+.voice-do ul li::before { content: '✓ '; color: var(--color-lime-deep); font-weight: 800; }
+.voice-dont ul li::before { content: '✗ '; color: var(--color-orange-deep); font-weight: 800; }
+.voice-messaging-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+.voice-messaging-list dt {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-orange-deep);
+  align-self: start;
+  padding-top: 4px;
+}
+.voice-messaging-list dd { margin: 0; }
+.sample-card {
+  background: var(--color-white);
+  border: 3px solid var(--color-ink);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 0 var(--color-ink);
+}
+.sample-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-orange-deep);
+  margin-bottom: 6px;
+}
+.sample-content {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-ink);
+}
+
 /* Canon-card content (Strategy / Customer placeholders) */
 .canon-card .lead {
   font-size: 17px;
@@ -314,6 +398,7 @@ h4 {
 /* Responsive */
 @media (max-width: 720px) {
   .quick-grid { grid-template-columns: 1fr; }
+  .voice-rules-grid { grid-template-columns: 1fr; }
   .topbar-inner {
     padding: 12px 16px;
     gap: 12px;

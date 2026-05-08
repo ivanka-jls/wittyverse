@@ -119,7 +119,7 @@ export function getCurrentPresetData() {
   };
 }
 
-document.addEventListener('app-ready', () => {
+function renderQuickReference() {
   const data = getCurrentPresetData();
   const voiceEl = document.getElementById('quick-voice');
   if (voiceEl && data.voice?.rules?.personality?.[0]) {
@@ -131,7 +131,27 @@ document.addEventListener('app-ready', () => {
     const donts = (data.voice?.rules?.dont || []).slice(0, 1).map(s => `<li>✗ ${s}</li>`);
     rulesEl.innerHTML = [...dos, ...donts].join('');
   }
-});
+}
+
+function renderVoiceSection() {
+  const v = getCurrentPresetData().voice;
+  if (!v) return;
+  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text || ''; };
+  const setList = (id, items) => { const el = document.getElementById(id); if (el) el.innerHTML = (items||[]).map(s => `<li>${s}</li>`).join(''); };
+
+  setList('voice-attrs',     v.rules?.personality);
+  setList('voice-do-list',   v.rules?.do);
+  setList('voice-dont-list', v.rules?.dont);
+  setText('voice-tagline',     v.messaging?.tagline);
+  setText('voice-value-prop',  v.messaging?.value_prop);
+  setText('voice-boilerplate', v.messaging?.boilerplate);
+  setText('sample-hero-headline', v.surfaces?.homepage_hero?.headline);
+  setText('sample-ig-caption',    v.surfaces?.instagram_post?.caption);
+  setText('sample-yt-title',      v.surfaces?.youtube_video?.title);
+}
+
+document.addEventListener('app-ready', renderQuickReference);
+document.addEventListener('app-ready', renderVoiceSection);
 document.addEventListener('preset-change', () => document.dispatchEvent(new CustomEvent('app-ready')));
 
 init().catch(err => {

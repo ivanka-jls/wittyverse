@@ -4,41 +4,57 @@
     "canon": {
       "label": "Canon",
       "rules": {
-        "personality": ["TBD — draft from canon/03-content-strategy.md"],
-        "do": ["TBD"],
-        "dont": ["TBD"]
+        "personality": [
+          "Personality attribute 1 — placeholder",
+          "Personality attribute 2 — placeholder",
+          "Personality attribute 3 — placeholder"
+        ],
+        "do": [
+          "Do rule 1 — placeholder for a voice principle.",
+          "Do rule 2 — placeholder.",
+          "Do rule 3 — placeholder.",
+          "Do rule 4 — placeholder.",
+          "Do rule 5 — placeholder."
+        ],
+        "dont": [
+          "Don't rule 1 — placeholder for an anti-pattern.",
+          "Don't rule 2 — placeholder.",
+          "Don't rule 3 — placeholder.",
+          "Don't rule 4 — placeholder.",
+          "Don't rule 5 — placeholder."
+        ]
       },
       "messaging": {
-        "tagline": "TBD",
-        "value_prop": "TBD",
-        "boilerplate": "TBD"
+        "tagline": "Tagline placeholder.",
+        "value_prop": "Value proposition placeholder — one sentence about why this product matters to its customer.",
+        "boilerplate": "Boilerplate placeholder. This is a 2-3 sentence company description that gets reused across press, partnerships, and footer-level introductions. Made deliberately long enough to test how multi-line copy renders in the layout."
       },
       "surfaces": {
         "homepage_hero": {
-          "headline": "TBD",
-          "subline": "TBD",
-          "cta": "TBD"
+          "headline": "BIG HEADLINE GOES HERE",
+          "subline": "Supporting line placeholder — short copy that sits under the hero headline, around 15-20 words to test the layout rhythm.",
+          "cta": "CTA Placeholder"
         },
         "product_card": {
-          "name": "TBD",
-          "description": "TBD",
-          "price": "$TBD",
+          "name": "Product Name Placeholder",
+          "description": "Product description placeholder — 10-15 words explaining what the product is and why someone might want it.",
+          "price": "$XX.XX",
           "cta": "Add to cart"
         },
         "footer": {
-          "tagline": "TBD",
-          "small_print": "TBD"
+          "tagline": "Footer tagline placeholder.",
+          "small_print": "© 2026 Wittyverse. Small-print placeholder line."
         },
         "instagram_post": {
-          "caption": "TBD"
+          "caption": "Instagram caption placeholder. This is where short-form social copy will live — written deliberately long enough to test how multi-line captions render in the IG mockup, including a couple of #hashtag placeholders. #wittyverse #placeholder"
         },
         "x_post": {
-          "post_text": "TBD",
-          "card_title": "TBD",
-          "card_description": "TBD"
+          "post_text": "Post text placeholder for X — 1-2 short lines designed to test how a tweet renders next to its link card preview.",
+          "card_title": "Link card title placeholder (50-60 chars)",
+          "card_description": "Link card description placeholder — the line that appears under the title in an X link card preview, usually 100-160 characters."
         },
         "youtube_video": {
-          "title": "TBD",
+          "title": "YouTube Video Title Placeholder — Click-Worthy",
           "channel_name": "Wittyverse"
         }
       }
