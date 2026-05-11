@@ -181,6 +181,20 @@ h4 {
 .voice-messaging h3,
 .voice-samples h3 {
   color: var(--color-purple-deep);
+  margin-bottom: 20px;
+}
+
+/* h3 sub-section breaks inside cream cards — gap from preceding sibling */
+.placeholder > * + h3,
+.canon-card > * + h3,
+.quick-card > * + h3,
+.sample-card > * + h3,
+.voice-personality > * + h3,
+.voice-do > * + h3,
+.voice-dont > * + h3,
+.voice-messaging > * + h3,
+.voice-samples > * + h3 {
+  margin-top: 32px;
 }
 
 .placeholder {

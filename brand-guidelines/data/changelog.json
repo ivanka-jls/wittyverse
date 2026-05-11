@@ -3,7 +3,8 @@
     "version": "0.4.1",
     "date": "2026-05-11",
     "changes": [
-      "Subheading (h3) color on cream cards changed from lime to purple-deep — lime-on-cream failed WCAG contrast; h3 stays lime on dark visual-system sections (Logo, Color, Typography, etc.) where it works"
+      "Subheading (h3) color on cream cards changed from lime to purple-deep — lime-on-cream failed WCAG contrast; h3 stays lime on dark visual-system sections (Logo, Color, Typography, etc.) where it works",
+      "Tightened spacing of h3 sub-sections on cream cards — 32px gap above each h3 (when it follows another element) and 20px below, so sub-sections read as distinct rather than mashed together"
     ]
   },
   {
