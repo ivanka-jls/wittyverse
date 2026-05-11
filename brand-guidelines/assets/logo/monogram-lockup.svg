@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Wittyverse monogram — lockup-zoom variant">
+  <title>Wittyverse monogram — lockup-zoom (W on purple-cosmic)</title>
+  <desc>Lilita One W, −5° italic skew, ink + lime stacked shadow, on purple radial-gradient cosmic ground with stars and halftone overlay. Use for PFP, packaging corner, embroidery ≥1″, deck title slides. Min 24px.</desc>
+  <defs>
+    <radialGradient id="cosmic" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#6A1B9A"/>
+      <stop offset="80%" stop-color="#1A0A2E"/>
+    </radialGradient>
+    <pattern id="halftone" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="rgba(255,255,255,0.07)"/>
+    </pattern>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+      .glyph {
+        font-family: 'Lilita One', 'Arial Black', sans-serif;
+        font-weight: 400;
+        font-size: 720px;
+        letter-spacing: 0;
+        text-anchor: middle;
+      }
+      .shadow-1 { fill: #1A0A2E; }
+      .shadow-2 { fill: #9EE83D; }
+      .fill { fill: #FF6B2C; }
+    ]]></style>
+  </defs>
+  <rect x="0" y="0" width="1024" height="1024" fill="url(#cosmic)"/>
+  <g fill="#FFFFFF" opacity="0.7">
+    <circle cx="120" cy="180" r="2.5"/>
+    <circle cx="820" cy="240" r="1.5"/>
+    <circle cx="280" cy="700" r="2"/>
+    <circle cx="900" cy="780" r="1.5"/>
+    <circle cx="520" cy="80" r="1.2"/>
+    <circle cx="710" cy="600" r="2.5"/>
+    <circle cx="160" cy="520" r="1.4"/>
+    <circle cx="640" cy="290" r="1.6"/>
+    <circle cx="240" cy="900" r="2.3"/>
+    <circle cx="900" cy="140" r="1.3"/>
+    <circle cx="380" cy="340" r="1"/>
+    <circle cx="780" cy="460" r="1.2"/>
+  </g>
+  <rect x="0" y="0" width="1024" height="1024" fill="url(#halftone)"/>
+  <g transform="translate(520, 720) skewX(-5)">
+    <text class="glyph shadow-2" x="14" y="14">W</text>
+    <text class="glyph shadow-1" x="7" y="7">W</text>
+    <text class="glyph fill" x="0" y="0">W</text>
+  </g>
+</svg>

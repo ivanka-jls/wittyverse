@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 380" width="1700" height="380" role="img" aria-label="Wittyverse wordmark — ink single color">
+  <title>Wittyverse — wordmark, single-color ink</title>
+  <desc>Lilita One typeset, all-caps WITTYVERSE, −6° italic skew, no shadow. Use for print where only one color is available (receipts, invoices, customs forms, embroidery, fax). Background here is transparent.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+      .fill { fill: #1A0A2E; }
+      .wm {
+        font-family: 'Lilita One', 'Arial Black', sans-serif;
+        font-weight: 400;
+        font-size: 200px;
+        letter-spacing: 0;
+      }
+    ]]></style>
+  </defs>
+  <g transform="translate(120, 270) skewX(-6)">
+    <text class="wm fill" x="0" y="0">WITTYVERSE</text>
+  </g>
+</svg>

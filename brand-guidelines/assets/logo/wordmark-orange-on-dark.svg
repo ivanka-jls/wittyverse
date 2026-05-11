@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 380" width="1700" height="380" role="img" aria-label="Wittyverse wordmark — orange on dark">
+  <title>Wittyverse — primary wordmark (orange on dark)</title>
+  <desc>Lilita One typeset, all-caps WITTYVERSE, −6° italic skew, ink + orange-deep stacked shadow. Use on ink, purple-cosmic, or other dark grounds. Min width 120px.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+      .ground { fill: #1A0A2E; }
+      .shadow-1 { fill: #1A0A2E; }
+      .shadow-2 { fill: #E55A1A; }
+      .fill { fill: #FF6B2C; }
+      .wm {
+        font-family: 'Lilita One', 'Arial Black', sans-serif;
+        font-weight: 400;
+        font-size: 200px;
+        letter-spacing: 0;
+      }
+    ]]></style>
+  </defs>
+  <rect class="ground" x="0" y="0" width="1700" height="380"/>
+  <g transform="translate(120, 270) skewX(-6)">
+    <text class="wm shadow-2" x="10" y="10">WITTYVERSE</text>
+    <text class="wm shadow-1" x="5" y="5">WITTYVERSE</text>
+    <text class="wm fill" x="0" y="0">WITTYVERSE</text>
+  </g>
+</svg>

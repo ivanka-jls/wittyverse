@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Wittyverse monogram favicon">
+  <title>Wittyverse monogram — favicon variant</title>
+  <desc>Simplified W on orange tile. No skew, no shadow, single-color. Designed for 16×16 to 128×128 — the smallest version of Wittyverse that exists.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+      .tile { fill: #FF6B2C; }
+      .glyph {
+        font-family: 'Lilita One', 'Arial Black', sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        fill: #1A0A2E;
+        text-anchor: middle;
+      }
+    ]]></style>
+  </defs>
+  <rect class="tile" x="0" y="0" width="32" height="32" rx="3"/>
+  <text class="glyph" x="16" y="25">W</text>
+</svg>

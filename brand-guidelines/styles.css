@@ -1373,24 +1373,6 @@ h4 {
 .type-rules-dont li::before { content: '✗ '; color: var(--color-orange-deep); font-weight: 800; }
 
 /* Logo */
-.logo-placeholder-notice {
-  background: var(--color-orange);
-  color: var(--color-ink);
-  padding: 12px 18px;
-  border: 3px dashed var(--color-ink);
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  box-shadow: none;
-}
-.logo-placeholder-notice strong {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-right: 6px;
-}
 .logo-display {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1408,21 +1390,131 @@ h4 {
 }
 .logo-on-light { background: var(--color-cream); }
 .logo-on-dark  { background: var(--color-ink); }
-.logo-placeholder-mark {
-  width: 140px;
-  height: 140px;
-  background: var(--color-lime);
+.logo-mark-svg {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+}
+
+/* Logo typeface card */
+.logo-typeface-block {
+  background: var(--color-cream);
+  color: var(--color-ink);
   border: 4px solid var(--color-ink);
-  border-radius: 24px;
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 8px 0 var(--color-ink), 0 12px 24px rgba(0,0,0,0.25);
+  margin-top: 24px;
+}
+.logo-typeface-block h4 {
+  color: var(--color-purple-deep);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 14px;
+}
+.logo-typeface-block p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-ink);
+  margin-bottom: 14px;
+}
+.logo-typeface-meta strong,
+.logo-typeface-casing strong,
+.logo-typeface-why strong,
+.logo-typeface-debt strong {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-orange-deep);
+  margin-right: 4px;
+}
+.logo-typeface-specimen {
+  background: var(--color-ink);
+  border: 3px solid var(--color-ink);
+  border-radius: 14px;
+  padding: 36px 24px 48px;
+  margin: 18px 0;
+  box-shadow: 0 4px 0 var(--color-ink);
+  overflow: hidden;
+}
+.logo-typeface-specimen-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-cream);
+  opacity: 0.7;
+  margin-bottom: 18px;
+}
+.logo-typeface-specimen-sample {
+  font-family: 'Lilita One', cursive;
+  font-weight: 400;
+  font-size: 64px;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1;
+  text-shadow: 4px 4px 0 var(--color-ink), 8px 8px 0 var(--color-orange-deep);
+  transform: skewX(-6deg);
+  transform-origin: left;
+  display: inline-block;
+}
+
+/* Favicon variant — real PNG/SVG monogram, no skew, no shadow */
+.avatar-favicon {
+  width: var(--size);
+  height: var(--size);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-accent);
-  font-size: 96px;
-  color: var(--color-ink);
+}
+.avatar-favicon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated; /* keep crisp at native 16px */
+  image-rendering: -moz-crisp-edges;
+}
+.avatar-favicon[style*="128"] img,
+.avatar-favicon[style*="64"] img,
+.avatar-favicon[style*="32"] img {
+  image-rendering: auto;
+}
+
+/* Wordmark + mono type specimens */
+.type-wordmark {
+  font-family: 'Lilita One', cursive;
+  font-weight: 400;
+  font-size: 56px;
+  color: var(--color-orange);
   text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1;
+  text-shadow: 3px 3px 0 var(--color-ink), 6px 6px 0 var(--color-orange-deep);
   transform: skewX(-6deg);
-  box-shadow: 0 6px 0 var(--color-ink);
+  transform-origin: left;
+  display: inline-block;
+}
+.type-mono {
+  font-family: 'JetBrains Mono', ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink);
+  background: var(--color-cream);
+  border: 2px solid var(--color-ink);
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
 }
 .logo-rules p {
   font-size: 14px;

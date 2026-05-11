@@ -1,5 +1,20 @@
 [
   {
+    "version": "0.5",
+    "date": "2026-05-11",
+    "changes": [
+      "Logo section: real SVG/PNG assets wired in (wordmark-orange-on-cream + wordmark-orange-on-dark + monogram-favicon variants) — placeholder W mark and 'logo is a placeholder' notice removed; logo is now production-ready",
+      "Logo section: new 'Logo typeface' card added — documents Lilita One as THE WORDMARK FACE, all-caps casing lock, locked treatment, license info (SIL OFL via Google Fonts), Phase A.7 vibe rationale, and acknowledged Debt 1 (custom-lettering scheduled)",
+      "Logo section: clear-space rule updated from 'height of the W' to '1/3 the cap-height of the wordmark' — wordmark is now all-caps so there's no lowercase reference",
+      "Favicon block: rebuilt around the real monogram-favicon SVG + 16x16 PNG; the 16px sample uses the native PNG raster for pixel-snap clarity",
+      "Typography section: v2 type-role assignments corrected — Wordmark · Lilita One (was mislabelled 'Accent'), Display · Big Shoulders Display 900 italic, Body · Inter, Mono · JetBrains Mono (new row)",
+      "Typography Display sample swapped from 'WITTYVERSE LOUD & CRISP' to 'DELIVERED FROM CYCLE 247' — WITTYVERSE is wordmark content (Lilita One), display copy needs different sample text",
+      "Typography type scale: added Wordmark / Kicker / Mono tag rows; clarified that Hero/H2/H3 etc. use Big Shoulders Display, not Lilita One",
+      "Typography Do/Don't list expanded with NEVER rules from incorrect-usage.md: NEVER 15 (no mixed-case wordmark), NEVER 3 (no Big Shoulders for wordmark), NEVER 4 (skew range), plus Lilita-only-for-wordmark discipline",
+      "Font load: added Big Shoulders Display italic (1,700/1,800/1,900) and JetBrains Mono (400/500/600/700) — were missing"
+    ]
+  },
+  {
     "version": "0.4.1",
     "date": "2026-05-11",
     "changes": [

@@ -49,6 +49,7 @@
         <li class="toc-item toc-status-blocked"><a href="#voice-codex-r1-superprompt-attachment">Voice Codex — R1 Superprompt Attachment</a></li>
         <li class="toc-item toc-status-blocked"><a href="#appendix-known-wittyverse-canon">Appendix — Known Wittyverse Canon</a></li>
         <li class="toc-item toc-status-blocked"><a href="#visual-identity-research-direction-setting">Visual Identity — Research &amp; Direction-Setting</a></li>
+        <li class="toc-item toc-status-audited"><a href="#visual-identity-typography-canonical-v2-type-stack">Visual Identity — Typography (Canonical · v2 type stack)</a></li>
       </ul>
       <div class="side-nav-legend">
         <div class="legend-eyebrow">Status legend</div>
@@ -3444,7 +3445,7 @@ Silly earns its place by being surrounded by smart.</p>
       <section id="visual-identity-research-direction-setting" class="bb-section bb-status-blocked">
         <div class="status-badge status-blocked" aria-label="Audit status">Blocked — pending Codex worldbuilding revision</div>
         <h2>Visual Identity — Research &amp; Direction-Setting</h2>
-        <p class="bb-section-note">Direction-setting drafts only. Final visual system pending Codex worldbuilding revision.</p>
+        <p class="bb-section-note">Direction-setting drafts only. Final visual system pending Codex worldbuilding revision. The canonical Wittyverse type stack supersedes the &quot;Four-Font Portal Architecture&quot; content below — see the §Visual Identity — Typography (Canonical · v2 type stack) section.</p>
         <div class="bb-body">
           <p>SD3 Phase 1: Visual Identity Research &amp; Direction-Setting
 Date: April 14, 2026
@@ -3745,6 +3746,58 @@ Touchpoint
 </code></pre>
 
           </div>
+        </div>
+      </section>
+      <section id="visual-identity-typography-canonical-v2-type-stack" class="bb-section bb-status-audited">
+        <div class="status-badge status-audited" aria-label="Audit status">Audited 2026-05-08</div>
+        <h2>Visual Identity — Typography (Canonical · v2 type stack)</h2>
+        <p class="bb-section-note">Locked 2026-05-11. Supersedes earlier typography exploration. Source: design-sprint-2026-05-05/component-inventory.md v2 (Component 2) + Phase A.7 re-research log.</p>
+        <div class="bb-body">
+          <p>Audit status: <strong>Audited 2026-05-11</strong>. This section LOCKS the canonical Wittyverse type stack and supersedes any earlier typography guidance in this bible (the &quot;Four-Font Portal Architecture&quot; / Clash Display + Space Grotesk content above is preserved as an exploration record from an earlier Witty Yeti direction; it is no longer canon). Source of truth: <code>design-sprint-2026-05-05/component-inventory.md</code> v2 (Component 2) + Phase A.7 re-research log (<code>design-sprint-2026-05-05/font-research/</code>). Companion documents: <code>design-sprint-2026-05-05/concept-rationale.md</code> (Choice 1 = Lilita One rationale) and <code>design-sprint-2026-05-05/incorrect-usage.md</code> (NEVER rules — especially NEVER 3 and NEVER 15).
+The Four Faces
+The Wittyverse type system is four typefaces, each locked to a single role. No face crosses into another role.
+Face
+	Role
+	Spec
+	Lilita One
+	<strong>THE WORDMARK FACE.</strong> Used only for the logo wordmark (<code>WITTYVERSE</code>) and the W monogram. Never body, never display, never headline copy.
+	All-caps <code>WITTYVERSE</code> only. Single weight (Lilita One ships only weight 400). Locked treatment: <code>transform: skewX(-6deg)</code>; <code>text-shadow: 4px 4px 0 var(--ink), 8px 8px 0 var(--orange-deep)</code> (canonical orange-on-dark variant); orange fill on ink ground. Monogram uses the same letterform at −5° skew.
+	Big Shoulders Display
+	<strong>SITE DISPLAY.</strong> Used for hero copy, section headings, subheadings, buttons, and pulp-typography display moments. NEVER for the wordmark.
+	Weight 900 italic (Black Italic — the &quot;heavy italic&quot; register). Display headlines tolerate −5° to −7° skew; the wordmark slot is reserved for Lilita One.
+	Inter
+	<strong>BODY.</strong> Used for all running text, navigation, UI labels, prose, and kicker lines.
+	Weights 400 / 500 / 600 / 700 / 800 / 900. Kicker text (e.g., &quot;Operated by Winston, Dr. W. Yeti PhD&quot;) uses Inter italic at 11–13px.
+	JetBrains Mono
+	<strong>DEEP-CANON TAG.</strong> Used for the mono &quot;CYCLE 247&quot; tag, regulatory microline, mono badges, and any artifact that bridges the deadpan-world (R1) register into the brand layer.
+	10–12px, all-caps, 0.12em letter-spacing. IBM Plex Mono and Space Mono are sanctioned swaps if availability demands.
+	Wordmark casing lock — ALL CAPS
+The wordmark is always rendered ALL CAPS as <code>WITTYVERSE</code>, never as mixed-case <code>Wittyverse</code>. Locked 2026-05-11 after the type-stack-pairings test confirmed:
+                        * Uniform cap-height creates one solid horizontal mass that the stacked color shadow can grip; mixed-case produces an uneven silhouette that flattens the shadow stack.
+                        * In the monogram chip, all-caps <code>WITTYVERSE</code> fills the circular ground authoritatively; mixed-case reads as timid by contrast.
+                        * All-caps matches Winston&#39;s importer-showman persona — reads as stamp / seal / catalog header / customs-dock marquee. Mixed-case reads as conversational body voice.
+The casing applies to every wordmark variant — orange-on-dark, white-on-dark, orange-on-cream, single-color ink, reversed white. The W monogram is a single glyph and is unaffected.
+Why Lilita One as the wordmark face
+Lilita One reads as showman / candy-bar / theme-park signage — which maps directly to Winston the Earth-side importer-showman selling parallel-dimension cargo. Across the converged top-3 design-sprint favorites (v13 Candybar, v17 Remixed Dark Grid, v18 The Pulp), Lilita One (or its near-twin Bagel Fat One in v13) was already doing the heaviest brand-identity work. The wordmark needs to sound like the brand already sounds.
+Phase A.7 re-research (2026-05-11) surveyed 17+ candidates across Google Fonts, Velvetyne, Pangram Pangram, OHno Type Co, Hoodzpah, Pizza Typefaces, Latinotype, and curated picks from 1001fonts and Adobe Fonts. Cubano was rendered natively with the locked treatment for direct head-to-head comparison; a slab-serif detour was explored and rejected for vibe mismatch. <strong>Conclusion: no chunky-rounded face within free or mid-tier budget beats Lilita One on the vibe-AND-distinctiveness bar.</strong> The pulp-pop chunky-rounded register is confirmed as the right family.
+Big Shoulders Display, by contrast, reads as athletic / industrial / sport — wrong register for a wordmark. It stays as the site display face for hero copy and section headings (where its industrial-poster energy works) and is explicitly forbidden as the wordmark face (see <code>incorrect-usage.md</code> NEVER 3).</p>
+<h3>License and source</h3>
+<pre><code>                    * **Lilita One** — SIL Open Font License (OFL) via Google Fonts. Free for commercial use. Single weight (400). No italic ships with the family; the −6° skew applied to the wordmark is a CSS transform, not a real italic.
+                    * **Big Shoulders Display** — SIL OFL via Google Fonts. Variable family; canonical brand weight is 900 italic (Black Italic).
+                    * **Inter** — SIL OFL via Google Fonts. Variable family; weights 400 / 500 / 600 / 700 / 800 / 900 are loaded.
+                    * **JetBrains Mono** — Apache 2.0 via Google Fonts / JetBrains. IBM Plex Mono (SIL OFL) and Space Mono (SIL OFL) are sanctioned drop-in swaps.
+</code></pre>
+<h3>Acknowledged debt</h3>
+<pre><code>                    * **Typeface distinctiveness (Debt 1 of v2 inventory).** Lilita One is open-source, so the wordmark currently has no trademark-distinctive letterform. Acceptable for MVP; a custom-drawn `WITTYVERSE` wordmark is scheduled for when budget allows. The custom version inherits all existing treatment language (italic skew, stacked shadow, color stack); only the underlying letterforms become proprietary.
+                    * **Debt 2 (limited-candidate exploration) — RESOLVED 2026-05-11.** Phase A.7 re-research closed this debt. Custom lettering (Debt 1) remains the planned long-term fix.
+</code></pre>
+<p>NEVER rules (anchor for the full list)
+The full incorrect-usage list lives in <code>design-sprint-2026-05-05/incorrect-usage.md</code>. The three most load-bearing rules for the type system:
+                        * <strong>NEVER 3.</strong> Don&#39;t set the wordmark in Big Shoulders Display. The wordmark face is Lilita One only.
+                        * <strong>NEVER 15.</strong> Don&#39;t render the wordmark in mixed-case (<code>Wittyverse</code>). Always all-caps (<code>WITTYVERSE</code>).
+                        * <strong>NEVER 4.</strong> Don&#39;t apply skew outside the −5° to −7° range. Wordmark = −6°. Monogram = −5°. Display headlines may go up to −7°. Favicon and single-color variants = 0°.</p>
+
+
         </div>
       </section>
 

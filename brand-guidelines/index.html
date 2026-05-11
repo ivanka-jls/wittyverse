@@ -6,7 +6,7 @@
   <title>Wittyverse — Brand Guidelines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -211,56 +211,81 @@
       <section id="logo">
         <h3>Logo</h3>
 
-        <div class="logo-placeholder-notice">
-          <strong>Status:</strong> Logo is a placeholder. v0 logo to be AI-generated; final logo by designer later.
-        </div>
-
         <div class="logo-display">
           <div class="logo-mark logo-on-light">
-            <div class="logo-placeholder-mark">W</div>
+            <img src="assets/logo/wordmark-orange-on-cream.svg" alt="Wittyverse wordmark — orange on cream variant" class="logo-mark-svg">
           </div>
           <div class="logo-mark logo-on-dark">
-            <div class="logo-placeholder-mark">W</div>
+            <img src="assets/logo/wordmark-orange-on-dark.svg" alt="Wittyverse wordmark — orange on dark variant (canonical)" class="logo-mark-svg">
           </div>
         </div>
 
         <div class="logo-rules">
           <h4>Clear Space</h4>
-          <p>Maintain clear space equal to the height of the W mark on all sides. <em>(Visual diagram TBD when real logo lands.)</em></p>
+          <p>Maintain clear space equal to <strong>1/3 the cap-height of the wordmark</strong> on all sides. The wordmark is locked to ALL CAPS (`WITTYVERSE`), so there's no lowercase reference — cap-height is the only measure. Clear space scales proportionally at every size.</p>
 
           <h4>Don't</h4>
           <ul>
-            <li>✗ Don't stretch or skew the mark</li>
-            <li>✗ Don't apply gradients or drop shadows</li>
-            <li>✗ Don't place on busy photo backgrounds without a solid backplate</li>
+            <li>✗ Don't stretch or skew the mark beyond the locked −6° (wordmark) or −5° (monogram)</li>
+            <li>✗ Don't apply gradients, blur, or non-canonical shadow colors</li>
+            <li>✗ Don't set the wordmark in mixed-case — `WITTYVERSE`, never `Wittyverse` (see NEVER 15)</li>
+            <li>✗ Don't set the wordmark in Big Shoulders Display — Lilita One only (see NEVER 3)</li>
+            <li>✗ Don't place on busy photo backgrounds without a solid backplate / card chamber</li>
           </ul>
         </div>
 
+        <div class="logo-typeface-block">
+          <h4>Logo typeface</h4>
+          <p class="logo-typeface-meta">
+            <strong>Face:</strong> Lilita One &nbsp;·&nbsp;
+            <strong>Source:</strong> Google Fonts — SIL Open Font License (free for commercial use) &nbsp;·&nbsp;
+            <strong>Role:</strong> THE WORDMARK FACE — wordmark (`WITTYVERSE`) and monogram only. Never body, never display.
+          </p>
+
+          <div class="logo-typeface-specimen">
+            <div class="logo-typeface-specimen-label">Live specimen — locked treatment</div>
+            <div class="logo-typeface-specimen-sample">WITTYVERSE</div>
+          </div>
+
+          <p class="logo-typeface-casing">
+            <strong>Casing rule:</strong> ALL CAPS — `WITTYVERSE`, not `Wittyverse`. (Locked 2026-05-11 after the type-stack-pairings test confirmed uniform cap-height grips the stacked color shadow.)
+          </p>
+
+          <p class="logo-typeface-why">
+            <strong>Why this face:</strong> Lilita One reads as showman / candy-bar / theme-park signage, which maps to Winston the showman-importer. Tested against 17+ candidates in Phase A.7 (see <code>design-sprint-2026-05-05/font-research/</code>) — no chunky-rounded face within free or mid-tier budget beats it on the vibe-AND-distinctiveness bar. A custom-drawn version is planned long-term for trademark distinctiveness.
+          </p>
+
+          <p class="logo-typeface-debt">
+            <strong>Acknowledged debt:</strong> Lilita One is an open-source typeset, so the wordmark currently relies on the typeset + the treatment language (skew + stacked shadow + mono tag) for distinctiveness. Custom lettering is scheduled when budget allows; the treatment language stays unchanged.
+          </p>
+        </div>
+
         <div class="logo-avatar-block" id="avatar-small-size">
-          <h4>Avatar / Small-Size Mark</h4>
-          <p>Test legibility at the smallest required sizes — favicons, social media avatars. Per the playbook's worst-case asset principle: a mark that fails at 16px will fail wherever it matters most.</p>
+          <h4>Avatar / Favicon — Small-Size Mark</h4>
+          <p>The favicon is its own variant — separate spec from the lockup-zoom monogram. Below 24px the locked skew and stacked shadow collapse into pixel mud, so the favicon strips both: no skew, no shadow, single-color tile + simplified glyph. Use <code>monogram-favicon.svg</code> for everything at 16–128px; the lockup-zoom <code>monogram-lockup.svg</code> kicks in at 24px and above.</p>
           <div class="avatar-sizes">
             <div class="avatar-size-demo">
-              <div class="avatar-circle" style="--size: 96px"><span>W</span></div>
-              <div class="avatar-label">96px (IG, X)</div>
+              <div class="avatar-favicon" style="--size: 128px"><img src="assets/logo/monogram-favicon.svg" alt="Favicon monogram at 128px"></div>
+              <div class="avatar-label">128px (PFP scale)</div>
             </div>
             <div class="avatar-size-demo">
-              <div class="avatar-circle" style="--size: 48px"><span>W</span></div>
-              <div class="avatar-label">48px (YouTube)</div>
+              <div class="avatar-favicon" style="--size: 64px"><img src="assets/logo/monogram-favicon.svg" alt="Favicon monogram at 64px"></div>
+              <div class="avatar-label">64px (UI scale)</div>
             </div>
             <div class="avatar-size-demo">
-              <div class="avatar-circle" style="--size: 32px"><span>W</span></div>
-              <div class="avatar-label">32px (small UI)</div>
+              <div class="avatar-favicon" style="--size: 32px"><img src="assets/logo/monogram-favicon.svg" alt="Favicon monogram at 32px"></div>
+              <div class="avatar-label">32px (browser tab)</div>
             </div>
             <div class="avatar-size-demo">
-              <div class="avatar-circle" style="--size: 16px"><span>W</span></div>
-              <div class="avatar-label">16px (favicon)</div>
+              <div class="avatar-favicon" style="--size: 16px"><img src="assets/logo/monogram-favicon-16x16.png" alt="Favicon monogram at 16px (rendered native pixel size)"></div>
+              <div class="avatar-label">16px (actual favicon)</div>
             </div>
           </div>
           <ul class="logo-avatar-rules">
-            <li>✓ Avatar always sits on a solid color (canon: lime or orange backplate)</li>
-            <li>✓ Mark is centered with consistent padding (~15% of avatar size)</li>
-            <li>✗ Don't use the wordmark at small sizes; always use the W monogram</li>
+            <li>✓ Favicon variant has no skew and no shadow — both collapse below 24px</li>
+            <li>✓ The 16px rendering uses the PNG raster (<code>monogram-favicon-16x16.png</code>) for pixel-snap clarity; SVG is used at 24px and above</li>
+            <li>✗ Don't use the wordmark at small sizes; always drop to the monogram</li>
+            <li>✗ Don't apply the locked −5° skew or stacked shadow to the favicon variant (see NEVER 13)</li>
           </ul>
         </div>
       </section>
@@ -381,20 +406,24 @@
         <div class="color-card">
           <h4>Type Specimens</h4>
           <div class="type-specimen">
-            <div class="type-specimen-label">Display · Big Shoulders Display 900 italic, skewX(-6deg)</div>
-            <div class="type-specimen-sample type-display">WITTYVERSE LOUD &amp; CRISP</div>
+            <div class="type-specimen-label">Wordmark · Lilita One · WITTYVERSE all-caps + locked treatment</div>
+            <div class="type-specimen-sample type-wordmark">WITTYVERSE</div>
           </div>
           <div class="type-specimen">
-            <div class="type-specimen-label">Accent · Lilita One regular</div>
-            <div class="type-specimen-sample type-accent">Lilita Accent Sample 0123</div>
+            <div class="type-specimen-label">Display · Big Shoulders Display 900 italic (Black Italic) · headings, subheadings, buttons</div>
+            <div class="type-specimen-sample type-display">DELIVERED FROM CYCLE 247</div>
           </div>
           <div class="type-specimen">
-            <div class="type-specimen-label">Body · Inter 400 / 600 / 800</div>
+            <div class="type-specimen-label">Body · Inter 400 / 600 / 800 · running text, navigation, UI, kicker lines</div>
             <div class="type-specimen-sample type-body">Inter sets the body, the labels, and the workhorse copy. The quick brown fox jumps over the lazy dog 0123456789.</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-specimen-label">Mono · JetBrains Mono · CYCLE 247, regulatory microline, mono badges</div>
+            <div class="type-specimen-sample type-mono">CYCLE 247 · DOCK 04 · BATCH 247.3</div>
           </div>
 
           <div class="why">
-            <strong>Why:</strong> Big Shoulders Display + skew gives the brand its pulp-mag swagger; Lilita One adds a chunky retro-toy beat for accents and corner labels; Inter does the heavy lifting on long-form readability without competing with the display voice.
+            <strong>Why:</strong> Four faces, four locked roles. Lilita One owns the wordmark — showman / candy-bar / theme-park signage that maps to Winston the importer-showman (full rationale in the Logo Typeface card above). Big Shoulders Display 900 italic carries the pulp-mag swagger for site display copy — headings, subheadings, buttons — but never the wordmark. Inter does the long-form readability without competing with the display voice. JetBrains Mono is the deep-canon bridge — the regulatory artifact that lets the deadpan-world layer peek through the pulp brand wrapper.
           </div>
         </div>
 
@@ -406,15 +435,18 @@
               <tr><th>Token</th><th>Use</th><th>Size</th><th>Weight / Style</th></tr>
             </thead>
             <tbody>
-              <tr><td>Hero</td><td>Landing-page H1</td><td><code>clamp(48px, 7vw, 88px)</code></td><td>Display 900 italic, skewX(-6deg)</td></tr>
-              <tr><td>H2</td><td>Section header</td><td><code>clamp(36px, 5vw, 56px)</code></td><td>Display 900 italic, skewX(-6deg)</td></tr>
-              <tr><td>H3</td><td>Sub-section header</td><td><code>clamp(24px, 3vw, 32px)</code></td><td>Display 800 italic, skewX(-5deg)</td></tr>
-              <tr><td>H4</td><td>Card / sub-block label</td><td>18-22px</td><td>Display 800 italic uppercase</td></tr>
-              <tr><td>Card title</td><td>Cards, surface labels</td><td>32px</td><td>Display 900 italic, skewX(-5deg)</td></tr>
-              <tr><td>CTA</td><td>Buttons</td><td>16-18px</td><td>Display 900 italic uppercase</td></tr>
+              <tr><td>Wordmark</td><td>Logo only — `WITTYVERSE`</td><td>Variable (36–88px+)</td><td>Lilita One 400 ALL CAPS, skewX(−6deg), stacked color shadow</td></tr>
+              <tr><td>Hero</td><td>Landing-page H1 (display copy)</td><td><code>clamp(48px, 7vw, 88px)</code></td><td>Big Shoulders Display 900 italic, skewX(-6deg)</td></tr>
+              <tr><td>H2</td><td>Section header</td><td><code>clamp(36px, 5vw, 56px)</code></td><td>Big Shoulders Display 900 italic, skewX(-6deg)</td></tr>
+              <tr><td>H3</td><td>Sub-section header</td><td><code>clamp(24px, 3vw, 32px)</code></td><td>Big Shoulders Display 800 italic, skewX(-5deg)</td></tr>
+              <tr><td>H4</td><td>Card / sub-block label</td><td>18-22px</td><td>Big Shoulders Display 800 italic uppercase</td></tr>
+              <tr><td>Card title</td><td>Cards, surface labels</td><td>32px</td><td>Big Shoulders Display 900 italic, skewX(-5deg)</td></tr>
+              <tr><td>CTA</td><td>Buttons</td><td>16-18px</td><td>Big Shoulders Display 900 italic uppercase</td></tr>
               <tr><td>Body</td><td>Paragraph copy</td><td>14-16px</td><td>Inter 400-500, line-height 1.55-1.6</td></tr>
+              <tr><td>Kicker</td><td>Wordmark tagline (italic aside)</td><td>11-13px</td><td>Inter italic 500-600</td></tr>
               <tr><td>Eyebrow / Label</td><td>Small caps above headings</td><td>11px</td><td>Inter 800 uppercase, letter-spacing 0.14em</td></tr>
               <tr><td>Caption</td><td>Hex codes, small print</td><td>11-13px</td><td>Inter 600-700</td></tr>
+              <tr><td>Mono tag</td><td>CYCLE 247 / regulatory / badges</td><td>10-12px</td><td>JetBrains Mono uppercase, letter-spacing 0.12em</td></tr>
             </tbody>
           </table>
         </div>
@@ -425,17 +457,22 @@
             <div>
               <h5 class="type-rules-heading">Do</h5>
               <ul class="type-rules-list type-rules-do">
-                <li>Pair Display headline + Inter subline (never Display + Display).</li>
-                <li>Use Lilita One sparingly — corner badges, eyebrows, "v1" markers.</li>
-                <li>Use the skewX(-5deg/-6deg) tilt on all Display-set headlines.</li>
-                <li>Reserve uppercase for Display + eyebrows. Body stays sentence case.</li>
+                <li>Use Lilita One ONLY for the wordmark (`WITTYVERSE`) and the W monogram.</li>
+                <li>Use Big Shoulders Display 900 italic for site display copy — headings, subheadings, buttons.</li>
+                <li>Pair Big Shoulders display headline + Inter subline (never Display + Display).</li>
+                <li>Use JetBrains Mono only as the deep-canon tag — `CYCLE 247`, regulatory microline, mono badges. 10–12px, all-caps, 0.12em tracking.</li>
+                <li>Use the skewX(−6deg) tilt on the wordmark; −5deg on the monogram; −5° to −7° on display headlines.</li>
+                <li>Reserve uppercase for the wordmark + Display headlines + eyebrows. Body stays sentence case.</li>
               </ul>
             </div>
             <div>
               <h5 class="type-rules-heading">Don't</h5>
               <ul class="type-rules-list type-rules-dont">
-                <li>Don't run body copy in Big Shoulders or Lilita.</li>
-                <li>Don't lower the skew below -4deg or above -7deg — it loses its punch.</li>
+                <li>Don't render the wordmark in mixed-case (`Wittyverse`) — always ALL CAPS `WITTYVERSE` (NEVER 15).</li>
+                <li>Don't set the wordmark in Big Shoulders Display — Lilita One only (NEVER 3).</li>
+                <li>Don't use Lilita One for non-wordmark display, body, or accent copy — it's the wordmark face only.</li>
+                <li>Don't run body copy in Big Shoulders, Lilita, or JetBrains Mono.</li>
+                <li>Don't lower the skew below −4deg or above −7deg — it loses its punch (NEVER 4).</li>
                 <li>Don't combine 3+ display weights in the same composition.</li>
                 <li>Don't justify body text — left-align everywhere.</li>
               </ul>

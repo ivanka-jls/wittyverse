@@ -90,7 +90,13 @@ const SECTION_BOUNDARIES = [
     match: /^Visual Identity Research/,
     label: 'Visual Identity — Research & Direction-Setting',
     status: 'blocked',
-    note: 'Direction-setting drafts only. Final visual system pending Codex worldbuilding revision.',
+    note: 'Direction-setting drafts only. Final visual system pending Codex worldbuilding revision. The canonical Wittyverse type stack supersedes the "Four-Font Portal Architecture" content below — see the §Visual Identity — Typography (Canonical · v2 type stack) section.',
+  },
+  {
+    match: /^Visual Identity — Typography \(Canonical/,
+    label: 'Visual Identity — Typography (Canonical · v2 type stack)',
+    status: 'audited',
+    note: 'Locked 2026-05-11. Supersedes earlier typography exploration. Source: design-sprint-2026-05-05/component-inventory.md v2 (Component 2) + Phase A.7 re-research log.',
   },
 ];
 
