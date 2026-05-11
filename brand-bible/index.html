@@ -3498,7 +3498,8 @@ What it feels like: A boutique design studio&#39;s own brand — the kind of pla
 Why this direction was chosen: It best balances the five voice traits (confident-8, witty-7, warm-6, playful-7, insider-6). Direction 1 (Deadpan Publisher) risked being too cold for the Social Curator. Direction 3 (Portal Frame) risked being too clinical for cold traffic conversion. Direction 2 delivers the &quot;quality surprise&quot; within 3 seconds while remaining warm enough to convert.
 Selective borrows from other directions: Editorial typography moments from Direction 1. The importer/institutional language from Direction 3 for specific contexts (Wittyverse leaked artifacts, classified-document styling).
 Approved Visual Concept Direction
-Color Palette: Palette D — Purple + Hot Orange
+Audit status: <strong>Removed in audit — superseded by v2 color palette (see &quot;Visual Identity — Color&quot; canonical section below).</strong> Original text preserved as exploration record from the earlier Witty Yeti direction.</p>
+<p>Color Palette: Palette D — Purple + Hot Orange
 Color
 	Hex
 	Role
@@ -3797,7 +3798,75 @@ The full incorrect-usage list lives in <code>design-sprint-2026-05-05/incorrect-
                         * <strong>NEVER 15.</strong> Don&#39;t render the wordmark in mixed-case (<code>Wittyverse</code>). Always all-caps (<code>WITTYVERSE</code>).
                         * <strong>NEVER 4.</strong> Don&#39;t apply skew outside the −5° to −7° range. Wordmark = −6°. Monogram = −5°. Display headlines may go up to −7°. Favicon and single-color variants = 0°.</p>
 
+          <div class="bb-subsection" id="visual-identity-typography-canonical-v2-type-stack--visual-identity-color-canonical-v2-palette">
+            <h3>Visual Identity — Color (Canonical · v2 palette)</h3>
+            <p>Audit status: <strong>Audited 2026-05-11</strong>. This section LOCKS the canonical Wittyverse color palette and supersedes the earlier &quot;Palette D&quot; content above (preserved as exploration record from the earlier Witty Yeti direction; no longer canon). Source of truth: <code>design-sprint-2026-05-05/component-inventory.md</code> v2 (Component 1) + the locked <code>tokens.json</code> in the wittyverse repo.
+The Eleven Tokens
+The Wittyverse color palette is eleven locked tokens.
+Token
+	Hex
+	Role
+	<code>--purple</code>
+	<code>#6A1B9A</code>
+	Primary cosmic ground (top of hero gradient + radial-cosmos backgrounds)
+	<code>--purple-mid</code>
+	<code>#5C27A3</code>
+	Mid-gradient / standalone purple ground
+	<code>--purple-deep</code>
+	<code>#401A75</code>
+	Deep-gradient stop
+	<code>--purple-darker</code>
+	<code>#1A0A2E</code>
+	Bottom of gradient / dark surfaces (= <code>--ink</code>)
+	<code>--lime</code>
+	<code>#9EE83D</code>
+	Pop accent · CTA highlight · white-fill wordmark shadow layer
+	<code>--lime-deep</code>
+	<code>#7CB342</code>
+	Lime depth
+	<code>--orange</code>
+	<code>#FF6B2C</code>
+	Signature accent — marquee, CTAs, wordmark fill, monogram fill
+	<code>--orange-deep</code>
+	<code>#E55A1A</code>
+	Orange depth / orange-fill wordmark + monogram shadow layer
+	<code>--cream</code>
+	<code>#FFF4E6</code>
+	Light surface / paper analog
+	<code>--white</code>
+	<code>#FFFFFF</code>
+	Pure white (accent only — never the brand ground)
+	<code>--ink</code>
+	<code>#1A0A2E</code>
+	Borders, text-on-light, primary shadow color
+	<strong>Use rule:</strong> The brand never appears on raw white as ground. Cream OR purple-cosmic OR ink. White is reserved for accents inside other surfaces.</p>
+<h3>Delta vs Palette D</h3>
+<pre><code>                    * **Ink shifted** `#151520 → #1A0A2E` (now equals `--purple-darker` — single dark anchor).
+                    * **Teal removed.** `#2DB88A` (Palette D &quot;Teal Accent&quot;) is no longer in the palette.
+                    * **Lime added.** `#9EE83D` introduced as the white-fill wordmark shadow color and as a pop accent.
+                    * **Cream added.** `#FFF4E6` formalized as the light-surface ground (previously implicit).
+                    * **Purple variants added.** Three additional purples — `--purple-mid`, `--purple-deep`, `--purple-darker` — enable the cosmic gradient.
+                    * **Orange-deep added.** `#E55A1A` introduced as the orange-fill wordmark shadow color.
+</code></pre>
+<p>Cross-medium values
+Per <code>component-inventory.md</code> Component 1 v2 addition — each core token locked across all delivery mediums. Pantone values are placeholders pending print-professional confirmation.
+                        * <code>--orange</code> <code>#FF6B2C</code> · RGB <code>255,107,44</code> · HSL <code>18° 100% 59%</code> · CMYK <code>0,58,83,0</code> · Pantone 165 C (TBD)
+                        * <code>--purple</code> <code>#6A1B9A</code> · RGB <code>106,27,154</code> · HSL <code>277° 70% 35%</code> · CMYK <code>31,82,0,40</code> · Pantone 2602 C (TBD)
+                        * <code>--ink</code> <code>#1A0A2E</code> · RGB <code>26,10,46</code> · HSL <code>267° 64% 11%</code> · CMYK <code>43,78,0,82</code> · Pantone Black 6 C (TBD)
+                        * <code>--lime</code> <code>#9EE83D</code> · RGB <code>158,232,61</code> · HSL <code>83° 79% 57%</code> · CMYK <code>32,0,74,9</code> · Pantone 374 C (TBD)
+                        * <code>--cream</code> <code>#FFF4E6</code> · RGB <code>255,244,230</code> · HSL <code>34° 100% 95%</code> · CMYK <code>0,4,10,0</code> · Pantone 9180 C (TBD)</p>
+<h3>Shadow stack pairings (locked with wordmark + monogram treatment)</h3>
+<pre><code>                    * **Orange-fill on dark ground** → shadow stack `4px 4px 0 --ink, 8px 8px 0 --orange-deep`. Canonical wordmark + monogram-primary treatment.
+                    * **White-fill on dark ground** → shadow stack `2px 2px 0 --ink, 4px 4px 0 --lime`. Reversed wordmark variant.
+                    * **Orange-fill on cream ground** → tightened stack `2px 2px 0 --ink, 4px 4px 0 --orange-deep`.
+</code></pre>
+<h3>NEVER rules</h3>
+<pre><code>                    * Don&#39;t substitute the shadow-stack colors outside the locked pairings (see `design-sprint-2026-05-05/incorrect-usage.md`).
+                    * Don&#39;t introduce a token outside the eleven without explicit audit + bible update.
+                    * Don&#39;t use teal `#2DB88A` (removed in audit).
+</code></pre>
 
+          </div>
         </div>
       </section>
 
