@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.6",
+    "date": "2026-05-11",
+    "changes": [
+      "Color section: aligned with bible Color canon-flip (2026-05-11) — bible's new 'Visual Identity — Color (Canonical · v2 palette)' section is now the canonical 11-token list with cross-medium values + shadow-stack pairings",
+      "Color section: added 'Depth & utility tokens' subsection — Purple Mid #5C27A3 (cosmic gradient mid-stop), Lime Deep #7CB342, Orange Deep #E55A1A (orange-fill wordmark + monogram-primary back-shadow), White #FFFFFF (accent only, never brand ground)",
+      "Color section: Why-paragraph clarifies the depth tokens' role inside gradients and the locked shadow stack (4px ink, 8px orange-deep for orange-fill on dark)",
+      "Notes: page substance was already on the v2 palette via tokens.css (lime in, teal out, ink #1A0A2E) — this release surfaces the full token set in the swatch grid for completeness"
+    ]
+  },
+  {
     "version": "0.5",
     "date": "2026-05-11",
     "changes": [
