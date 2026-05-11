@@ -6,9 +6,7 @@
 <title>Wittyverse.com — Homepage Wireframe</title>
 <style>
 /* ============================================
-   WIREFRAME STYLES
-   Deliberately plain. Visual treatment is TBD.
-   Each section is editable independently below.
+   WIREFRAME STYLES — realistic rendering + sidebar comments
    ============================================ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,10 +16,6 @@
   --line-light: #bbb;
   --bg: #f4f4f4;
   --section-bg: #fff;
-  --slot-bg: #fafafa;
-  --slot-border: #bbb;
-  --label-bg: #222;
-  --label-color: #fff;
   --note-color: #555;
   --accent: #b22;
   --muted: #888;
@@ -51,8 +45,10 @@ body {
 .legend p {
   font-size: 13px;
   color: var(--note-color);
-  max-width: 820px;
+  max-width: 920px;
+  margin-bottom: 10px;
 }
+.legend p:last-of-type { margin-bottom: 0; }
 .legend .keys {
   display: flex;
   flex-wrap: wrap;
@@ -63,7 +59,9 @@ body {
 }
 .legend .keys > div { display: flex; align-items: center; gap: 8px; }
 .key-section { display: inline-block; width: 28px; height: 14px; border: 2px solid var(--line); }
-.key-slot { display: inline-block; width: 28px; height: 14px; border: 1px dashed var(--slot-border); background: var(--slot-bg); }
+.key-primitive {
+  display: inline-block; width: 28px; height: 8px; background: #e8e8e8; border-radius: 2px;
+}
 .key-wv { color: var(--accent); font-weight: 700; font-style: italic; }
 
 .meta {
@@ -77,150 +75,623 @@ body {
 /* ---------- Page frame ---------- */
 .page { max-width: 1280px; margin: 0 auto; }
 
-/* ---------- Section block ---------- */
-.wire {
-  border: 2px solid var(--line);
-  background: var(--section-bg);
+/* ---------- Browser chrome strip ---------- */
+.browser-chrome {
+  border: 1px solid var(--line-light);
+  background: #ececec;
+  padding: 8px 14px;
   margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--muted);
 }
-.wire-label {
-  background: var(--label-bg);
-  color: var(--label-color);
+.browser-chrome .dots { display: flex; gap: 6px; }
+.browser-chrome .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 1px solid #b5b5b5;
+}
+.browser-chrome .nav-icons {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+.browser-chrome .url-bar {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #777;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Section: 2-col grid (render | comment sidebar) ---------- */
+.section {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  margin-bottom: 18px;
+  align-items: start;
+}
+
+.section-render {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.section-comment {
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-left: 3px solid #999;
+  padding: 14px 16px;
+  font-size: 12.5px;
+  color: var(--note-color);
+  line-height: 1.55;
+  position: sticky;
+  top: 20px;
+}
+
+.section-comment h3 {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
+  color: #222;
   text-transform: uppercase;
-  padding: 7px 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
 }
-.wire-label .sub { font-weight: 500; opacity: 0.7; letter-spacing: 0.06em; }
 
-.wire-body {
-  display: grid;
-  grid-template-columns: minmax(0, 2.2fr) minmax(280px, 1fr);
-  gap: 0;
-}
-.wire-content {
-  padding: 22px;
-  border-right: 1px dashed var(--line-light);
-  min-width: 0;
-}
-.wire-notes {
-  padding: 20px 22px;
-  font-size: 12.5px;
-  color: var(--note-color);
-  line-height: 1.6;
-}
-.wire-notes strong { color: #222; display: inline-block; min-width: 80px; }
-.wire-notes p { margin-bottom: 10px; }
-.wire-notes p:last-child { margin-bottom: 0; }
-.wire-notes .wv {
+.section-comment p { margin-bottom: 8px; }
+.section-comment p:last-child { margin-bottom: 0; }
+.section-comment strong { color: #222; }
+
+.section-comment .wv {
   color: var(--accent);
   font-style: italic;
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
+  padding-left: 14px;
+  text-indent: -14px;
 }
-.wire-notes .wv::before {
-  content: '◆ WV: ';
+.section-comment .wv::before {
+  content: '\25C6  ';
   font-style: normal;
   font-weight: 700;
 }
 
-/* ---------- Content slots ---------- */
-.slot {
-  border: 1px dashed var(--slot-border);
-  background: var(--slot-bg);
-  padding: 14px;
-  font-size: 11.5px;
-  color: #666;
-  letter-spacing: 0.04em;
-  font-weight: 600;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  text-transform: uppercase;
+.section-comment .decisions {
+  border-top: 1px dotted #ccc;
+  margin-top: 8px;
+  padding-top: 8px;
 }
-.slot small {
-  display: block;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  text-transform: none;
-  color: #999;
-  margin-top: 4px;
-  font-size: 11px;
+.section-comment .decisions p { margin-bottom: 4px; font-size: 12px; }
+
+.section-comment .mobile {
+  border-top: 1px dotted #ccc;
+  margin-top: 8px;
+  padding-top: 8px;
+  font-style: italic;
+  color: #888;
+  font-size: 12px;
 }
-.slot-thin { min-height: 26px; padding: 8px; font-size: 11px; }
-.slot-md { min-height: 90px; }
-.slot-tall { min-height: 220px; }
-.slot-hero-img { min-height: 280px; }
-.slot-tile { min-height: 140px; }
-.slot-text { text-align: left; align-items: flex-start; padding: 18px; }
-.slot-leak {
-  border-style: dotted;
-  border-color: #888;
+
+.section-comment .reuse {
+  border-top: 1px dotted #ccc;
+  margin-top: 8px;
+  padding-top: 8px;
+  font-size: 12px;
+}
+
+/* ---------- Realistic primitives ---------- */
+
+/* Image (X-cross) */
+.ph-image {
   background: #f0f0f0;
+  border: 1px solid #d0d0d0;
   position: relative;
-  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  width: 100%;
+  overflow: hidden;
 }
-.slot-leak::before {
+.ph-image::before, .ph-image::after {
   content: '';
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 14px;
-  height: 14px;
-  background: #ddd;
-  border-left: 1px dotted #888;
-  border-bottom: 1px dotted #888;
+  inset: 0;
+}
+.ph-image::before {
+  background-image: linear-gradient(to bottom right, transparent calc(50% - 1px), #c0c0c0 50%, transparent calc(50% + 1px));
+}
+.ph-image::after {
+  background-image: linear-gradient(to bottom left, transparent calc(50% - 1px), #c0c0c0 50%, transparent calc(50% + 1px));
 }
 
-/* ---------- Layout helpers ---------- */
-.row { display: flex; gap: 12px; margin-bottom: 12px; }
-.row:last-child { margin-bottom: 0; }
-.row .slot { flex: 1; }
-.col { display: flex; flex-direction: column; gap: 12px; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+/* Text lines */
+.ph-line {
+  height: 8px;
+  background: #e8e8e8;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+.ph-line-short { width: 60%; }
+.ph-line-shorter { width: 40%; }
+.ph-line-heading { height: 14px; background: #c0c0c0; width: 70%; margin-bottom: 12px; }
+.ph-line-subheading { height: 10px; background: #d0d0d0; width: 50%; margin-bottom: 10px; }
+.ph-paragraph { margin-bottom: 14px; }
+.ph-paragraph .ph-line:last-child { width: 80%; }
+.ph-paragraph-tight { margin-bottom: 10px; }
 
-/* Section-specific layouts */
-.masthead-layout {
-  display: grid;
-  grid-template-columns: 200px 1fr auto;
-  gap: 16px;
+/* Title (literal text rendered at heading size) */
+.ph-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+.ph-subtitle {
+  font-size: 13px;
+  font-style: italic;
+  color: #888;
+  margin-bottom: 14px;
+}
+.ph-price {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 14px;
+}
+
+/* Buttons */
+.ph-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, sans-serif;
+  border-radius: 4px;
+  border: 1px solid #333;
+  cursor: default;
+  background: #fff;
+  color: #333;
+}
+.ph-btn-primary { background: #333; color: #fff; }
+.ph-btn-secondary { background: #fff; color: #333; }
+.ph-btn-block { display: block; width: 100%; text-align: center; }
+.ph-btn-small { padding: 6px 12px; font-size: 12px; }
+
+/* Inputs */
+.ph-input {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: system-ui, -apple-system, sans-serif;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+}
+.ph-input::placeholder { color: #aaa; }
+.ph-input-small { padding: 8px 10px; font-size: 13px; }
+
+/* Pills / tags */
+.ph-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #333;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+.ph-pill-outline { background: #fff; color: #333; border: 1px solid #333; }
+
+/* Variant chips */
+.ph-chip {
+  display: inline-block;
+  padding: 8px 14px;
+  margin-right: 6px;
+  font-size: 13px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  cursor: default;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.ph-chip.active { background: #333; color: #fff; border-color: #333; }
+
+/* Cards */
+.ph-card {
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  padding: 14px;
+}
+.ph-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #d0d0d0;
+  border: 1px solid #b0b0b0;
+  margin-bottom: 10px;
+}
+
+/* Leak treatment */
+.ph-leak {
+  border-style: dashed;
+  border-color: #888;
+}
+.ph-leak::before {
+  background-image: linear-gradient(to bottom right, transparent calc(50% - 1px), #a8a8a8 50%, transparent calc(50% + 1px));
+}
+.ph-leak::after {
+  background-image: linear-gradient(to bottom left, transparent calc(50% - 1px), #a8a8a8 50%, transparent calc(50% + 1px));
+}
+.ph-leak-marker {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 12px;
+  color: #555;
+  z-index: 2;
+  background: rgba(240,240,240,0.85);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+/* Stars */
+.ph-stars {
+  color: #555;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* Icon placeholders */
+.ph-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid #999;
+  background: #f4f4f4;
+  vertical-align: middle;
+}
+
+/* Wordmark abstraction */
+.ph-wordmark {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  font-family: 'Georgia', serif;
+}
+
+/* ---------- Marquee strip ---------- */
+.marquee-bar {
+  background: #222;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Masthead ---------- */
+.masthead {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #e0e0e0;
 }
+.masthead-left { display: flex; align-items: center; gap: 14px; }
+.masthead-kicker {
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+}
+.masthead-nav {
+  display: flex;
+  gap: 22px;
+  font-size: 13px;
+  color: #555;
+}
+.masthead-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ---------- Hero ---------- */
 .hero-layout {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 16px 0;
 }
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 0.8fr;
-  gap: 16px;
-  align-items: stretch;
+.hero-eyebrow { margin-bottom: 18px; }
+.hero-headline {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #222;
+  margin-bottom: 14px;
 }
-.footer-layout {
+.hero-subhead {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 22px;
+}
+.hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-image .ph-image { aspect-ratio: 4/5; min-height: 360px; }
+
+/* ---------- Browse Grid ---------- */
+.browse-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  margin-top: 8px;
+}
+.browse-tile { background: #fff; border: 1px solid #d0d0d0; padding: 10px; }
+.browse-tile .ph-image { aspect-ratio: 1/1; }
+.tile-label {
+  font-size: 13px;
+  font-style: italic;
+  color: #555;
+  padding: 10px 4px 0;
+  text-align: center;
 }
 
-/* ---------- Responsive: stack notes under content on narrow screens ---------- */
+/* ---------- Social Proof / Transmission Feed ---------- */
+.social-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 20px;
+}
+.social-header .ph-line-heading { margin-bottom: 0; }
+.aggregate-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #444;
+  white-space: nowrap;
+}
+.testimonial-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.feed-section-heading {
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+.feed-list { display: flex; flex-direction: column; gap: 8px; }
+.feed-entry {
+  display: grid;
+  grid-template-columns: minmax(160px, auto) 1fr minmax(140px, auto);
+  gap: 16px;
+  align-items: center;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+}
+.feed-handle {
+  font-size: 12.5px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.feed-handle strong { color: #222; font-weight: 600; }
+.feed-quote { flex: 1; }
+.feed-link {
+  text-align: right;
+}
+
+/* ---------- At the Counter ---------- */
+.counter-card {
+  border: 2px solid #b0b0b0;
+  padding: 22px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #fafafa;
+}
+.counter-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.counter-portrait .ph-image { aspect-ratio: 1/1; min-height: 200px; }
+.counter-copy .counter-eyebrow { margin-bottom: 12px; }
+.counter-copy .ph-line { margin-bottom: 7px; }
+.counter-copy .ph-btn { margin-top: 14px; }
+.counter-cert .ph-image { aspect-ratio: 1/1; min-height: 180px; }
+.counter-leak {
+  max-width: 360px;
+  margin-top: 18px;
+  position: relative;
+  border: 1px dashed #888;
+  background: #f6f6f6;
+  padding: 12px 14px;
+}
+.counter-leak .ph-leak-marker {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 12px;
+  color: #555;
+}
+.counter-leak .leak-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter-band {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 8px 0;
+}
+.newsletter-pitch .ph-line-heading { margin-bottom: 10px; }
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.newsletter-form .ph-input { width: 100%; }
+.newsletter-microcopy {
+  font-size: 12px;
+  font-style: italic;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* ---------- Footer ---------- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 22px;
+}
+.col-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.footer-col .ph-line { margin-bottom: 8px; }
+.footer-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.5fr;
+  gap: 18px;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 14px;
+}
+.footer-microline {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+}
+.footer-copy {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+}
+.footer-signature {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #555;
+  text-align: right;
+}
+
+/* ---------- §9 leak mechanic doc render ---------- */
+.leak-doc-intro {
+  font-size: 12px;
+  font-style: italic;
+  color: #888;
+  background: #f7f7f7;
+  border: 1px dashed #ccc;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+}
+.ambient-widget {
+  max-width: 360px;
+  background: #fff;
+  border: 1px solid #d0d0d0;
+  padding: 14px;
+}
+.ambient-widget .widget-heading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #222;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.mini-entry {
+  border: 1px dashed #888;
+  background: #f6f6f6;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  position: relative;
+  font-size: 11.5px;
+}
+.mini-entry:last-child { margin-bottom: 0; }
+.mini-entry .ph-leak-marker {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 11px;
+  color: #555;
+}
+.mini-entry .mini-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: #444;
+}
+.mini-entry .mini-meta strong { color: #222; }
+.mini-entry .mini-ref {
+  margin-top: 4px;
+  display: inline-block;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .section { grid-template-columns: 1fr; }
+  .section-comment { position: static; border-left: 1px solid #e0e0e0; }
+}
 @media (max-width: 900px) {
-  .wire-body { grid-template-columns: 1fr; }
-  .wire-content { border-right: none; border-bottom: 1px dashed var(--line-light); }
-  .hero-layout, .about-layout, .footer-layout { grid-template-columns: 1fr; }
-  .grid-4, .grid-6 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: 1fr; }
-  .masthead-layout { grid-template-columns: 1fr; }
+  .hero-layout,
+  .newsletter-band { grid-template-columns: 1fr; }
+  .hero-image .ph-image { min-height: 260px; }
+  .browse-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-row { grid-template-columns: repeat(2, 1fr); }
+  .feed-entry { grid-template-columns: 1fr; gap: 6px; }
+  .feed-link { text-align: left; }
+  .counter-layout { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { grid-template-columns: 1fr; gap: 10px; }
+  .footer-signature, .footer-copy { text-align: left; }
+  .masthead-nav { display: none; }
 }
 </style>
 </head>
@@ -231,11 +702,11 @@ body {
      ============================================ -->
 <div class="legend">
   <h1>Wittyverse.com — Homepage Wireframe</h1>
-  <p>Plain structural mockup. Visual treatment intentionally absent so the focus stays on <strong>sections, functions, and unique-Wittyverse features</strong>. Each section block is independently editable in the HTML.</p>
+  <p>Realistic-rendering wireframe. Page reads top-to-bottom in greyscale with visible affordances — buttons look like buttons, text lines suggest copy, images use diagonal-X placeholders. Section notes live in a comments sidebar on the right (Figma/Google Docs style), anchored to each section. Homepage spine is the hybrid between Approach 1 (Lean Commercial) and Approach 2 (Storefront Narrative) — standard DTC shape with one world-bearing section. 8 visible sections + 1 non-rendering pattern (§9 leak mechanic).</p>
   <div class="keys">
     <div><span class="key-section"></span> Section boundary</div>
-    <div><span class="key-slot"></span> Content slot (image, copy, CTA, etc.)</div>
-    <div><span class="key-wv">◆ WV:</span> Unique-Wittyverse feature</div>
+    <div><span class="key-primitive"></span> Text line / paragraph primitive</div>
+    <div><span class="key-wv">&#9670; WV:</span> Unique-Wittyverse feature</div>
   </div>
   <div class="meta">
     Source spine: <em>"between Approach 1 (Lean Commercial) and Approach 2 (Storefront Narrative)"</em> — standard DTC shape with one world-bearing section. ·
@@ -246,276 +717,435 @@ body {
 
 <main class="page">
 
+  <!-- Browser chrome strip -->
+  <div class="browser-chrome">
+    <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="nav-icons">&lsaquo; &nbsp; &rsaquo; &nbsp; &#x21BB;</div>
+    <div class="url-bar">wittyverse.com</div>
+  </div>
+
   <!-- ============================================
        §1 — MARQUEE STRIP
        ============================================ -->
-  <section class="wire" id="s1-marquee">
-    <div class="wire-label"><span>§1 — Marquee Strip</span><span class="sub">always-on, sitewide</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-thin">[ SCROLLING MARQUEE — single-line ticker, horizontally animated ]</div>
-      </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> top-of-page promo + operational status bar, visible across every page.</p>
-        <p><strong>Contains:</strong> 3–5 short items separated by ✦. Items can include shipping promo, dispatch rhythm, current cycle, in-stock alert.</p>
-        <span class="wv">Cycle 247 anchor sets the dispatch rhythm.</span>
-        <span class="wv">"Dispatched Tuesdays" — signature operational beat.</span>
-        <span class="wv">✦ separator (locked in component inventory).</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> same scrolling ticker, slightly smaller type.</p>
+  <section class="section" id="s1-marquee">
+    <div class="section-render" style="padding: 0;">
+      <div class="marquee-bar">
+        &#10022; FREE EARTH-SIDE SHIPPING OVER $40 &nbsp;&middot;&nbsp; &#10022; DISPATCHED TUESDAYS &nbsp;&middot;&nbsp; &#10022; CYCLE 247 IN STOCK &nbsp;&middot;&nbsp; &#10022; FREE EARTH-SIDE SHIPPING OVER $40 &nbsp;&middot;&nbsp; &#10022; DISPATCHED TUESDAYS &nbsp;&middot;&nbsp; &#10022;
       </div>
     </div>
+    <aside class="section-comment">
+      <h3>§1 — Marquee Strip · always-on sitewide</h3>
+      <p><strong>Function:</strong> top-of-page promo + operational status bar, visible across every page.</p>
+      <p><strong>Contains:</strong> 3–5 short items separated by ✦. Items can include shipping promo, dispatch rhythm, current cycle, in-stock alert.</p>
+      <p class="wv">Cycle 247 anchor sets the dispatch rhythm.</p>
+      <p class="wv">"Dispatched Tuesdays" — signature operational beat.</p>
+      <p class="wv">✦ separator (locked in component inventory).</p>
+      <p class="mobile"><strong>Mobile:</strong> same scrolling ticker, slightly smaller type.</p>
+    </aside>
   </section>
 
   <!-- ============================================
        §2 — MASTHEAD
        ============================================ -->
-  <section class="wire" id="s2-masthead">
-    <div class="wire-label"><span>§2 — Masthead</span><span class="sub">sticky on scroll</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="masthead-layout" style="grid-template-columns: 200px 1fr auto auto;">
-          <div class="slot slot-md">[ LOGO + KICKER ]<small>wordmark + "Operated by Winston, Dr. W. Yeti PhD"</small></div>
-          <div class="slot slot-md">[ PRIMARY NAV ]<small>Catalog · About · Help · Search</small></div>
-          <div class="slot slot-md" style="min-width:160px;">[ DISPATCH COUNTDOWN ]<small>e.g. "3d 14h 22m until next dock arrival" · click → newsletter signup</small></div>
-          <div class="slot slot-md" style="min-width:120px;">[ CART + ACCOUNT ]<small>bag icon · sign in</small></div>
+  <section class="section" id="s2-masthead">
+    <div class="section-render">
+      <div class="masthead">
+        <div class="masthead-left">
+          <span class="ph-wordmark">WITTYVERSE</span>
+          <span class="masthead-kicker">Operated by Winston, Dr. W. Yeti PhD</span>
+          <span class="ph-pill">CYCLE 247</span>
+        </div>
+        <nav class="masthead-nav">
+          <span>Catalog</span>
+          <span>About</span>
+          <span>Help</span>
+          <span>Search</span>
+        </nav>
+        <div class="masthead-right">
+          <span class="ph-pill ph-pill-outline">3d 14h 22m</span>
+          <span class="ph-icon" title="account"></span>
+          <span class="ph-icon" title="cart"></span>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> brand identification, primary navigation, persistent commerce access (cart).</p>
-        <p><strong>Nav items:</strong> Catalog, About, Help, Search/Bag. Account optional v1.</p>
-        <span class="wv">Mono "CYCLE 247" tag right of the wordmark (locked in component inventory).</span>
-        <span class="wv">Kicker "Operated by Winston, Dr. W. Yeti PhD" sets the operator presence even before any About section.</span>
-        <span class="wv">Subtle "side door" / WV-side toggle access point lives here OR on the About page — not foregrounded in this hybrid.</span>
-        <span class="wv">Mysterious countdown anchors the dispatch rhythm + acts as the primary newsletter signup hook. Counts down to next dispatch (every Tuesday), a new product drop, a discount, or "something weird" (a one-off event like a rare portal window). Clicking opens the email-capture popover ("I'll send notice when the dock opens"). Lore-justified per §7.5 of the brief: the countdown represents a real operational schedule, not a decorative ticker.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> wordmark + hamburger + cart. Kicker hidden; Cycle tag preserved.</p>
-      </div>
     </div>
+    <aside class="section-comment">
+      <h3>§2 — Masthead · sticky on scroll</h3>
+      <p><strong>Function:</strong> brand identification, primary navigation, persistent commerce access (cart).</p>
+      <p><strong>Nav items:</strong> Catalog, About, Help, Search/Bag. Account optional v1.</p>
+      <p class="wv">Mono "CYCLE 247" tag right of the wordmark (locked in component inventory).</p>
+      <p class="wv">Kicker "Operated by Winston, Dr. W. Yeti PhD" sets the operator presence even before any About section.</p>
+      <p class="wv">Subtle "side door" / WV-side toggle access point lives here OR on the About page — not foregrounded in this hybrid.</p>
+      <p class="wv">Mysterious countdown anchors the dispatch rhythm + acts as the primary newsletter signup hook. Counts down to next dispatch (every Tuesday), a new product drop, a discount, or "something weird" (a one-off event like a rare portal window). Clicking opens the email-capture popover ("I'll send notice when the dock opens"). Lore-justified per §7.5 of the brief: the countdown represents a real operational schedule, not a decorative ticker.</p>
+      <p class="mobile"><strong>Mobile:</strong> wordmark + hamburger + cart. Kicker hidden; Cycle tag preserved.</p>
+    </aside>
   </section>
 
   <!-- ============================================
        §3 — HERO
        ============================================ -->
-  <section class="wire" id="s3-hero">
-    <div class="wire-label"><span>§3 — Hero</span><span class="sub">primary above-the-fold</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="hero-layout">
-          <div class="col">
-            <div class="slot slot-text" style="min-height:100px;">[ EYEBROW / DISPATCH TAG ]<small>e.g. "Cycle 247 dispatch" · "fresh through the dock"</small></div>
-            <div class="slot slot-text slot-tall">[ HERO HEADLINE ]<small>shop-voiced; foreign fingerprint in language; sets reaction</small></div>
-            <div class="slot slot-text" style="min-height:80px;">[ SUBHEAD / 1–2 LINES ]<small>third-person; pivots toward CTA</small></div>
-            <div class="row">
-              <div class="slot" style="flex:0 0 auto; min-width:160px;">[ PRIMARY CTA ]</div>
-              <div class="slot" style="flex:0 0 auto; min-width:140px;">[ SECONDARY CTA ]</div>
-            </div>
+  <section class="section" id="s3-hero">
+    <div class="section-render">
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">
+            <span class="ph-pill ph-pill-outline">CYCLE 247 DISPATCH &middot; FRESH THROUGH THE DOCK</span>
           </div>
-          <div class="slot slot-hero-img">[ HERO IMAGE / FEATURED PRODUCT ]<small>product render OR storefront moment OR portal hint</small></div>
+          <h1 class="hero-headline">Foreign goods, perfectly normal &mdash; through the dock this Tuesday.</h1>
+          <p class="hero-subhead">Two-line pivot toward the catalog. Third-person, warm shopkeeper voice.</p>
+          <div class="hero-ctas">
+            <button class="ph-btn ph-btn-primary">Shop catalog</button>
+            <button class="ph-btn ph-btn-secondary">See this dispatch</button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="ph-image"></div>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> first impression; sets premise + delivers primary CTA into commerce funnel.</p>
+    </div>
+    <aside class="section-comment">
+      <h3>§3 — Hero · primary above-the-fold</h3>
+      <p><strong>Function:</strong> first impression; sets premise + delivers primary CTA into commerce funnel.</p>
+      <div class="decisions">
         <p><strong>Decisions to make:</strong></p>
-        <p>• <em>Hero approach:</em> product-led / character-led / dispatch-led / portal-led. Tentative: <strong>dispatch-led</strong> ("this Tuesday's catalog") — covers cold (frames operation) + aware (delivers something to shop).</p>
-        <p>• <em>Primary CTA:</em> "Shop catalog" or featured-product "See this dispatch."</p>
-        <p>• <em>Rotation:</em> hero can rotate per cycle (manual update Tuesdays) or stay evergreen.</p>
-        <span class="wv">Foreign fingerprint in headline copy ("through the dock," "this cycle," "Earth-side address").</span>
-        <span class="wv">Voice: third-person warm shopkeeper (the shop describes itself), NOT first-person Winston.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> image stacks above text; CTAs full-width.</p>
+        <p>&bull; <em>Hero approach:</em> product-led / character-led / dispatch-led / portal-led. Tentative: <strong>dispatch-led</strong> ("this Tuesday's catalog") — covers cold (frames operation) + aware (delivers something to shop).</p>
+        <p>&bull; <em>Primary CTA:</em> "Shop catalog" or featured-product "See this dispatch."</p>
+        <p>&bull; <em>Rotation:</em> hero can rotate per cycle (manual update Tuesdays) or stay evergreen.</p>
       </div>
-    </div>
+      <p class="wv">Foreign fingerprint in headline copy ("through the dock," "this cycle," "Earth-side address").</p>
+      <p class="wv">Voice: third-person warm shopkeeper (the shop describes itself), NOT first-person Winston.</p>
+      <p class="mobile"><strong>Mobile:</strong> image stacks above text; CTAs full-width.</p>
+    </aside>
   </section>
 
   <!-- ============================================
-       §4 — BROWSE GRID (themed entry points)
+       §4 — BROWSE GRID
        ============================================ -->
-  <section class="wire" id="s4-browse">
-    <div class="wire-label"><span>§4 — Browse Grid</span><span class="sub">themed catalog entry points</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-text" style="margin-bottom:14px; min-height:60px;">[ SECTION HEADING ]<small>e.g. "What you're looking for" or "Through the dock by occasion"</small></div>
-        <div class="grid-3">
-          <div class="slot slot-tile">[ TILE 1 ]<small>label + image/icon · click → catalog filter</small></div>
-          <div class="slot slot-tile">[ TILE 2 ]<small>label + image/icon</small></div>
-          <div class="slot slot-tile">[ TILE 3 ]<small>label + image/icon</small></div>
-          <div class="slot slot-tile">[ TILE 4 ]<small>label + image/icon</small></div>
-          <div class="slot slot-tile">[ TILE 5 ]<small>label + image/icon</small></div>
-          <div class="slot slot-tile">[ TILE 6 ]<small>label + image/icon</small></div>
+  <section class="section" id="s4-browse">
+    <div class="section-render">
+      <div class="ph-line-heading" style="width: 50%;"></div>
+      <div class="browse-grid">
+        <div class="browse-tile">
+          <div class="ph-image"></div>
+          <div class="tile-label">For the one who's seen everything</div>
+        </div>
+        <div class="browse-tile">
+          <div class="ph-image"></div>
+          <div class="tile-label">Desk-keepers</div>
+        </div>
+        <div class="browse-tile">
+          <div class="ph-image"></div>
+          <div class="tile-label">Things they'll text a photo of</div>
+        </div>
+        <div class="browse-tile">
+          <div class="ph-image"></div>
+          <div class="tile-label">Under $25</div>
+        </div>
+        <div class="browse-tile">
+          <div class="ph-image"></div>
+          <div class="tile-label">By occasion</div>
+        </div>
+        <div class="browse-tile">
+          <div class="ph-image"></div>
+          <div class="tile-label">New this cycle</div>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> primary discovery surface for the gift-giver buying motion. Each tile links into a filtered catalog view.</p>
-        <p><strong>Tile count:</strong> 4–6 tiles. Recommend 6 desktop (2 rows of 3) collapsing to 2-col mobile.</p>
-        <p><strong>Organize by gift situation, not demographic.</strong> Examples:</p>
-        <p>• "For the one who's seen everything"<br>• "Desk-keepers"<br>• "Things they'll text a photo of"<br>• "Under $25" / price tier<br>• "By occasion" (birthday, white elephant, etc.)<br>• "New this cycle"</p>
-        <span class="wv">Wittyverse-flavored tile names that work as gift-situation language but read in-universe to repeat visitors.</span>
-        <span class="wv">One tile can be "New this cycle" — connects to dispatch rhythm.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> 2-col grid; tiles slightly taller.</p>
-      </div>
     </div>
+    <aside class="section-comment">
+      <h3>§4 — Browse Grid · themed catalog entry points</h3>
+      <p><strong>Function:</strong> primary discovery surface for the gift-giver buying motion. Each tile links into a filtered catalog view.</p>
+      <p><strong>Tile count:</strong> 4–6 tiles. Recommend 6 desktop (2 rows of 3) collapsing to 2-col mobile.</p>
+      <p><strong>Organize by gift situation, not demographic.</strong> Examples:</p>
+      <p>&bull; "For the one who's seen everything"<br>&bull; "Desk-keepers"<br>&bull; "Things they'll text a photo of"<br>&bull; "Under $25" / price tier<br>&bull; "By occasion" (birthday, white elephant, etc.)<br>&bull; "New this cycle"</p>
+      <p class="wv">Wittyverse-flavored tile names that work as gift-situation language but read in-universe to repeat visitors.</p>
+      <p class="wv">One tile can be "New this cycle" — connects to dispatch rhythm.</p>
+      <p class="mobile"><strong>Mobile:</strong> 2-col grid; tiles slightly taller.</p>
+    </aside>
   </section>
 
   <!-- ============================================
-       §5 — SOCIAL PROOF
+       §5 — SOCIAL PROOF / TRANSMISSION FEED
        ============================================ -->
-  <section class="wire" id="s5-social-proof">
-    <div class="wire-label"><span>§5 — Social Proof</span><span class="sub">trust + reactions</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-text" style="margin-bottom:14px; min-height:50px;">[ SECTION HEADING + OPTIONAL STAR/AGGREGATE ]<small>e.g. "What people send back to us"</small></div>
-        <div class="grid-3">
-          <div class="slot slot-text slot-md">[ TESTIMONIAL 1 ]<small>quote · attribution · location/date</small></div>
-          <div class="slot slot-text slot-md">[ TESTIMONIAL 2 ]<small>quote · attribution · location/date</small></div>
-          <div class="slot slot-text slot-md">[ TESTIMONIAL 3 ]<small>quote · attribution · location/date</small></div>
+  <section class="section" id="s5-social-proof">
+    <div class="section-render">
+      <div class="social-header">
+        <div class="ph-line-heading" style="width: 55%;"></div>
+        <div class="aggregate-rating">
+          <span class="ph-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span>4.8 (2,400 reviews)</span>
         </div>
-        <div style="margin-top:18px;">
-          <div class="slot slot-text" style="margin-bottom:12px;">[ TRANSMISSION FEED — Guestbook view ]<small>live feed of portal-leaked chatter, rendered as Winston's MySpace-era guestbook · 4–5 entries visible · new entry every 15–30s · pinned entries marked 📌</small></div>
-          <div class="col">
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>SarahK · C247.3 · "the headlight fluid actually works?? mechanic was confused" · → Headlight Fluid</small></div>
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>📌 K. Norven, Sector W-Mid · C246.8 · "weight tolerance held under 14 standard loads, recommend for shed use" · → Reality Stabilizer</small></div>
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>DaveB · C246.9 · "gave the dehydrated water as a white elephant gift — standing ovation" · → Dehydrated Water</small></div>
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>Anonymous · C246.1 · "where is this place actually shipping from???" · (no product ref)</small></div>
+      </div>
+      <div class="testimonial-row">
+        <div class="ph-card">
+          <div class="ph-avatar"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line ph-line-shorter" style="margin-top: 10px;"></div>
+        </div>
+        <div class="ph-card">
+          <div class="ph-avatar"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line ph-line-shorter" style="margin-top: 10px;"></div>
+        </div>
+        <div class="ph-card">
+          <div class="ph-avatar"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line ph-line-shorter" style="margin-top: 10px;"></div>
+        </div>
+      </div>
+      <div class="ph-line-subheading feed-section-heading"></div>
+      <div class="feed-list">
+        <div class="feed-entry">
+          <div class="feed-handle">
+            <strong>SarahK</strong>
+            <span class="ph-pill ph-pill-outline">C247.3</span>
           </div>
+          <div class="feed-quote">
+            <div class="ph-line"></div>
+            <div class="ph-line ph-line-short"></div>
+          </div>
+          <div class="feed-link"><span class="ph-pill">&rarr; Headlight Fluid</span></div>
+        </div>
+        <div class="feed-entry">
+          <div class="feed-handle">
+            <span>&#128204;</span><strong>K. Norven, Sector W-Mid</strong>
+            <span class="ph-pill ph-pill-outline">C246.8</span>
+          </div>
+          <div class="feed-quote">
+            <div class="ph-line"></div>
+            <div class="ph-line"></div>
+            <div class="ph-line ph-line-short"></div>
+          </div>
+          <div class="feed-link"><span class="ph-pill">&rarr; Reality Stabilizer</span></div>
+        </div>
+        <div class="feed-entry">
+          <div class="feed-handle">
+            <strong>DaveB</strong>
+            <span class="ph-pill ph-pill-outline">C246.9</span>
+          </div>
+          <div class="feed-quote">
+            <div class="ph-line"></div>
+            <div class="ph-line ph-line-shorter"></div>
+          </div>
+          <div class="feed-link"><span class="ph-pill">&rarr; Dehydrated Water</span></div>
+        </div>
+        <div class="feed-entry">
+          <div class="feed-handle">
+            <strong>Anonymous</strong>
+            <span class="ph-pill ph-pill-outline">C246.1</span>
+          </div>
+          <div class="feed-quote">
+            <div class="ph-line"></div>
+            <div class="ph-line ph-line-short"></div>
+          </div>
+          <div class="feed-link"><span class="ph-pill ph-pill-outline">no product ref</span></div>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> third-party validation; convert undecided browsers via real reactions.</p>
-        <p><strong>Count:</strong> 3 testimonials desktop, scrollable carousel on mobile.</p>
-        <p><strong>Each contains:</strong> quote · customer first name + state · optional purchase + Cycle dates.</p>
-        <span class="wv">Frame testimonials as <em>customer letters / mail received</em> — envelopes, stamps, hand-written feel possible.</span>
-        <span class="wv">Surface the North Star reaction here ("Hot damn, where did you GET that?") — natural quote shape.</span>
-        <span class="wv">Customer dates in Earth dates; can include "received Cycle 246" as side-stamp.</span>
-        <span class="wv">Single transmission feed replaces separate static review streams. Earth-side reactions and Wittyverse-side R1 resident comments both flow through the same feed — the split lives in the voice of each entry, not in two separate widgets.</span>
-        <span class="wv">Lore stack (two justifications): (a) data source = portal leakage, (b) presentation format = Winston's MySpace-era design taste. Passes §7.5 of the brief on both counts.</span>
-        <span class="wv">Cadence: 1 entry every 15–30s. Static fallback for <code>prefers-reduced-motion</code>. Pinned entries (📌) are curator-clipped from the feed.</span>
-        <span class="wv">Canonical visible instance of the sitewide leak mechanic — see §9.</span>
-        <p style="margin-top:10px;"><strong>Optional:</strong> aggregate rating + review count if data exists (e.g., "★ 4.8 across 2,400 reviews"). v1 may skip if numbers thin.</p>
-      </div>
     </div>
+    <aside class="section-comment">
+      <h3>§5 — Social Proof · transmission feed</h3>
+      <p><strong>Function:</strong> third-party validation; convert undecided browsers via real reactions.</p>
+      <p><strong>Count:</strong> 3 testimonials desktop, scrollable carousel on mobile.</p>
+      <p><strong>Each contains:</strong> quote · customer first name + state · optional purchase + Cycle dates.</p>
+      <p class="wv">Frame testimonials as <em>customer letters / mail received</em> — envelopes, stamps, hand-written feel possible.</p>
+      <p class="wv">Surface the North Star reaction here ("Hot damn, where did you GET that?") — natural quote shape.</p>
+      <p class="wv">Customer dates in Earth dates; can include "received Cycle 246" as side-stamp.</p>
+      <p class="wv">Single transmission feed replaces separate static review streams. Earth-side reactions and Wittyverse-side R1 resident comments both flow through the same feed — the split lives in the voice of each entry, not in two separate widgets.</p>
+      <p class="wv">Lore stack (two justifications): (a) data source = portal leakage, (b) presentation format = Winston's MySpace-era design taste. Passes §7.5 of the brief on both counts.</p>
+      <p class="wv">Cadence: 1 entry every 15–30s. Static fallback for <code>prefers-reduced-motion</code>. Pinned entries (📌) are curator-clipped from the feed.</p>
+      <p class="wv">Canonical visible instance of the sitewide leak mechanic — see §9.</p>
+      <p style="margin-top:10px;"><strong>Optional:</strong> aggregate rating + review count if data exists (e.g., "★ 4.8 across 2,400 reviews"). v1 may skip if numbers thin.</p>
+      <p class="mobile"><strong>Mobile:</strong> testimonials become horizontally scrollable; transmission feed entries stack at full width.</p>
+    </aside>
   </section>
 
   <!-- ============================================
-       §6 — WORLD MOMENT: AT THE COUNTER (Winston)
+       §6 — AT THE COUNTER (Winston)
        ============================================ -->
-  <section class="wire" id="s6-world">
-    <div class="wire-label"><span>§6 — At the Counter</span><span class="sub">the one world-bearing section</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="about-layout">
-          <div class="slot slot-tall">[ WINSTON PORTRAIT ]<small>illustration / photo / character mark</small></div>
-          <div class="col">
-            <div class="slot slot-text" style="min-height:50px;">[ EYEBROW ]<small>e.g. "About the operator"</small></div>
-            <div class="slot slot-text slot-tall">[ ABOUT COPY · 2–3 SHORT PARAGRAPHS ]<small>third-person teaser: who Winston is, the portal, the operation. Links to full About.</small></div>
-            <div class="slot" style="min-width:160px; align-self:flex-start;">[ CTA → ABOUT ]</div>
-          </div>
-          <div class="slot slot-text slot-tall">[ "LOL" CERT / TRUST ARTIFACT ]<small>Patent Office "lol" certificate as world artifact + trust signal</small></div>
+  <section class="section" id="s6-counter">
+    <div class="section-render counter-card">
+      <div class="counter-layout">
+        <div class="counter-portrait">
+          <div class="ph-image"></div>
         </div>
-        <div style="margin-top:14px;">
-          <div class="slot slot-leak slot-text slot-md" style="max-width:360px;">[ ◇ LEAK POPUP — Cycle-stamped artifact leaking through ]<small>appears on hover / scroll milestone / return visit · evidence of product use from the Wittyverse side · postcard-style, not spooky</small></div>
+        <div class="counter-copy">
+          <div class="counter-eyebrow">
+            <span class="ph-pill ph-pill-outline">ABOUT THE OPERATOR</span>
+          </div>
+          <div class="ph-paragraph">
+            <div class="ph-line"></div>
+            <div class="ph-line"></div>
+            <div class="ph-line"></div>
+            <div class="ph-line"></div>
+            <div class="ph-line"></div>
+            <div class="ph-line ph-line-short"></div>
+          </div>
+          <button class="ph-btn ph-btn-secondary">Read full About &rarr;</button>
+        </div>
+        <div class="counter-cert">
+          <div class="ph-image"></div>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> single section that earns real estate for the brand world. Builds trust + premise + character anchor without forcing the homepage into a narrative.</p>
-        <p><strong>Three parts:</strong></p>
-        <p>1. <strong>Winston portrait</strong> — character anchor (illustration vs. photo TBD with brand).<br>2. <strong>Compact about copy</strong> — 2–3 short paragraphs; teaser only; links to full About page.<br>3. <strong>Patent Office "lol" certificate</strong> — image of the artifact + 1-line caption.</p>
-        <span class="wv">Patent Office "lol" cert: a Wittyverse-canon artifact (Winston kept the response certificate where Earth's USPTO responded "lol"). Doubles as trust signal + world-leak.</span>
-        <span class="wv">Voice: third-person on the homepage block, first-person Winston on the full About page he links to.</span>
-        <span class="wv">Optional addition: Winston's signature as a recurring mark.</span>
-        <span class="wv">The dotted-bordered leak slot below the main row is an <em>example placement</em> for the site-wide leak mechanic (see §9 — Discovery / Leak Mechanic). It's not a fixed location — leaks can surface anywhere; this is just one of the homepage's natural hosts because the section already carries world-artifact content (the lol cert).</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> portrait → about copy → cert, stacked.</p>
+      <div class="counter-leak">
+        <span class="ph-leak-marker">&#9671;</span>
+        <div class="leak-meta">
+          <span class="ph-pill ph-pill-outline">C247.2</span>
+          <span style="font-size: 11px; color: #555; font-style: italic;">leak popup example</span>
+        </div>
+        <div class="ph-line"></div>
+        <div class="ph-line ph-line-short"></div>
       </div>
     </div>
+    <aside class="section-comment">
+      <h3>§6 — At the Counter · the one world-bearing section</h3>
+      <p><strong>Function:</strong> single section that earns real estate for the brand world. Builds trust + premise + character anchor without forcing the homepage into a narrative.</p>
+      <p><strong>Three parts:</strong></p>
+      <p>1. <strong>Winston portrait</strong> — character anchor (illustration vs. photo TBD with brand).<br>2. <strong>Compact about copy</strong> — 2–3 short paragraphs; teaser only; links to full About page.<br>3. <strong>Patent Office "lol" certificate</strong> — image of the artifact + 1-line caption.</p>
+      <p class="wv">Patent Office "lol" cert: a Wittyverse-canon artifact (Winston kept the response certificate where Earth's USPTO responded "lol"). Doubles as trust signal + world-leak.</p>
+      <p class="wv">Voice: third-person on the homepage block, first-person Winston on the full About page he links to.</p>
+      <p class="wv">Optional addition: Winston's signature as a recurring mark.</p>
+      <p class="wv">The dotted-bordered leak slot below the main row is an <em>example placement</em> for the site-wide leak mechanic (see §9 — Discovery / Leak Mechanic). It's not a fixed location — leaks can surface anywhere; this is just one of the homepage's natural hosts because the section already carries world-artifact content (the lol cert).</p>
+      <p class="mobile"><strong>Mobile:</strong> portrait → about copy → cert, stacked.</p>
+    </aside>
   </section>
 
   <!-- ============================================
        §7 — NEWSLETTER OPT-IN
        ============================================ -->
-  <section class="wire" id="s7-newsletter">
-    <div class="wire-label"><span>§7 — Newsletter Opt-in</span><span class="sub">"the dispatch list"</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="row">
-          <div class="slot slot-text slot-tall" style="flex:1.4;">
-            [ HEADLINE + 1-LINE PITCH ]
-            <small>Winston-voiced reason to subscribe — short, warm, world-flavored</small>
-          </div>
-          <div class="col" style="flex:1;">
-            <div class="slot slot-md">[ EMAIL INPUT ]<small>"Earth-sector email address"</small></div>
-            <div class="slot">[ SUBSCRIBE CTA ]</div>
-            <div class="slot slot-thin">[ PRIVACY / "no spam" microcopy ]</div>
-          </div>
+  <section class="section" id="s7-newsletter">
+    <div class="section-render">
+      <div class="newsletter-band">
+        <div class="newsletter-pitch">
+          <div class="ph-line-heading" style="width: 80%;"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-short"></div>
         </div>
-      </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> email capture; the primary repeat-engagement channel.</p>
-        <p><strong>Pitch:</strong> what you get for subscribing — early access to dispatch, new arrivals, occasional Winston note.</p>
-        <span class="wv">Frame as <em>"the dispatch list"</em> — subscribers get notified what comes through the portal each Tuesday.</span>
-        <span class="wv">Field label can carry one foreign fingerprint ("Earth-sector email address") — small dose, not silly.</span>
-        <span class="wv">Voice: borderline — third-person ("the dispatch list will reach you Tuesdays") or first-person Winston ("I'll let you know what's coming") both work. Decide once we draft.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> stacked vertically.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="text" class="ph-input" placeholder="Earth-sector email address">
+          <button class="ph-btn ph-btn-primary ph-btn-block">Subscribe</button>
+          <p class="newsletter-microcopy">No spam &middot; just the dispatch list every Tuesday</p>
+        </form>
       </div>
     </div>
+    <aside class="section-comment">
+      <h3>§7 — Newsletter · "the dispatch list"</h3>
+      <p><strong>Function:</strong> email capture; the primary repeat-engagement channel.</p>
+      <p><strong>Pitch:</strong> what you get for subscribing — early access to dispatch, new arrivals, occasional Winston note.</p>
+      <p class="wv">Frame as <em>"the dispatch list"</em> — subscribers get notified what comes through the portal each Tuesday.</p>
+      <p class="wv">Field label can carry one foreign fingerprint ("Earth-sector email address") — small dose, not silly.</p>
+      <p class="wv">Voice: borderline — third-person ("the dispatch list will reach you Tuesdays") or first-person Winston ("I'll let you know what's coming") both work. Decide once we draft.</p>
+      <p class="mobile"><strong>Mobile:</strong> stacked vertically.</p>
+    </aside>
   </section>
 
   <!-- ============================================
        §8 — FOOTER
        ============================================ -->
-  <section class="wire" id="s8-footer">
-    <div class="wire-label"><span>§8 — Footer</span><span class="sub">policies + compliance microline</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="footer-layout" style="margin-bottom:12px;">
-          <div class="slot slot-text slot-tall">[ COLUMN 1 — SHOP ]<small>Catalog · New this cycle · Best-sellers · Gift cards</small></div>
-          <div class="slot slot-text slot-tall">[ COLUMN 2 — HELP ]<small>Shipping · Returns · FAQ · Contact</small></div>
-          <div class="slot slot-text slot-tall">[ COLUMN 3 — ABOUT ]<small>About Winston · Field notes / blog · Press · The Wittyverse</small></div>
-          <div class="slot slot-text slot-tall">[ COLUMN 4 — CONNECT ]<small>Email list · Social links · Affiliates</small></div>
+  <section class="section" id="s8-footer">
+    <div class="section-render">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="col-heading">SHOP</div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line ph-line-shorter"></div>
         </div>
-        <div class="row">
-          <div class="slot slot-thin" style="flex:2;">[ COMPLIANCE MICROLINE — MONO, ALL-CAPS ]<small>e.g. "CYCLE 247 · O.O.P.S. COMPLIANT · WITTYVERSE EXPORT FACILITY · EARTH-SIDE FULFILLMENT NC"</small></div>
-          <div class="slot slot-thin" style="flex:1;">[ COPYRIGHT + WORDMARK ]</div>
-          <div class="slot slot-thin" style="flex:0.6;">[ SIGNATURE ]<small>Winston's mark</small></div>
+        <div class="footer-col">
+          <div class="col-heading">HELP</div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line ph-line-shorter"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-short"></div>
+        </div>
+        <div class="footer-col">
+          <div class="col-heading">ABOUT</div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line ph-line-shorter"></div>
+          <div class="ph-line ph-line-short"></div>
+        </div>
+        <div class="footer-col">
+          <div class="col-heading">CONNECT</div>
+          <div class="ph-line ph-line-short"></div>
+          <div class="ph-line ph-line-shorter"></div>
+          <div class="ph-line"></div>
+          <div class="ph-line ph-line-shorter"></div>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> secondary nav, policies, trust + compliance signaling, repeat-visit hooks (field notes, social).</p>
-        <p><strong>4 column structure</strong> for the link sections; bottom strip for legal + brand mark.</p>
-        <span class="wv">Compliance microline in JetBrains Mono all-caps (locked in component inventory) — Cycle reference + O.O.P.S. + dock + fulfillment desk address.</span>
-        <span class="wv">This is the section where the <strong>deadpan-world layer</strong> peeks through the pulp-brand wrapper (the bridge: brand-wrapper loud + cargo officially documented).</span>
-        <span class="wv">Field notes / blog link in Column 3 — depth-stack hook for repeat visitors.</span>
-        <span class="wv">Optional: "Earth-side fulfillment desk · NC" with a small operational date stamp.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> 2-col link grid; microline + signature in a single row.</p>
+      <div class="footer-bottom">
+        <div class="footer-microline">CYCLE 247 &middot; O.O.P.S. COMPLIANT &middot; WITTYVERSE EXPORT FACILITY &middot; EARTH-SIDE FULFILLMENT NC</div>
+        <div class="footer-copy">&copy; Wittyverse &middot; 2026</div>
+        <div class="footer-signature">W.</div>
       </div>
     </div>
+    <aside class="section-comment">
+      <h3>§8 — Footer · policies + compliance microline</h3>
+      <p><strong>Function:</strong> secondary nav, policies, trust + compliance signaling, repeat-visit hooks (field notes, social).</p>
+      <p><strong>4 column structure</strong> for the link sections; bottom strip for legal + brand mark.</p>
+      <p class="wv">Compliance microline in JetBrains Mono all-caps (locked in component inventory) — Cycle reference + O.O.P.S. + dock + fulfillment desk address.</p>
+      <p class="wv">This is the section where the <strong>deadpan-world layer</strong> peeks through the pulp-brand wrapper (the bridge: brand-wrapper loud + cargo officially documented).</p>
+      <p class="wv">Field notes / blog link in Column 3 — depth-stack hook for repeat visitors.</p>
+      <p class="wv">Optional: "Earth-side fulfillment desk · NC" with a small operational date stamp.</p>
+      <p class="mobile"><strong>Mobile:</strong> 2-col link grid; microline + signature in a single row.</p>
+    </aside>
   </section>
 
   <!-- ============================================
        §9 — DISCOVERY / LEAK MECHANIC
        ============================================ -->
-  <section class="wire" id="s9-leak-mechanic">
-    <div class="wire-label"><span>§9 — Discovery / Leak Mechanic</span><span class="sub">non-rendering pattern — applies sitewide</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-leak slot-text slot-tall">[ NON-RENDERING PATTERN — APPLIES SITEWIDE ]<small>this section documents the mechanic; it doesn't render visually as a homepage block</small></div>
-        <div style="max-width: 320px; margin-top: 18px;">
-          <div class="slot slot-text" style="margin-bottom:12px;">[ ◇ GUESTBOOK WIDGET — sidewide ambient render ]<small>same feed, smaller surface · ~3 entries visible · appears in sidebars / masthead corner / footer · always-on, low key</small></div>
-          <div class="col">
-            <div class="slot slot-leak slot-text">[ ENTRY · compact ]<small>SarahK · C247.3 · "actually works??" · Headlight Fluid</small></div>
-            <div class="slot slot-leak slot-text">[ ENTRY · compact ]<small>📌 K. Norven · C246.8 · "weight tolerance held" · Reality Stabilizer</small></div>
-            <div class="slot slot-leak slot-text">[ ENTRY · compact ]<small>DaveB · C246.9 · "white elephant standing ovation" · Dehydrated Water</small></div>
+  <section class="section" id="s9-leak-mechanic">
+    <div class="section-render">
+      <div class="leak-doc-intro">
+        Non-rendering pattern — applies sitewide. Example instance below: a small ambient guestbook widget that can surface in sidebars or corners across the site.
+      </div>
+      <div class="ambient-widget">
+        <div class="widget-heading">Transmissions</div>
+        <div class="mini-entry">
+          <span class="ph-leak-marker">&#9671;</span>
+          <div class="mini-meta">
+            <strong>SarahK</strong>
+            <span class="ph-pill ph-pill-outline">C247.3</span>
           </div>
+          <div class="ph-line" style="margin-bottom: 4px;"></div>
+          <span class="ph-pill mini-ref">&rarr; Headlight Fluid</span>
+        </div>
+        <div class="mini-entry">
+          <span class="ph-leak-marker">&#9671;</span>
+          <div class="mini-meta">
+            <span>&#128204;</span><strong>K. Norven</strong>
+            <span class="ph-pill ph-pill-outline">C246.8</span>
+          </div>
+          <div class="ph-line" style="margin-bottom: 4px;"></div>
+          <span class="ph-pill mini-ref">&rarr; Reality Stabilizer</span>
+        </div>
+        <div class="mini-entry">
+          <span class="ph-leak-marker">&#9671;</span>
+          <div class="mini-meta">
+            <strong>DaveB</strong>
+            <span class="ph-pill ph-pill-outline">C246.9</span>
+          </div>
+          <div class="ph-line" style="margin-bottom: 4px;"></div>
+          <span class="ph-pill mini-ref">&rarr; Dehydrated Water</span>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> A site-wide discovery pattern. As users explore (scroll, hover, return visits, time on page), small "leaks" of Wittyverse info appear — popup artifacts, margin notes, transmissions, photos or short clips of products in use on the other side. Reinforces the Depth Stack (progressive reveal across visits).</p>
-        <p><strong>Where it surfaces on the homepage:</strong> hover-triggered margin notes throughout, an optional scroll-milestone popup (see §6 / §3 leak slot example), return-visit unlocks of additional leaks.</p>
-        <span class="wv">Lore reason: as users explore, they "strain the portal" and more Wittyverse info leaks through. Each leak is dated by Cycle and stamped by source institution (O.O.P.S., Patent Office, depot, etc.).</span>
-        <span class="wv">Pairs with the lore-justification principle in website-brief.md §7.5 — every leak must have a lore reason; decorative glitches are banned.</span>
-        <span class="wv">Tone discipline: leaks feel like "postcards arriving," not spooky/creepy. Warm, slightly mysterious, never horror-adjacent.</span>
-        <span class="wv">AI-generated video is a natural fit for richer leaks (short clips of Wittyverse-side product use).</span>
-        <span class="wv">Canonical visible instance: the §5 Transmission Feed. Lore-justified by portal leakage. Presentation-justified by Winston's MySpace-era design taste (he'd reach for a guestbook because that's what felt welcoming when he learned the web).</span>
-        <span class="wv">Same feed renders in two surfaces: §5 hero (4–5 entries, primary), and a small sidewide ambient widget (~3 entries, example shown above). Mixed Earth-side + Wittyverse-side voices flow through both.</span>
-        <span class="wv">Other leak forms (margin notes, hover popups, return-visit unlocks) are secondary to the feed but follow the same lore + tone discipline: postcard-style, never spooky.</span>
-      </div>
     </div>
+    <aside class="section-comment">
+      <h3>§9 — Discovery / Leak Mechanic · non-rendering pattern, sitewide</h3>
+      <p><strong>Function:</strong> A site-wide discovery pattern. As users explore (scroll, hover, return visits, time on page), small "leaks" of Wittyverse info appear — popup artifacts, margin notes, transmissions, photos or short clips of products in use on the other side. Reinforces the Depth Stack (progressive reveal across visits).</p>
+      <p><strong>Where it surfaces on the homepage:</strong> hover-triggered margin notes throughout, an optional scroll-milestone popup (see §6 / §3 leak slot example), return-visit unlocks of additional leaks.</p>
+      <p class="wv">Lore reason: as users explore, they "strain the portal" and more Wittyverse info leaks through. Each leak is dated by Cycle and stamped by source institution (O.O.P.S., Patent Office, depot, etc.).</p>
+      <p class="wv">Pairs with the lore-justification principle in website-brief.md §7.5 — every leak must have a lore reason; decorative glitches are banned.</p>
+      <p class="wv">Tone discipline: leaks feel like "postcards arriving," not spooky/creepy. Warm, slightly mysterious, never horror-adjacent.</p>
+      <p class="wv">AI-generated video is a natural fit for richer leaks (short clips of Wittyverse-side product use).</p>
+      <p class="wv">Canonical visible instance: the §5 Transmission Feed. Lore-justified by portal leakage. Presentation-justified by Winston's MySpace-era design taste (he'd reach for a guestbook because that's what felt welcoming when he learned the web).</p>
+      <p class="wv">Same feed renders in two surfaces: §5 hero (4–5 entries, primary), and a small sidewide ambient widget (~3 entries, example shown above). Mixed Earth-side + Wittyverse-side voices flow through both.</p>
+      <p class="wv">Other leak forms (margin notes, hover popups, return-visit unlocks) are secondary to the feed but follow the same lore + tone discipline: postcard-style, never spooky.</p>
+    </aside>
   </section>
 
 </main>
@@ -525,9 +1155,9 @@ body {
      ============================================ -->
 <div class="legend" style="margin-top:32px;">
   <h1>Architecture notes (not on-page)</h1>
-  <p style="margin-bottom:10px;"><strong>The Earth-side / Wittyverse-side toggle</strong> is not surfaced on the homepage in this hybrid. The IA still needs to accommodate it — most likely it lives on the About page or appears as a subtle "side door" element accessible from the masthead. The website brief requires the architecture to support the toggle even when it's not foregrounded.</p>
-  <p style="margin-bottom:10px;"><strong>Voice register split</strong> applies sitewide. Homepage default surfaces (hero, browse tiles, social proof, footer) read in third-person — the shop describes itself. About + service surfaces (404, cart, refund emails, order confirmations) read in first-person Winston.</p>
-  <p style="margin-bottom:10px;"><strong>Mobile collapse</strong> behavior is noted per section in each block. The wireframe at 900px and below stacks the notes column under the layout column and collapses multi-column slot grids.</p>
+  <p><strong>The Earth-side / Wittyverse-side toggle</strong> is not surfaced on the homepage in this hybrid. The IA still needs to accommodate it — most likely it lives on the About page or appears as a subtle "side door" element accessible from the masthead. The website brief requires the architecture to support the toggle even when it's not foregrounded.</p>
+  <p><strong>Voice register split</strong> applies sitewide. Homepage default surfaces (hero, browse tiles, social proof, footer) read in third-person — the shop describes itself. About + service surfaces (404, cart, refund emails, order confirmations) read in first-person Winston.</p>
+  <p><strong>Mobile collapse</strong> behavior is noted per section in each block. The wireframe at 1100px collapses the section grid to 1-col (comment stacks below render); at 900px and below collapses the hero, browse grid, counter layout, newsletter band, footer grid, and feed entries.</p>
   <p><strong>What this wireframe is for:</strong> evaluating the homepage's section list + each section's function + the unique-Wittyverse features it carries. Visual decisions (palette, type, motion, illustration vs photo, layout fidelity) are deliberately deferred.</p>
 </div>
 
