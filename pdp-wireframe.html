@@ -5,560 +5,1055 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wittyverse.com — PDP Wireframe</title>
 <style>
-/* ============================================
-   WIREFRAME STYLES
-   Deliberately plain. Visual treatment is TBD.
-   Each section is editable independently below.
-   Reused verbatim from homepage-wireframe.html;
-   PDP-specific additions appended at the bottom.
-   ============================================ */
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --line: #333;
-  --line-light: #bbb;
-  --bg: #f4f4f4;
-  --section-bg: #fff;
-  --slot-bg: #fafafa;
-  --slot-border: #bbb;
-  --label-bg: #222;
-  --label-color: #fff;
-  --note-color: #555;
-  --accent: #b22;
-  --muted: #888;
+html, body {
+  background: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  color: #222;
+  line-height: 1.4;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  background: var(--bg);
-  color: #222;
-  line-height: 1.45;
-  padding: 24px 16px 60px;
+  padding: 24px 16px 64px;
 }
 
-/* ---------- Top legend ---------- */
-.legend {
-  max-width: 1280px;
-  margin: 0 auto 32px;
-  background: #fff;
-  border: 1px solid var(--line);
-  padding: 22px 26px;
-}
-.legend h1 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.legend p {
-  font-size: 13px;
-  color: var(--note-color);
-  max-width: 820px;
-}
-.legend .keys {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 14px;
+/* ---------- Caption ---------- */
+.caption {
+  max-width: 1120px;
+  margin: 0 auto 14px;
   font-size: 12px;
-  color: var(--note-color);
+  font-style: italic;
+  color: #888;
+  padding-left: 4px;
 }
-.legend .keys > div { display: flex; align-items: center; gap: 8px; }
-.key-section { display: inline-block; width: 28px; height: 14px; border: 2px solid var(--line); }
-.key-slot { display: inline-block; width: 28px; height: 14px; border: 1px dashed var(--slot-border); background: var(--slot-bg); }
-.key-wv { color: var(--accent); font-weight: 700; font-style: italic; }
-
-.meta {
-  margin-top: 14px;
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-}
-.meta a { color: var(--accent); }
 
 /* ---------- Page frame ---------- */
-.page { max-width: 1280px; margin: 0 auto; }
-
-/* ---------- Section block ---------- */
-.wire {
-  border: 2px solid var(--line);
-  background: var(--section-bg);
-  margin-bottom: 14px;
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #333;
 }
-.wire-label {
-  background: var(--label-bg);
-  color: var(--label-color);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 7px 14px;
+
+/* ---------- Browser chrome strip ---------- */
+.chrome {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+  background: #fff;
 }
-.wire-label .sub { font-weight: 500; opacity: 0.7; letter-spacing: 0.06em; }
-
-.wire-body {
-  display: grid;
-  grid-template-columns: minmax(0, 2.2fr) minmax(280px, 1fr);
-  gap: 0;
-}
-.wire-content {
-  padding: 22px;
-  border-right: 1px dashed var(--line-light);
-  min-width: 0;
-}
-.wire-notes {
-  padding: 20px 22px;
-  font-size: 12.5px;
-  color: var(--note-color);
-  line-height: 1.6;
-}
-.wire-notes strong { color: #222; display: inline-block; min-width: 80px; }
-.wire-notes p { margin-bottom: 10px; }
-.wire-notes p:last-child { margin-bottom: 0; }
-.wire-notes .wv {
-  color: var(--accent);
-  font-style: italic;
-  display: block;
-  margin-top: 4px;
-}
-.wire-notes .wv::before {
-  content: '◆ WV: ';
-  font-style: normal;
-  font-weight: 700;
-}
-
-/* ---------- Content slots ---------- */
-.slot {
-  border: 1px dashed var(--slot-border);
-  background: var(--slot-bg);
-  padding: 14px;
-  font-size: 11.5px;
-  color: #666;
-  letter-spacing: 0.04em;
-  font-weight: 600;
-  text-align: center;
+.chrome-dots {
   display: flex;
-  flex-direction: column;
+  gap: 5px;
+}
+.chrome-dot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #555;
+  border-radius: 50%;
+}
+.chrome-nav {
+  display: flex;
+  gap: 6px;
+  margin-left: 8px;
+  color: #555;
+  font-size: 13px;
+}
+.chrome-nav span {
+  display: inline-block;
+  width: 18px;
+  text-align: center;
+}
+.chrome-url {
+  flex: 1;
+  border: 1px solid #555;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #666;
+  background: #fafafa;
+  border-radius: 2px;
+}
+
+/* ---------- Content frame ---------- */
+.content {
+  padding: 0;
+}
+
+/* ---------- Generic box ---------- */
+.box {
+  border: 1px solid #333;
+  background: #fff;
+}
+
+/* Text-content placeholder (gray fill + italic label inside) */
+.txt {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-style: italic;
+  color: #888;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+}
+.txt.center { justify-content: center; text-align: center; }
+
+/* Image placeholder — diagonal X */
+.img {
+  border: 1px solid #333;
+  background: #fff;
+  position: relative;
+  min-height: 90px;
+  overflow: hidden;
+}
+.img::before,
+.img::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top right, transparent calc(50% - 0.5px), #333 calc(50% - 0.5px), #333 calc(50% + 0.5px), transparent calc(50% + 0.5px));
+}
+.img::after {
+  background: linear-gradient(to bottom right, transparent calc(50% - 0.5px), #333 calc(50% - 0.5px), #333 calc(50% + 0.5px), transparent calc(50% + 0.5px));
+}
+.img-label {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
+  z-index: 2;
+  font-size: 11px;
+  font-style: italic;
+  color: #666;
+  background: rgba(255,255,255,0.85);
+  padding: 2px 4px;
+  text-align: center;
+}
+
+/* Leak image variant */
+.img.leak {
+  border-style: dashed;
+  background: #fafaf6;
+}
+
+/* Annotation (small italic gray text alongside/under a box) */
+.note {
+  font-size: 11px;
+  font-style: italic;
+  color: #777;
+  padding: 4px 2px 0;
+}
+.note-inline {
+  font-size: 11px;
+  font-style: italic;
+  color: #777;
+  padding-left: 8px;
+}
+
+/* ---------- Section spacing ---------- */
+.section {
+  padding: 16px 24px;
+  border-bottom: 1px solid #ccc;
+}
+.section:last-child { border-bottom: none; }
+.section.tight { padding: 8px 24px; }
+.section.flush { padding: 0; }
+
+/* ---------- Marquee ---------- */
+.marquee {
+  border-bottom: 1px solid #333;
+  padding: 6px 24px;
+  background: #fff;
+}
+.marquee .txt {
+  min-height: 22px;
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+/* ---------- Masthead ---------- */
+.masthead {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid #333;
+}
+.masthead .logo {
+  height: 36px;
+  border: 1px solid #333;
+  background: #f5f5f5;
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  text-transform: uppercase;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
 }
-.slot small {
-  display: block;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  text-transform: none;
-  color: #999;
-  margin-top: 4px;
+.masthead .nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.masthead .nav .txt {
+  min-height: 28px;
+  padding: 4px 14px;
   font-size: 11px;
 }
-.slot-thin { min-height: 26px; padding: 8px; font-size: 11px; }
-.slot-md { min-height: 90px; }
-.slot-tall { min-height: 220px; }
-.slot-hero-img { min-height: 280px; }
-.slot-tile { min-height: 140px; }
-.slot-thumb { min-height: 80px; padding: 8px; font-size: 10.5px; }
-.slot-text { text-align: left; align-items: flex-start; padding: 18px; }
-.slot-leak {
-  border-style: dotted;
-  border-color: #888;
-  background: #f0f0f0;
-  position: relative;
-  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+.masthead .right {
+  display: flex;
+  gap: 8px;
 }
-.slot-leak::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 14px;
-  height: 14px;
-  background: #ddd;
-  border-left: 1px dotted #888;
-  border-bottom: 1px dotted #888;
+.masthead .right .txt {
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 11px;
 }
 
-/* ---------- Layout helpers ---------- */
-.row { display: flex; gap: 12px; margin-bottom: 12px; }
-.row:last-child { margin-bottom: 0; }
-.row .slot { flex: 1; }
-.col { display: flex; flex-direction: column; gap: 12px; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
-
-/* Section-specific layouts */
-.masthead-layout {
-  display: grid;
-  grid-template-columns: 200px 1fr auto;
-  gap: 16px;
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border-bottom: 1px solid #ccc;
+}
+.breadcrumb .crumb {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  min-height: 22px;
+  display: flex;
   align-items: center;
 }
-.hero-layout {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 16px;
+.breadcrumb .sep {
+  color: #555;
+  font-size: 12px;
 }
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 0.8fr;
-  gap: 16px;
-  align-items: stretch;
-}
-.footer-layout {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+.breadcrumb .annot {
+  margin-left: auto;
+  font-size: 11px;
+  font-style: italic;
+  color: #777;
 }
 
-/* ---------- PDP-specific layouts ---------- */
-.pdp-layout {
+/* ---------- ATF (gallery + info) ---------- */
+.atf {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 24px;
+  grid-template-columns: 55% 45%;
+  gap: 18px;
+  padding: 20px 24px;
 }
-.gallery-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.gallery .img.hero {
+  min-height: 380px;
 }
-.thumb-strip {
+.thumbs {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+  margin-top: 8px;
 }
-.origin-card-layout {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 24px;
-  align-items: stretch;
+.thumbs .img {
+  min-height: 72px;
+}
+.thumbs .img.leak {
+  position: relative;
+}
+.thumbs .img.leak::before,
+.thumbs .img.leak::after {
+  opacity: 0.4;
+}
+.thumbs .leak-glyph {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  font-size: 11px;
+  color: #555;
+  z-index: 3;
+  background: #fafaf6;
+  padding: 0 2px;
+}
+.thumbs .leak-label {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  font-size: 10px;
+  font-style: italic;
+  color: #555;
+  background: rgba(250,250,246,0.9);
+  padding: 2px 3px;
+  text-align: center;
+  z-index: 3;
+  line-height: 1.2;
 }
 
-/* ---------- Responsive: stack notes under content on narrow screens ---------- */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.info .txt { min-height: 36px; }
+.info .txt.title { min-height: 56px; font-size: 13px; }
+.info .txt.desc { min-height: 56px; }
+.variant-row {
+  display: flex;
+  gap: 6px;
+}
+.variant-row .variant {
+  flex: 1;
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  text-align: center;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qty-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.qty-row .qty {
+  flex: 0 0 70px;
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 10px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qty-row .cta {
+  flex: 1;
+  border: 1.5px solid #222;
+  background: #ececec;
+  padding: 14px;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Long description ---------- */
+.heading-box {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-style: italic;
+  color: #888;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+.para {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid #333;
+  background: #f5f5f5;
+}
+.para .line {
+  height: 8px;
+  background: #ddd;
+  border: 1px solid #bbb;
+}
+.para .line.short { width: 70%; }
+.para .line.shorter { width: 55%; }
+
+.desc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+.desc-inline-img {
+  max-width: 520px;
+  align-self: center;
+}
+.desc-inline-img .img { min-height: 180px; }
+
+.specs {
+  margin-top: 16px;
+}
+.specs .specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 8px;
+  border: 1px solid #333;
+}
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #ccc;
+}
+.spec-row:nth-last-child(-n+2) { border-bottom: none; }
+.spec-row.right { border-left: 1px solid #ccc; }
+.spec-key, .spec-val {
+  padding: 8px 10px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+.spec-key {
+  background: #f5f5f5;
+  border-right: 1px solid #ccc;
+}
+.spec-val {
+  background: #fff;
+}
+
+/* ---------- Origin card ---------- */
+.origin {
+  border: 2px solid #333;
+  background: #fafafa;
+  margin: 16px 24px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  gap: 16px;
+}
+.origin .copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.origin .eyebrow {
+  min-height: 30px;
+  font-size: 11px;
+}
+.origin .body-box {
+  min-height: 180px;
+  align-items: flex-start;
+  padding-top: 14px;
+}
+.origin .img {
+  min-height: 230px;
+}
+
+/* ---------- Reviews + transmission feed ---------- */
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.review-stars {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-style: italic;
+  color: #888;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.testimonial {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 130px;
+}
+.testimonial .avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.testimonial .avatar {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+}
+.testimonial .avatar-name {
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+}
+.testimonial .lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+.testimonial .lines .line {
+  height: 7px;
+  background: #ddd;
+  border: 1px solid #bbb;
+}
+.testimonial .lines .line.short { width: 75%; }
+.testimonial .attrib {
+  font-size: 10px;
+  font-style: italic;
+  color: #888;
+  margin-top: auto;
+}
+
+.feed-heading {
+  margin-bottom: 8px;
+}
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.feed-row {
+  display: grid;
+  grid-template-columns: 110px 70px 1fr 110px;
+  gap: 8px;
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 6px 10px;
+  align-items: center;
+  min-height: 32px;
+}
+.feed-row .cell {
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.feed-row .cell.comment {
+  white-space: normal;
+}
+.feed-row .pin {
+  font-style: normal;
+  color: #555;
+  font-size: 11px;
+}
+
+/* ---------- Related products ---------- */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tile .img { min-height: 150px; }
+.tile .tile-title {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  min-height: 26px;
+}
+.tile .tile-price {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  min-height: 26px;
+  width: 50%;
+}
+.tile .tile-cta {
+  border: 1px solid #333;
+  background: #ececec;
+  padding: 6px 8px;
+  font-size: 11px;
+  text-align: center;
+  color: #555;
+  font-weight: 600;
+  min-height: 28px;
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 20px 24px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background: #fafafa;
+}
+.newsletter .copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.newsletter .form {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.newsletter .input {
+  flex: 1;
+  border: 1px solid #333;
+  background: #fff;
+  padding: 12px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+}
+.newsletter .submit {
+  border: 1.5px solid #222;
+  background: #ececec;
+  padding: 12px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 24px;
+  background: #fff;
+}
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer-col .col-head {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  min-height: 26px;
+}
+.footer-col .link {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-style: italic;
+  color: #999;
+  min-height: 22px;
+}
+.footer-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  border-top: 1px solid #ccc;
+  padding-top: 12px;
+}
+.footer-bottom .box-line {
+  border: 1px solid #333;
+  background: #f5f5f5;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-style: italic;
+  color: #888;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .wire-body { grid-template-columns: 1fr; }
-  .wire-content { border-right: none; border-bottom: 1px dashed var(--line-light); }
-  .hero-layout, .about-layout, .footer-layout { grid-template-columns: 1fr; }
-  .pdp-layout, .origin-card-layout { grid-template-columns: 1fr; }
-  .grid-4, .grid-6 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: 1fr; }
-  .masthead-layout { grid-template-columns: 1fr; }
-  .thumb-strip { grid-template-columns: repeat(5, 1fr); }
+  .atf,
+  .origin,
+  .newsletter {
+    grid-template-columns: 1fr;
+  }
+  .origin { margin: 16px 16px; }
+  .testimonials { grid-template-columns: 1fr; }
+  .related-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-cols { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { grid-template-columns: 1fr; }
+  .masthead { grid-template-columns: 1fr; }
+  .masthead .nav { justify-content: flex-start; flex-wrap: wrap; }
+  .feed-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .specs .specs-grid { grid-template-columns: 1fr; }
+  .spec-row.right { border-left: none; }
+  .breadcrumb { flex-wrap: wrap; }
+  .breadcrumb .annot { margin-left: 0; width: 100%; }
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================
-     LEGEND + INTRO
-     ============================================ -->
-<div class="legend">
-  <h1>Wittyverse.com — PDP Wireframe</h1>
-  <p>Second wireframe in the series. Plain structural mockup — focus is on <strong>sections, functions, and unique-Wittyverse features</strong> on the product detail page. Three stance decisions are locked: (1) <strong>restraint</strong> — standard DTC PDP skeleton with one or two world-bearing beats woven in, parallel to the homepage's hybrid; (2) the gallery thumbnail strip carries <strong>one leak image slot</strong> (Wittyverse-side photo of the product in its native context); (3) a full-width <strong>origin card</strong> sits below the long description as the explicit world-bearing beat. Visual treatment intentionally absent.</p>
-  <div class="keys">
-    <div><span class="key-section"></span> Section boundary</div>
-    <div><span class="key-slot"></span> Content slot (image, copy, CTA, etc.)</div>
-    <div><span class="key-wv">◆ WV:</span> Unique-Wittyverse feature</div>
+<div class="caption"><em>PDP wireframe · structural layout · visual design TBD</em></div>
+
+<div class="page">
+
+  <!-- Browser chrome strip -->
+  <div class="chrome">
+    <div class="chrome-dots">
+      <span class="chrome-dot"></span>
+      <span class="chrome-dot"></span>
+      <span class="chrome-dot"></span>
+    </div>
+    <div class="chrome-nav">
+      <span>&larr;</span>
+      <span>&rarr;</span>
+      <span>&#x21bb;</span>
+    </div>
+    <div class="chrome-url">wittyverse.com / catalog / [category] / [product-name]</div>
   </div>
-  <div class="meta">
-    Source spine: parallel to homepage — standard DTC PDP with two world-bearing beats (leak image in §4 gallery + origin card in §6). ·
-    Voice: third-person shopkeeper (default storefront surface). ·
-    Current canon: Winston is Earth-born (NC), imports from the Wittyverse through a Himalayan portal.
+
+  <!-- 1. Marquee strip -->
+  <div class="marquee">
+    <div class="txt center">scrolling marquee message</div>
+    <div class="note">scrolling marquee &middot; 3&ndash;5 items &middot; sitewide</div>
   </div>
-</div>
 
-<main class="page">
-
-  <!-- ============================================
-       §1 — MARQUEE STRIP (compressed stub)
-       ============================================ -->
-  <section class="wire" id="s1-marquee">
-    <div class="wire-label"><span>§1 — Marquee Strip</span><span class="sub">sitewide · stub</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-thin">[ SCROLLING MARQUEE ] <small>same as homepage §1 — sitewide</small></div>
-      </div>
-      <div class="wire-notes">
-        <p><strong>Reuse:</strong> Same as homepage §1. Renders identically on every page.</p>
-        <p>See homepage wireframe §1 for function, contents, and WV features.</p>
-      </div>
+  <!-- 2. Masthead -->
+  <div class="masthead">
+    <div class="logo">logo</div>
+    <div class="nav">
+      <div class="txt">nav link</div>
+      <div class="txt">nav link</div>
+      <div class="txt">nav link</div>
+      <div class="txt">nav link</div>
     </div>
-  </section>
-
-  <!-- ============================================
-       §2 — MASTHEAD (compressed stub)
-       ============================================ -->
-  <section class="wire" id="s2-masthead">
-    <div class="wire-label"><span>§2 — Masthead</span><span class="sub">sitewide · sticky · stub</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-thin">[ MASTHEAD ] <small>same as homepage §2 — sticky, sitewide (logo + nav + dispatch countdown + cart)</small></div>
-      </div>
-      <div class="wire-notes">
-        <p><strong>Reuse:</strong> Same as homepage §2. Sticky on scroll, persistent across all pages.</p>
-        <p>See homepage wireframe §2 for function, layout, and WV features (Cycle tag, dispatch countdown, kicker).</p>
-      </div>
+    <div class="right">
+      <div class="txt">account</div>
+      <div class="txt">cart</div>
     </div>
-  </section>
+  </div>
 
-  <!-- ============================================
-       §3 — BREADCRUMB
-       ============================================ -->
-  <section class="wire" id="s3-breadcrumb">
-    <div class="wire-label"><span>§3 — Breadcrumb</span><span class="sub">catalog navigation context</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-thin slot-text">[ BREADCRUMB TRAIL ]<small>home › catalog › [category] › [product name]</small></div>
-      </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> orientation within the catalog hierarchy + one-tap return path to parent listing.</p>
-        <p><strong>Decisions to make:</strong></p>
-        <p>• <em>Cycle tag in the trail:</em> does the breadcrumb carry the Cycle stamp (e.g. "Cycle 247 dispatch › Headlight Fluid")? If yes, does it <em>replace</em> the category or <em>sit alongside</em> it?</p>
-        <p>• <em>Recommendation:</em> alongside — Cycle is a temporal axis, category is a taxonomic axis; both are useful and don't conflict.</p>
-        <span class="wv">Cycle tag in the trail is a foreign fingerprint at low dose — operational, not loud.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> truncate middle segments with ellipsis if needed; keep first + last.</p>
-      </div>
-    </div>
-  </section>
+  <!-- 3. Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="crumb">Home</div>
+    <span class="sep">&gt;</span>
+    <div class="crumb">Catalog</div>
+    <span class="sep">&gt;</span>
+    <div class="crumb">Category</div>
+    <span class="sep">&gt;</span>
+    <div class="crumb">Product Name</div>
+    <span class="annot">decision: include Cycle stamp here?</span>
+  </div>
 
-  <!-- ============================================
-       §4 — PRODUCT ABOVE-THE-FOLD
-       ============================================ -->
-  <section class="wire" id="s4-product-atf">
-    <div class="wire-label"><span>§4 — Product Above-the-Fold</span><span class="sub">primary commerce surface</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="pdp-layout">
-          <!-- LEFT: gallery -->
-          <div class="gallery-layout">
-            <div class="slot slot-hero-img">[ MAIN PRODUCT IMAGE ]<small>large hero shot · Earth-side product photography</small></div>
-            <div class="thumb-strip">
-              <div class="slot slot-thumb">[ THUMB 1 ]<small>standard angle</small></div>
-              <div class="slot slot-thumb">[ THUMB 2 ]<small>detail / packaging</small></div>
-              <div class="slot slot-thumb">[ THUMB 3 ]<small>in-hand / scale</small></div>
-              <div class="slot slot-thumb slot-leak">[ LEAK IMAGE — Wittyverse-side photo ]<small>WV-side product photo (depot shelf / in use)</small></div>
-              <div class="slot slot-thumb">[ THUMB 5 ]<small>spec / back</small></div>
-            </div>
-          </div>
-          <!-- RIGHT: info column -->
-          <div class="col">
-            <div class="slot slot-text" style="min-height:50px;">[ EYEBROW / DISPATCH TAG ]<small>e.g. "Cycle 247 dispatch · fresh through the dock"</small></div>
-            <div class="slot slot-text slot-md">[ PRODUCT TITLE ]<small>Earth-side product name</small></div>
-            <div class="slot slot-text" style="min-height:50px;">[ OPTIONAL · WITTYVERSE-SIDE SUB-TITLE ]<small>optional — e.g. "Known on the other side as: [in-universe name]"</small></div>
-            <div class="slot slot-text" style="min-height:50px;">[ PRICE ]<small>standard price display · sale / strike-through if applicable</small></div>
-            <div class="slot slot-text slot-md">[ VARIANT SELECTOR ]<small>size / color / version — varies by product</small></div>
-            <div class="slot slot-text slot-md">[ SHORT DESCRIPTION ]<small>1–2 lines · the one-liner pitch</small></div>
-            <div class="row">
-              <div class="slot" style="flex:1.5;">[ PRIMARY CTA — "Add to bag" ]</div>
-              <div class="slot" style="flex:0.6;">[ QTY ]<small>1</small></div>
-            </div>
-            <div class="slot slot-text slot-thin">[ TRUST LINE ]<small>shipping · returns · dispatch rhythm microcopy</small></div>
-          </div>
+  <!-- 4. Product Above-the-Fold -->
+  <div class="atf">
+    <!-- LEFT: gallery -->
+    <div class="gallery">
+      <div class="img hero">
+        <div class="img-label">main product image</div>
+      </div>
+      <div class="thumbs">
+        <div class="img"><div class="img-label">thumb</div></div>
+        <div class="img"><div class="img-label">thumb</div></div>
+        <div class="img"><div class="img-label">thumb</div></div>
+        <div class="img"><div class="img-label">thumb</div></div>
+        <div class="img leak">
+          <span class="leak-glyph">&#x25c7;</span>
+          <span class="leak-label">leak image &middot; WV-side product photo</span>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> primary commerce surface — what the product is, what it costs, how to buy it. The fold the page must earn.</p>
-        <p><strong>Layout:</strong> 2-col — gallery (wider) left, info column right. Standard DTC pattern.</p>
-        <p><strong>Decisions to make:</strong></p>
-        <p>• <em>Variant selector pattern:</em> size vs. color vs. an "Earth-side / Wittyverse-side packaging" toggle. The packaging toggle is on-brand but adds production cost; default = whatever the SKU already supports.</p>
-        <p>• <em>WV-side sub-title default:</em> on by default for products that have a clean in-universe name, off when there isn't one. Per-product editorial call.</p>
-        <p>• <em>Trust line copy direction:</em> three beats — shipping window, return policy, dispatch rhythm. Combined or split into two rows.</p>
-        <span class="wv">Eyebrow carries the Cycle stamp — foreign fingerprint at the top of the commerce fold.</span>
-        <span class="wv">Leak image earns its slot in the thumbnail strip via the homepage §9 leak mechanic: portal leakage gives a Wittyverse-side view of the product in its native context (depot shelf, in use by a resident). Postcard-style, never spooky. Lore-justified per §7.5 of the brief.</span>
-        <span class="wv">Optional WV-side sub-title is one of the low-dose foreign fingerprints — present when the in-universe name exists, omitted otherwise.</span>
-        <span class="wv">Voice: third-person warm shopkeeper. The shop describes the product. NOT first-person Winston on the PDP.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> gallery stacks above info column; thumbnails remain 5-up; CTA full-width.</p>
-      </div>
     </div>
-  </section>
+    <!-- RIGHT: info column -->
+    <div class="info">
+      <div class="txt">dispatch eyebrow &middot; e.g. "Cycle 247 &middot; fresh through the dock"</div>
+      <div class="txt title">product title</div>
+      <div class="txt">(optional) Wittyverse-side sub-title</div>
+      <div class="txt">price</div>
+      <div class="variant-row">
+        <div class="variant">variant 1</div>
+        <div class="variant">variant 2</div>
+        <div class="variant">variant 3</div>
+      </div>
+      <div class="note">variants vary by SKU (size / color / packaging)</div>
+      <div class="txt desc">short description &middot; 1&ndash;2 lines</div>
+      <div class="qty-row">
+        <div class="qty">qty</div>
+        <div class="cta">Add to bag</div>
+      </div>
+      <div class="txt">trust microcopy &middot; shipping &middot; returns &middot; dispatch rhythm</div>
+    </div>
+  </div>
 
-  <!-- ============================================
-       §5 — LONG DESCRIPTION
-       ============================================ -->
-  <section class="wire" id="s5-long-description">
-    <div class="wire-label"><span>§5 — Long Description</span><span class="sub">Earth-side product description · linear scroll</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-text" style="margin-bottom:14px; min-height:50px;">[ HEADING ]<small>e.g. "About this one" / "What it is"</small></div>
-        <div class="col">
-          <div class="slot slot-text slot-md">[ BODY PARAGRAPH 1 ]<small>what it does · the premise</small></div>
-          <div class="slot slot-text slot-md">[ BODY PARAGRAPH 2 ]<small>materials · construction · how it's made</small></div>
-          <div class="slot slot-hero-img" style="min-height:180px; max-width:520px;">[ OPTIONAL · INLINE DETAIL IMAGE ]<small>break in the copy · close-up / use-case shot</small></div>
-          <div class="slot slot-text slot-md">[ BODY PARAGRAPH 3 ]<small>how to use · care · what to expect</small></div>
-        </div>
-        <div style="margin-top:18px;">
-          <div class="slot slot-text" style="margin-bottom:12px; min-height:40px;">[ SPECS SUB-BLOCK HEADING ]<small>e.g. "The details"</small></div>
-          <div class="grid-2">
-            <div class="slot slot-text slot-thin">[ SPEC ROW ]<small>weight · [value]</small></div>
-            <div class="slot slot-text slot-thin">[ SPEC ROW ]<small>dimensions · [value]</small></div>
-            <div class="slot slot-text slot-thin">[ SPEC ROW ]<small>materials · [value]</small></div>
-            <div class="slot slot-text slot-thin">[ SPEC ROW ]<small>made in · [value]</small></div>
-            <div class="slot slot-text slot-thin">[ SPEC ROW · WV ]<small>Cycle of arrival · C247.3</small></div>
-            <div class="slot slot-text slot-thin">[ SPEC ROW · WV ]<small>O.O.P.S. clearance # · [value]</small></div>
-            <div class="slot slot-text slot-thin">[ SPEC ROW · WV ]<small>Wittyverse depot of origin · [value]</small></div>
-            <div class="slot slot-text slot-thin">[ SPEC ROW ]<small>SKU · [value]</small></div>
-          </div>
+  <!-- 5. Long Description -->
+  <div class="section">
+    <div class="heading-box">section heading &middot; e.g. "About this one"</div>
+    <div class="desc-body">
+      <div class="para">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line short"></div>
+      </div>
+      <div class="para">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line short"></div>
+      </div>
+      <div class="desc-inline-img">
+        <div class="img">
+          <div class="img-label">inline detail image</div>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> Earth-side product description — what it does, materials, how to use it. The standard PDP body copy.</p>
-        <p><strong>Structure:</strong> linear scroll. No tabs, no accordion. Heading → 2–3 paragraphs → optional inline image break → specs sub-block.</p>
-        <p><strong>Decisions to make:</strong></p>
-        <p>• <em>Specs sub-block — WV fields:</em> does it interleave WV-specific rows (Cycle of arrival, O.O.P.S. clearance #, Wittyverse depot of origin) with standard rows (weight, dimensions, materials, SKU)? Recommend yes — small dose, factual register, reads as operational rather than decorative.</p>
-        <p>• <em>WV fields visibility:</em> always on, or only when product has them populated. Default: only when populated.</p>
-        <span class="wv">Subtle foreign fingerprint sprinkled in copy ("dispatched Tuesdays," "Earth-side fulfillment," etc.) — but no separate world-bearing block here. The discrete WV beat is the origin card below (§6).</span>
-        <span class="wv">WV spec rows count as factual operational stamps — they earn their slot the same way the compliance microline does in the footer.</span>
-        <span class="wv">Voice: third-person shopkeeper throughout.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> single column; specs sub-block becomes 1-col list.</p>
+      <div class="para">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line shorter"></div>
       </div>
     </div>
-  </section>
 
-  <!-- ============================================
-       §6 — ORIGIN CARD
-       ============================================ -->
-  <section class="wire" id="s6-origin-card">
-    <div class="wire-label"><span>§6 — Origin Card</span><span class="sub">the explicit world-bearing beat</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="origin-card-layout">
-          <div class="col">
-            <div class="slot slot-text" style="min-height:50px;">[ EYEBROW ]<small>options: "From the dispatch desk" / "O.O.P.S. clearance record" / "In the Wittyverse" / "Receiving depot file"</small></div>
-            <div class="slot slot-text slot-tall">[ ORIGIN COPY · 80–120 WORDS ]<small>third-person institutional or shopkeeper voice — NOT first-person Winston. Reads like a museum wall label or a receiving record. Can reference the leak image in §4 ("pictured above: a unit in its native shelf context").</small></div>
-          </div>
-          <div class="slot slot-tall">[ SUPPORTING IMAGE ]<small>options: re-render of the leak image · O.O.P.S. stamp · depot dispatch slip · world-artifact</small></div>
+    <div class="specs">
+      <div class="heading-box">specs &middot; the details</div>
+      <div class="specs-grid">
+        <div class="spec-row">
+          <div class="spec-key">weight</div>
+          <div class="spec-val">&mdash;</div>
+        </div>
+        <div class="spec-row right">
+          <div class="spec-key">dimensions</div>
+          <div class="spec-val">&mdash;</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">materials</div>
+          <div class="spec-val">&mdash;</div>
+        </div>
+        <div class="spec-row right">
+          <div class="spec-key">Cycle of arrival</div>
+          <div class="spec-val">&mdash;</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-key">O.O.P.S. clearance #</div>
+          <div class="spec-val">&mdash;</div>
+        </div>
+        <div class="spec-row right">
+          <div class="spec-key">Wittyverse depot of origin</div>
+          <div class="spec-val">&mdash;</div>
         </div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> the explicit world-bearing beat on the PDP — the "museum wall label" for the artifact above. Builds trust through specificity and earns the "museum-quality framing of absurd objects" feel from the brief.</p>
-        <p><strong>Layout:</strong> 2-up. Copy left (wider), supporting image right (narrower).</p>
-        <p><strong>Decisions to make:</strong></p>
-        <p>• <em>Eyebrow rotation strategy:</em> one default per product (editorial choice per SKU) vs. category-driven (rule based on product category). Recommend per-product default — eyebrows are the most legible WV beat and benefit from editorial care.</p>
-        <p>• <em>Image slot content:</em> re-render of the leak image (creates a visual rhyme with §4) vs. a separate world-artifact (O.O.P.S. stamp, dispatch slip). Either passes §7.5; visual variety argues for separate world-artifact.</p>
-        <span class="wv">Canonical world-bearing beat on the PDP. Lore-justified per §7.5: origin = portal-imported documentation; presentation = standard product context card.</span>
-        <span class="wv">Narratively paired with the leak image in §4 — the copy can explicitly reference it ("pictured above on the depot shelf, this unit cleared through O.O.P.S. records on Cycle 247.3").</span>
-        <span class="wv">Voice register stays third-person — institutional or shopkeeper. First-person Winston is reserved for service surfaces (About, 404, cart, refund emails).</span>
-        <span class="wv">Mirrors the homepage's §6 "At the Counter" world-bearing slot in structure (eyebrow + copy + image) but pitched to a product, not the operator.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> copy stacks above image.</p>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ============================================
-       §7 — REVIEWS + TRANSMISSION FEED
-       ============================================ -->
-  <section class="wire" id="s7-reviews">
-    <div class="wire-label"><span>§7 — Reviews + Transmission Feed</span><span class="sub">third-party validation · per-SKU</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-text" style="margin-bottom:14px; min-height:50px;">[ AGGREGATE RATING + COUNT ]<small>optional in v1 if review data thin · e.g. "★ 4.8 across 312 reviews"</small></div>
-        <div class="grid-3" style="margin-bottom:18px;">
-          <div class="slot slot-text slot-md">[ TESTIMONIAL 1 ]<small>quote · attribution · location/date</small></div>
-          <div class="slot slot-text slot-md">[ TESTIMONIAL 2 ]<small>quote · attribution · location/date</small></div>
-          <div class="slot slot-text slot-md">[ TESTIMONIAL 3 ]<small>quote · attribution · location/date</small></div>
+  <!-- 6. Origin Card -->
+  <div class="origin">
+    <div class="copy">
+      <div class="txt eyebrow">eyebrow &middot; "From the dispatch desk" / "O.O.P.S. clearance record" / "In the Wittyverse"</div>
+      <div class="txt body-box">origin card body &middot; 80&ndash;120 words &middot; third-person institutional voice</div>
+    </div>
+    <div class="img">
+      <div class="img-label">supporting image &middot; re-render of leak image OR O.O.P.S. stamp / depot dispatch slip</div>
+    </div>
+  </div>
+
+  <!-- 7. Reviews + Transmission Feed -->
+  <div class="section">
+    <div class="review-top">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734; &middot; aggregate rating &middot; 4.x &middot; 2,400 reviews</div>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="avatar-row">
+          <div class="avatar"></div>
+          <div class="avatar-name">reviewer</div>
         </div>
-        <div>
-          <div class="slot slot-text" style="margin-bottom:12px;">[ PER-SKU TRANSMISSION FEED ]<small>same structure as homepage §5/§9 · filtered to entries that reference THIS product · 4–5 entries visible · new entry every 15–30s · pinned entries marked 📌 · mixed Earth-side + Wittyverse-side voices</small></div>
-          <div class="col">
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>SarahK · C247.3 · "the headlight fluid actually works?? mechanic was confused" · → Headlight Fluid</small></div>
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>📌 K. Norven, Sector W-Mid · C246.8 · "we use these by the crate over here, can confirm the fluid is the real deal" · → Headlight Fluid</small></div>
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>MikeT · C247.1 · "bought one as a gag — actually using it now" · → Headlight Fluid</small></div>
-            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>Anonymous · C246.9 · "is this stuff really imported from somewhere or is that a bit" · → Headlight Fluid</small></div>
-          </div>
+        <div class="lines">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line short"></div>
         </div>
+        <div class="attrib">attribution &middot; location &middot; date</div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> third-party validation; convert undecided buyers via real reactions to this specific SKU.</p>
-        <p><strong>Layout:</strong> aggregate (optional) → 3 testimonials → per-SKU transmission feed below.</p>
-        <p><strong>Decisions to make:</strong></p>
-        <p>• <em>Aggregate rating in v1:</em> yes/no — depends on whether the existing Witty Yeti review data carries over and is dense enough per SKU. Default: hide on v1 unless data is solid.</p>
-        <p>• <em>Feed filter UX:</em> auto-filtered to this SKU vs. user-toggleable "all products." Recommend auto-filtered with a small "see all transmissions →" link to the sitewide feed.</p>
-        <span class="wv">Per-SKU transmission feed = canonical PDP instance of the sitewide leak mechanic (homepage §9). Same feed, scoped to this product.</span>
-        <span class="wv">Cadence: 1 entry every 15–30s · static fallback for <code>prefers-reduced-motion</code>. Pinned entries (📌) are curator-clipped from the feed.</span>
-        <span class="wv">Both Earth-side reactions and Wittyverse-resident comments flow through the same feed — the split lives in the voice of each entry, not in two separate widgets. Same rule as the homepage.</span>
-        <span class="wv">Lore stack (two justifications): (a) data source = portal leakage, (b) presentation format = Winston's MySpace-era design taste. Passes §7.5 on both counts.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> testimonials become a scrollable carousel; feed remains vertical list.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       §8 — RELATED PRODUCTS
-       ============================================ -->
-  <section class="wire" id="s8-related">
-    <div class="wire-label"><span>§8 — Related Products</span><span class="sub">cross-sell · keep-browsing</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-text" style="margin-bottom:14px; min-height:50px;">[ SECTION HEADING ]<small>e.g. "More from this cycle" / "Through the dock with this one" / "Winston picks"</small></div>
-        <div class="grid-4">
-          <div class="slot slot-tile">[ PRODUCT TILE 1 ]<small>image · title · price · quick-add ATC</small></div>
-          <div class="slot slot-tile">[ PRODUCT TILE 2 ]<small>image · title · price · quick-add ATC</small></div>
-          <div class="slot slot-tile">[ PRODUCT TILE 3 ]<small>image · title · price · quick-add ATC</small></div>
-          <div class="slot slot-tile">[ PRODUCT TILE 4 ]<small>image · title · price · quick-add ATC</small></div>
+      <div class="testimonial">
+        <div class="avatar-row">
+          <div class="avatar"></div>
+          <div class="avatar-name">reviewer</div>
         </div>
+        <div class="lines">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line short"></div>
+        </div>
+        <div class="attrib">attribution &middot; location &middot; date</div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Function:</strong> cross-sell / keep-browsing; recover the click if this SKU isn't the right fit.</p>
-        <p><strong>Layout:</strong> 4 tiles in a row desktop (collapses to 2-col mobile). 3 tiles also works if visual breathing room is preferred.</p>
-        <p><strong>Decisions to make:</strong></p>
-        <p>• <em>Related-products logic:</em> "More from this cycle" / "More from this category" / "Bought together" / "Winston picks" / multiple side-by-side rows. Default for v1: <strong>one row</strong>, category-driven, with the heading flexible per-product. Add a second row ("More from this cycle") only if seasonal merchandising warrants it.</p>
-        <span class="wv">Tile labels can lean on Cycle / category language at low dose ("Cycle 247 sibling," etc.) — same low-dose foreign fingerprint discipline as the breadcrumb.</span>
-        <span class="wv">One tile in the row can be promoted to "More from Cycle 247" if seasonally relevant — connects to the dispatch rhythm.</span>
-        <p style="margin-top:10px;"><strong>Mobile:</strong> 2-col grid; tiles slightly taller.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       §9 — NEWSLETTER (compressed stub)
-       ============================================ -->
-  <section class="wire" id="s9-newsletter">
-    <div class="wire-label"><span>§9 — Newsletter Opt-in</span><span class="sub">"the dispatch list" · stub</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-thin">[ NEWSLETTER OPT-IN ] <small>same as homepage §7</small></div>
-      </div>
-      <div class="wire-notes">
-        <p><strong>Reuse:</strong> Same as homepage §7. Email capture; "the dispatch list" framing.</p>
-        <p>See homepage wireframe §7 for layout, pitch, and WV features.</p>
+      <div class="testimonial">
+        <div class="avatar-row">
+          <div class="avatar"></div>
+          <div class="avatar-name">reviewer</div>
+        </div>
+        <div class="lines">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line short"></div>
+        </div>
+        <div class="attrib">attribution &middot; location &middot; date</div>
       </div>
     </div>
-  </section>
 
-  <!-- ============================================
-       §10 — FOOTER (compressed stub)
-       ============================================ -->
-  <section class="wire" id="s10-footer">
-    <div class="wire-label"><span>§10 — Footer</span><span class="sub">sitewide · stub</span></div>
-    <div class="wire-body">
-      <div class="wire-content">
-        <div class="slot slot-thin">[ FOOTER ] <small>same as homepage §8 — 4-col link grid + compliance microline + copyright + signature</small></div>
+    <div class="feed-heading heading-box">transmission feed &middot; per-SKU</div>
+    <div class="feed">
+      <div class="feed-row">
+        <div class="cell">handle</div>
+        <div class="cell">Cycle stamp</div>
+        <div class="cell comment">comment text</div>
+        <div class="cell">&rarr; product ref</div>
       </div>
-      <div class="wire-notes">
-        <p><strong>Reuse:</strong> Same as homepage §8. Sitewide.</p>
-        <p>See homepage wireframe §8 for column structure, compliance microline, and WV features.</p>
+      <div class="feed-row">
+        <div class="cell"><span class="pin">&#128204;</span> handle</div>
+        <div class="cell">Cycle stamp</div>
+        <div class="cell comment">comment text &middot; pinned entry</div>
+        <div class="cell">&rarr; product ref</div>
+      </div>
+      <div class="feed-row">
+        <div class="cell">handle</div>
+        <div class="cell">Cycle stamp</div>
+        <div class="cell comment">comment text</div>
+        <div class="cell">&rarr; product ref</div>
+      </div>
+      <div class="feed-row">
+        <div class="cell">handle</div>
+        <div class="cell">Cycle stamp</div>
+        <div class="cell comment">comment text</div>
+        <div class="cell">&rarr; product ref</div>
+      </div>
+      <div class="feed-row">
+        <div class="cell">handle</div>
+        <div class="cell">Cycle stamp</div>
+        <div class="cell comment">comment text</div>
+        <div class="cell">&rarr; product ref</div>
       </div>
     </div>
-  </section>
+    <div class="note">1 new entry every 15&ndash;30s &middot; static fallback for reduced-motion</div>
+  </div>
 
-</main>
+  <!-- 8. Related Products -->
+  <div class="section">
+    <div class="heading-box">heading &middot; e.g. "More from this Cycle" OR "You might also like"</div>
+    <div class="related-grid">
+      <div class="tile">
+        <div class="img"><div class="img-label">product image</div></div>
+        <div class="tile-title">product title</div>
+        <div class="tile-price">price</div>
+        <div class="tile-cta">Quick add</div>
+      </div>
+      <div class="tile">
+        <div class="img"><div class="img-label">product image</div></div>
+        <div class="tile-title">product title</div>
+        <div class="tile-price">price</div>
+        <div class="tile-cta">Quick add</div>
+      </div>
+      <div class="tile">
+        <div class="img"><div class="img-label">product image</div></div>
+        <div class="tile-title">product title</div>
+        <div class="tile-price">price</div>
+        <div class="tile-cta">Quick add</div>
+      </div>
+      <div class="tile">
+        <div class="img"><div class="img-label">product image</div></div>
+        <div class="tile-title">product title</div>
+        <div class="tile-price">price</div>
+        <div class="tile-cta">Quick add</div>
+      </div>
+    </div>
+  </div>
 
-<!-- ============================================
-     PAGE NOTES
-     ============================================ -->
-<div class="legend" style="margin-top:32px;">
-  <h1>Architecture notes (not on-page)</h1>
-  <p style="margin-bottom:10px;"><strong>Two world-bearing beats, restraint maintained.</strong> The PDP carries (1) the leak image in the §4 gallery thumbnail strip and (2) the §6 origin card. The rest of the page reads as a standard DTC PDP — gallery + info column + long description + reviews + related. This mirrors the homepage's "one world-bearing section in an otherwise lean commercial shape," scaled down to product level.</p>
-  <p style="margin-bottom:10px;"><strong>Voice register.</strong> The PDP is a default storefront surface → third-person shopkeeper throughout (eyebrows, product title context, long description, origin card, trust line, related-products heading). First-person Winston is reserved for service surfaces (About, 404, cart, refund emails, order confirmations). The origin card in particular reads institutionally — "museum wall label," not "Winston's note."</p>
-  <p style="margin-bottom:10px;"><strong>Earth-side / Wittyverse-side toggle.</strong> Not surfaced on the PDP as a foreground element. The IA still needs to accommodate it (per website brief), but on the PDP the WV-side content is reached through the leak image, the optional WV-side sub-title, the WV spec rows, and the origin card — not via a top-level toggle.</p>
-  <p style="margin-bottom:10px;"><strong>Lore-justification (§7.5 discipline).</strong> Every world-bearing element on the PDP traces to either a standard UI affordance or a Wittyverse-canon cause: the leak image = portal leakage (homepage §9); the WV spec rows = O.O.P.S. / depot documentation traveling with the shipment; the origin card = portal-imported product documentation, presented in standard museum/receiving-record format. Decorative weirdness is banned.</p>
-  <p style="margin-bottom:10px;"><strong>Mobile collapse</strong> behavior matches the homepage: 900px breakpoint stacks the notes column under the layout column and collapses multi-column slot grids (pdp-layout, origin-card-layout, grid-4, grid-3).</p>
-  <p><strong>What this wireframe is for:</strong> locking the PDP's section list, each section's function, and the unique-Wittyverse features it carries. Visual decisions (palette, type, motion, photography style, gallery interaction patterns, illustration vs photo for the origin card image, exact eyebrow copy) are deliberately deferred to the prototype phase.</p>
+  <!-- 9. Newsletter -->
+  <div class="newsletter">
+    <div class="copy">
+      <div class="txt">newsletter headline</div>
+      <div class="txt">1-line pitch</div>
+    </div>
+    <div class="copy">
+      <div class="form">
+        <div class="input">email address</div>
+        <div class="submit">Subscribe</div>
+      </div>
+      <div class="note">same as homepage newsletter section</div>
+    </div>
+  </div>
+
+  <!-- 10. Footer -->
+  <div class="footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="col-head">column heading</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+      </div>
+      <div class="footer-col">
+        <div class="col-head">column heading</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+      </div>
+      <div class="footer-col">
+        <div class="col-head">column heading</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+      </div>
+      <div class="footer-col">
+        <div class="col-head">column heading</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+        <div class="link">link</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="box-line">compliance microline &middot; long-form legal / disclosure text</div>
+      <div class="box-line">copyright &middot; wordmark</div>
+      <div class="box-line">signature mark</div>
+    </div>
+  </div>
+
 </div>
 
 </body>
