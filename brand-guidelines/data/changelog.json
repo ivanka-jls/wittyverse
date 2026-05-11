@@ -1,5 +1,12 @@
 [
   {
+    "version": "0.4.1",
+    "date": "2026-05-11",
+    "changes": [
+      "Subheading (h3) color on cream cards changed from lime to purple-deep — lime-on-cream failed WCAG contrast; h3 stays lime on dark visual-system sections (Logo, Color, Typography, etc.) where it works"
+    ]
+  },
+  {
     "version": "0.4",
     "date": "2026-05-08",
     "changes": [

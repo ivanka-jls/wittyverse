@@ -170,6 +170,19 @@ h4 {
   box-shadow: 0 8px 0 var(--color-ink), 0 12px 24px rgba(0,0,0,0.25);
 }
 
+/* h3 on cream cards: lime fails contrast, swap to purple-deep */
+.placeholder h3,
+.canon-card h3,
+.quick-card h3,
+.sample-card h3,
+.voice-personality h3,
+.voice-do h3,
+.voice-dont h3,
+.voice-messaging h3,
+.voice-samples h3 {
+  color: var(--color-purple-deep);
+}
+
 .placeholder {
   font-family: var(--font-body);
   font-weight: 700;
