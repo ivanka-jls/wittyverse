@@ -367,11 +367,13 @@ body {
           <div class="slot slot-text slot-md">[ TESTIMONIAL 2 ]<small>quote · attribution · location/date</small></div>
           <div class="slot slot-text slot-md">[ TESTIMONIAL 3 ]<small>quote · attribution · location/date</small></div>
         </div>
-        <div style="border-top: 1px dashed #bbb; padding-top: 14px; margin-top: 14px;">
-          <div class="slot slot-text slot-thin" style="margin-bottom:12px;">[ FROM THE OTHER SIDE — WITTYVERSE-SIDE REVIEWS ]<small>sub-block: in-universe voice reviews from residents who actually use the products</small></div>
-          <div class="grid-2">
-            <div class="slot slot-text slot-md">[ WV REVIEW 1 ]<small>in-universe voice · resident perspective · talks about utility/weight/use</small></div>
-            <div class="slot slot-text slot-md">[ WV REVIEW 2 ]<small>in-universe voice · resident perspective · talks about utility/weight/use</small></div>
+        <div style="margin-top:18px;">
+          <div class="slot slot-text" style="margin-bottom:12px;">[ TRANSMISSION FEED — Guestbook view ]<small>live feed of portal-leaked chatter, rendered as Winston's MySpace-era guestbook · 4–5 entries visible · new entry every 15–30s · pinned entries marked 📌</small></div>
+          <div class="col">
+            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>SarahK · C247.3 · "the headlight fluid actually works?? mechanic was confused" · → Headlight Fluid</small></div>
+            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>📌 K. Norven, Sector W-Mid · C246.8 · "weight tolerance held under 14 standard loads, recommend for shed use" · → Reality Stabilizer</small></div>
+            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>DaveB · C246.9 · "gave the dehydrated water as a white elephant gift — standing ovation" · → Dehydrated Water</small></div>
+            <div class="slot slot-text">[ ENTRY ROW — handle · Cycle stamp · 1–2 line comment · product ref ]<small>Anonymous · C246.1 · "where is this place actually shipping from???" · (no product ref)</small></div>
           </div>
         </div>
       </div>
@@ -382,8 +384,10 @@ body {
         <span class="wv">Frame testimonials as <em>customer letters / mail received</em> — envelopes, stamps, hand-written feel possible.</span>
         <span class="wv">Surface the North Star reaction here ("Hot damn, where did you GET that?") — natural quote shape.</span>
         <span class="wv">Customer dates in Earth dates; can include "received Cycle 246" as side-stamp.</span>
-        <span class="wv">Reviews appear in two streams: Earth-side (gift-giver reactions, frame as customer letters) and Wittyverse-side (resident perspectives — talks about utility, weight, actual use). The two streams read in different voices: Earth = R2 importer voice; WV-side = R1 in-universe voice.</span>
-        <span class="wv">On the homepage this surfaces as a small sub-block (the WV-side reviews live below the Earth-side grid). On PDPs they sit behind a toggle. This surfaces the WV-side toggle architecture through commerce content rather than via a marketing teaser.</span>
+        <span class="wv">Single transmission feed replaces separate static review streams. Earth-side reactions and Wittyverse-side R1 resident comments both flow through the same feed — the split lives in the voice of each entry, not in two separate widgets.</span>
+        <span class="wv">Lore stack (two justifications): (a) data source = portal leakage, (b) presentation format = Winston's MySpace-era design taste. Passes §7.5 of the brief on both counts.</span>
+        <span class="wv">Cadence: 1 entry every 15–30s. Static fallback for <code>prefers-reduced-motion</code>. Pinned entries (📌) are curator-clipped from the feed.</span>
+        <span class="wv">Canonical visible instance of the sitewide leak mechanic — see §9.</span>
         <p style="margin-top:10px;"><strong>Optional:</strong> aggregate rating + review count if data exists (e.g., "★ 4.8 across 2,400 reviews"). v1 may skip if numbers thin.</p>
       </div>
     </div>
@@ -491,6 +495,14 @@ body {
     <div class="wire-body">
       <div class="wire-content">
         <div class="slot slot-leak slot-text slot-tall">[ NON-RENDERING PATTERN — APPLIES SITEWIDE ]<small>this section documents the mechanic; it doesn't render visually as a homepage block</small></div>
+        <div style="max-width: 320px; margin-top: 18px;">
+          <div class="slot slot-text" style="margin-bottom:12px;">[ ◇ GUESTBOOK WIDGET — sidewide ambient render ]<small>same feed, smaller surface · ~3 entries visible · appears in sidebars / masthead corner / footer · always-on, low key</small></div>
+          <div class="col">
+            <div class="slot slot-leak slot-text">[ ENTRY · compact ]<small>SarahK · C247.3 · "actually works??" · Headlight Fluid</small></div>
+            <div class="slot slot-leak slot-text">[ ENTRY · compact ]<small>📌 K. Norven · C246.8 · "weight tolerance held" · Reality Stabilizer</small></div>
+            <div class="slot slot-leak slot-text">[ ENTRY · compact ]<small>DaveB · C246.9 · "white elephant standing ovation" · Dehydrated Water</small></div>
+          </div>
+        </div>
       </div>
       <div class="wire-notes">
         <p><strong>Function:</strong> A site-wide discovery pattern. As users explore (scroll, hover, return visits, time on page), small "leaks" of Wittyverse info appear — popup artifacts, margin notes, transmissions, photos or short clips of products in use on the other side. Reinforces the Depth Stack (progressive reveal across visits).</p>
@@ -499,6 +511,9 @@ body {
         <span class="wv">Pairs with the lore-justification principle in website-brief.md §7.5 — every leak must have a lore reason; decorative glitches are banned.</span>
         <span class="wv">Tone discipline: leaks feel like "postcards arriving," not spooky/creepy. Warm, slightly mysterious, never horror-adjacent.</span>
         <span class="wv">AI-generated video is a natural fit for richer leaks (short clips of Wittyverse-side product use).</span>
+        <span class="wv">Canonical visible instance: the §5 Transmission Feed. Lore-justified by portal leakage. Presentation-justified by Winston's MySpace-era design taste (he'd reach for a guestbook because that's what felt welcoming when he learned the web).</span>
+        <span class="wv">Same feed renders in two surfaces: §5 hero (4–5 entries, primary), and a small sidewide ambient widget (~3 entries, example shown above). Mixed Earth-side + Wittyverse-side voices flow through both.</span>
+        <span class="wv">Other leak forms (margin notes, hover popups, return-visit unlocks) are secondary to the feed but follow the same lore + tone discipline: postcard-style, never spooky.</span>
       </div>
     </div>
   </section>
