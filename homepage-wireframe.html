@@ -618,7 +618,7 @@ body {
   text-align: right;
 }
 
-/* ---------- §9 leak mechanic doc render ---------- */
+/* ---------- §10 leak mechanic doc render ---------- */
 .leak-doc-intro {
   font-size: 12px;
   font-style: italic;
@@ -702,7 +702,7 @@ body {
      ============================================ -->
 <div class="legend">
   <h1>Wittyverse.com — Homepage Wireframe</h1>
-  <p>Realistic-rendering wireframe. Page reads top-to-bottom in greyscale with visible affordances — buttons look like buttons, text lines suggest copy, images use diagonal-X placeholders. Section notes live in a comments sidebar on the right (Figma/Google Docs style), anchored to each section. Homepage spine is the hybrid between Approach 1 (Lean Commercial) and Approach 2 (Storefront Narrative) — standard DTC shape with one world-bearing section. 8 visible sections + 1 non-rendering pattern (§9 leak mechanic).</p>
+  <p>Realistic-rendering wireframe. Page reads top-to-bottom in greyscale with visible affordances — buttons look like buttons, text lines suggest copy, images use diagonal-X placeholders. Section notes live in a comments sidebar on the right (Figma/Google Docs style), anchored to each section. Homepage spine is the hybrid between Approach 1 (Lean Commercial) and Approach 2 (Storefront Narrative) — standard DTC shape with one world-bearing section. 9 visible sections + 1 non-rendering pattern (§10 leak mechanic).</p>
   <div class="keys">
     <div><span class="key-section"></span> Section boundary</div>
     <div><span class="key-primitive"></span> Text line / paragraph primitive</div>
@@ -863,9 +863,62 @@ body {
   </section>
 
   <!-- ============================================
-       §5 — SOCIAL PROOF / TRANSMISSION FEED
+       §5 — BEST SELLERS
        ============================================ -->
-  <section class="section" id="s5-social-proof">
+  <section class="section" id="s5-best-sellers">
+    <div class="section-render">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+        <div class="ph-line-heading" style="height: auto; background: none; width: auto; margin-bottom: 0; font-size: 18px; font-weight: 700; color: #222;">Best sellers</div>
+        <span class="ph-pill">CYCLE 247</span>
+      </div>
+      <div class="browse-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="ph-card">
+          <div class="ph-image" style="aspect-ratio: 1/1;"></div>
+          <div class="ph-line" style="width: 50%; margin-top: 10px;"></div>
+          <div class="ph-line ph-line-short" style="width: 30%;"></div>
+          <button class="ph-btn ph-btn-small ph-btn-secondary" style="margin-top: 8px;">Quick add</button>
+        </div>
+        <div class="ph-card">
+          <div class="ph-image" style="aspect-ratio: 1/1;"></div>
+          <div class="ph-line" style="width: 80%; margin-top: 10px;"></div>
+          <div class="ph-line ph-line-short" style="width: 30%;"></div>
+          <button class="ph-btn ph-btn-small ph-btn-secondary" style="margin-top: 8px;">Quick add</button>
+        </div>
+        <div class="ph-card">
+          <div class="ph-image" style="aspect-ratio: 1/1;"></div>
+          <div class="ph-line" style="width: 45%; margin-top: 10px;"></div>
+          <div class="ph-line ph-line-short" style="width: 30%;"></div>
+          <button class="ph-btn ph-btn-small ph-btn-secondary" style="margin-top: 8px;">Quick add</button>
+        </div>
+        <div class="ph-card">
+          <div class="ph-image" style="aspect-ratio: 1/1;"></div>
+          <div class="ph-line" style="width: 65%; margin-top: 10px;"></div>
+          <div class="ph-line ph-line-short" style="width: 30%;"></div>
+          <button class="ph-btn ph-btn-small ph-btn-secondary" style="margin-top: 8px;">Quick add</button>
+        </div>
+      </div>
+    </div>
+    <aside class="section-comment">
+      <h3>§5 — Best Sellers · concrete product surface</h3>
+      <p><strong>Function:</strong> surface top-converting products as a direct shopping path. Pairs with the abstract gift-situation tiles in §4 by making the catalog concrete — browse abstractly (§4) &rarr; see concrete examples (§5) &rarr; read what others said (§6).</p>
+      <p class="wv">Small "CYCLE 247" pill next to the heading carries the foreign fingerprint without overstating it. Cycle is a real operational stamp, not decorative — passes §7.5 lore-discipline as standard UI affordance (a labeled section + a tag).</p>
+      <p class="wv">Sort logic naturally ties to dispatch operations — "best sellers" can be framed as "most-dispatched this cycle" in copy without needing a separate section.</p>
+      <p class="wv">Tile labels and product names can carry foreign fingerprint where natural; no special section-level WV mechanic needed beyond the Cycle pill.</p>
+      <div class="decisions">
+        <p><strong>Decisions to make:</strong></p>
+        <p>&bull; <em>Sort window</em> — this Cycle's bestsellers (rotating weekly, ties to dispatch rhythm) vs. evergreen all-time bestsellers vs. mixed (e.g., 3 current + 1 anchor). Tentative: this Cycle's bestsellers, rotates per dispatch.</p>
+        <p>&bull; <em>Tile count</em> — 4 (locked default) vs. 6 with horizontal carousel vs. "Top 5" with numbered ranking.</p>
+        <p>&bull; <em>Quick-add behavior</em> — instant add-to-cart vs. open variant chooser modal. Defer to product reality; if most bestsellers have variants, modal is safer.</p>
+        <p>&bull; <em>Heading variant</em> — "Best sellers" (locked) vs. light flavor options ("Most-dispatched this cycle" / "What's leaving the dock fastest") deferred.</p>
+      </div>
+      <p class="mobile"><strong>Mobile:</strong> 4-up &rarr; 2-up grid (matches §4 Browse Grid mobile pattern). Heading + pill stay on one line; if narrow, pill drops to a new line under the heading.</p>
+    </aside>
+  </section>
+
+  <!-- ============================================
+       §6 — SOCIAL PROOF / TRANSMISSION FEED
+       ============================================ -->
+  <section class="section" id="s6-social-proof">
     <div class="section-render">
       <div class="social-header">
         <div class="ph-line-heading" style="width: 55%;"></div>
@@ -947,7 +1000,7 @@ body {
       </div>
     </div>
     <aside class="section-comment">
-      <h3>§5 — Social Proof · transmission feed</h3>
+      <h3>§6 — Social Proof · transmission feed</h3>
       <p><strong>Function:</strong> third-party validation; convert undecided browsers via real reactions.</p>
       <p><strong>Count:</strong> 3 testimonials desktop, scrollable carousel on mobile.</p>
       <p><strong>Each contains:</strong> quote · customer first name + state · optional purchase + Cycle dates.</p>
@@ -957,16 +1010,16 @@ body {
       <p class="wv">Single transmission feed replaces separate static review streams. Earth-side reactions and Wittyverse-side R1 resident comments both flow through the same feed — the split lives in the voice of each entry, not in two separate widgets.</p>
       <p class="wv">Lore stack (two justifications): (a) data source = portal leakage, (b) presentation format = Winston's MySpace-era design taste. Passes §7.5 of the brief on both counts.</p>
       <p class="wv">Cadence: 1 entry every 15–30s. Static fallback for <code>prefers-reduced-motion</code>. Pinned entries (📌) are curator-clipped from the feed.</p>
-      <p class="wv">Canonical visible instance of the sitewide leak mechanic — see §9.</p>
+      <p class="wv">Canonical visible instance of the sitewide leak mechanic — see §10.</p>
       <p style="margin-top:10px;"><strong>Optional:</strong> aggregate rating + review count if data exists (e.g., "★ 4.8 across 2,400 reviews"). v1 may skip if numbers thin.</p>
       <p class="mobile"><strong>Mobile:</strong> testimonials become horizontally scrollable; transmission feed entries stack at full width.</p>
     </aside>
   </section>
 
   <!-- ============================================
-       §6 — AT THE COUNTER (Winston)
+       §7 — AT THE COUNTER (Winston)
        ============================================ -->
-  <section class="section" id="s6-counter">
+  <section class="section" id="s7-counter">
     <div class="section-render counter-card">
       <div class="counter-layout">
         <div class="counter-portrait">
@@ -1001,22 +1054,22 @@ body {
       </div>
     </div>
     <aside class="section-comment">
-      <h3>§6 — At the Counter · the one world-bearing section</h3>
+      <h3>§7 — At the Counter · the one world-bearing section</h3>
       <p><strong>Function:</strong> single section that earns real estate for the brand world. Builds trust + premise + character anchor without forcing the homepage into a narrative.</p>
       <p><strong>Three parts:</strong></p>
       <p>1. <strong>Winston portrait</strong> — character anchor (illustration vs. photo TBD with brand).<br>2. <strong>Compact about copy</strong> — 2–3 short paragraphs; teaser only; links to full About page.<br>3. <strong>Patent Office "lol" certificate</strong> — image of the artifact + 1-line caption.</p>
       <p class="wv">Patent Office "lol" cert: a Wittyverse-canon artifact (Winston kept the response certificate where Earth's USPTO responded "lol"). Doubles as trust signal + world-leak.</p>
       <p class="wv">Voice: third-person on the homepage block, first-person Winston on the full About page he links to.</p>
       <p class="wv">Optional addition: Winston's signature as a recurring mark.</p>
-      <p class="wv">The dotted-bordered leak slot below the main row is an <em>example placement</em> for the site-wide leak mechanic (see §9 — Discovery / Leak Mechanic). It's not a fixed location — leaks can surface anywhere; this is just one of the homepage's natural hosts because the section already carries world-artifact content (the lol cert).</p>
+      <p class="wv">The dotted-bordered leak slot below the main row is an <em>example placement</em> for the site-wide leak mechanic (see §10 — Discovery / Leak Mechanic). It's not a fixed location — leaks can surface anywhere; this is just one of the homepage's natural hosts because the section already carries world-artifact content (the lol cert).</p>
       <p class="mobile"><strong>Mobile:</strong> portrait → about copy → cert, stacked.</p>
     </aside>
   </section>
 
   <!-- ============================================
-       §7 — NEWSLETTER OPT-IN
+       §8 — NEWSLETTER OPT-IN
        ============================================ -->
-  <section class="section" id="s7-newsletter">
+  <section class="section" id="s8-newsletter">
     <div class="section-render">
       <div class="newsletter-band">
         <div class="newsletter-pitch">
@@ -1032,7 +1085,7 @@ body {
       </div>
     </div>
     <aside class="section-comment">
-      <h3>§7 — Newsletter · "the dispatch list"</h3>
+      <h3>§8 — Newsletter · "the dispatch list"</h3>
       <p><strong>Function:</strong> email capture; the primary repeat-engagement channel.</p>
       <p><strong>Pitch:</strong> what you get for subscribing — early access to dispatch, new arrivals, occasional Winston note.</p>
       <p class="wv">Frame as <em>"the dispatch list"</em> — subscribers get notified what comes through the portal each Tuesday.</p>
@@ -1043,9 +1096,9 @@ body {
   </section>
 
   <!-- ============================================
-       §8 — FOOTER
+       §9 — FOOTER
        ============================================ -->
-  <section class="section" id="s8-footer">
+  <section class="section" id="s9-footer">
     <div class="section-render">
       <div class="footer-grid">
         <div class="footer-col">
@@ -1084,7 +1137,7 @@ body {
       </div>
     </div>
     <aside class="section-comment">
-      <h3>§8 — Footer · policies + compliance microline</h3>
+      <h3>§9 — Footer · policies + compliance microline</h3>
       <p><strong>Function:</strong> secondary nav, policies, trust + compliance signaling, repeat-visit hooks (field notes, social).</p>
       <p><strong>4 column structure</strong> for the link sections; bottom strip for legal + brand mark.</p>
       <p class="wv">Compliance microline in JetBrains Mono all-caps (locked in component inventory) — Cycle reference + O.O.P.S. + dock + fulfillment desk address.</p>
@@ -1096,9 +1149,9 @@ body {
   </section>
 
   <!-- ============================================
-       §9 — DISCOVERY / LEAK MECHANIC
+       §10 — DISCOVERY / LEAK MECHANIC
        ============================================ -->
-  <section class="section" id="s9-leak-mechanic">
+  <section class="section" id="s10-leak-mechanic">
     <div class="section-render">
       <div class="leak-doc-intro">
         Non-rendering pattern — applies sitewide. Example instance below: a small ambient guestbook widget that can surface in sidebars or corners across the site.
@@ -1135,15 +1188,15 @@ body {
       </div>
     </div>
     <aside class="section-comment">
-      <h3>§9 — Discovery / Leak Mechanic · non-rendering pattern, sitewide</h3>
+      <h3>§10 — Discovery / Leak Mechanic · non-rendering pattern, sitewide</h3>
       <p><strong>Function:</strong> A site-wide discovery pattern. As users explore (scroll, hover, return visits, time on page), small "leaks" of Wittyverse info appear — popup artifacts, margin notes, transmissions, photos or short clips of products in use on the other side. Reinforces the Depth Stack (progressive reveal across visits).</p>
-      <p><strong>Where it surfaces on the homepage:</strong> hover-triggered margin notes throughout, an optional scroll-milestone popup (see §6 / §3 leak slot example), return-visit unlocks of additional leaks.</p>
+      <p><strong>Where it surfaces on the homepage:</strong> hover-triggered margin notes throughout, an optional scroll-milestone popup (see §7 / §3 leak slot example), return-visit unlocks of additional leaks.</p>
       <p class="wv">Lore reason: as users explore, they "strain the portal" and more Wittyverse info leaks through. Each leak is dated by Cycle and stamped by source institution (O.O.P.S., Patent Office, depot, etc.).</p>
       <p class="wv">Pairs with the lore-justification principle in website-brief.md §7.5 — every leak must have a lore reason; decorative glitches are banned.</p>
       <p class="wv">Tone discipline: leaks feel like "postcards arriving," not spooky/creepy. Warm, slightly mysterious, never horror-adjacent.</p>
       <p class="wv">AI-generated video is a natural fit for richer leaks (short clips of Wittyverse-side product use).</p>
-      <p class="wv">Canonical visible instance: the §5 Transmission Feed. Lore-justified by portal leakage. Presentation-justified by Winston's MySpace-era design taste (he'd reach for a guestbook because that's what felt welcoming when he learned the web).</p>
-      <p class="wv">Same feed renders in two surfaces: §5 hero (4–5 entries, primary), and a small sidewide ambient widget (~3 entries, example shown above). Mixed Earth-side + Wittyverse-side voices flow through both.</p>
+      <p class="wv">Canonical visible instance: the §6 Transmission Feed. Lore-justified by portal leakage. Presentation-justified by Winston's MySpace-era design taste (he'd reach for a guestbook because that's what felt welcoming when he learned the web).</p>
+      <p class="wv">Same feed renders in two surfaces: §6 hero (4–5 entries, primary), and a small sidewide ambient widget (~3 entries, example shown above). Mixed Earth-side + Wittyverse-side voices flow through both.</p>
       <p class="wv">Other leak forms (margin notes, hover popups, return-visit unlocks) are secondary to the feed but follow the same lore + tone discipline: postcard-style, never spooky.</p>
     </aside>
   </section>
