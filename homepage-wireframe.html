@@ -160,6 +160,24 @@ body {
 .slot-hero-img { min-height: 280px; }
 .slot-tile { min-height: 140px; }
 .slot-text { text-align: left; align-items: flex-start; padding: 18px; }
+.slot-leak {
+  border-style: dotted;
+  border-color: #888;
+  background: #f0f0f0;
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+.slot-leak::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background: #ddd;
+  border-left: 1px dotted #888;
+  border-bottom: 1px dotted #888;
+}
 
 /* ---------- Layout helpers ---------- */
 .row { display: flex; gap: 12px; margin-bottom: 12px; }
@@ -255,9 +273,10 @@ body {
     <div class="wire-label"><span>§2 — Masthead</span><span class="sub">sticky on scroll</span></div>
     <div class="wire-body">
       <div class="wire-content">
-        <div class="masthead-layout">
+        <div class="masthead-layout" style="grid-template-columns: 200px 1fr auto auto;">
           <div class="slot slot-md">[ LOGO + KICKER ]<small>wordmark + "Operated by Winston, Dr. W. Yeti PhD"</small></div>
           <div class="slot slot-md">[ PRIMARY NAV ]<small>Catalog · About · Help · Search</small></div>
+          <div class="slot slot-md" style="min-width:160px;">[ DISPATCH COUNTDOWN ]<small>e.g. "3d 14h 22m until next dock arrival" · click → newsletter signup</small></div>
           <div class="slot slot-md" style="min-width:120px;">[ CART + ACCOUNT ]<small>bag icon · sign in</small></div>
         </div>
       </div>
@@ -267,6 +286,7 @@ body {
         <span class="wv">Mono "CYCLE 247" tag right of the wordmark (locked in component inventory).</span>
         <span class="wv">Kicker "Operated by Winston, Dr. W. Yeti PhD" sets the operator presence even before any About section.</span>
         <span class="wv">Subtle "side door" / WV-side toggle access point lives here OR on the About page — not foregrounded in this hybrid.</span>
+        <span class="wv">Mysterious countdown anchors the dispatch rhythm + acts as the primary newsletter signup hook. Counts down to next dispatch (every Tuesday), a new product drop, a discount, or "something weird" (a one-off event like a rare portal window). Clicking opens the email-capture popover ("I'll send notice when the dock opens"). Lore-justified per §7.5 of the brief: the countdown represents a real operational schedule, not a decorative ticker.</span>
         <p style="margin-top:10px;"><strong>Mobile:</strong> wordmark + hamburger + cart. Kicker hidden; Cycle tag preserved.</p>
       </div>
     </div>
@@ -347,6 +367,13 @@ body {
           <div class="slot slot-text slot-md">[ TESTIMONIAL 2 ]<small>quote · attribution · location/date</small></div>
           <div class="slot slot-text slot-md">[ TESTIMONIAL 3 ]<small>quote · attribution · location/date</small></div>
         </div>
+        <div style="border-top: 1px dashed #bbb; padding-top: 14px; margin-top: 14px;">
+          <div class="slot slot-text slot-thin" style="margin-bottom:12px;">[ FROM THE OTHER SIDE — WITTYVERSE-SIDE REVIEWS ]<small>sub-block: in-universe voice reviews from residents who actually use the products</small></div>
+          <div class="grid-2">
+            <div class="slot slot-text slot-md">[ WV REVIEW 1 ]<small>in-universe voice · resident perspective · talks about utility/weight/use</small></div>
+            <div class="slot slot-text slot-md">[ WV REVIEW 2 ]<small>in-universe voice · resident perspective · talks about utility/weight/use</small></div>
+          </div>
+        </div>
       </div>
       <div class="wire-notes">
         <p><strong>Function:</strong> third-party validation; convert undecided browsers via real reactions.</p>
@@ -355,6 +382,8 @@ body {
         <span class="wv">Frame testimonials as <em>customer letters / mail received</em> — envelopes, stamps, hand-written feel possible.</span>
         <span class="wv">Surface the North Star reaction here ("Hot damn, where did you GET that?") — natural quote shape.</span>
         <span class="wv">Customer dates in Earth dates; can include "received Cycle 246" as side-stamp.</span>
+        <span class="wv">Reviews appear in two streams: Earth-side (gift-giver reactions, frame as customer letters) and Wittyverse-side (resident perspectives — talks about utility, weight, actual use). The two streams read in different voices: Earth = R2 importer voice; WV-side = R1 in-universe voice.</span>
+        <span class="wv">On the homepage this surfaces as a small sub-block (the WV-side reviews live below the Earth-side grid). On PDPs they sit behind a toggle. This surfaces the WV-side toggle architecture through commerce content rather than via a marketing teaser.</span>
         <p style="margin-top:10px;"><strong>Optional:</strong> aggregate rating + review count if data exists (e.g., "★ 4.8 across 2,400 reviews"). v1 may skip if numbers thin.</p>
       </div>
     </div>
@@ -376,6 +405,9 @@ body {
           </div>
           <div class="slot slot-text slot-tall">[ "LOL" CERT / TRUST ARTIFACT ]<small>Patent Office "lol" certificate as world artifact + trust signal</small></div>
         </div>
+        <div style="margin-top:14px;">
+          <div class="slot slot-leak slot-text slot-md" style="max-width:360px;">[ ◇ LEAK POPUP — Cycle-stamped artifact leaking through ]<small>appears on hover / scroll milestone / return visit · evidence of product use from the Wittyverse side · postcard-style, not spooky</small></div>
+        </div>
       </div>
       <div class="wire-notes">
         <p><strong>Function:</strong> single section that earns real estate for the brand world. Builds trust + premise + character anchor without forcing the homepage into a narrative.</p>
@@ -384,6 +416,7 @@ body {
         <span class="wv">Patent Office "lol" cert: a Wittyverse-canon artifact (Winston kept the response certificate where Earth's USPTO responded "lol"). Doubles as trust signal + world-leak.</span>
         <span class="wv">Voice: third-person on the homepage block, first-person Winston on the full About page he links to.</span>
         <span class="wv">Optional addition: Winston's signature as a recurring mark.</span>
+        <span class="wv">The dotted-bordered leak slot below the main row is an <em>example placement</em> for the site-wide leak mechanic (see §9 — Discovery / Leak Mechanic). It's not a fixed location — leaks can surface anywhere; this is just one of the homepage's natural hosts because the section already carries world-artifact content (the lol cert).</span>
         <p style="margin-top:10px;"><strong>Mobile:</strong> portrait → about copy → cert, stacked.</p>
       </div>
     </div>
@@ -446,6 +479,26 @@ body {
         <span class="wv">Field notes / blog link in Column 3 — depth-stack hook for repeat visitors.</span>
         <span class="wv">Optional: "Earth-side fulfillment desk · NC" with a small operational date stamp.</span>
         <p style="margin-top:10px;"><strong>Mobile:</strong> 2-col link grid; microline + signature in a single row.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       §9 — DISCOVERY / LEAK MECHANIC
+       ============================================ -->
+  <section class="wire" id="s9-leak-mechanic">
+    <div class="wire-label"><span>§9 — Discovery / Leak Mechanic</span><span class="sub">non-rendering pattern — applies sitewide</span></div>
+    <div class="wire-body">
+      <div class="wire-content">
+        <div class="slot slot-leak slot-text slot-tall">[ NON-RENDERING PATTERN — APPLIES SITEWIDE ]<small>this section documents the mechanic; it doesn't render visually as a homepage block</small></div>
+      </div>
+      <div class="wire-notes">
+        <p><strong>Function:</strong> A site-wide discovery pattern. As users explore (scroll, hover, return visits, time on page), small "leaks" of Wittyverse info appear — popup artifacts, margin notes, transmissions, photos or short clips of products in use on the other side. Reinforces the Depth Stack (progressive reveal across visits).</p>
+        <p><strong>Where it surfaces on the homepage:</strong> hover-triggered margin notes throughout, an optional scroll-milestone popup (see §6 / §3 leak slot example), return-visit unlocks of additional leaks.</p>
+        <span class="wv">Lore reason: as users explore, they "strain the portal" and more Wittyverse info leaks through. Each leak is dated by Cycle and stamped by source institution (O.O.P.S., Patent Office, depot, etc.).</span>
+        <span class="wv">Pairs with the lore-justification principle in website-brief.md §7.5 — every leak must have a lore reason; decorative glitches are banned.</span>
+        <span class="wv">Tone discipline: leaks feel like "postcards arriving," not spooky/creepy. Warm, slightly mysterious, never horror-adjacent.</span>
+        <span class="wv">AI-generated video is a natural fit for richer leaks (short clips of Wittyverse-side product use).</span>
       </div>
     </div>
   </section>
