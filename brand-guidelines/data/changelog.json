@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.10",
+    "date": "2026-05-18",
+    "changes": [
+      "Customer: ported §8 Brand-Customer Relationship as new #relationship canon-card — co-conspirator metaphor ('the customer becomes the party hero'), Functional Implications, and Tone & Interactions guidance. Joins the existing tier/journey/anti-persona card under #customer.",
+      "Strategy: ported Appendix A Common Decisions as new #common-decisions canon-card — 10-row scenario table mapping decision questions to on-brand answers and the governing Brand Value (or positioning sacrifice). Designed as a reach-for reference when a new decision needs precedent.",
+      "Voice: ported §11 Messaging Hierarchy as new #messaging-hierarchy block, placed right after the existing Messaging Framework (tagline / value-prop / boilerplate) — distinct purpose: short slogans vs. ranked system. Contains Core Message + 4 Supporting Messages (each with proof points) + Priority Order for which message leads on a given surface.",
+      "Customer: dropped the legacy `../brand-bible/#2-target-customer` link from #customer canon-links (per Inventory Delta §D cross-refs scrub list). Workspace markdown archive link retained.",
+      "Brand-docs cleanup Batch 3 (refactor/brand-docs-cleanup worktree). Remaining ports: R2 Banned Words → #voice (storefront ban-list), Voice Codex R1 keeper → #voice (largest remaining substantive port — full superprompt with 10 sub-sections), §12 Creative Direction Seeds (partial) → #visual-system intro, §9 Origin storefront-side + Storefront Discipline rule. Then Step 3 (brand-bible retirement, Redirect) and Step 4 (homepage index update)."
+    ]
+  },
+  {
     "version": "0.9",
     "date": "2026-05-18",
     "changes": [
