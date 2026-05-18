@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.13",
+    "date": "2026-05-18",
+    "changes": [
+      "Voice: ported the complete Voice Codex (R1 Superprompt Attachment) as new #voice-codex block, placed at the bottom of #voice between Sample Copy and the trust-seal-cluster. This is the largest substantive port of the brand-docs cleanup — the keeper flagged in the Inventory Delta and preserved per the 2026-05-15 audit (which dropped the single embodied R1 anchor in favor of unified R1 DNA + format-specific personas).",
+      "Voice Codex contents (10 sub-sections): §1 Voice Summary (The Onion × Hitchhiker's × Omega Mart positioning) · §2 The R1 Anchor (DNA: deadpan, printer-jam emotional scale, 'Tuesday to them', exasperation not amazement, never references our world) + the 4-question R1 Voice Test · §3 Voice Attributes (Deadpan / Specific / Grounded / Committed / Warm-in-background / Escalating) · §4 The Humor Spectrum + §4b Writer's Toolkit (Escalation / Beat / Callback / Rule of Three / Subversion / Irony / Hyperbole / Parody / Satire / Non-sequitur / Power of Two) · §5 Anti-Voice & Banned Content (R1 ban-list — distinct from the R2 ban-list above; in-universe specific) + Hard No-Gos + Gray Areas · §6 Drift Patterns (Excitement Leak / Wink / Half-Commit / Emoji Substitute / Explanation / Character Break) · §7 Format-Specific Registers (Advice Columns / PSAs / News Articles / Product Copy / Wittyverse Storefront Toggle — 5 distinct personas implementing the shared DNA) · §8 Vocabulary Pairs (4 tables: Product Descriptions / Reactions / Side Effects / Engagement) · §9 Smart/Silly Ratio (80/20) · §10 Internal Logic Checklist (10 pre-publish gates).",
+      "All R1 ban-list content (§5) is now bundled inside the Voice Codex keeper as locked decision (per Inventory Delta — port R1 list inside Voice Codex, port R2 list separately). The R2 ban-list under #banned-r2 (v0.11) and the R1 ban-list inside #voice-codex are now clearly labeled and physically separated.",
+      "All substantive content ports from the brand bible are complete. Brand-docs cleanup Step 2 (Port) is done. Next: Step 3 (retire brand-bible/ via Redirect notice page) and Step 4 (homepage card swap — drop brand-bible card, add wittyverse-codex card)."
+    ]
+  },
+  {
     "version": "0.12",
     "date": "2026-05-18",
     "changes": [
