@@ -1,5 +1,17 @@
 [
   {
+    "version": "0.14",
+    "date": "2026-05-18",
+    "changes": [
+      "Brand-docs cleanup Steps 3 + 4 complete — brand-bible/ is retired, homepage and one-pager cross-refs updated.",
+      "Step 3 (Redirect): brand-bible/index.html replaced with a single notice page — 'Brand Bible → two homes now.' — that links to brand-guidelines/ (for storefront work) and wittyversecodex.netlify.app (for world canon). Self-contained inline styling, no JS, no external CSS dependency. Existing bookmarks and external links still resolve.",
+      "Step 3 (cleanup): brand-bible/build.js and brand-bible/styles.css deleted — no longer referenced. The brand-bible/ folder now contains only the notice page. Source markdown at D:/Claude/Workspace/Wittyverse/derived/brand/brand-bible.md stays archived as historical reference (outside the repo).",
+      "Step 4 (homepage card swap): index.html Brand Reference row now has Wittyverse Codex card replacing the Brand Bible card. Card links to https://wittyversecodex.netlify.app/ (external, target=_blank). Tags updated to 'World canon / Truths, Entities, Stories / External app ↗'. brand-guidelines and brand-one-pager cards retained unchanged.",
+      "Cross-ref scrub: brand-one-pager/index.html updated 2 brand-bible links — header 'Canon' link and 'Next-card' navigation both point to wittyversecodex.netlify.app now (with the eyebrow re-labeled 'World canon' since that's what the codex covers, not the storefront brand book).",
+      "Brand-docs cleanup is DONE. Six batches of content ports (v0.8–v0.13) + this finishing batch. The brand-bible/ legacy is retired as Redirect; brand-guidelines/ is the single storefront brand book; wittyverse-codex is the world bible. Three documents that were tangled are now three documents with clear, non-overlapping roles."
+    ]
+  },
+  {
     "version": "0.13",
     "date": "2026-05-18",
     "changes": [
