@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.8",
+    "date": "2026-05-18",
+    "changes": [
+      "Strategy & Positioning section: ported three new audited sections from the brand bible into #strategy as standalone canon-cards — #competitive (§3 Competitive Landscape: direct/indirect competitors, positioning map, white space, category conventions, points of parity/difference), #mission-vision (§4 Mission & Vision statements), and #values (§5 Brand Values: five operating values × {Definition, Trade-off Pair, Decision Scenarios})",
+      "Each new card carries its own anchor id for direct linking and its own canon-links row back to the bible markdown source",
+      "styles.css: added .canon-card h4 rule (purple-deep, uppercase, 14px) for sub-block headings inside the new cards — needed by the dense Competitive Landscape and Values cards where h3 alone wasn't enough hierarchy",
+      "Brand-docs cleanup Batch 1 (refactor/brand-docs-cleanup worktree). Step 1 Inventory Delta and Step 2 pre-port decisions are in docs/plans/2026-05-15-brand-docs-cleanup.md. Subsequent batches will port §6 Personality, §7 Mantra, §8 Customer-Relationship extension, §10 Proof Points, §11 Messaging Hierarchy, the Voice Codex R1 keeper, R2 ban-list, and Appendix A Common Decisions."
+    ]
+  },
+  {
     "version": "0.7",
     "date": "2026-05-15",
     "changes": [

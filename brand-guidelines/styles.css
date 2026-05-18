@@ -178,6 +178,15 @@ h4 {
 
 /* h3 sub-section breaks inside cream cards — gap from preceding sibling */
 .placeholder > * + h3,
+.canon-card h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-purple-deep);
+  margin: 20px 0 6px;
+}
 .canon-card > * + h3,
 .quick-card > * + h3,
 .sample-card > * + h3,
