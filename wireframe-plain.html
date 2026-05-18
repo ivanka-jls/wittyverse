@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wittyverse — interactive plain wireframe v7</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #6b6b6b;
+  --line: #d4d4d4;
+  --soft: #f4f4f4;
+  --bg: #fff;
+  --edit: #fffce6;
+  --edit-line: #d4a017;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.mono, .scaffold, .badge, .pill, .stamp, .switcher button, .slot-tag, .price, code {
+  font-family: ui-monospace, "JetBrains Mono", "Courier New", monospace;
+}
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* ============ INTRO STRIP ============ */
+.intro { background: var(--edit); border-bottom: 1px solid #e8d77b; padding: 14px 24px; font-size: 13px; }
+.intro-inner { max-width: 1180px; margin: 0 auto; display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+.intro h1 { font-size: 14px; margin-bottom: 4px; }
+.intro p { color: #555; max-width: 760px; margin-bottom: 4px; }
+.intro .hint { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+.intro ul { margin: 4px 0 4px 18px; color: #555; font-size: 12px; line-height: 1.6; }
+
+/* ============ SWITCHER CHROME ============ */
+.slot { position: relative; }
+.slot-tag { position: absolute; top: -8px; right: 0; display: flex; gap: 4px; align-items: center; z-index: 2; }
+.slot-tag .slot-name { font-size: 9px; color: #999; text-transform: uppercase; letter-spacing: 0.10em; margin-right: 4px; }
+.switcher { display: flex; gap: 2px; }
+.switcher button { width: 20px; height: 20px; font-size: 11px; font-weight: bold; background: var(--bg); border: 1px solid var(--line); color: #aaa; cursor: pointer; padding: 0; line-height: 1; }
+.switcher button.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switcher button:hover:not(.active) { background: var(--soft); color: var(--ink); }
+.opt { display: none; }
+.opt.active { display: block; }
+.slot.editing { outline: 1px dashed #c0c0c0; outline-offset: 4px; }
+
+/* ============ EDITABLE TEXT ============ */
+[contenteditable="true"] { cursor: text; outline: none; transition: background 0.15s, box-shadow 0.15s; border-radius: 2px; }
+[contenteditable="true"]:hover { background: rgba(255, 252, 230, 0.55); }
+[contenteditable="true"]:focus { background: var(--edit); box-shadow: 0 0 0 1px var(--edit-line); }
+
+/* ============ MARQUEE ============ */
+.marquee { background: var(--ink); color: var(--bg); font-size: 11px; letter-spacing: 0.10em; padding: 8px 0; text-align: center; font-family: ui-monospace, monospace; }
+.marquee-inner { display: inline-block; white-space: nowrap; }
+.redacted { display: inline-block; background: #fff; color: #fff; padding: 1px 14px; user-select: none; cursor: pointer; position: relative; letter-spacing: -1px; }
+.redacted::before { content: "▓▓▓▓▓▓▓▓"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; letter-spacing: -2px; }
+.redacted:hover { background: #f0f0f0; }
+.redacted:hover::before { color: #f0f0f0; }
+.redacted:after { content: "↗"; font-size: 8px; position: absolute; top: -2px; right: 2px; color: #fff; }
+
+/* ============ MASTHEAD ============ */
+.masthead { border-bottom: 1px solid var(--line); padding: 22px 0 18px; }
+.masthead-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+.masthead-left { display: flex; flex-direction: column; gap: 6px; }
+.wordmark { font-size: 32px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+.kicker { font-size: 13px; color: var(--ink); font-style: italic; max-width: 360px; }
+.masthead-center { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.stamp { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-size: 9px; letter-spacing: 0.06em; line-height: 1.25; padding: 12px; transform: rotate(-8deg); }
+.stamp .stamp-sig { font-family: "Brush Script MT", cursive; font-size: 13px; text-transform: none; letter-spacing: 0; font-style: italic; }
+.stamp .stamp-divider { width: 60%; border-top: 1px solid var(--ink); margin: 4px 0; }
+.masthead-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.status-pill { font-size: 10px; letter-spacing: 0.10em; border: 1px solid var(--ink); padding: 6px 10px; background: var(--ink); color: var(--bg); }
+.nav-row { display: flex; gap: 18px; align-items: center; }
+.nav-items { font-size: 13px; }
+.nav-items a { color: var(--ink); text-decoration: none; margin-right: 14px; cursor: pointer; }
+.nav-items a:last-child { margin-right: 0; }
+.icons { display: flex; gap: 12px; font-size: 14px; }
+.icon-box { border: 1px solid var(--line); padding: 4px 8px; font-size: 11px; }
+
+/* ============ HERO ============ */
+.hero { padding: 48px 0 36px; border-bottom: 1px solid var(--line); }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+.hero-image { aspect-ratio: 4 / 5; border: 1px dashed var(--line); display: flex; align-items: center; justify-content: center; background: var(--soft); color: var(--muted); font-size: 12px; letter-spacing: 0.06em; text-align: center; padding: 24px; }
+.hero-copy { display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; }
+.headline { font-size: 38px; line-height: 1.1; font-weight: 800; letter-spacing: -0.01em; }
+.subline { font-size: 15px; color: #333; max-width: 480px; }
+.rating-row { font-size: 13px; color: #333; }
+.rating-row .stars { letter-spacing: -0.04em; }
+.price-line { font-size: 13px; color: #333; }
+.cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.btn { display: inline-block; border: 1px solid var(--ink); padding: 12px 20px; font-size: 13px; font-weight: 600; background: var(--ink); color: var(--bg); cursor: pointer; font-family: inherit; }
+.btn-secondary { background: var(--bg); color: var(--ink); }
+.trust-microcopy { font-size: 12px; color: var(--muted); font-style: italic; }
+.badges-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.badge { font-size: 9.5px; letter-spacing: 0.10em; border: 1px solid var(--ink); padding: 6px 10px; text-transform: uppercase; }
+
+/* ============ SECTION COMMON ============ */
+section.block { padding: 56px 0; border-bottom: 1px solid var(--line); }
+.section-eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.section-heading { font-size: 28px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 28px; }
+
+/* ============ BROWSE GRID ============ */
+.browse-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tile { aspect-ratio: 1 / 1; border: 1px dashed var(--line); background: var(--soft); padding: 18px; display: flex; align-items: flex-end; font-weight: 700; font-size: 15px; line-height: 1.25; }
+
+/* ============ BEST SELLERS ============ */
+.product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.product-card { display: flex; flex-direction: column; gap: 8px; }
+.product-image { aspect-ratio: 1 / 1; border: 1px dashed var(--line); background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--muted); text-align: center; padding: 12px; }
+.product-name { font-weight: 700; font-size: 15px; }
+.price { font-size: 14px; color: #333; }
+.product-desc { font-size: 13px; color: #333; min-height: 64px; }
+.product-rating { font-size: 11px; color: var(--muted); }
+.review-snippet { font-size: 11px; font-style: italic; border-left: 2px solid var(--line); padding-left: 8px; color: #444; }
+.product-cta-row { display: flex; gap: 8px; align-items: center; margin-top: 4px; }
+.btn-quick { flex: 1; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); padding: 8px 10px; font-size: 12px; font-weight: 600; cursor: pointer; text-align: center; font-family: inherit; }
+.product-card-trust { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+/* ============ FAQ ============ */
+.faq-list { display: flex; flex-direction: column; gap: 20px; }
+.faq-item { border-bottom: 1px solid var(--line); padding-bottom: 18px; position: relative; }
+.faq-q { font-weight: 700; font-size: 16px; margin-bottom: 8px; padding-right: 80px; }
+.faq-a { font-size: 14px; color: #333; padding-left: 16px; border-left: 2px solid var(--line); }
+.faq-cat { font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+
+/* ============ PROOF OF IMPORT — GUESTBOOK PANEL ============ */
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 300px);
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.guestbook-panel {
+  background: #0d0d0d;
+  border: 1px solid #2a2a2a;
+  padding: 16px;
+  font-family: ui-monospace, "JetBrains Mono", "Courier New", monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.guestbook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #2a2a2a;
+}
+.guestbook-title {
+  color: #d4a017;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+}
+.guestbook-meta {
+  color: #555;
+  font-size: 9px;
+  letter-spacing: 0.10em;
+}
+.guestbook-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.guestbook-entry { display: flex; flex-direction: column; gap: 3px; }
+.entry-line { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.entry-handle {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+.handle-known { color: #10b981; }
+.handle-anon { color: #d4a017; }
+.entry-code {
+  color: #666;
+  font-size: 10px;
+}
+.entry-body {
+  color: #d4d4d4;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+.guestbook-footer {
+  padding-top: 10px;
+  border-top: 1px dashed #2a2a2a;
+  color: #777;
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-align: center;
+  line-height: 1.4;
+}
+.guestbook-panel [contenteditable="true"]:hover { background: rgba(212, 160, 23, 0.10); }
+.guestbook-panel [contenteditable="true"]:focus { background: rgba(212, 160, 23, 0.18); box-shadow: 0 0 0 1px #d4a017; }
+
+/* Live indicator dot — pulses next to LIVE DISPATCH title */
+.guestbook-title { display: inline-flex; align-items: center; gap: 7px; }
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
+  animation: live-pulse 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes live-pulse {
+  0%   { opacity: 1;    box-shadow: 0 0 0 0   rgba(16, 185, 129, 0.55); }
+  60%  { opacity: 0.45; box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+  100% { opacity: 1;    box-shadow: 0 0 0 0   rgba(16, 185, 129, 0); }
+}
+
+/* Left column wrapper inside proof-grid: stacks preamble + signed stamp */
+.proof-left { display: flex; flex-direction: column; gap: 28px; }
+
+/* Inline mini stamp used to sign the preamble */
+.proof-signoff { display: flex; align-items: center; gap: 16px; }
+.stamp-mini {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: ui-monospace, "JetBrains Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  padding: 8px;
+  transform: rotate(-6deg);
+  flex-shrink: 0;
+}
+.stamp-mini .stamp-sig { font-family: "Brush Script MT", cursive; font-size: 11px; text-transform: none; letter-spacing: 0; font-style: italic; }
+.stamp-mini .stamp-divider { width: 60%; border-top: 1px solid var(--ink); margin: 3px 0; }
+.signoff-caption {
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 240px;
+}
+
+.proof-preamble { display: flex; flex-direction: column; gap: 14px; }
+.proof-preamble-strong { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.25; }
+.proof-preamble-body { font-size: 15px; line-height: 1.6; }
+.proof-preamble-sign { font-size: 13px; color: var(--muted); font-style: italic; }
+
+/* ============ NEWSLETTER ============ */
+.newsletter { background: var(--soft); padding: 48px 0; border-bottom: 1px solid var(--line); }
+.newsletter-inner { max-width: 640px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 18px; }
+.newsletter-heading { font-size: 24px; font-weight: 800; }
+.newsletter-pitch { font-size: 14px; color: #333; line-height: 1.55; }
+.newsletter-form { display: flex; gap: 8px; }
+.newsletter-input { flex: 1; border: 1px solid var(--ink); background: var(--bg); padding: 12px 14px; font-size: 14px; font-family: inherit; }
+.newsletter-microcopy { font-size: 11px; color: var(--muted); }
+
+/* ============ FOOTER ============ */
+footer.site-footer { padding: 48px 0 32px; font-size: 12px; }
+.footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.10em; margin-bottom: 8px; }
+.footer-col a, .footer-col span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 4px; text-decoration: none; }
+.footer-trust-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pay-icon { border: 1px solid var(--line); padding: 4px 8px; font-size: 10px; letter-spacing: 0.06em; }
+.compliance { font-size: 11px; color: var(--muted); font-style: italic; margin-bottom: 8px; }
+.signoff { font-size: 11px; color: var(--muted); }
+
+/* ============ MOBILE STICKY NOTE ============ */
+.mobile-note { padding: 28px 0; text-align: center; font-size: 12px; color: var(--muted); background: var(--soft); }
+.mobile-note .sticky-mock { display: inline-flex; gap: 8px; align-items: center; border: 1px solid var(--ink); padding: 10px 14px; background: var(--bg); margin-top: 10px; font-family: inherit; }
+
+.locked-tag { font-size: 9px; letter-spacing: 0.10em; background: #e7f0ff; color: #1e40af; padding: 2px 6px; text-transform: uppercase; vertical-align: middle; margin-left: 4px; }
+
+/* ============ DESIGN NOTES (per-section sticky-style annotations) ============ */
+.design-notes {
+  margin-top: 28px;
+  padding: 14px 16px;
+  background: #fafaf3;
+  border: 1px solid #ece9d6;
+  border-left: 3px solid #d4a017;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.notes-title {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 2px;
+}
+.note { display: flex; gap: 10px; align-items: flex-start; }
+.note-tag {
+  font-size: 8.5px;
+  letter-spacing: 0.10em;
+  font-weight: 700;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  min-width: 64px;
+  text-align: center;
+  line-height: 1.2;
+}
+.note-tag.motion { background: #2563eb; }
+.note-tag.visual { background: #7c3aed; }
+.note-tag.copy   { background: #16a34a; }
+.note-tag.ia     { background: #ea580c; }
+.note-body { flex: 1; }
+.note-body code { font-family: ui-monospace, monospace; font-size: 10.5px; background: #f2efde; padding: 1px 4px; border-radius: 2px; }
+
+/* ============ EXPORT FAB + MODAL ============ */
+.export-fab { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: var(--bg); padding: 12px 18px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.2); z-index: 100; font-family: inherit; }
+.export-fab:hover { background: #333; }
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 200; padding: 32px; }
+.modal-backdrop.open { display: flex; }
+.modal { background: var(--bg); max-width: 860px; width: 100%; max-height: 90vh; display: flex; flex-direction: column; padding: 24px; gap: 16px; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; }
+.modal-header h2 { font-size: 18px; }
+.modal-close { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--muted); line-height: 1; }
+.modal textarea { flex: 1; width: 100%; min-height: 50vh; border: 1px solid var(--line); padding: 14px; font-family: ui-monospace, monospace; font-size: 12px; line-height: 1.5; resize: none; }
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.modal-actions button { padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--ink); background: var(--bg); font-family: inherit; }
+.modal-actions button.primary { background: var(--ink); color: var(--bg); }
+.modal-actions button.danger { border-color: #b91c1c; color: #b91c1c; }
+.copy-toast { position: fixed; bottom: 80px; right: 24px; background: #16a34a; color: #fff; padding: 10px 16px; font-size: 12px; font-weight: 600; z-index: 250; display: none; }
+.copy-toast.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <div class="intro-inner">
+    <div>
+      <h1>Wittyverse landing — interactive plain wireframe (v7)</h1>
+      <p><strong>v7 changes (from 13 design-playbook audits):</strong></p>
+      <ul>
+        <li><strong>Section reorder:</strong> Best Sellers now sits before Browse Grid (proof → discovery). Proof of Import now sits before FAQ (legitimacy → process).</li>
+        <li><strong>§6 Proof of Import — redesigned:</strong> The "lol" cert block is replaced with a compact dark <strong>GUESTBOOK</strong> panel that holds the leaked reviews. The big Amazon-style cards are gone.</li>
+        <li><strong>FAQ reorder:</strong> Q3 (will the recipient like it?) moves to position 2, ahead of quality. Recipient anxiety is the bigger gift-buyer objection.</li>
+        <li><strong>Copy fixes:</strong> Eyebrow option C now has a real variant. Trust microcopy default swapped to the voice+list hybrid. FAQ Q1 options now all framed as questions. Newsletter submit option B is no longer "Subscribe". Footer compliance tightened.</li>
+        <li><strong>Per-section design notes</strong> (yellow-bordered blocks) call out the highest-impact <span style="background:#2563eb;color:#fff;padding:1px 4px;font-size:9px;letter-spacing:0.1em;">MOTION</span> · <span style="background:#7c3aed;color:#fff;padding:1px 4px;font-size:9px;letter-spacing:0.1em;">VISUAL</span> · <span style="background:#16a34a;color:#fff;padding:1px 4px;font-size:9px;letter-spacing:0.1em;">COPY</span> · <span style="background:#ea580c;color:#fff;padding:1px 4px;font-size:9px;letter-spacing:0.1em;">IA</span> recommendations.</li>
+      </ul>
+      <p class="hint">localStorage key bumped v6 → v7 — your previous picks/edits won't carry over. Click <strong>A · B · C</strong> to switch options. Click any text to edit. Hit <strong>📋 Export picks</strong> bottom-right to send your final selections back.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ §1 MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-inner">
+    ✦ <span contenteditable="true" data-edit="marquee-1">FREE US SHIPPING OVER $40</span> &nbsp; · &nbsp; ✦ <span contenteditable="true" data-edit="marquee-2">DISPATCHED FROM</span> <span class="redacted" title="click → rabbit-hole layer (future scope)">REDACTED</span> &nbsp; · &nbsp; ✦ <span contenteditable="true" data-edit="marquee-3">30-DAY MONEY-BACK GUARANTEE</span> &nbsp; · &nbsp; ✦ <span contenteditable="true" data-edit="marquee-4">4.8★ ACROSS 2,438 REVIEWS</span> &nbsp; ✦
+  </div>
+</div>
+
+<!-- ============ §2 MASTHEAD ============ -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-grid">
+
+      <div class="masthead-left">
+        <div class="wordmark" contenteditable="true" data-edit="wordmark">WITTYVERSE</div>
+        <div class="kicker"><span contenteditable="true" data-edit="kicker">"Out of this world gag gifts you can't buy anywhere else."</span> <span class="locked-tag">locked</span></div>
+      </div>
+
+      <div class="masthead-center">
+        <div class="stamp">
+          <span contenteditable="true" data-edit="stamp-top">DR. W. YETI PhD</span>
+          <div class="stamp-divider"></div>
+          <div class="stamp-sig" contenteditable="true" data-edit="stamp-sig">W.</div>
+          <div class="stamp-divider"></div>
+          <span contenteditable="true" data-edit="stamp-bottom">SOLE AUTHORIZED · EARTH SIDE</span>
+        </div>
+      </div>
+
+      <div class="masthead-right">
+
+        <div class="slot" data-slot="status-pill">
+          <div class="slot-tag">
+            <span class="slot-name">status</span>
+            <div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div>
+          </div>
+          <div class="opt active" data-opt="A"><div class="status-pill"><span contenteditable="true">0d 4h 22m UNTIL</span> <span style="background:#fff;color:#fff;padding:0 6px;letter-spacing:-1px;">▓▓▓▓▓▓</span></div></div>
+          <div class="opt" data-opt="B"><div class="status-pill" contenteditable="true">NEXT WINDOW · 0d 4h 22m</div></div>
+          <div class="opt" data-opt="C"><div class="status-pill" contenteditable="true">T-MINUS 0d 4h 22m</div></div>
+        </div>
+
+        <div class="nav-row">
+          <div class="slot" data-slot="nav">
+            <div class="slot-tag">
+              <span class="slot-name">nav</span>
+              <div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div>
+            </div>
+            <div class="opt active" data-opt="A"><div class="nav-items" contenteditable="true">Shop · Gifts Under $25 · Guarantee · About</div></div>
+            <div class="opt" data-opt="B"><div class="nav-items" contenteditable="true">Shop · Best Sellers · Guarantee · About</div></div>
+            <div class="opt" data-opt="C"><div class="nav-items" contenteditable="true">The Manifest · Best Sellers · The Tuesday Letter · About</div></div>
+          </div>
+          <div class="icons"><span class="icon-box">acct</span><span class="icon-box">cart</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ §3 HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-image">[ HERO IMAGE — HANDS UNWRAPPING / RECIPIENT REACTION / NEVER FACE ]</div>
+      <div class="hero-copy">
+
+        <div class="slot" data-slot="eyebrow">
+          <div class="slot-tag"><span class="slot-name">eyebrow</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="eyebrow" contenteditable="true">This week's manifest · live now</div></div>
+          <div class="opt" data-opt="B"><div class="eyebrow" contenteditable="true">47 items cleared customs · in stock</div></div>
+          <div class="opt" data-opt="C"><div class="eyebrow" contenteditable="true">Dispatched weekly · cut-off in 4h 22m</div></div>
+        </div>
+
+        <div class="slot" data-slot="headline">
+          <div class="slot-tag"><span class="slot-name">headline</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="headline" contenteditable="true">Gag gifts from a dimension you can't visit. Personally hauled back.</div></div>
+          <div class="opt" data-opt="B"><div class="headline" contenteditable="true">The funniest gift you give this year, or I refund it myself.</div></div>
+          <div class="opt" data-opt="C"><div class="headline" contenteditable="true">Gag gifts they'll actually keep. New batch every week.</div></div>
+        </div>
+
+        <div class="slot" data-slot="subline">
+          <div class="slot-tag"><span class="slot-name">subline</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="subline" contenteditable="true">Personally inspected before they leave the dock. Personally signed for. Personally on the hook if they don't land. — Dr. W. Yeti PhD</div></div>
+          <div class="opt" data-opt="B"><div class="subline" contenteditable="true">4.8★ across 2,438 buyers who weren't expecting it to actually land. Free shipping over $40. Refund's on me if it doesn't.</div></div>
+          <div class="opt" data-opt="C"><div class="subline" contenteditable="true">I'm the only person on Earth with the paperwork. Free shipping over $40. Refund's on me if it doesn't land. — W.</div></div>
+        </div>
+
+        <div class="rating-row"><span class="stars">★★★★★</span> <span contenteditable="true">4.8 from 2,438 verified buyers</span></div>
+        <div class="price-line" contenteditable="true">Starts at $19 · Free shipping over $40 · 30-day refund guarantee</div>
+
+        <div class="cta-row">
+          <div class="slot" data-slot="primary-cta" style="min-width:200px;">
+            <div class="slot-tag"><span class="slot-name">primary cta</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+            <div class="opt active" data-opt="A"><div class="btn" contenteditable="true">Browse the Manifest →</div></div>
+            <div class="opt" data-opt="B"><div class="btn" contenteditable="true">Shop the Gag Gifts →</div></div>
+            <div class="opt" data-opt="C"><div class="btn" contenteditable="true">Get Mine →</div></div>
+          </div>
+
+          <div class="slot" data-slot="secondary-cta">
+            <div class="slot-tag"><span class="slot-name">2° cta</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+            <div class="opt active" data-opt="A"><div class="btn btn-secondary" contenteditable="true">Get the Tuesday letter →</div></div>
+            <div class="opt" data-opt="B"><div class="btn btn-secondary" contenteditable="true">How this works →</div></div>
+            <div class="opt" data-opt="C"><div class="btn btn-secondary" contenteditable="true">About Dr. Yeti →</div></div>
+          </div>
+        </div>
+
+        <div class="slot" data-slot="trust-microcopy">
+          <div class="slot-tag"><span class="slot-name">cta trust</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="trust-microcopy" contenteditable="true">30-day refund · Free shipping $40+ · "If they don't laugh, refund's on me." — W.</div></div>
+          <div class="opt" data-opt="B"><div class="trust-microcopy" contenteditable="true">If they don't laugh, refund's on me. — W.</div></div>
+          <div class="opt" data-opt="C"><div class="trust-microcopy" contenteditable="true">30-day refund · Free shipping $40+ · No-questions returns</div></div>
+        </div>
+
+        <div class="badges-row">
+          <span class="badge" contenteditable="true">30-day money-back</span>
+          <span class="badge" contenteditable="true">Sole authorized importer</span>
+          <span class="badge" contenteditable="true">Free shipping $40+</span>
+          <span class="badge" contenteditable="true">Personally inspected</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="design-notes">
+      <div class="notes-title">Design notes — Hero §3</div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Hero copy + image fade in (350ms ease-out, opacity 0→1 + translateY(20px)→0) via Intersection Observer. Stagger: image first, copy stacks at 80ms intervals. Respect <code>prefers-reduced-motion</code> (opacity only, no transform).</span></div>
+      <div class="note"><span class="note-tag visual">VISUAL</span><span class="note-body">Hero image direction: <strong>HANDS unwrapping / RECIPIENT REACTION close-crop / NEVER full face</strong>. Capture the <em>moment of discovery</em> (squinting at label, going silent, photo-to-group-chat). Office desk, kitchen counter, party setting. The buyer is purchasing the reaction, not the object.</span></div>
+      <div class="note"><span class="note-tag visual">VISUAL</span><span class="note-body">Typography pairing for full design: <strong>display serif</strong> (Playfair / EB Garamond) for headline + section headings = R2 showman theatricality. <strong>Geometric sans</strong> (Inter / Space Grotesk) for body + UI. <strong>Mono</strong> (JetBrains / IBM Plex Mono) systematized for R1 banal voice (specs, badges, marquee, review bodies). Three-tier contrast registers the duality.</span></div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Primary CTA hover: scale 1.0→1.04 (120ms), shadow lift. Active: scale 1.04→0.98 (80ms press-down). Avoid bouncy springs on the primary — keep it confident.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Subline B replaces the spec-list with a voice-forward stats line ("4.8★ across 2,438 buyers who weren't expecting it to actually land"). Eyebrow C is no longer hidden — it's now a real countdown variant.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ §4 BEST SELLERS (moved up — proof before discovery) ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-eyebrow" contenteditable="true">Best sellers</div>
+    <div class="slot" data-slot="bestsellers-heading" style="margin-bottom:28px;">
+      <div class="slot-tag"><span class="slot-name">heading</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+      <div class="opt active" data-opt="A"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">This week's best sellers</div></div>
+      <div class="opt" data-opt="B"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">Moving off the dock fastest</div></div>
+      <div class="opt" data-opt="C"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">Dr. Yeti's personal picks</div></div>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-image">[ Headlight Fluid ]<br><span style="font-size:9px;">blue glass bottle · close crop, hands holding</span></div>
+        <div class="product-name" contenteditable="true">Headlight Fluid</div>
+        <div class="price" contenteditable="true">$19</div>
+        <div class="slot" data-slot="card1-desc">
+          <div class="slot-tag"><span class="slot-name">desc</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="product-desc" contenteditable="true">One 8 oz bottle of "fluid" for headlights that don't need fluid. Hand it to your brother-in-law. Wait for the question. Watch his face when nobody answers.</div></div>
+          <div class="opt" data-opt="B"><div class="product-desc" contenteditable="true">For the friend who insists they "know about cars." They'll squint at the label. They'll ask if it's serious. You won't have to answer.</div></div>
+          <div class="opt" data-opt="C"><div class="product-desc" contenteditable="true">The classic prank, executed properly. I keep one in the dispatch office for emergencies. — W.</div></div>
+        </div>
+        <div class="product-rating" contenteditable="true">★ 4.9 · 412 reviews · 31 bought this week</div>
+        <div class="review-snippet" contenteditable="true">"BIL went silent for a full minute. Worth $19." — Dave B., TX</div>
+        <div class="product-cta-row"><div class="btn-quick" contenteditable="true">Quick add — $19</div></div>
+        <div class="product-card-trust" contenteditable="true">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">[ Reality Stabilizer ]<br><span style="font-size:9px;">brass-and-glass · close crop, hands turning</span></div>
+        <div class="product-name" contenteditable="true">Reality Stabilizer</div>
+        <div class="price" contenteditable="true">$34</div>
+        <div class="slot" data-slot="card2-desc">
+          <div class="slot-tag"><span class="slot-name">desc</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="product-desc" contenteditable="true">One Reality Stabilizer. Brass, weighted, comes in a wooden box. Hand it to someone having a bad day. Watch them try to figure out how it works for the next twenty minutes.</div></div>
+          <div class="opt" data-opt="B"><div class="product-desc" contenteditable="true">Heavy. Cold to the touch. The instructions are intentionally unhelpful. They'll keep it on their desk. They'll insist it works. You won't have to explain.</div></div>
+          <div class="opt" data-opt="C"><div class="product-desc" contenteditable="true">The unit I'm most proud of importing. Heavy. Cold to the touch. Allegedly works. — W.</div></div>
+        </div>
+        <div class="product-rating" contenteditable="true">★ 4.8 · 287 reviews · 18 bought this week</div>
+        <div class="review-snippet" contenteditable="true">"Gave it to my therapist as a joke. He kept it." — Marcus T., FL</div>
+        <div class="product-cta-row"><div class="btn-quick" contenteditable="true">Quick add — $34</div></div>
+        <div class="product-card-trust" contenteditable="true">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">[ Dehydrated Water ]<br><span style="font-size:9px;">clear jar · "add water" label · hands holding</span></div>
+        <div class="product-name" contenteditable="true">Dehydrated Water</div>
+        <div class="price" contenteditable="true">$22</div>
+        <div class="slot" data-slot="card3-desc">
+          <div class="slot-tag"><span class="slot-name">desc</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="product-desc" contenteditable="true">One jar of nothing, labeled correctly. Hand it to someone. The instructions read "add water." Watch them squint at it for a long time.</div></div>
+          <div class="opt" data-opt="B"><div class="product-desc" contenteditable="true">Universally readable. Universally infuriating. Universally photographed. Perfect for the office gift exchange where you don't know the recipient.</div></div>
+          <div class="opt" data-opt="C"><div class="product-desc" contenteditable="true">I have personally never explained this product. I refuse to start now. — W.</div></div>
+        </div>
+        <div class="product-rating" contenteditable="true">★ 4.9 · 631 reviews · 44 bought this week</div>
+        <div class="review-snippet" contenteditable="true">"My wife actually tried to rehydrate it. We laughed for an hour." — Dave B., CA</div>
+        <div class="product-cta-row"><div class="btn-quick" contenteditable="true">Quick add — $22</div></div>
+        <div class="product-card-trust" contenteditable="true">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">[ TBD product ]<br><span style="font-size:9px;">needs canon product name from codex</span></div>
+        <div class="product-name">— TBD —</div>
+        <div class="price">$28</div>
+        <div class="product-desc" style="color:var(--muted);font-style:italic;">Same template as cards 1–3. Needs a 4th canon product name.</div>
+        <div class="product-rating">★ — · — reviews</div>
+        <div class="product-cta-row"><div class="btn-quick" style="opacity:0.4;">Quick add</div></div>
+        <div class="product-card-trust">—</div>
+      </div>
+
+    </div>
+
+    <div class="design-notes">
+      <div class="notes-title">Design notes — Best Sellers §4</div>
+      <div class="note"><span class="note-tag ia">IA</span><span class="note-body">Moved before Browse Grid per IA audit. For novelty/impulse buying, sales proof (bestsellers + ratings) earns trust <em>before</em> asking the visitor to navigate categories. Discovery without proof reads as "figure it out yourself" — friction.</span></div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Product cards stagger in on scroll-into-view: opacity 0→1 + translateY(24px)→0 over 400ms, 80ms delay between cards. Easing: <code>cubic-bezier(0.34, 1.56, 0.64, 1)</code> for slight springy confidence. Quick-add hover: scale 1.0→1.06 (120ms) + shadow lift.</span></div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Quick-add success: text morphs to checkmark (✓) for 1.2s, then fades back. No spinner — confident and snappy.</span></div>
+      <div class="note"><span class="note-tag visual">VISUAL</span><span class="note-body">Product image stack: optional <strong>second image slot</strong> for hero cards = <em>recipient reaction / gift moment</em> (close-crop hands, unwrap, group-chat photo angle) above the product-on-white shot. The reaction sells novelty gifts more than the object.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Desc B options rewritten to follow the outcome formula (specific reaction → mechanism → emotional payoff). Previous B options leaned on features ("8 oz. Glass.") — the audit flagged feature-listing as the weakest variant for novelty gifts.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ §5 BROWSE GRID (moved down — discovery after proof) ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-eyebrow" contenteditable="true">Browse</div>
+    <div class="section-heading" contenteditable="true">Find a gift</div>
+    <div class="browse-grid">
+
+      <div class="slot" data-slot="tile-1">
+        <div class="slot-tag"><span class="slot-name">tile 1</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+        <div class="opt active" data-opt="A"><div class="tile" contenteditable="true">For the friend who has everything</div></div>
+        <div class="opt" data-opt="B"><div class="tile" contenteditable="true">Gets a laugh on the first read</div></div>
+        <div class="opt" data-opt="C"><div class="tile" contenteditable="true">The brother-in-law collection</div></div>
+      </div>
+
+      <div class="slot" data-slot="tile-2">
+        <div class="slot-tag"><span class="slot-name">tile 2</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+        <div class="opt active" data-opt="A"><div class="tile" contenteditable="true">Desk-keepers</div></div>
+        <div class="opt" data-opt="B"><div class="tile" contenteditable="true">Lives on their desk for years</div></div>
+        <div class="opt" data-opt="C"><div class="tile" contenteditable="true">Things to hide on a coworker's desk</div></div>
+      </div>
+
+      <div class="slot" data-slot="tile-3">
+        <div class="slot-tag"><span class="slot-name">tile 3</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+        <div class="opt active" data-opt="A"><div class="tile" contenteditable="true">Worth filming the unwrap</div></div>
+        <div class="opt" data-opt="B"><div class="tile" contenteditable="true">They'll text you a photo</div></div>
+        <div class="opt" data-opt="C"><div class="tile" contenteditable="true">Group-chat ammunition</div></div>
+      </div>
+
+      <div class="slot" data-slot="tile-4">
+        <div class="slot-tag"><span class="slot-name">tile 4</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+        <div class="opt active" data-opt="A"><div class="tile" contenteditable="true">Gifts Under $25</div></div>
+        <div class="opt" data-opt="B"><div class="tile" contenteditable="true">White elephant winners</div></div>
+        <div class="opt" data-opt="C"><div class="tile" contenteditable="true">$19–$25 · stocking weight</div></div>
+      </div>
+
+    </div>
+
+    <div class="design-notes">
+      <div class="notes-title">Design notes — Browse §5</div>
+      <div class="note"><span class="note-tag ia">IA</span><span class="note-body">Open question per IA audit: with only ~4 products, does this section earn its place? Alternative: drop the grid entirely and replace with a one-line gift-finder ("Pick by reaction" + 3 anchor links). Currently kept — but B-tile options are reframed around <em>recipient reaction</em> rather than buyer persona, since "will they like it?" is the primary gift objection.</span></div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Tiles fade + translateY on scroll (same stagger pattern as product cards). Hover: tile scales 1.0→1.04 + shadow lift over 150ms.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">B-tile variants emphasize the recipient's reaction ("Gets a laugh on the first read", "They'll text you a photo") — answers the buyer's primary objection before they click in.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ §6 PROOF OF IMPORT (moved up — legitimacy before process) ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-eyebrow" contenteditable="true">About / Proof</div>
+
+    <div class="slot" data-slot="proof-heading" style="margin-bottom:32px;">
+      <div class="slot-tag"><span class="slot-name">heading</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+      <div class="opt active" data-opt="A"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">100% Authentic Wittyverse Products</div></div>
+      <div class="opt" data-opt="B"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">The receipts</div></div>
+      <div class="opt" data-opt="C"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">These are real products over there</div></div>
+    </div>
+
+    <div class="proof-grid">
+
+      <!-- LEFT column: preamble + signed stamp -->
+      <div class="proof-left">
+
+        <!-- Preamble (Winston's framing, R2 showman voice) -->
+        <div class="slot" data-slot="proof-preamble">
+        <div class="slot-tag"><span class="slot-name">preamble</span><div class="switcher"><button data-target="A">A</button><button data-target="B">B</button><button data-target="C" class="active">C</button></div></div>
+
+        <div class="opt" data-opt="A">
+          <div class="proof-preamble">
+            <div class="proof-preamble-strong" contenteditable="true">REAL PRODUCTS. REAL CUSTOMERS. REAL REVIEWS.</div>
+            <div class="proof-preamble-body" contenteditable="true">These goods are sitting on shelves in another dimension as you read this. Customers there are rating them, complaining about them, demanding refunds when the units fail. I pulled their actual feedback — straight from the Wittyverse consumer aggregator — and reproduced it, unedited.</div>
+            <div class="proof-preamble-body" contenteditable="true">The joke is <em>our</em> joke. They use these every day. Read for yourself.</div>
+            <div class="proof-preamble-sign" contenteditable="true">— Dr. W. Yeti PhD</div>
+          </div>
+        </div>
+
+        <div class="opt" data-opt="B">
+          <div class="proof-preamble">
+            <div class="proof-preamble-strong" contenteditable="true">Step closer. The proof is on the page.</div>
+            <div class="proof-preamble-body" contenteditable="true">These products are not novelty items I invented. They sit on shelves in the Wittyverse — functional, mundane, occasionally defective. Their customers leave reviews like customers anywhere: helpful, irritated, sometimes five stars, sometimes one.</div>
+            <div class="proof-preamble-body" contenteditable="true">Receipts in the panel. Read them. Doubt me afterward.</div>
+            <div class="proof-preamble-sign" contenteditable="true">— Dr. W. Yeti PhD</div>
+          </div>
+        </div>
+
+        <div class="opt active" data-opt="C">
+          <div class="proof-preamble">
+            <div class="proof-preamble-strong" contenteditable="true">You think this is a bit. It isn't.</div>
+            <div class="proof-preamble-body" contenteditable="true">Headlight Fluid is a household staple where I source it. Reality Stabilizer has a three-month waitlist over there. Dehydrated Water is a backpacker essential. Real shelves. Real ratings. Real complaints about range, packaging, durability — the usual.</div>
+            <div class="proof-preamble-body" contenteditable="true">To prove it, here is the live dispatch of the reviews in the Wittyverse. →</div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Signed stamp — Dr. W. Yeti's mark beneath the preamble -->
+        <div class="proof-signoff">
+          <div class="stamp-mini">
+            <span contenteditable="true" data-edit="stamp-mini-top">DR. W. YETI PhD</span>
+            <div class="stamp-divider"></div>
+            <div class="stamp-sig" contenteditable="true" data-edit="stamp-mini-sig">W.</div>
+            <div class="stamp-divider"></div>
+            <span contenteditable="true" data-edit="stamp-mini-bottom">SOLE AUTHORIZED · EARTH SIDE</span>
+          </div>
+          <div class="signoff-caption" contenteditable="true" data-edit="signoff-caption">Signed off, this week. Paperwork on file. — W.</div>
+        </div>
+
+      </div> <!-- /proof-left -->
+
+      <!-- COMPACT GUESTBOOK PANEL — RIGHT side, 3 Wittyverse-local reviews of imported products -->
+      <div class="guestbook-panel">
+        <div class="guestbook-header">
+          <span class="guestbook-title"><span class="live-dot" aria-hidden="true"></span><span contenteditable="true" data-edit="guestbook-title">LIVE DISPATCH</span></span>
+          <span class="guestbook-meta" contenteditable="true" data-edit="guestbook-meta">1,247 ENTRIES</span>
+        </div>
+        <div class="guestbook-entries">
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known" contenteditable="true" data-edit="gb-entry1-handle">H. Verloen</span>
+              <span class="entry-code" contenteditable="true" data-edit="gb-entry1-code">c247.3</span>
+            </div>
+            <div class="entry-body" contenteditable="true" data-edit="gb-entry1-body">Refilled the Headlight Fluid twice this week. Winter formula doesn't last. Switched to the 16 oz.</div>
+          </div>
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known" contenteditable="true" data-edit="gb-entry2-handle">Margene K.</span>
+              <span class="entry-code" contenteditable="true" data-edit="gb-entry2-code">c245.8</span>
+            </div>
+            <div class="entry-body" contenteditable="true" data-edit="gb-entry2-body">Husband refuses to leave without his Reality Stabilizer. We keep two now.</div>
+          </div>
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known" contenteditable="true" data-edit="gb-entry3-handle">G. Strom</span>
+              <span class="entry-code" contenteditable="true" data-edit="gb-entry3-code">c244.1</span>
+            </div>
+            <div class="entry-body" contenteditable="true" data-edit="gb-entry3-body">Dehydrated Water rehydration ratio on the package is wrong. 1:1.4 actually. Knocking off one star.</div>
+          </div>
+
+        </div>
+        <div class="guestbook-footer">
+          <span contenteditable="true" data-edit="footer-line1">LAST SYNC · c247.4 · WTC 03:41</span><br>
+          <span contenteditable="true" data-edit="footer-line2" style="opacity:0.7;">1,244 more in the aggregator</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="design-notes">
+      <div class="notes-title">Design notes — Proof of Import §6</div>
+      <div class="note"><span class="note-tag ia">IA</span><span class="note-body">Moved <em>before</em> FAQ per IA audit. For a novelty-premise brand, the legitimacy objection ("is this real?") supersedes the process objection ("how does shipping work?"). Visitors must buy the premise before caring about logistics.</span></div>
+      <div class="note"><span class="note-tag ia">IA</span><span class="note-body">Layout: preamble (Winston's R2 framing) on the <strong>left</strong>, leaning into the wider column. Guestbook panel on the <strong>right</strong>, narrow + dark — visually weighted like a sidebar artifact, not the section's main body. The eye reads Winston's argument first, then drops into the proof beside it.</span></div>
+      <div class="note"><span class="note-tag visual">VISUAL</span><span class="note-body">Guestbook is the page's <strong>first piece of explicit visual identity</strong> — dark bg, mono type, amber title, green handles. Pattern: leaked terminal feed, not polished review section. The format <em>is</em> the proof — it can't be Earth-side marketing chrome and still feel "leaked from the aggregator." Resist softening it.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Only <strong>3 entries</strong>, only <strong>Wittyverse-locals reviewing the 3 imported products</strong> (Headlight Fluid, Reality Stabilizer, Dehydrated Water). Tone = banal consumer feedback (winter formula, ratio mislabeling, husband-keeps-two complaint). The joke is the proximity: Earth-side they're gag gifts; over there they're regular household goods with regular gripes. Dropped: Earth-side reactions, Anonymous meta-entries, and reviews of not-imported products (Child Chucker / Eye Bleach) — those belong elsewhere if they appear at all.</span></div>
+      <div class="note"><span class="note-tag visual">VISUAL</span><span class="note-body">Entry codes (<code>c247.3</code>, <code>c245.8</code>) read as Wittyverse-side timestamps — keep them descending (newer first). Header still says "1,247 ENTRIES" because the panel surfaces 3 of many, implying Winston curated. Footer reads <code>LAST SYNC · c247.4 · WTC 03:41</code> — same numeric system as the entry codes, plus a Wittyverse Time Coordinated stamp. Makes the panel feel like a real feed pulled minutes ago, not a static testimonial wall.</span></div>
+      <div class="note"><span class="note-tag visual">VISUAL</span><span class="note-body">Dr. W. Yeti's <strong>signed stamp</strong> sits under the preamble on the left — same circular mark as the masthead but smaller (84px, -6° rotation). It's the visual receipt that ties Winston's R2 framing to the panel's R1 evidence. Position pairs visually with the panel's top-right meta line — left = signature, right = source.</span></div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Green <strong>live-dot</strong> beside the LIVE DISPATCH title pulses (opacity 1↔0.45 + radial glow 0→5px) every 1.6s. Reads as "feed is open." Entries fade in on scroll, top-down, stagger 80ms. Hover entry: slight amber bg lift (<code>rgba(212,160,23,0.06)</code>). Optional click → expands inline with full text + sector code.</span></div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Mini stamp on the left should <em>not</em> animate by default — it's a static seal. Hover: subtle 250ms rotation from -6° to 0° (rights itself, like someone aligning it), back on mouse-leave. Keeps the personality without competing with the live-dot.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">The "lol" cert and the big Amazon-style review cards are <strong>both removed</strong>. The guestbook panel is now the entire proof artifact. Preamble (Winston's R2 showman voice) carries the framing. Two formats fighting over the same job is gone.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ §7 FAQ (moved down — after legitimacy is established) ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-eyebrow" contenteditable="true">FAQ</div>
+
+    <div class="slot" data-slot="faq-heading" style="margin-bottom:24px;">
+      <div class="slot-tag"><span class="slot-name">heading</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+      <div class="opt active" data-opt="A"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">Winston answers</div></div>
+      <div class="opt" data-opt="B"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">What I get asked most</div></div>
+      <div class="opt" data-opt="C"><div class="section-heading" style="margin-bottom:0;" contenteditable="true">Questions, answered</div></div>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-cat">Q1 — what is this place?</div>
+        <div class="slot" data-slot="faq-q1">
+          <div class="slot-tag"><span class="slot-name">Q1</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="faq-q" contenteditable="true">"Is this an actual store, or are you a bit?"</div></div>
+          <div class="opt" data-opt="B"><div class="faq-q" contenteditable="true">"Real store, or elaborate joke?"</div></div>
+          <div class="opt" data-opt="C"><div class="faq-q" contenteditable="true">"Is this an actual store?"</div></div>
+        </div>
+        <div class="faq-a" contenteditable="true">Wittyverse is a US-registered LLC. We sell novelty consumer goods — gag gifts and quirky items. Payments processed by Shopify. Tracking via USPS/UPS. Operator pseudonymous; legal name on file with relevant authorities. Dispatch location classified (operational reasons).</div>
+      </div>
+
+      <!-- Q2 (was Q3 in v6) — recipient question, promoted to position 2 per audit -->
+      <div class="faq-item">
+        <div class="faq-cat">Q2 — will the recipient like it?</div>
+        <div class="slot" data-slot="faq-q2">
+          <div class="slot-tag"><span class="slot-name">Q2</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="faq-q" contenteditable="true">"Will the recipient actually like this, or am I about to ruin a birthday?"</div></div>
+          <div class="opt" data-opt="B"><div class="faq-q" contenteditable="true">"What if the gift doesn't land?"</div></div>
+          <div class="opt" data-opt="C"><div class="faq-q" contenteditable="true">"What if they don't think it's funny?"</div></div>
+        </div>
+        <div class="faq-a" contenteditable="true">Read the customer feedback in the Guestbook above — actual reactions, not curated quotes. Our 30-day refund applies even on opened items if the gift didn't land. (This is unusual policy; it's deliberate.)</div>
+      </div>
+
+      <!-- Q3 (was Q2 in v6) — quality, demoted to position 3 -->
+      <div class="faq-item">
+        <div class="faq-cat">Q3 — is it actually good?</div>
+        <div class="slot" data-slot="faq-q3">
+          <div class="slot-tag"><span class="slot-name">Q3</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="faq-q" contenteditable="true">"Are these well made, or is this just cheap nonsense?"</div></div>
+          <div class="opt" data-opt="B"><div class="faq-q" contenteditable="true">"Will it fall apart in their hands?"</div></div>
+          <div class="opt" data-opt="C"><div class="faq-q" contenteditable="true">"Quality?"</div></div>
+        </div>
+        <div class="faq-a" contenteditable="true">All inventory is screened by the operator personally before dispatch. Materials disclosed per product. Defective units replaced or refunded. Average rating: 4.8 across 2,438 verified buyers. Specific feedback runs in the Guestbook above.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q4 — is buying here safe?</div>
+        <div class="slot" data-slot="faq-q4">
+          <div class="slot-tag"><span class="slot-name">Q4</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="faq-q" contenteditable="true">"Is paying through this site safe? Important question."</div></div>
+          <div class="opt" data-opt="B"><div class="faq-q" contenteditable="true">"How does checkout work? Anything weird?"</div></div>
+          <div class="opt" data-opt="C"><div class="faq-q" contenteditable="true">"Is checkout secure?"</div></div>
+        </div>
+        <div class="faq-a" contenteditable="true">Checkout runs on Shopify (SSL encrypted, PCI-compliant). We accept Visa, Mastercard, Amex, Apple Pay, Shop Pay, PayPal. Card details never reach our servers.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q5 — shipping / speed</div>
+        <div class="slot" data-slot="faq-q5">
+          <div class="slot-tag"><span class="slot-name">Q5</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="faq-q" contenteditable="true">"How fast can you get this in their hands? Because I personally hate waiting."</div></div>
+          <div class="opt" data-opt="B"><div class="faq-q" contenteditable="true">"When will it arrive if I order now?"</div></div>
+          <div class="opt" data-opt="C"><div class="faq-q" contenteditable="true">"When will it arrive?"</div></div>
+        </div>
+        <div class="faq-a" contenteditable="true">Dispatch runs once a week (Tuesdays). Orders received before the window closes ship in the following batch. Domestic transit: 3–6 business days after dispatch. Tracking emailed when the unit leaves the dock. Free shipping on orders over $40.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q6 — returns</div>
+        <div class="slot" data-slot="faq-q6">
+          <div class="slot-tag"><span class="slot-name">Q6</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="faq-q" contenteditable="true">"Returns? Yes. Refunds? Also yes. I built this business on guarantees."</div></div>
+          <div class="opt" data-opt="B"><div class="faq-q" contenteditable="true">"What if it doesn't land the joke — can I return it?"</div></div>
+          <div class="opt" data-opt="C"><div class="faq-q" contenteditable="true">"Refund policy?"</div></div>
+        </div>
+        <div class="faq-a" contenteditable="true">Unopened items: 30-day full refund. Opened items: 30-day refund if the gift failed to land. Defective items: always refunded or replaced. Email refunds@wittyverse.com with order #.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q7 — international (optional)</div>
+        <div class="slot" data-slot="faq-q7">
+          <div class="slot-tag"><span class="slot-name">Q7</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="faq-q" contenteditable="true">"International? Currently no. I'm not authorized to clear those customs. Yet."</div></div>
+          <div class="opt" data-opt="B"><div class="faq-q" contenteditable="true">"Do you ship outside the US?"</div></div>
+          <div class="opt" data-opt="C"><div class="faq-q" contenteditable="true">"International shipping?"</div></div>
+        </div>
+        <div class="faq-a" contenteditable="true">US domestic only at this time. International dispatch pending customs paperwork.</div>
+      </div>
+
+    </div>
+
+    <div class="design-notes">
+      <div class="notes-title">Design notes — FAQ §7</div>
+      <div class="note"><span class="note-tag ia">IA</span><span class="note-body">Q2 and Q3 swapped: recipient question now precedes quality. For gift purchases, "will they like it?" is the primary objection — answered before "is it well-made?" Original v6 sequence was inverted.</span></div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Mobile: FAQ collapses into accordion (questions only visible, tap to expand answer). Desktop: stay open. Animation: max-height 0→auto over 250ms ease-out + opacity 0→1 over 200ms. Top 2 Qs default-expanded on mobile to show the pattern. Keyboard: Enter/Space toggles, ↑↓ navigates.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Q1 options now consistently formatted as <em>questions</em> (v6 mixed statements with questions, breaking scannability). Same Q1 voice as the buyer asks; A row is Winston's answer in his voice.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Both Q2 and Q3 answers now reference the Guestbook above — reinforces the proof artifact and gives visitors a reason to scroll back up if they skipped it.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ §8 NEWSLETTER ============ -->
+<section class="newsletter">
+  <div class="wrap">
+    <div class="newsletter-inner">
+
+      <div class="slot" data-slot="news-heading">
+        <div class="slot-tag" style="position:relative;display:inline-flex;justify-content:center;width:100%;top:0;"><span class="slot-name">heading</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+        <div class="opt active" data-opt="A"><div class="newsletter-heading" contenteditable="true">The Winston Dispatch</div></div>
+        <div class="opt" data-opt="B"><div class="newsletter-heading" contenteditable="true">Get the Tuesday Letter</div></div>
+        <div class="opt" data-opt="C"><div class="newsletter-heading" contenteditable="true">Sign for the Dispatch List</div></div>
+      </div>
+
+      <div class="slot" data-slot="news-pitch">
+        <div class="slot-tag" style="position:relative;display:inline-flex;justify-content:center;width:100%;top:0;"><span class="slot-name">pitch</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+        <div class="opt active" data-opt="A"><div class="newsletter-pitch" contenteditable="true">"Tuesday morning. One short letter (~2 min read). What cleared customs this week, what didn't, which gift I'd personally hand my brother-in-law. No spam. Unsubscribe whenever. — W."</div></div>
+        <div class="opt" data-opt="B"><div class="newsletter-pitch" contenteditable="true">"One signed letter per week: new goods, restocks, the occasional dispatch disaster. — W."</div></div>
+        <div class="opt" data-opt="C"><div class="newsletter-pitch" contenteditable="true">"A letter from me, every Tuesday. Goods that cleared customs. Goods that didn't. — W."</div></div>
+      </div>
+
+      <div class="newsletter-form">
+        <div class="slot" data-slot="news-placeholder" style="flex:1;">
+          <div class="slot-tag"><span class="slot-name">placeholder</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><input type="email" class="newsletter-input" placeholder="Your email" style="width:100%;"></div>
+          <div class="opt" data-opt="B"><input type="email" class="newsletter-input" placeholder="Where to send the dispatch" style="width:100%;"></div>
+          <div class="opt" data-opt="C"><input type="email" class="newsletter-input" placeholder="Earth-sector email address" style="width:100%;"></div>
+        </div>
+
+        <div class="slot" data-slot="news-submit">
+          <div class="slot-tag"><span class="slot-name">submit</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+          <div class="opt active" data-opt="A"><div class="btn" contenteditable="true">Send me the Tuesday letter</div></div>
+          <div class="opt" data-opt="B"><div class="btn" contenteditable="true">Get the Tuesday Letter</div></div>
+          <div class="opt" data-opt="C"><div class="btn" contenteditable="true">Sign for the dispatch list</div></div>
+        </div>
+      </div>
+
+      <div class="slot" data-slot="news-microcopy">
+        <div class="slot-tag" style="position:relative;display:inline-flex;justify-content:center;width:100%;top:0;"><span class="slot-name">microcopy</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+        <div class="opt active" data-opt="A"><div class="newsletter-microcopy" contenteditable="true">No spam · one email per week · unsubscribe anytime</div></div>
+        <div class="opt" data-opt="B"><div class="newsletter-microcopy" contenteditable="true">Tuesday letter only. Nothing else. Unsubscribe anytime.</div></div>
+        <div class="opt" data-opt="C"><div class="newsletter-microcopy" contenteditable="true">Joining 4,200+ subscribers · unsubscribe anytime</div></div>
+      </div>
+
+    </div>
+
+    <div class="wrap">
+    <div class="design-notes">
+      <div class="notes-title">Design notes — Newsletter §8</div>
+      <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Input focus: border transitions to ink + soft 0 0 0 3px shadow ring (150ms). On submit: button text "Sending…" for 400ms, then bg shifts green + text "✓ Welcome" for 2s. Error: red border + 200ms horizontal shake.</span></div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Submit Option B replaced the generic "Subscribe" with "Get the Tuesday Letter" (specific outcome named, matches the heading's named-product framing). A and C already concrete.</span></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ §9 FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 contenteditable="true">SHOP</h4>
+        <a contenteditable="true">All goods</a>
+        <a contenteditable="true">Best sellers</a>
+        <a contenteditable="true">Gifts under $25</a>
+        <a contenteditable="true">Gift cards</a>
+      </div>
+      <div class="footer-col">
+        <h4 contenteditable="true">HELP</h4>
+        <a contenteditable="true">Shipping &amp; dispatch</a>
+        <a contenteditable="true">Returns &amp; refunds</a>
+        <a contenteditable="true">FAQ</a>
+        <a contenteditable="true">hello@wittyverse.com</a>
+      </div>
+      <div class="footer-col">
+        <h4 contenteditable="true">ABOUT</h4>
+        <a contenteditable="true">Dr. Yeti &amp; the dispatch</a>
+        <a contenteditable="true">Proof of import</a>
+        <a contenteditable="true">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4 contenteditable="true">CONNECT</h4>
+        <a contenteditable="true">The Tuesday Letter</a>
+        <a contenteditable="true">Instagram</a>
+        <a contenteditable="true">YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer-trust-row">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">AMEX</span>
+      <span class="pay-icon">APPLE PAY</span>
+      <span class="pay-icon">SHOP PAY</span>
+      <span class="pay-icon">PAYPAL</span>
+      <span style="font-size:11px;color:var(--muted);margin-left:auto;" contenteditable="true">SSL secured · 30-day guarantee</span>
+    </div>
+
+    <div class="slot" data-slot="compliance">
+      <div class="slot-tag"><span class="slot-name">compliance</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+      <div class="opt active" data-opt="A"><div class="compliance" contenteditable="true">"Sole Authorized Importer, Earth Side · Operating as Wittyverse LLC · Payments via Shopify · Dispatch location classified, operator pseudonymous."</div></div>
+      <div class="opt" data-opt="B"><div class="compliance" contenteditable="true">"Sole Authorized Importer, Earth Side · Manufacturing partners undisclosed · Operator pseudonymous · Dispatch location classified."</div></div>
+      <div class="opt" data-opt="C"><div class="compliance" contenteditable="true">"Dispatch location classified · Manufacturing partners undisclosed · Operator pseudonymous"</div></div>
+    </div>
+
+    <div class="slot" data-slot="signoff">
+      <div class="slot-tag"><span class="slot-name">signoff</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+      <div class="opt active" data-opt="A"><div class="signoff" contenteditable="true">© 2026 Wittyverse LLC · — W.</div></div>
+      <div class="opt" data-opt="B"><div class="signoff" contenteditable="true">© 2026 Wittyverse LLC · Sole Authorized Importer · Earth Side</div></div>
+      <div class="opt" data-opt="C"><div class="signoff" contenteditable="true">© 2026 Wittyverse · All paperwork on file</div></div>
+    </div>
+
+    <div class="design-notes">
+      <div class="notes-title">Design notes — Footer §9</div>
+      <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Compliance Option A tightened — removed the repeated "by necessity" tic (v6 used it twice, reading as defensive evasion). New version leads with legitimacy facts (LLC, Shopify) then the lore claim. Option B/C kept as the loose-lore variants.</span></div>
+      <div class="note"><span class="note-tag visual">VISUAL</span><span class="note-body">Checkout/cart pages (out of scope for landing wireframe) should follow the playbook's <strong>personality gradient</strong>: landing 80% personality / 20% trust; cart 50/50; checkout 20% personality / 80% trust. As anxiety peaks at payment, fade the showman and lean on familiar trust signals (payment badges, SSL, recognizable form patterns). Don't carry the Guestbook aesthetic into checkout.</span></div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY ============ -->
+<div class="mobile-note">
+  <div>↓ On mobile, a sticky CTA bar pins to the bottom of the viewport. Below: variant preview.</div>
+  <div class="slot" data-slot="mobile-cta" style="display:inline-block;margin-top:12px;">
+    <div class="slot-tag"><span class="slot-name">mobile cta</span><div class="switcher"><button data-target="A" class="active">A</button><button data-target="B">B</button><button data-target="C">C</button></div></div>
+    <div class="opt active" data-opt="A"><div class="sticky-mock" contenteditable="true">Browse Manifest &nbsp;·&nbsp; ★ 4.8</div></div>
+    <div class="opt" data-opt="B"><div class="sticky-mock" contenteditable="true">Shop Now &nbsp;·&nbsp; Free ship $40+</div></div>
+    <div class="opt" data-opt="C"><div class="sticky-mock" contenteditable="true">Get Mine &nbsp;·&nbsp; 30-day refund</div></div>
+  </div>
+  <div class="wrap" style="max-width:640px;margin:24px auto 0;">
+  <div class="design-notes" style="text-align:left;">
+    <div class="notes-title">Design notes — Mobile sticky</div>
+    <div class="note"><span class="note-tag copy">COPY</span><span class="note-body">Each variant now carries <strong>one</strong> trust signal beside the CTA (not three crammed in). Mobile real estate is scarce — one reassurance per option earns the click.</span></div>
+    <div class="note"><span class="note-tag motion">MOTION</span><span class="note-body">Sticky bar slides up from bottom on scroll past hero (translateY 100%→0 over 240ms). Reverses on scroll-up to hero. Tap: scale 0.96 for 80ms then release. Cart icon shows badge count with subtle pulse on add.</span></div>
+  </div>
+  </div>
+</div>
+
+<!-- ============ EXPORT FAB + MODAL ============ -->
+<button class="export-fab" id="export-fab">📋 Export picks</button>
+<div class="copy-toast" id="copy-toast">Copied to clipboard</div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Your current selections + edits</h2>
+      <button class="modal-close" id="modal-close">×</button>
+    </div>
+    <textarea id="export-text" readonly></textarea>
+    <div class="modal-actions">
+      <button class="danger" id="reset-btn">Reset to defaults</button>
+      <button id="select-all-btn">Select all</button>
+      <button class="primary" id="copy-btn">Copy to clipboard</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'wittyverse-wireframe-v7';
+
+document.querySelectorAll('.switcher').forEach(switcher => {
+  const slot = switcher.closest('.slot');
+  if (!slot) return;
+  switcher.addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const target = btn.dataset.target;
+    switcher.querySelectorAll(':scope > button').forEach(b => b.classList.toggle('active', b === btn));
+    slot.querySelectorAll(':scope > .opt').forEach(o => o.classList.toggle('active', o.dataset.opt === target));
+    slot.classList.add('editing');
+    clearTimeout(slot._t);
+    slot._t = setTimeout(() => slot.classList.remove('editing'), 600);
+    saveState();
+  });
+});
+
+function saveState() {
+  const state = { slots: {}, edits: {} };
+  document.querySelectorAll('.slot').forEach(slot => {
+    const name = slot.dataset.slot;
+    const active = slot.querySelector(':scope > .opt.active');
+    if (active) state.slots[name] = active.dataset.opt;
+  });
+  document.querySelectorAll('[contenteditable="true"]').forEach((el, i) => {
+    const key = el.dataset.edit || getElementKey(el, i);
+    state.edits[key] = el.innerHTML;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function getElementKey(el, fallbackIndex) {
+  const slot = el.closest('.slot');
+  const opt = el.closest('.opt');
+  if (slot && opt) {
+    const slotName = slot.dataset.slot || 'unknown';
+    const optName = opt.dataset.opt || 'X';
+    const siblings = Array.from(opt.querySelectorAll('[contenteditable="true"]'));
+    const pos = siblings.indexOf(el);
+    return `${slotName}::${optName}::${pos}`;
+  }
+  return `__free__::${fallbackIndex}`;
+}
+
+function loadState() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+  try {
+    const state = JSON.parse(raw);
+    Object.entries(state.slots || {}).forEach(([name, opt]) => {
+      const slot = document.querySelector(`.slot[data-slot="${name}"]`);
+      if (!slot) return;
+      slot.querySelectorAll(':scope > .opt').forEach(o => o.classList.toggle('active', o.dataset.opt === opt));
+      slot.querySelectorAll(':scope > .slot-tag .switcher button').forEach(b => b.classList.toggle('active', b.dataset.target === opt));
+    });
+    document.querySelectorAll('[contenteditable="true"]').forEach((el, i) => {
+      const key = el.dataset.edit || getElementKey(el, i);
+      if (state.edits && state.edits[key] !== undefined) el.innerHTML = state.edits[key];
+    });
+  } catch (e) { console.error(e); }
+}
+
+document.addEventListener('input', e => { if (e.target.isContentEditable) saveState(); });
+
+function buildExport() {
+  const out = [];
+  out.push('# Wittyverse landing — copy picks + edits');
+  out.push('');
+  out.push(`Exported: ${new Date().toISOString()}`);
+  out.push('');
+
+  const sectionElements = Array.from(document.querySelectorAll('.marquee, header.masthead, section, footer.site-footer, .mobile-note'));
+  const slotsBySection = new Map();
+  document.querySelectorAll('.slot').forEach(slot => {
+    let ancestor = sectionElements.find(s => s.contains(slot));
+    if (!ancestor) ancestor = document.body;
+    if (!slotsBySection.has(ancestor)) slotsBySection.set(ancestor, []);
+    slotsBySection.get(ancestor).push(slot);
+  });
+
+  function labelFor(sec) {
+    if (sec.classList.contains('marquee')) return '§1 MARQUEE (locked)';
+    if (sec.tagName === 'HEADER') return '§2 MASTHEAD';
+    if (sec.classList.contains('hero')) return '§3 HERO';
+    if (sec.classList.contains('newsletter')) return '§8 NEWSLETTER';
+    if (sec.classList.contains('mobile-note')) return 'MOBILE STICKY CTA';
+    if (sec.tagName === 'FOOTER') return '§9 FOOTER';
+    const eyebrow = sec.querySelector(':scope > .wrap > .section-eyebrow');
+    const heading = sec.querySelector(':scope > .wrap > .section-heading, :scope > .wrap > .slot[data-slot$="heading"] .opt.active .section-heading');
+    const eyebrowText = eyebrow ? eyebrow.innerText.trim() : '';
+    const headingText = heading ? heading.innerText.trim() : '';
+    if (eyebrowText && headingText) return `§ ${eyebrowText.toUpperCase()} — ${headingText}`;
+    if (headingText) return `§ ${headingText}`;
+    return '§ (section)';
+  }
+
+  sectionElements.forEach(sec => {
+    if (!slotsBySection.has(sec) && !sec.classList.contains('marquee') && sec.tagName !== 'HEADER') return;
+    out.push('---');
+    out.push('');
+    out.push(`## ${labelFor(sec)}`);
+    out.push('');
+
+    if (sec.classList.contains('marquee')) {
+      out.push('**Locked rotation:**');
+      out.push(sec.innerText.replace(/\s+/g, ' ').trim());
+      out.push('');
+    }
+    if (sec.tagName === 'HEADER') {
+      const kicker = document.querySelector('.kicker');
+      if (kicker) {
+        out.push(`**Kicker (locked):** ${kicker.innerText.replace(/locked/i, '').trim()}`);
+        out.push('');
+      }
+    }
+
+    const slots = slotsBySection.get(sec) || [];
+    slots.forEach(slot => {
+      const name = slot.dataset.slot;
+      const active = slot.querySelector(':scope > .opt.active');
+      if (!active) return;
+      const letter = active.dataset.opt;
+      const text = active.innerText.trim().replace(/\s*\n\s*\n+/g, ' / ');
+      out.push(`**${name}** — Option **${letter}**`);
+      out.push(`> ${text}`);
+      out.push('');
+    });
+  });
+
+  // Guestbook entries (free edits inside the dark panel)
+  const guestbook = document.querySelector('.guestbook-panel');
+  if (guestbook) {
+    out.push('---');
+    out.push('');
+    out.push('## §6 PROOF OF IMPORT — GUESTBOOK ENTRIES');
+    out.push('');
+    guestbook.querySelectorAll('.guestbook-entry').forEach(entry => {
+      const handle = entry.querySelector('.entry-handle')?.innerText.trim() || '';
+      const code = entry.querySelector('.entry-code')?.innerText.trim() || '';
+      const body = entry.querySelector('.entry-body')?.innerText.trim() || '';
+      out.push(`- **${handle}** \`${code}\` — ${body}`);
+    });
+    out.push('');
+  }
+
+  out.push('---');
+  out.push('');
+  out.push('## Free edits (badges, prices, ratings, reviews, links)');
+  out.push('');
+  document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+    if (el.closest('.opt')) return;
+    if (el.closest('.guestbook-entry')) return; // handled above
+    const text = el.innerText.trim();
+    if (!text) return;
+    const tag = el.dataset.edit || el.className.split(' ')[0] || el.tagName.toLowerCase();
+    out.push(`- **${tag}:** ${text}`);
+  });
+
+  return out.join('\n');
+}
+
+const fab = document.getElementById('export-fab');
+const modal = document.getElementById('modal');
+const modalClose = document.getElementById('modal-close');
+const exportText = document.getElementById('export-text');
+const copyBtn = document.getElementById('copy-btn');
+const selectAllBtn = document.getElementById('select-all-btn');
+const resetBtn = document.getElementById('reset-btn');
+const toast = document.getElementById('copy-toast');
+
+fab.addEventListener('click', () => { exportText.value = buildExport(); modal.classList.add('open'); });
+modalClose.addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+selectAllBtn.addEventListener('click', () => { exportText.select(); exportText.setSelectionRange(0, 999999); });
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(exportText.value);
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  } catch (e) { selectAllBtn.click(); alert('Press Ctrl/Cmd+C to copy'); }
+});
+resetBtn.addEventListener('click', () => {
+  if (confirm('Reset all selections and edits to defaults? This will reload the page.')) {
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  }
+});
+
+loadState();
+</script>
+
+</body>
+</html>
