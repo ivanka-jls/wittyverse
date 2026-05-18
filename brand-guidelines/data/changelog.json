@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.12",
+    "date": "2026-05-18",
+    "changes": [
+      "Quick Reference: added 5th tile 'Key Decision Filter' — full-width banner across the grid bottom — ports the §0 one-pager's filter line (the one piece from §0 that wasn't already covered by the existing 4 tiles). Reads: 'Before any decision, ask: Is this shockingly good? Would someone be genuinely shocked that a gag gift is this well-made, this funny, this dense? If anything less than yes — keep going.'",
+      "Strategy: ported §9 Origin Narrative (Earth-side / Johnny arc) as new #origin canon-card — the Industry Insider archetype, the Boulder → JLS Trading → Witty Yeti → Wittyverse story arc, and Why This Story Is Credible. Closes with a note that the in-universe origin (Winston's portal discovery) is internal canon only and lives in the wittyverse-codex, governed by the Storefront Discipline rule already in #voice.",
+      "Visual System: prepended new #visual-direction canon-card as a strategic intro before Logo / Color / Typography — ports §12 Creative Direction Seeds (partial). Contains: The Core Visual Tension (premium craft applied to absurd content), Visual Mood & Aesthetic Direction, What the Brand Looks Like vs. Never Looks Like (Liquid Death / Omega Mart / The Onion aspirations + Party City anti-pattern), Experience Principles. Skips the obsolete 2021 yeti-mark / Rubber Vloeren 'Existing Visual Assets' subsection per Inventory Delta — superseded by the canonical v2 type stack and color palette already documented below.",
+      "Brand-docs cleanup Batch 5 (refactor/brand-docs-cleanup worktree). Only one substantive port remains: the Voice Codex R1 Keeper (largest remaining piece — 10 sub-sections of the post-flip R1 superprompt) → #voice. Then Step 3 (brand-bible Redirect) and Step 4 (homepage card swap)."
+    ]
+  },
+  {
     "version": "0.11",
     "date": "2026-05-18",
     "changes": [
