@@ -2,3 +2,6 @@
 .claude/
 .mcp.json
 .playwright-mcp/
+
+# Git worktrees (isolated per-task working copies)
+.worktrees/
