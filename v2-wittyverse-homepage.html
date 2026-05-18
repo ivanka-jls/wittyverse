@@ -3,1442 +3,1690 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wittyverse — Gag gifts, sourced from the other side.</title>
+<title>Wittyverse — Out of this world gag gifts you can't buy anywhere else.</title>
+<meta name="description" content="Gag gifts from a dimension you can't visit. Personally hauled back, personally inspected, personally on the hook. — Dr. W. Yeti PhD">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Bowlby+One&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Bowlby+One&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* ============================================================
+   WITTYVERSE v2 — live homepage
+   Forked from v1-wittyverse-shop.html, restructured to match
+   the locked wireframe direction (wireframe-plain.html v7).
+   Iterate live here. Alternate copy options live as HTML
+   comments above each slot — uncomment to switch.
+   ============================================================ */
 
-  :root {
-    /* Purple gradient family (from #1 hero) */
-    --purple: #6A1B9A;
-    --purple-mid: #5C27A3;
-    --purple-deep: #401A75;
-    --purple-darker: #1A0A2E;
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Lime accents (from #1) */
-    --lime: #9EE83D;
-    --lime-deep: #7CB342;
+:root {
+  /* Brand palette */
+  --purple: #6A1B9A;
+  --purple-mid: #5C27A3;
+  --purple-deep: #401A75;
+  --purple-darker: #1A0A2E;
+  --lime: #9EE83D;
+  --lime-deep: #7CB342;
+  --orange: #FF6B2C;
+  --orange-warm: #FF8A50;
+  --orange-deep: #E55A1A;
+  --cream: #FFF4E6;
+  --cream-deep: #FFE0B2;
+  --paper: #F5EFDF;
+  --white: #FFFFFF;
+  --ink: #1A0A2E;
+  --ink-soft: #2A1144;
+  --teal: #2DB88A;
+  --shadow: rgba(26,10,46,0.4);
 
-    /* Orange accents (from #2/#3) */
-    --orange: #FF6B2C;
-    --orange-warm: #FF8A50;
-    --orange-deep: #E55A1A;
+  /* R1 guestbook panel tokens (in-universe artifact) */
+  --gb-bg: #0d0d0d;
+  --gb-border: #2a2a2a;
+  --gb-amber: #d4a017;
+  --gb-green: #10b981;
+  --gb-text: #d4d4d4;
+}
 
-    /* Neutrals */
-    --cream: #FFF4E6;
-    --cream-deep: #FFE0B2;
-    --paper: #F5EFDF;
-    --white: #FFFFFF;
-    --off-white: #F5F5F6;
+html { scroll-behavior: smooth; }
 
-    /* Ink for structure/borders */
-    --ink: #1A0A2E;
-    --ink-soft: #2A1144;
+body {
+  background: var(--purple-mid);
+  background-image: radial-gradient(ellipse at top, var(--purple) 0%, var(--purple-darker) 80%);
+  color: var(--white);
+  font-family: 'Public Sans', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
 
-    --shadow: rgba(26,10,46,0.4);
-  }
+/* Halftone overlay sits over the whole page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 4px 4px;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
 
-  body {
-    background: var(--purple-mid);
-    color: var(--white);
-    font-family: 'Public Sans', 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 15px;
-    line-height: 1.5;
-    overflow-x: hidden;
-  }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 
-  a { color: inherit; text-decoration: none; }
+/* ============================================================
+   §1 MARQUEE
+   ============================================================ */
+.topbar {
+  background: var(--orange);
+  color: var(--ink);
+  padding: 10px 0;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  overflow: hidden;
+  border-bottom: 4px solid var(--ink);
+  position: relative;
+  z-index: 60;
+}
+.marquee {
+  display: flex;
+  gap: 56px;
+  animation: marquee 42s linear infinite;
+  white-space: nowrap;
+}
+.marquee span { display: inline-flex; align-items: center; gap: 12px; }
+.marquee span::before { content: '✦'; color: var(--ink); font-size: 14px; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
-  /* ====== TOP MARQUEE (from #2) ====== */
-  .topbar {
-    background: var(--orange);
-    color: var(--ink);
-    padding: 10px 0;
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    overflow: hidden;
-    border-bottom: 4px solid var(--ink);
-    position: relative;
-    z-index: 60;
-  }
+/* ============================================================
+   §2 MASTHEAD
+   ============================================================ */
+.masthead {
+  padding: 30px 0 24px;
+  position: relative;
+  z-index: 50;
+}
+.masthead-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.masthead-left { display: flex; flex-direction: column; gap: 8px; }
+.wordmark {
+  font-family: 'Lilita One', cursive;
+  font-size: clamp(34px, 4.5vw, 48px);
+  color: var(--orange);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  transform: skewX(-6deg);
+  transform-origin: left;
+  text-shadow: 3px 3px 0 var(--ink), 6px 6px 0 var(--lime);
+}
+.kicker {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--cream);
+  max-width: 360px;
+  line-height: 1.4;
+  opacity: 0.92;
+}
+.masthead-center { display: flex; flex-direction: column; align-items: center; }
+.stamp {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 2px solid var(--cream);
+  background: rgba(255,244,230,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  padding: 12px;
+  color: var(--cream);
+  transform: rotate(-8deg);
+  text-transform: uppercase;
+}
+.stamp .stamp-sig {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  color: var(--lime);
+}
+.stamp .stamp-divider {
+  width: 60%;
+  border-top: 1px solid var(--cream);
+  margin: 4px 0;
+  opacity: 0.6;
+}
+.masthead-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+.status-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  border: 1px solid var(--lime);
+  padding: 7px 12px;
+  background: var(--ink);
+  color: var(--lime);
+  text-transform: uppercase;
+}
+.nav-row { display: flex; gap: 18px; align-items: center; }
+.nav-items {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--cream);
+  letter-spacing: 0.03em;
+}
+.nav-items a { margin-right: 14px; transition: color 0.15s; }
+.nav-items a:last-child { margin-right: 0; }
+.nav-items a:hover { color: var(--lime); }
+.icons { display: flex; gap: 8px; }
+.icon-box {
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid var(--cream);
+  padding: 4px 9px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--cream);
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+.icon-box:hover { background: var(--cream); color: var(--ink); }
 
-  .marquee {
-    display: flex;
-    gap: 56px;
-    animation: marquee 40s linear infinite;
-    white-space: nowrap;
-  }
+/* ============================================================
+   §3 HERO
+   ============================================================ */
+.hero {
+  padding: 48px 0 80px;
+  position: relative;
+  z-index: 5;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero-image {
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, var(--ink-soft), var(--purple-darker));
+  border: 4px solid var(--ink);
+  border-radius: 20px;
+  box-shadow: 0 10px 0 var(--ink), 0 16px 32px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  opacity: 0.94;
+}
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.10) 1px, transparent 1px);
+  background-size: 5px 5px;
+  pointer-events: none;
+}
+.hero-image::after {
+  content: '✦';
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  color: var(--orange);
+  font-size: 28px;
+}
+.hero-image-label {
+  position: relative;
+  z-index: 2;
+  max-width: 220px;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+.hero-copy { display: flex; flex-direction: column; gap: 18px; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: var(--lime);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 3px solid var(--orange);
+  align-self: flex-start;
+}
+.eyebrow::before, .eyebrow::after { content: '✦'; color: var(--orange); }
+.headline {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5.4vw, 72px);
+  line-height: 0.96;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-6deg);
+  text-shadow: 4px 4px 0 var(--ink), 8px 8px 0 var(--lime);
+}
+.subline {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.55;
+  max-width: 500px;
+}
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 13px;
+  color: var(--cream);
+  font-weight: 600;
+}
+.rating-row .stars {
+  color: var(--lime);
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.price-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 14px 26px;
+  border-radius: 40px;
+  background: var(--orange);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 0 5px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 0 var(--ink); }
+.btn:active { transform: translateY(2px); box-shadow: 0 3px 0 var(--ink); }
+.btn-secondary { background: var(--cream); color: var(--ink); }
+.btn-secondary:hover { background: var(--white); }
+.trust-microcopy {
+  font-size: 12px;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+.badges-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  border: 1px solid var(--cream);
+  padding: 5px 10px;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.8;
+}
 
-  .marquee span {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-  }
+/* ============================================================
+   SECTION COMMON
+   ============================================================ */
+section.block {
+  position: relative;
+  z-index: 5;
+  padding: 72px 0;
+}
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange-deep);
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+.section-heading {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  transform-origin: left;
+  margin-bottom: 36px;
+}
+.block.dark .section-eyebrow { color: var(--orange); }
+.block.dark .section-heading { color: var(--white); text-shadow: 3px 3px 0 var(--ink), 6px 6px 0 var(--lime); }
 
-  .marquee span::before {
-    content: '✦';
-    color: var(--ink);
-    font-size: 14px;
-  }
+/* Cream-bg sections */
+.block.cream {
+  background: var(--cream);
+  color: var(--ink);
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+}
+.block.paper {
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+}
 
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+/* ============================================================
+   §4 BEST SELLERS
+   ============================================================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.product-card {
+  background: var(--white);
+  border: 4px solid var(--ink);
+  border-radius: 16px;
+  padding: 0 0 18px;
+  box-shadow: 0 6px 0 var(--ink), 0 10px 18px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.18s, box-shadow 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0 var(--ink), 0 14px 24px rgba(0,0,0,0.24);
+}
+.product-image {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, var(--purple-deep), var(--purple-darker));
+  border-bottom: 4px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 20px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+.product-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+.product-image .pi-label { position: relative; z-index: 2; line-height: 1.55; }
+.product-image .pi-sub { display: block; font-size: 9px; opacity: 0.6; margin-top: 6px; }
+.product-flag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--orange);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  padding: 4px 8px;
+  border: 2px solid var(--ink);
+  text-transform: uppercase;
+  z-index: 3;
+}
+.product-body { padding: 18px 18px 0; display: flex; flex-direction: column; gap: 8px; }
+.product-name {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--purple-deep);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  transform-origin: left;
+}
+.price {
+  font-family: 'Bowlby One', cursive;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--orange-deep);
+  transform: skewX(-5deg);
+  transform-origin: left;
+  text-shadow: 2px 2px 0 var(--ink);
+  line-height: 1;
+}
+.product-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  min-height: 80px;
+}
+.product-rating {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--orange-deep);
+  font-weight: 600;
+}
+.review-snippet {
+  font-size: 12px;
+  font-style: italic;
+  color: #4a3a3a;
+  border-left: 3px solid var(--orange);
+  padding-left: 10px;
+  line-height: 1.5;
+}
+.product-card .product-cta-row {
+  padding: 0 18px;
+  margin-top: 4px;
+}
+.btn-quick {
+  display: block;
+  width: 100%;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  background: var(--ink);
+  color: var(--lime);
+  border: none;
+  padding: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-quick:hover { background: var(--purple-deep); color: var(--lime); }
+.product-card-trust {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #5a4a4a;
+  letter-spacing: 0.04em;
+  padding: 0 18px;
+}
 
-  /* ====== HEADER ====== */
-  .site-header {
-    background: var(--purple-mid);
-    padding: 14px 0;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    border-bottom: 4px solid var(--ink);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    font-family: 'Lilita One', cursive;
-    font-size: 36px;
-    color: var(--orange);
-    letter-spacing: 1px;
-    line-height: 1;
-    text-shadow:
-      2px 2px 0 var(--ink),
-      4px 4px 0 var(--lime);
-    transform: skewX(-5deg);
-    display: inline-block;
-  }
-  .nav-links {
-    display: flex;
-    gap: 28px;
-  }
-  .nav-links a {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-size: 16px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--white);
-  }
-  .nav-links a:hover { color: var(--lime); }
-  .nav-links a.collab {
-    color: var(--orange);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
-  }
-  .header-icons {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--white);
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .icon-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--lime);
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    border: 2px solid var(--ink);
-    font-style: normal;
-  }
+/* ============================================================
+   §5 BROWSE GRID
+   ============================================================ */
+.browse-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.tile {
+  aspect-ratio: 1 / 1;
+  background: var(--cream);
+  border: 4px solid var(--ink);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  align-items: flex-end;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  box-shadow: 0 6px 0 var(--ink);
+  transition: transform 0.18s, box-shadow 0.18s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.tile::before {
+  content: '✦';
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  color: var(--orange);
+  font-size: 18px;
+}
+.tile:hover { transform: translateY(-4px); box-shadow: 0 10px 0 var(--ink); }
+.tile .tile-arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  color: var(--orange-deep);
+}
 
-  /* ====== HERO (gradient + stars from #1) ====== */
-  .hero {
-    position: relative;
-    background: radial-gradient(ellipse at center, var(--purple) 0%, var(--purple-darker) 80%);
-    min-height: 520px;
-    overflow: hidden;
-    padding: 60px 24px 70px;
-    border-bottom: 6px solid var(--ink);
-  }
-  .hero-stars {
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(2px 2px at 10% 20%, white, transparent),
-      radial-gradient(1px 1px at 80% 30%, white, transparent),
-      radial-gradient(2px 2px at 30% 70%, white, transparent),
-      radial-gradient(1px 1px at 90% 80%, white, transparent),
-      radial-gradient(1px 1px at 50% 10%, white, transparent),
-      radial-gradient(2px 2px at 70% 60%, white, transparent),
-      radial-gradient(1px 1px at 25% 50%, white, transparent),
-      radial-gradient(1px 1px at 60% 25%, white, transparent),
-      radial-gradient(2px 2px at 15% 85%, white, transparent),
-      radial-gradient(1px 1px at 85% 15%, white, transparent);
-    background-size: 100% 100%;
-    opacity: 0.7;
-  }
-  /* Halftone overlay (vibe from #3) */
-  .hero-halftone {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px);
-    background-size: 4px 4px;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .hero-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    text-align: center;
-  }
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--ink);
-    color: var(--lime);
-    padding: 6px 18px;
-    border-radius: 30px;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    margin-bottom: 20px;
-    border: 3px solid var(--orange);
-  }
-  .hero-eyebrow::before, .hero-eyebrow::after { content: '✦'; color: var(--orange); }
+/* ============================================================
+   §6 PROOF OF IMPORT
+   ============================================================ */
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 340px);
+  gap: 56px;
+  align-items: start;
+}
+.proof-left { display: flex; flex-direction: column; gap: 32px; }
+.proof-preamble { display: flex; flex-direction: column; gap: 16px; }
+.proof-preamble-strong {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  transform-origin: left;
+  color: var(--ink);
+}
+.proof-preamble-body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.proof-preamble-sign {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--orange-deep);
+  margin-top: 4px;
+}
+.proof-signoff {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 8px;
+}
+.stamp-mini {
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: rgba(26,10,46,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  padding: 8px;
+  transform: rotate(-6deg);
+  flex-shrink: 0;
+  color: var(--ink);
+  text-transform: uppercase;
+  transition: transform 0.25s;
+}
+.stamp-mini:hover { transform: rotate(0deg); }
+.stamp-mini .stamp-sig {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  color: var(--orange-deep);
+}
+.stamp-mini .stamp-divider {
+  width: 60%;
+  border-top: 1px solid var(--ink);
+  margin: 3px 0;
+  opacity: 0.5;
+}
+.signoff-caption {
+  font-size: 12px;
+  color: #4a3a3a;
+  font-style: italic;
+  line-height: 1.55;
+  max-width: 240px;
+}
 
-  .hero-headline {
-    font-family: 'Bowlby One', cursive;
-    font-weight: 400;
-    font-size: clamp(64px, 9vw, 104px);
-    color: var(--white);
-    line-height: 0.92;
-    letter-spacing: 0.005em;
-    text-transform: uppercase;
-    text-shadow:
-      4px 4px 0 var(--ink),
-      8px 8px 0 var(--lime);
-    margin-bottom: 22px;
-    transform: skewX(-6deg);
-  }
-  .hero-headline .word-other {
-    color: var(--lime);
-  }
-  .hero-sub {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--cream);
-    margin-bottom: 32px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-  }
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--orange);
-    color: var(--ink);
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 24px;
-    padding: 16px 44px;
-    border-radius: 40px;
-    border: 4px solid var(--ink);
-    box-shadow: 0 6px 0 var(--ink), 0 8px 20px rgba(0,0,0,0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition: transform 0.1s, box-shadow 0.1s;
-  }
-  .hero-cta:hover {
-    transform: translateY(2px);
-    box-shadow: 0 4px 0 var(--ink), 0 6px 16px rgba(0,0,0,0.3);
-  }
-  .hero-sig {
-    margin-top: 30px;
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 12px;
-    color: rgba(255,244,230,0.7);
-    font-style: italic;
-    letter-spacing: 0.04em;
-  }
-  .hero-sig strong { color: var(--orange); font-style: normal; font-weight: 700; }
+/* Dark guestbook panel — R1 in-universe artifact. Resist softening. */
+.guestbook-panel {
+  background: var(--gb-bg);
+  border: 1px solid var(--gb-border);
+  padding: 18px;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 0 var(--ink), 0 14px 32px rgba(0,0,0,0.4);
+}
+.guestbook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gb-border);
+}
+.guestbook-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gb-amber);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.guestbook-meta {
+  color: #555;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gb-green);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
+  animation: live-pulse 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes live-pulse {
+  0%   { opacity: 1;    box-shadow: 0 0 0 0   rgba(16, 185, 129, 0.55); }
+  60%  { opacity: 0.45; box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+  100% { opacity: 1;    box-shadow: 0 0 0 0   rgba(16, 185, 129, 0); }
+}
+.guestbook-entries { display: flex; flex-direction: column; gap: 14px; }
+.guestbook-entry { display: flex; flex-direction: column; gap: 4px; }
+.entry-line { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.entry-handle {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+.handle-known { color: var(--gb-green); }
+.handle-anon  { color: var(--gb-amber); }
+.entry-code   { color: #666; font-size: 10px; }
+.entry-body   { color: var(--gb-text); font-size: 11.5px; line-height: 1.55; }
+.guestbook-footer {
+  padding-top: 12px;
+  border-top: 1px dashed var(--gb-border);
+  color: #777;
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-align: center;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.guestbook-footer .gb-foot-sub { opacity: 0.65; }
 
-  /* Floating product visuals */
-  .hero-product {
-    position: absolute;
-    z-index: 3;
-  }
-  .hero-product.left {
-    left: 5%;
-    top: 30%;
-    transform: rotate(-12deg);
-  }
-  .hero-product.right {
-    right: 5%;
-    top: 35%;
-    transform: rotate(15deg);
-  }
-  .hero-product .package {
-    width: 110px;
-    height: 160px;
-    border-radius: 12px;
-    border: 4px solid var(--ink);
-    background: var(--white);
-    padding: 14px 8px;
-    text-align: center;
-    box-shadow: 0 8px 0 var(--ink), 0 12px 24px rgba(0,0,0,0.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .hero-product.left .package { background: var(--lime); }
-  .hero-product.right .package { background: var(--orange); }
-  .hero-product .pkg-brand {
-    font-family: 'Lilita One', cursive;
-    font-size: 12px;
-    color: var(--ink);
-    line-height: 1;
-    letter-spacing: 0.04em;
-  }
-  .hero-product .pkg-name {
-    font-family: 'Lilita One', cursive;
-    font-size: 18px;
-    color: var(--ink);
-    line-height: 1;
-    text-transform: uppercase;
-  }
-  .hero-product .pkg-tag {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--ink);
-    background: var(--white);
-    padding: 2px 6px;
-    border-radius: 4px;
-    border: 2px solid var(--ink);
-    align-self: center;
-    letter-spacing: 0.1em;
-  }
+/* ============================================================
+   §7 FAQ
+   ============================================================ */
+.faq-list { display: flex; flex-direction: column; gap: 22px; max-width: 880px; }
+.faq-item {
+  border-bottom: 2px solid rgba(26,10,46,0.18);
+  padding-bottom: 22px;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-cat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange-deep);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.faq-q {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--ink);
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: -0.005em;
+  margin-bottom: 10px;
+  transform: skewX(-3deg);
+  transform-origin: left;
+}
+.faq-a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #2a1144;
+  padding-left: 18px;
+  border-left: 3px solid var(--orange);
+  max-width: 720px;
+}
 
-  /* Cloud decorations */
-  .cloud {
-    position: absolute;
-    z-index: 2;
-    color: var(--white);
-    opacity: 0.85;
-  }
-  .cloud-1 { top: 10%; left: 8%; }
-  .cloud-2 { top: 20%; right: 12%; }
+/* ============================================================
+   §8 NEWSLETTER
+   ============================================================ */
+.newsletter {
+  background: var(--lime);
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+  padding: 80px 0;
+  position: relative;
+  z-index: 5;
+}
+.newsletter-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: center;
+  position: relative;
+}
+.newsletter-eyebrow {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 700;
+}
+.newsletter-eyebrow::before, .newsletter-eyebrow::after { content: '✦'; color: var(--orange-deep); }
+.newsletter-heading {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  text-shadow: 4px 4px 0 var(--orange);
+}
+.newsletter-pitch {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.6;
+  max-width: 560px;
+}
+.newsletter-form-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin-top: 6px;
+}
+.newsletter-form {
+  display: flex;
+  align-items: stretch;
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 6px 0 var(--ink), 8px 14px 0 rgba(45,184,138,0.6);
+}
+.newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 15px;
+  padding: 14px 22px;
+  color: var(--ink);
+  outline: none;
+}
+.newsletter-input::placeholder { color: rgba(26,10,46,0.5); }
+.newsletter-submit {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--ink);
+  color: var(--lime);
+  border: none;
+  padding: 14px 26px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.newsletter-submit:hover { background: var(--purple-deep); }
+.newsletter-microcopy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  opacity: 0.7;
+}
+.newsletter-stamp {
+  position: absolute;
+  top: -18px;
+  right: -10px;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.2;
+  transform: rotate(15deg);
+  text-align: center;
+  box-shadow: 3px 3px 0 var(--ink);
+  z-index: 4;
+}
+.newsletter-stamp .ns-sig {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  margin-top: 2px;
+}
 
-  /* ====== DISPATCH STRIP ====== */
-  .dispatch-strip {
-    background: var(--cream);
-    border-top: 6px solid var(--ink);
-    border-bottom: 6px solid var(--ink);
-    padding: 18px 0;
-    overflow: hidden;
-  }
-  .dispatch-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-  }
-  .dispatch-label {
-    font-family: 'Lilita One', cursive;
-    font-size: 28px;
-    color: var(--purple-deep);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    flex-shrink: 0;
-    transform: skewX(-5deg);
-  }
-  .dispatch-items {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex: 1;
-    justify-content: space-around;
-  }
-  .dispatch-item {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    color: var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    text-decoration: underline;
-    text-decoration-color: var(--orange);
-    text-decoration-thickness: 3px;
-    text-underline-offset: 4px;
-  }
+/* ============================================================
+   §9 FOOTER
+   ============================================================ */
+footer.site-footer {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 72px 0 36px;
+  position: relative;
+  z-index: 5;
+  border-top: 4px solid var(--ink);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+.footer-brand .wordmark {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.78;
+  max-width: 260px;
+}
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--orange);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.footer-col a, .footer-col span {
+  display: block;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 13px;
+  color: var(--cream);
+  margin-bottom: 8px;
+  opacity: 0.78;
+  transition: opacity 0.15s, color 0.15s;
+}
+.footer-col a:hover { opacity: 1; color: var(--lime); }
+.footer-trust-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255,244,230,0.18);
+  border-bottom: 1px solid rgba(255,244,230,0.18);
+  margin-bottom: 22px;
+}
+.pay-icon {
+  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid var(--cream);
+  padding: 5px 10px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--cream);
+  opacity: 0.85;
+}
+.footer-trust-tail {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  opacity: 0.7;
+  margin-left: auto;
+}
+.compliance {
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--cream);
+  opacity: 0.6;
+  font-style: italic;
+  margin-bottom: 10px;
+  max-width: 800px;
+}
+.signoff {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  opacity: 0.55;
+  text-transform: uppercase;
+}
 
-  /* ====== SHOP SECTION ====== */
-  .shop-section {
-    background: var(--purple-mid);
-    padding: 60px 0;
-  }
-  .shop-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .shop-header {
-    display: flex;
-    align-items: stretch;
-    gap: 30px;
-    margin-bottom: 30px;
-  }
-  .shop-title-block {
-    flex-shrink: 0;
-    max-width: 240px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .shop-title {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 44px;
-    color: var(--orange);
-    line-height: 0.95;
-    text-transform: uppercase;
-    text-shadow: 3px 3px 0 var(--ink), 6px 6px 0 var(--lime);
-    margin-bottom: 14px;
-    transform: skewX(-6deg);
-  }
-  .shop-sub {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--cream);
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
-  .shop-all-btn {
-    display: inline-block;
-    background: var(--lime);
-    color: var(--ink);
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 16px;
-    padding: 8px 22px;
-    border-radius: 30px;
-    border: 3px solid var(--ink);
-    box-shadow: 0 4px 0 var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
+/* ============================================================
+   MOBILE STICKY (preview)
+   ============================================================ */
+.mobile-note {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 36px 0;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  opacity: 0.7;
+  border-top: 1px solid rgba(255,244,230,0.1);
+  position: relative;
+  z-index: 5;
+}
+.mobile-note .sticky-mock {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  border: 2px solid var(--lime);
+  padding: 12px 18px;
+  background: var(--purple-deep);
+  margin-top: 14px;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--lime);
+  border-radius: 99px;
+}
 
-  .product-rail {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    flex: 1;
-  }
-  .product-card {
-    background: var(--cream);
-    border: 4px solid var(--ink);
-    border-radius: 16px;
-    padding: 14px;
-    text-align: center;
-    box-shadow: 0 6px 0 var(--ink);
-    transition: transform 0.15s, box-shadow 0.15s;
-    display: flex;
-    flex-direction: column;
-  }
-  .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 0 var(--ink);
-  }
-  .product-image-frame {
-    background: var(--white);
-    border: 3px solid var(--ink);
-    border-radius: 12px;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-    position: relative;
-    overflow: hidden;
-    background-image:
-      linear-gradient(rgba(26,10,46,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26,10,46,0.04) 1px, transparent 1px);
-    background-size: 12px 12px;
-  }
-  .product-package {
-    width: 80px;
-    height: 110px;
-    border-radius: 8px;
-    border: 3px solid var(--ink);
-    padding: 8px 6px;
-    text-align: center;
-    box-shadow: 4px 4px 0 var(--ink);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transform: rotate(-4deg);
-  }
-  .product-package.bg-lime { background: var(--lime); }
-  .product-package.bg-orange { background: var(--orange); }
-  .product-package.bg-purple { background: var(--purple-mid); color: var(--white); }
-  .product-package.bg-cream { background: var(--cream); }
-  .product-package .pp-brand {
-    font-family: 'Lilita One', cursive;
-    font-size: 8px;
-    color: var(--ink);
-    line-height: 1;
-    letter-spacing: 0.04em;
-  }
-  .product-package.bg-purple .pp-brand { color: var(--lime); }
-  .product-package .pp-name {
-    font-family: 'Lilita One', cursive;
-    font-size: 12px;
-    color: var(--ink);
-    line-height: 1;
-    text-transform: uppercase;
-  }
-  .product-package.bg-purple .pp-name { color: var(--orange); }
-  .product-package .pp-tag {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 7px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--ink);
-    background: var(--white);
-    padding: 1px 4px;
-    border-radius: 3px;
-    border: 1.5px solid var(--ink);
-    align-self: center;
-    line-height: 1.2;
-    letter-spacing: 0.1em;
-  }
-  .product-name-card {
-    font-family: 'Lilita One', cursive;
-    font-size: 18px;
-    color: var(--ink);
-    line-height: 1;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .product-price-card {
-    font-family: 'Lilita One', cursive;
-    font-size: 22px;
-    color: var(--orange-deep);
-    margin-bottom: 12px;
-    text-shadow: 1.5px 1.5px 0 var(--lime);
-    transform: skewX(-5deg);
-    display: inline-block;
-  }
-  .product-add-btn {
-    display: block;
-    width: 100%;
-    background: var(--orange);
-    color: var(--ink);
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 14px;
-    padding: 9px;
-    border-radius: 30px;
-    border: 3px solid var(--ink);
-    box-shadow: 0 3px 0 var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    margin-top: auto;
-  }
-  .product-meta {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-    opacity: 0.5;
-    margin-top: 6px;
-  }
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .masthead-grid { grid-template-columns: 1fr; gap: 18px; text-align: center; justify-items: center; }
+  .masthead-left { align-items: center; }
+  .masthead-right { align-items: center; }
+  .kicker { text-align: center; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-image { max-width: 420px; margin: 0 auto; aspect-ratio: 5 / 4; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .browse-grid { grid-template-columns: repeat(2, 1fr); }
+  .proof-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 18px; }
+  section.block { padding: 56px 0; }
+  .hero { padding: 36px 0 60px; }
+  .product-grid { grid-template-columns: 1fr; }
+  .browse-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tile { font-size: 17px; padding: 18px; }
+  .newsletter-form { flex-direction: column; border-radius: 16px; }
+  .newsletter-input { text-align: center; }
+  .newsletter-submit { border-radius: 0; }
+  .newsletter-stamp { right: -4px; top: -14px; width: 64px; height: 64px; font-size: 7px; }
+  .newsletter-stamp .ns-sig { font-size: 12px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-trust-tail { margin-left: 0; width: 100%; }
+  .cta-row .btn { font-size: 16px; padding: 12px 22px; }
+}
 
-  /* ====== TASTE BANNER (LIME bg) ====== */
-  .taste-banner {
-    background: var(--lime);
-    position: relative;
-    padding: 90px 24px;
-    overflow: hidden;
-    border-top: 6px solid var(--ink);
-    border-bottom: 6px solid var(--ink);
-  }
-  .taste-splash {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg,
-      transparent 20%,
-      var(--purple-darker) 30%,
-      var(--purple-deep) 60%,
-      var(--purple-darker) 90%,
-      transparent 100%);
-    clip-path: polygon(0 30%, 5% 25%, 12% 35%, 22% 28%, 35% 38%, 50% 30%, 65% 40%, 78% 32%, 90% 42%, 100% 35%, 100% 70%, 90% 65%, 78% 75%, 65% 68%, 50% 78%, 35% 70%, 22% 80%, 12% 72%, 5% 82%, 0 75%);
-    z-index: 1;
-  }
-  .taste-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  .taste-eyebrow {
-    display: inline-block;
-    background: var(--white);
-    color: var(--orange-deep);
-    font-family: 'Lilita One', cursive;
-    font-size: 16px;
-    padding: 6px 18px;
-    border-radius: 8px;
-    border: 3px solid var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 14px;
-    transform: rotate(-2deg);
-  }
-  .taste-headline {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: clamp(64px, 9vw, 104px);
-    color: var(--orange);
-    line-height: 0.92;
-    text-transform: uppercase;
-    text-shadow:
-      4px 4px 0 var(--ink),
-      8px 8px 16px rgba(0,0,0,0.3);
-    transform: skewX(-7deg);
-  }
-
-  /* ====== TRUST PROPS GRID ====== */
-  .ugc-section {
-    background: var(--purple-mid);
-    padding: 60px 0;
-  }
-  .ugc-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .ugc-card {
-    aspect-ratio: 3/4;
-    background: var(--ink);
-    border: 3px solid var(--ink);
-    border-radius: 14px;
-    overflow: hidden;
-    position: relative;
-    color: var(--white);
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    box-shadow: 4px 4px 0 var(--ink);
-  }
-  .ugc-card.bg-1 { background: linear-gradient(135deg, #FF8A50 0%, #E55A1A 100%); }
-  .ugc-card.bg-2 { background: linear-gradient(135deg, #9EE83D 0%, #7CB342 100%); }
-  .ugc-card.bg-3 { background: linear-gradient(135deg, #FF6B2C 0%, #BF360C 100%); }
-  .ugc-card.bg-4 { background: linear-gradient(135deg, #6A1B9A 0%, #1A0A2E 100%); }
-  .ugc-card.bg-5 { background: linear-gradient(135deg, #BA68C8 0%, #6A1B9A 100%); }
-  .ugc-card.bg-6 { background: linear-gradient(135deg, #FF8A50 0%, #6A1B9A 100%); }
-
-  .ugc-card .ugc-emoji {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-size: 24px;
-  }
-  .ugc-card .ugc-tag {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(0,0,0,0.5);
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-  .ugc-card .ugc-quote {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-size: 22px;
-    font-weight: 900;
-    line-height: 1.05;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-    text-transform: uppercase;
-  }
-  .ugc-card .ugc-author {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    opacity: 0.95;
-    letter-spacing: 0.02em;
-    line-height: 1.5;
-  }
-
-  /* ====== WHERE TO ORDER ====== */
-  .order-section {
-    background: var(--purple-mid);
-    padding: 70px 0;
-    border-top: 6px solid var(--ink);
-    border-bottom: 6px solid var(--ink);
-    position: relative;
-    overflow: hidden;
-  }
-  .order-bg-text {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .order-bg-line {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 96px;
-    color: var(--lime);
-    white-space: nowrap;
-    line-height: 1;
-    text-transform: uppercase;
-    opacity: 0.18;
-    transform: skewX(-7deg);
-  }
-  .order-bg-line:nth-child(even) { transform: translateX(-50px) skewX(-7deg); }
-
-  .order-card {
-    position: relative;
-    z-index: 2;
-    max-width: 760px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .order-headline {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: clamp(48px, 6vw, 72px);
-    color: var(--white);
-    text-shadow:
-      4px 4px 0 var(--ink),
-      8px 8px 0 var(--lime);
-    line-height: 0.95;
-    margin-bottom: 24px;
-    text-transform: uppercase;
-    transform: skewX(-7deg);
-  }
-  .order-grid {
-    background: var(--white);
-    border: 5px solid var(--ink);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 0 var(--ink);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 18px;
-    margin-bottom: 26px;
-  }
-  .order-cell {
-    text-align: center;
-  }
-  .order-cell .order-cell-label {
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    color: var(--orange-deep);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    text-shadow: 1.5px 1.5px 0 var(--lime);
-    transform: skewX(-5deg);
-    display: inline-block;
-  }
-  .order-cell .order-cell-value {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-  .order-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--orange);
-    color: var(--ink);
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 22px;
-    padding: 14px 40px;
-    border-radius: 40px;
-    border: 4px solid var(--ink);
-    box-shadow: 0 6px 0 var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-  }
-
-  /* ====== MISSION SECTION (cream bg) ====== */
-  .mission-section {
-    background: var(--cream);
-    padding: 70px 0;
-    position: relative;
-    overflow: hidden;
-    border-top: 6px solid var(--ink);
-    border-bottom: 6px solid var(--ink);
-  }
-  .mission-tornedge-top {
-    position: absolute;
-    top: -1px;
-    left: 0;
-    right: 0;
-    height: 30px;
-    background: var(--purple-mid);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 95% 60%, 90% 100%, 85% 50%, 80% 90%, 75% 60%, 70% 100%, 65% 70%, 60% 100%, 55% 60%, 50% 90%, 45% 50%, 40% 100%, 35% 60%, 30% 90%, 25% 50%, 20% 100%, 15% 70%, 10% 90%, 5% 60%, 0 100%);
-  }
-  .mission-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1.4fr 1fr;
-    gap: 30px;
-    align-items: center;
-    margin-top: 20px;
-  }
-  .mission-portrait {
-    text-align: center;
-  }
-  .mission-portrait .portrait-circle {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: var(--lime);
-    border: 6px solid var(--ink);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 8px 0 var(--ink);
-  }
-  .mission-portrait svg { width: 100%; height: 100%; }
-  .mission-content {
-    text-align: center;
-  }
-  .mission-headline {
-    background: var(--ink);
-    color: var(--lime);
-    font-family: 'Lilita One', cursive;
-    font-size: 32px;
-    padding: 12px 24px;
-    text-transform: uppercase;
-    line-height: 1;
-    margin-bottom: 10px;
-    display: inline-block;
-    letter-spacing: 0.02em;
-    transform: skewX(-5deg);
-  }
-  .mission-headline-2 {
-    background: var(--orange);
-    color: var(--ink);
-    font-family: 'Lilita One', cursive;
-    font-size: 32px;
-    padding: 12px 24px;
-    text-transform: uppercase;
-    line-height: 1;
-    border: 4px solid var(--ink);
-    margin-bottom: 18px;
-    display: inline-block;
-    letter-spacing: 0.02em;
-    transform: skewX(-5deg);
-  }
-  .mission-body-line {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 26px;
-    color: var(--purple-deep);
-    text-transform: uppercase;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    transform: skewX(-5deg);
-  }
-  .mission-sub {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.6;
-    margin-bottom: 26px;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .mission-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--orange);
-    color: var(--ink);
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 20px;
-    padding: 12px 36px;
-    border-radius: 40px;
-    border: 4px solid var(--ink);
-    box-shadow: 0 6px 0 var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .mission-polaroid {
-    background: var(--white);
-    padding: 12px 12px 32px;
-    border: 4px solid var(--ink);
-    transform: rotate(4deg);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    max-width: 220px;
-    margin-left: auto;
-  }
-  .mission-polaroid .polaroid-image {
-    background: var(--purple-mid);
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-    border: 2px solid var(--ink);
-  }
-  .mission-polaroid .polaroid-caption {
-    text-align: center;
-    font-family: 'Lilita One', cursive;
-    font-size: 14px;
-    color: var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-
-  /* ====== FOOTER (lime bg) ====== */
-  .footer {
-    background: var(--lime);
-    padding: 60px 0 30px;
-    border-top: 6px solid var(--ink);
-  }
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1.5fr;
-    gap: 30px;
-    margin-bottom: 40px;
-  }
-  .footer-col h4 {
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    color: var(--purple-deep);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    letter-spacing: 0.02em;
-    transform: skewX(-5deg);
-    display: inline-block;
-  }
-  .footer-col ul { list-style: none; }
-  .footer-col li { margin-bottom: 8px; }
-  .footer-col a {
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 800;
-    font-size: 14px;
-    color: var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .footer-col a:hover { color: var(--orange-deep); }
-  .footer-newsletter h4 { color: var(--purple-deep); }
-  .footer-newsletter p {
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
-  .footer-newsletter .nl-form {
-    display: flex;
-    gap: 6px;
-  }
-  .footer-newsletter .nl-input {
-    flex: 1;
-    padding: 10px 14px;
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    border: 3px solid var(--ink);
-    border-radius: 30px;
-    background: var(--white);
-    color: var(--ink);
-  }
-  .footer-newsletter .nl-btn {
-    padding: 10px 20px;
-    font-family: 'Big Shoulders Display', sans-serif;
-    font-weight: 900;
-    font-size: 14px;
-    background: var(--orange);
-    color: var(--ink);
-    border: 3px solid var(--ink);
-    border-radius: 30px;
-    box-shadow: 0 3px 0 var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-  }
-  .footer-newsletter .nl-note {
-    font-size: 10px;
-    color: var(--ink);
-    opacity: 0.7;
-    margin-top: 6px;
-  }
-  .footer-mega-logo {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  .footer-mega-logo .mega-text {
-    font-family: 'Lilita One', cursive;
-    font-size: clamp(72px, 12vw, 132px);
-    color: var(--orange);
-    line-height: 0.9;
-    text-shadow:
-      6px 6px 0 var(--ink),
-      12px 12px 0 var(--purple-deep);
-    letter-spacing: 0.04em;
-    transform: skewX(-6deg);
-    display: inline-block;
-  }
-  .footer-bottom {
-    border-top: 3px solid var(--ink);
-    padding-top: 16px;
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--ink);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .footer-bottom a { color: var(--ink); margin-left: 14px; }
-  .footer-compliance {
-    text-align: center;
-    margin-top: 12px;
-    font-family: 'Public Sans', 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--ink);
-    opacity: 0.7;
-  }
-
-  /* ====== RESPONSIVE ====== */
-  @media (max-width: 1024px) {
-    .product-rail { grid-template-columns: repeat(2, 1fr); }
-    .ugc-grid { grid-template-columns: repeat(2, 1fr); }
-    .order-grid { grid-template-columns: 1fr; }
-    .mission-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-    .mission-polaroid { margin: 0 auto; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .hero-product { display: none; }
-  }
-  @media (max-width: 640px) {
-    .header-inner { flex-wrap: wrap; gap: 16px; }
-    .nav-links { gap: 16px; }
-    .header-icons span:not(.icon-circle) { display: none; }
-    .shop-header { flex-direction: column; }
-    .product-rail { grid-template-columns: 1fr 1fr; }
-    .ugc-grid { grid-template-columns: 1fr; }
-    .dispatch-inner { flex-direction: column; gap: 16px; }
-    .dispatch-items { flex-wrap: wrap; gap: 12px; justify-content: center; }
-    .footer-grid { grid-template-columns: 1fr; }
-  }
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+  .live-dot { animation: none; }
+  .stamp-mini { transition: none; }
+  .product-card, .tile { transition: none; }
+}
 </style>
 </head>
 <body>
 
-<!-- TOP MARQUEE -->
+<!-- ============================================================
+     §1 MARQUEE — locked rotation
+     ============================================================ -->
 <div class="topbar">
   <div class="marquee">
-    <span>Free shipping on orders over $50</span>
-    <span>Dispatched Tuesdays</span>
-    <span>Restocked Tuesdays</span>
-    <span>Hand-inspected before export</span>
-    <span>Free shipping on orders over $50</span>
-    <span>Dispatched Tuesdays</span>
-    <span>Restocked Tuesdays</span>
-    <span>Hand-inspected before export</span>
+    <span>Free US shipping over $40</span>
+    <span>Dispatched from [REDACTED]</span>
+    <span>30-day money-back guarantee</span>
+    <span>4.8★ across 2,438 reviews</span>
+    <span>Free US shipping over $40</span>
+    <span>Dispatched from [REDACTED]</span>
+    <span>30-day money-back guarantee</span>
+    <span>4.8★ across 2,438 reviews</span>
   </div>
 </div>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo">WITTYVERSE</div>
-    <nav class="nav-links">
-      <a href="#">Catalog</a>
-      <a href="#">About</a>
-      <a href="#">Field Notes</a>
-      <a href="#">Help</a>
-    </nav>
-    <div class="header-icons">
-      <span class="icon-circle">?</span>
-      <span class="icon-circle">♡</span>
-      <span class="icon-circle">⌂</span>
-      <span>Bag (0)</span>
+<!-- ============================================================
+     §2 MASTHEAD — wordmark + Dr. Yeti seal + nav
+     ============================================================ -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-grid">
+
+      <div class="masthead-left">
+        <a class="wordmark" href="#">Wittyverse</a>
+        <div class="kicker">"Out of this world gag gifts you can't buy anywhere else."</div>
+      </div>
+
+      <div class="masthead-center">
+        <div class="stamp">
+          <span>Dr. W. Yeti PhD</span>
+          <div class="stamp-divider"></div>
+          <div class="stamp-sig">W.</div>
+          <div class="stamp-divider"></div>
+          <span>Sole Authorized · Earth Side</span>
+        </div>
+      </div>
+
+      <div class="masthead-right">
+
+        <!-- STATUS PILL — uncomment one to switch:
+          OPT B: <div class="status-pill">Next window · 0d 4h 22m</div>
+          OPT C: <div class="status-pill">T-minus 0d 4h 22m</div>
+        -->
+        <div class="status-pill">0d 4h 22m until ▓▓▓▓▓▓</div>
+
+        <div class="nav-row">
+          <!-- NAV — uncomment one to switch:
+            OPT B: <div class="nav-items"><a>Shop</a><a>Best Sellers</a><a>Guarantee</a><a>About</a></div>
+            OPT C: <div class="nav-items"><a>The Manifest</a><a>Best Sellers</a><a>The Tuesday Letter</a><a>About</a></div>
+          -->
+          <div class="nav-items"><a>Shop</a><a>Gifts Under $25</a><a>Guarantee</a><a>About</a></div>
+          <div class="icons">
+            <a class="icon-box">acct</a>
+            <a class="icon-box">cart</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ============================================================
+     §3 HERO — proposition, social proof, primary CTA
+     ============================================================ -->
 <section class="hero">
-  <div class="hero-stars"></div>
-  <div class="hero-halftone"></div>
-  <svg class="cloud cloud-1" width="80" height="50" viewBox="0 0 80 50">
-    <ellipse cx="20" cy="30" rx="20" ry="15" fill="white"/>
-    <ellipse cx="40" cy="25" rx="22" ry="18" fill="white"/>
-    <ellipse cx="60" cy="32" rx="18" ry="14" fill="white"/>
-  </svg>
-  <svg class="cloud cloud-2" width="100" height="60" viewBox="0 0 100 60">
-    <ellipse cx="25" cy="35" rx="22" ry="16" fill="white"/>
-    <ellipse cx="50" cy="28" rx="26" ry="20" fill="white"/>
-    <ellipse cx="75" cy="35" rx="22" ry="16" fill="white"/>
-  </svg>
+  <div class="wrap">
+    <div class="hero-grid">
 
-  <!-- Floating product packages -->
-  <div class="hero-product left">
-    <div class="package">
-      <div class="pkg-brand">WITTYVERSE</div>
-      <div class="pkg-name">Dehydrated<br>Water</div>
-      <div class="pkg-tag">Just Add</div>
-    </div>
-  </div>
-  <div class="hero-product right">
-    <div class="package">
-      <div class="pkg-brand">WITTYVERSE</div>
-      <div class="pkg-name">Headlight<br>Fluid</div>
-      <div class="pkg-tag">Aged</div>
-    </div>
-  </div>
-
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Cycle 247</div>
-    <h1 class="hero-headline">
-      Gag gifts,<br>
-      sourced from<br>
-      <span class="word-other">the other side.</span>
-    </h1>
-    <div class="hero-sub">Currently in stock · Restocked Tuesdays</div>
-    <a href="#" class="hero-cta">Browse the catalog →</a>
-    <div class="hero-sig">Hand-inspected before export by <strong>Winston, Dr. W. Yeti PhD</strong></div>
-  </div>
-</section>
-
-<!-- STATS STRIP -->
-<div class="dispatch-strip">
-  <div class="dispatch-inner">
-    <div class="dispatch-items">
-      <div class="dispatch-item">2.4M items sent</div>
-      <div class="dispatch-item">128 in this cycle</div>
-      <div class="dispatch-item">4.8 stars · 11,000 reviews</div>
-      <div class="dispatch-item">Ten minutes · per gift</div>
-    </div>
-  </div>
-</div>
-
-<!-- SHOP SECTION -->
-<section class="shop-section">
-  <div class="shop-inner">
-    <div class="shop-header">
-      <div class="shop-title-block">
-        <div class="shop-title">The catalog,<br>this cycle.</div>
-        <div class="shop-sub">Restocked Tuesdays. Hand-inspected before export.</div>
-        <a href="#" class="shop-all-btn">Browse →</a>
+      <div class="hero-image">
+        <div class="hero-image-label">[ hero image<br><br>hands unwrapping · recipient reaction · close crop · never a full face ]</div>
       </div>
-      <div class="product-rail">
-        <div class="product-card">
-          <div class="product-image-frame">
-            <div class="product-package bg-lime">
-              <div class="pp-brand">WITTYVERSE</div>
-              <div class="pp-name">Dehydrated<br>Water</div>
-              <div class="pp-tag">Just Add</div>
-            </div>
-          </div>
-          <div class="product-name-card">Dehydrated Water</div>
-          <div class="product-price-card">$14.99</div>
-          <button class="product-add-btn">Add to Bag</button>
-          <div class="product-meta">O.O.P.S. #DH-001</div>
+
+      <div class="hero-copy">
+
+        <!-- EYEBROW — uncomment one to switch:
+          OPT B: <div class="eyebrow">47 items cleared customs · in stock</div>
+          OPT C: <div class="eyebrow">Dispatched weekly · cut-off in 4h 22m</div>
+        -->
+        <div class="eyebrow">This week's manifest · live now</div>
+
+        <!-- HEADLINE — uncomment one to switch:
+          OPT B: <h1 class="headline">The funniest gift you give this year, or I refund it myself.</h1>
+          OPT C: <h1 class="headline">Gag gifts they'll actually keep. New batch every week.</h1>
+        -->
+        <h1 class="headline">Gag gifts from a dimension you can't visit. Personally hauled back.</h1>
+
+        <!-- SUBLINE — uncomment one to switch:
+          OPT B: <p class="subline">4.8★ across 2,438 buyers who weren't expecting it to actually land. Free shipping over $40. Refund's on me if it doesn't.</p>
+          OPT C: <p class="subline">I'm the only person on Earth with the paperwork. Free shipping over $40. Refund's on me if it doesn't land. — W.</p>
+        -->
+        <p class="subline">Personally inspected before they leave the dock. Personally signed for. Personally on the hook if they don't land. — Dr. W. Yeti PhD</p>
+
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span>4.8 from 2,438 verified buyers</span>
         </div>
 
-        <div class="product-card">
-          <div class="product-image-frame">
-            <div class="product-package bg-orange">
-              <div class="pp-brand">WITTYVERSE</div>
-              <div class="pp-name">Child<br>Chucker</div>
-              <div class="pp-tag">WY-69</div>
-            </div>
-          </div>
-          <div class="product-name-card">Child Chucker</div>
-          <div class="product-price-card">$34.99</div>
-          <button class="product-add-btn">Add to Bag</button>
-          <div class="product-meta">O.O.P.S. #CC-069</div>
+        <div class="price-line">Starts at $19 · Free shipping over $40 · 30-day refund guarantee</div>
+
+        <div class="cta-row">
+          <!-- PRIMARY CTA — uncomment one to switch:
+            OPT B: <a class="btn" href="#shop">Shop the Gag Gifts →</a>
+            OPT C: <a class="btn" href="#shop">Get Mine →</a>
+          -->
+          <a class="btn" href="#shop">Browse the Manifest →</a>
+
+          <!-- SECONDARY CTA — uncomment one to switch:
+            OPT B: <a class="btn btn-secondary" href="#faq">How this works →</a>
+            OPT C: <a class="btn btn-secondary" href="#proof">About Dr. Yeti →</a>
+          -->
+          <a class="btn btn-secondary" href="#newsletter">Get the Tuesday letter →</a>
         </div>
 
-        <div class="product-card">
-          <div class="product-image-frame">
-            <div class="product-package bg-purple">
-              <div class="pp-brand">WITTYVERSE</div>
-              <div class="pp-name">Headlight<br>Fluid</div>
-              <div class="pp-tag">Aged</div>
-            </div>
-          </div>
-          <div class="product-name-card">Headlight Fluid</div>
-          <div class="product-price-card">$24.99</div>
-          <button class="product-add-btn">Add to Bag</button>
-          <div class="product-meta">O.O.P.S. #HF-003</div>
+        <!-- TRUST MICROCOPY — uncomment one to switch:
+          OPT B: <div class="trust-microcopy">If they don't laugh, refund's on me. — W.</div>
+          OPT C: <div class="trust-microcopy">30-day refund · Free shipping $40+ · No-questions returns</div>
+        -->
+        <div class="trust-microcopy">30-day refund · Free shipping $40+ · "If they don't laugh, refund's on me." — W.</div>
+
+        <div class="badges-row">
+          <span class="badge">30-day money-back</span>
+          <span class="badge">Sole authorized importer</span>
+          <span class="badge">Free shipping $40+</span>
+          <span class="badge">Personally inspected</span>
         </div>
 
-        <div class="product-card">
-          <div class="product-image-frame">
-            <div class="product-package bg-cream">
-              <div class="pp-brand">WITTYVERSE</div>
-              <div class="pp-name">Shart<br>Survival<br>Kit</div>
-              <div class="pp-tag">SOS</div>
-            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §4 BEST SELLERS — proof before discovery
+     ============================================================ -->
+<section class="block cream" id="shop">
+  <div class="wrap">
+    <div class="section-eyebrow">Best sellers</div>
+
+    <!-- BESTSELLERS HEADING — uncomment one to switch:
+      OPT B: <h2 class="section-heading">Moving off the dock fastest</h2>
+      OPT C: <h2 class="section-heading">Dr. Yeti's personal picks</h2>
+    -->
+    <h2 class="section-heading">This week's best sellers</h2>
+
+    <div class="product-grid">
+
+      <!-- Card 1 — Headlight Fluid -->
+      <div class="product-card">
+        <div class="product-image">
+          <span class="product-flag">Top seller</span>
+          <span class="pi-label">Headlight Fluid<br><span class="pi-sub">blue glass bottle · hands holding · close crop</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Headlight Fluid</div>
+          <div class="price">$19</div>
+          <!-- CARD 1 DESC — uncomment one to switch:
+            OPT B: <p class="product-desc">For the friend who insists they "know about cars." They'll squint at the label. They'll ask if it's serious. You won't have to answer.</p>
+            OPT C: <p class="product-desc">The classic prank, executed properly. I keep one in the dispatch office for emergencies. — W.</p>
+          -->
+          <p class="product-desc">One 8 oz bottle of "fluid" for headlights that don't need fluid. Hand it to your brother-in-law. Wait for the question. Watch his face when nobody answers.</p>
+          <div class="product-rating">★ 4.9 · 412 reviews · 31 bought this week</div>
+          <div class="review-snippet">"BIL went silent for a full minute. Worth $19." — Dave B., TX</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick">Quick add — $19</button></div>
+        <div class="product-card-trust">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <!-- Card 2 — Reality Stabilizer -->
+      <div class="product-card">
+        <div class="product-image">
+          <span class="product-flag">Heavy</span>
+          <span class="pi-label">Reality Stabilizer<br><span class="pi-sub">brass-and-glass · hands turning · close crop</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Reality Stabilizer</div>
+          <div class="price">$34</div>
+          <!-- CARD 2 DESC — uncomment one to switch:
+            OPT B: <p class="product-desc">Heavy. Cold to the touch. The instructions are intentionally unhelpful. They'll keep it on their desk. They'll insist it works. You won't have to explain.</p>
+            OPT C: <p class="product-desc">The unit I'm most proud of importing. Heavy. Cold to the touch. Allegedly works. — W.</p>
+          -->
+          <p class="product-desc">One Reality Stabilizer. Brass, weighted, comes in a wooden box. Hand it to someone having a bad day. Watch them try to figure out how it works for the next twenty minutes.</p>
+          <div class="product-rating">★ 4.8 · 287 reviews · 18 bought this week</div>
+          <div class="review-snippet">"Gave it to my therapist as a joke. He kept it." — Marcus T., FL</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick">Quick add — $34</button></div>
+        <div class="product-card-trust">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <!-- Card 3 — Dehydrated Water -->
+      <div class="product-card">
+        <div class="product-image">
+          <span class="product-flag">Bestseller</span>
+          <span class="pi-label">Dehydrated Water<br><span class="pi-sub">clear jar · "add water" label · hands holding</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Dehydrated Water</div>
+          <div class="price">$22</div>
+          <!-- CARD 3 DESC — uncomment one to switch:
+            OPT B: <p class="product-desc">Universally readable. Universally infuriating. Universally photographed. Perfect for the office gift exchange where you don't know the recipient.</p>
+            OPT C: <p class="product-desc">I have personally never explained this product. I refuse to start now. — W.</p>
+          -->
+          <p class="product-desc">One jar of nothing, labeled correctly. Hand it to someone. The instructions read "add water." Watch them squint at it for a long time.</p>
+          <div class="product-rating">★ 4.9 · 631 reviews · 44 bought this week</div>
+          <div class="review-snippet">"My wife actually tried to rehydrate it. We laughed for an hour." — Dave B., CA</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick">Quick add — $22</button></div>
+        <div class="product-card-trust">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <!-- Card 4 — TBD (needs canon product name from codex) -->
+      <div class="product-card" style="opacity: 0.55;">
+        <div class="product-image">
+          <span class="product-flag" style="background: var(--cream); color: var(--ink);">TBD</span>
+          <span class="pi-label">Awaiting<br>canon<br><span class="pi-sub">needs 4th product name from codex</span></span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">— TBD —</div>
+          <div class="price">$28</div>
+          <p class="product-desc" style="font-style: italic;">Same template as cards 1–3. Needs a 4th canon product name from the codex before going live.</p>
+          <div class="product-rating">★ — · — reviews</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick" style="opacity: 0.5; cursor: not-allowed;">Awaiting canon</button></div>
+        <div class="product-card-trust">—</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §5 BROWSE GRID — discovery after proof
+     ============================================================ -->
+<section class="block dark">
+  <div class="wrap">
+    <div class="section-eyebrow">Browse</div>
+    <h2 class="section-heading">Find a gift</h2>
+
+    <div class="browse-grid">
+
+      <!-- TILE 1 — uncomment one to switch:
+        OPT B: <a class="tile" href="#">Gets a laugh on the first read<span class="tile-arrow">→</span></a>
+        OPT C: <a class="tile" href="#">The brother-in-law collection<span class="tile-arrow">→</span></a>
+      -->
+      <a class="tile" href="#">For the friend who has everything<span class="tile-arrow">→</span></a>
+
+      <!-- TILE 2 — uncomment one to switch:
+        OPT B: <a class="tile" href="#">Lives on their desk for years<span class="tile-arrow">→</span></a>
+        OPT C: <a class="tile" href="#">Things to hide on a coworker's desk<span class="tile-arrow">→</span></a>
+      -->
+      <a class="tile" href="#">Desk-keepers<span class="tile-arrow">→</span></a>
+
+      <!-- TILE 3 — uncomment one to switch:
+        OPT B: <a class="tile" href="#">They'll text you a photo<span class="tile-arrow">→</span></a>
+        OPT C: <a class="tile" href="#">Group-chat ammunition<span class="tile-arrow">→</span></a>
+      -->
+      <a class="tile" href="#">Worth filming the unwrap<span class="tile-arrow">→</span></a>
+
+      <!-- TILE 4 — uncomment one to switch:
+        OPT B: <a class="tile" href="#">White elephant winners<span class="tile-arrow">→</span></a>
+        OPT C: <a class="tile" href="#">$19–$25 · stocking weight<span class="tile-arrow">→</span></a>
+      -->
+      <a class="tile" href="#">Gifts under $25<span class="tile-arrow">→</span></a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §6 PROOF OF IMPORT — legitimacy before process
+     §6 layout is LOCKED (heading A + preamble C). Iterate copy
+     within the active options if needed.
+     ============================================================ -->
+<section class="block cream" id="proof">
+  <div class="wrap">
+    <div class="section-eyebrow">About / Proof</div>
+
+    <!-- PROOF HEADING — LOCKED to A on 2026-05-18; alternates:
+      OPT B: <h2 class="section-heading">The receipts</h2>
+      OPT C: <h2 class="section-heading">These are real products over there</h2>
+    -->
+    <h2 class="section-heading">100% Authentic Wittyverse Products</h2>
+
+    <div class="proof-grid">
+
+      <!-- LEFT — Winston's preamble (R2 showman) + signed mini stamp -->
+      <div class="proof-left">
+
+        <!-- PROOF PREAMBLE — LOCKED to C on 2026-05-18; alternates:
+          OPT A:
+          <div class="proof-preamble">
+            <div class="proof-preamble-strong">Real products. Real customers. Real reviews.</div>
+            <div class="proof-preamble-body">These goods are sitting on shelves in another dimension as you read this. Customers there are rating them, complaining about them, demanding refunds when the units fail. I pulled their actual feedback — straight from the Wittyverse consumer aggregator — and reproduced it, unedited.</div>
+            <div class="proof-preamble-body">The joke is <em>our</em> joke. They use these every day. Read for yourself.</div>
+            <div class="proof-preamble-sign">— Dr. W. Yeti PhD</div>
           </div>
-          <div class="product-name-card">Shart Survival Kit</div>
-          <div class="product-price-card">$19.99</div>
-          <button class="product-add-btn">Add to Bag</button>
-          <div class="product-meta">O.O.P.S. #SK-044</div>
+
+          OPT B:
+          <div class="proof-preamble">
+            <div class="proof-preamble-strong">Step closer. The proof is on the page.</div>
+            <div class="proof-preamble-body">These products are not novelty items I invented. They sit on shelves in the Wittyverse — functional, mundane, occasionally defective. Their customers leave reviews like customers anywhere: helpful, irritated, sometimes five stars, sometimes one.</div>
+            <div class="proof-preamble-body">Receipts in the panel. Read them. Doubt me afterward.</div>
+            <div class="proof-preamble-sign">— Dr. W. Yeti PhD</div>
+          </div>
+        -->
+        <div class="proof-preamble">
+          <div class="proof-preamble-strong">You think this is a bit. It isn't.</div>
+          <div class="proof-preamble-body">Headlight Fluid is a household staple where I source it. Reality Stabilizer has a three-month waitlist over there. Dehydrated Water is a backpacker essential. Real shelves. Real ratings. Real complaints about range, packaging, durability — the usual.</div>
+          <div class="proof-preamble-body">To prove it, here is the live dispatch of the reviews in the Wittyverse. →</div>
+        </div>
+
+        <div class="proof-signoff">
+          <div class="stamp-mini">
+            <span>Dr. W. Yeti PhD</span>
+            <div class="stamp-divider"></div>
+            <div class="stamp-sig">W.</div>
+            <div class="stamp-divider"></div>
+            <span>Sole Authorized · Earth Side</span>
+          </div>
+          <div class="signoff-caption">Signed off, this week. Paperwork on file. — W.</div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — Guestbook panel (R1 in-universe artifact, resist softening) -->
+      <aside class="guestbook-panel">
+        <div class="guestbook-header">
+          <span class="guestbook-title"><span class="live-dot" aria-hidden="true"></span>Live Dispatch</span>
+          <span class="guestbook-meta">1,247 entries</span>
+        </div>
+        <div class="guestbook-entries">
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known">H. Verloen</span>
+              <span class="entry-code">c247.3</span>
+            </div>
+            <div class="entry-body">Refilled the Headlight Fluid twice this week. Winter formula doesn't last. Switched to the 16 oz.</div>
+          </div>
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known">Margene K.</span>
+              <span class="entry-code">c245.8</span>
+            </div>
+            <div class="entry-body">Husband refuses to leave without his Reality Stabilizer. We keep two now.</div>
+          </div>
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known">G. Strom</span>
+              <span class="entry-code">c244.1</span>
+            </div>
+            <div class="entry-body">Dehydrated Water rehydration ratio on the package is wrong. 1:1.4 actually. Knocking off one star.</div>
+          </div>
+
+        </div>
+        <div class="guestbook-footer">
+          Last sync · c247.4 · WTC 03:41<br>
+          <span class="gb-foot-sub">1,244 more in the aggregator</span>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §7 FAQ — process after legitimacy
+     ============================================================ -->
+<section class="block cream" id="faq">
+  <div class="wrap">
+    <div class="section-eyebrow">FAQ</div>
+
+    <!-- FAQ HEADING — uncomment one to switch:
+      OPT B: <h2 class="section-heading">What I get asked most</h2>
+      OPT C: <h2 class="section-heading">Questions, answered</h2>
+    -->
+    <h2 class="section-heading">Winston answers</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-cat">Q1 — what is this place?</div>
+        <!-- FAQ Q1 — uncomment one to switch:
+          OPT B: <div class="faq-q">"Real store, or elaborate joke?"</div>
+          OPT C: <div class="faq-q">"Is this an actual store?"</div>
+        -->
+        <div class="faq-q">"Is this an actual store, or are you a bit?"</div>
+        <div class="faq-a">Wittyverse is a US-registered LLC. We sell novelty consumer goods — gag gifts and quirky items. Payments processed by Shopify. Tracking via USPS/UPS. Operator pseudonymous; legal name on file with relevant authorities. Dispatch location classified (operational reasons).</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q2 — will the recipient like it?</div>
+        <!-- FAQ Q2 — uncomment one to switch:
+          OPT B: <div class="faq-q">"What if the gift doesn't land?"</div>
+          OPT C: <div class="faq-q">"What if they don't think it's funny?"</div>
+        -->
+        <div class="faq-q">"Will the recipient actually like this, or am I about to ruin a birthday?"</div>
+        <div class="faq-a">Read the customer feedback in the Live Dispatch above — actual reactions, not curated quotes. Our 30-day refund applies even on opened items if the gift didn't land. (This is unusual policy; it's deliberate.)</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q3 — is it actually good?</div>
+        <!-- FAQ Q3 — uncomment one to switch:
+          OPT B: <div class="faq-q">"Will it fall apart in their hands?"</div>
+          OPT C: <div class="faq-q">"Quality?"</div>
+        -->
+        <div class="faq-q">"Are these well made, or is this just cheap nonsense?"</div>
+        <div class="faq-a">All inventory is screened by the operator personally before dispatch. Materials disclosed per product. Defective units replaced or refunded. Average rating: 4.8 across 2,438 verified buyers. Specific feedback runs in the Live Dispatch above.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q4 — is buying here safe?</div>
+        <!-- FAQ Q4 — uncomment one to switch:
+          OPT B: <div class="faq-q">"How does checkout work? Anything weird?"</div>
+          OPT C: <div class="faq-q">"Is checkout secure?"</div>
+        -->
+        <div class="faq-q">"Is paying through this site safe? Important question."</div>
+        <div class="faq-a">Checkout runs on Shopify (SSL encrypted, PCI-compliant). We accept Visa, Mastercard, Amex, Apple Pay, Shop Pay, PayPal. Card details never reach our servers.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q5 — shipping / speed</div>
+        <!-- FAQ Q5 — uncomment one to switch:
+          OPT B: <div class="faq-q">"When will it arrive if I order now?"</div>
+          OPT C: <div class="faq-q">"When will it arrive?"</div>
+        -->
+        <div class="faq-q">"How fast can you get this in their hands? Because I personally hate waiting."</div>
+        <div class="faq-a">Dispatch runs once a week (Tuesdays). Orders received before the window closes ship in the following batch. Domestic transit: 3–6 business days after dispatch. Tracking emailed when the unit leaves the dock. Free shipping on orders over $40.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q6 — returns</div>
+        <!-- FAQ Q6 — uncomment one to switch:
+          OPT B: <div class="faq-q">"What if it doesn't land the joke — can I return it?"</div>
+          OPT C: <div class="faq-q">"Refund policy?"</div>
+        -->
+        <div class="faq-q">"Returns? Yes. Refunds? Also yes. I built this business on guarantees."</div>
+        <div class="faq-a">Unopened items: 30-day full refund. Opened items: 30-day refund if the gift failed to land. Defective items: always refunded or replaced. Email refunds@wittyverse.com with order #.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q7 — international</div>
+        <!-- FAQ Q7 — uncomment one to switch:
+          OPT B: <div class="faq-q">"Do you ship outside the US?"</div>
+          OPT C: <div class="faq-q">"International shipping?"</div>
+        -->
+        <div class="faq-q">"International? Currently no. I'm not authorized to clear those customs. Yet."</div>
+        <div class="faq-a">US domestic only at this time. International dispatch pending customs paperwork.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §8 NEWSLETTER
+     ============================================================ -->
+<section class="newsletter" id="newsletter">
+  <div class="wrap">
+    <div class="newsletter-inner">
+
+      <div class="newsletter-eyebrow">Sign for the dispatch list</div>
+
+      <!-- NEWSLETTER HEADING — uncomment one to switch:
+        OPT B: <h2 class="newsletter-heading">Get the Tuesday Letter</h2>
+        OPT C: <h2 class="newsletter-heading">Sign for the Dispatch List</h2>
+      -->
+      <h2 class="newsletter-heading">The Winston Dispatch</h2>
+
+      <!-- NEWSLETTER PITCH — uncomment one to switch:
+        OPT B: <p class="newsletter-pitch">"One signed letter per week: new goods, restocks, the occasional dispatch disaster. — W."</p>
+        OPT C: <p class="newsletter-pitch">"A letter from me, every Tuesday. Goods that cleared customs. Goods that didn't. — W."</p>
+      -->
+      <p class="newsletter-pitch">"Tuesday morning. One short letter (~2 min read). What cleared customs this week, what didn't, which gift I'd personally hand my brother-in-law. No spam. Unsubscribe whenever. — W."</p>
+
+      <div class="newsletter-form-wrap">
+        <form class="newsletter-form" onsubmit="return false;">
+          <!-- NEWSLETTER PLACEHOLDER — uncomment one to switch:
+            OPT B: <input type="email" class="newsletter-input" placeholder="Where to send the dispatch">
+            OPT C: <input type="email" class="newsletter-input" placeholder="Earth-sector email address">
+          -->
+          <input type="email" class="newsletter-input" placeholder="Your email">
+
+          <!-- NEWSLETTER SUBMIT — uncomment one to switch:
+            OPT B: <button class="newsletter-submit" type="submit">Get the Tuesday Letter</button>
+            OPT C: <button class="newsletter-submit" type="submit">Sign for the dispatch list</button>
+          -->
+          <button class="newsletter-submit" type="submit">Send me the Tuesday letter</button>
+        </form>
+
+        <div class="newsletter-stamp">
+          <span>Personally</span>
+          <span class="ns-sig">W.</span>
+          <span>signed</span>
         </div>
       </div>
+
+      <!-- NEWSLETTER MICROCOPY — uncomment one to switch:
+        OPT B: <div class="newsletter-microcopy">Tuesday letter only. Nothing else. Unsubscribe anytime.</div>
+        OPT C: <div class="newsletter-microcopy">Joining 4,200+ subscribers · unsubscribe anytime</div>
+      -->
+      <div class="newsletter-microcopy">No spam · one email per week · unsubscribe anytime</div>
+
     </div>
   </div>
 </section>
 
-<!-- TASTE / IMPORT BANNER -->
-<section class="taste-banner">
-  <div class="taste-splash"></div>
-  <div class="taste-content">
-    <div class="taste-eyebrow">WITTYVERSE</div>
-    <h2 class="taste-headline">Jokes on every<br>surface.</h2>
-  </div>
-</section>
-
-<!-- TRUST PROPS GRID -->
-<section class="ugc-section">
-  <div class="ugc-grid">
-    <div class="ugc-card bg-1">
-      <div class="ugc-emoji">✦</div>
-      <div class="ugc-tag">Trust 1</div>
-      <div class="ugc-quote">Jokes on every surface.</div>
-      <div class="ugc-author">Front, back, inside, fine print. The standard is ten minutes of laughter, not five seconds.</div>
-    </div>
-    <div class="ugc-card bg-2">
-      <div class="ugc-emoji">✦</div>
-      <div class="ugc-tag">Trust 2</div>
-      <div class="ugc-quote">Built to keep.</div>
-      <div class="ugc-author">Sturdy materials, intentional design. These belong on shelves, not in trash bags.</div>
-    </div>
-    <div class="ugc-card bg-3">
-      <div class="ugc-emoji">✦</div>
-      <div class="ugc-tag">Trust 3</div>
-      <div class="ugc-quote">Each item has provenance.</div>
-      <div class="ugc-author">Sourced from manufacturing partners on the other side. Hand-inspected before export. The story is in the card.</div>
-    </div>
-    <div class="ugc-card bg-4">
-      <div class="ugc-emoji">✦</div>
-      <div class="ugc-tag">Trust 4</div>
-      <div class="ugc-quote">Easy returns.</div>
-      <div class="ugc-author">Write the desk. We'll sort it.</div>
-    </div>
-  </div>
-</section>
-
-<!-- FIELD NOTES PROMO -->
-<section class="order-section">
-  <div class="order-bg-text">
-    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
-    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
-    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
-    <div class="order-bg-line">FROM THE OTHER SIDE FROM THE OTHER SIDE</div>
-  </div>
-  <div class="order-card">
-    <h2 class="order-headline">The Field Notes.</h2>
-    <div class="order-grid">
-      <div class="order-cell">
-        <div class="order-cell-label">Bi-Weekly</div>
-        <div class="order-cell-value">A short letter every other Sunday — new arrivals, restocks, the occasional regulatory advisory.</div>
-      </div>
-      <div class="order-cell">
-        <div class="order-cell-label">Two a Month</div>
-        <div class="order-cell-value">Two emails a month. Unsubscribe whenever.</div>
-      </div>
-      <div class="order-cell">
-        <div class="order-cell-label">From Winston</div>
-        <div class="order-cell-value">Written by Winston, Dr. W. Yeti PhD. Reaches you direct.</div>
-      </div>
-    </div>
-    <a href="#" class="order-cta">Subscribe →</a>
-  </div>
-</section>
-
-<!-- MISSION SECTION -->
-<section class="mission-section">
-  <div class="mission-tornedge-top"></div>
-  <div class="mission-inner">
-    <!-- Left: Winston portrait -->
-    <div class="mission-portrait">
-      <div class="portrait-circle">
-        <svg viewBox="0 0 200 200">
-          <defs>
-            <radialGradient id="fur" cx="50%" cy="40%">
-              <stop offset="0%" style="stop-color:#FFFFFF"/>
-              <stop offset="100%" style="stop-color:#E0E0E0"/>
-            </radialGradient>
-          </defs>
-          <ellipse cx="100" cy="120" rx="75" ry="80" fill="url(#fur)"/>
-          <ellipse cx="100" cy="100" rx="55" ry="55" fill="url(#fur)"/>
-          <circle cx="80" cy="95" r="5" fill="#1A0A2E"/>
-          <circle cx="120" cy="95" r="5" fill="#1A0A2E"/>
-          <ellipse cx="100" cy="115" rx="8" ry="5" fill="#1A0A2E"/>
-          <path d="M 85 130 Q 100 138 115 130" stroke="#1A0A2E" stroke-width="2" fill="none"/>
-          <rect x="65" y="80" width="70" height="22" rx="4" fill="#1A0A2E" opacity="0.9"/>
-          <line x1="73" y1="91" x2="93" y2="91" stroke="#FF6B2C" stroke-width="2"/>
-          <line x1="107" y1="91" x2="127" y2="91" stroke="#FF6B2C" stroke-width="2"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- Center: About copy -->
-    <div class="mission-content">
-      <div class="mission-headline">About</div>
-      <br>
-      <div class="mission-headline-2">This Place</div>
-      <div class="mission-body-line">Operated by Winston, Dr. W. Yeti PhD</div>
-      <p class="mission-sub">I'm Winston, and Wittyverse is the storefront I run on this side. The manufacturers I work with on the other side produce the catalog; items cross on Tuesdays; the warehouse on this side handles your end of things.</p>
-      <a href="#" class="mission-cta">Read more →</a>
-    </div>
-
-    <!-- Right: Polaroid -->
-    <div class="mission-polaroid">
-      <div class="polaroid-image">
-        <svg viewBox="0 0 100 100" width="80" height="80">
-          <rect x="20" y="40" width="60" height="40" rx="3" fill="#9EE83D" stroke="#1A0A2E" stroke-width="2"/>
-          <text x="50" y="58" text-anchor="middle" font-family="Lilita One" font-size="8" fill="#1A0A2E">DOCK</text>
-          <text x="50" y="70" text-anchor="middle" font-family="Lilita One" font-size="6" fill="#1A0A2E">CYCLE 247</text>
-          <line x1="15" y1="80" x2="85" y2="80" stroke="#1A0A2E" stroke-width="3"/>
-          <circle cx="35" cy="35" r="6" fill="#FF6B2C"/>
-          <circle cx="65" cy="30" r="4" fill="#FF6B2C"/>
-        </svg>
-      </div>
-      <div class="polaroid-caption">The Dock,<br>Tuesday Cycle 247</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
+<!-- ============================================================
+     §9 FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
 
     <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="#">Wittyverse</a>
+        <p>Out of this world gag gifts you can't buy anywhere else. Personally inspected before dispatch. — Dr. W. Yeti PhD</p>
+      </div>
       <div class="footer-col">
-        <h4>The Catalog</h4>
-        <ul>
-          <li><a href="#">Everything in stock</a></li>
-          <li><a href="#">Just arrived</a></li>
-          <li><a href="#">Returned to me</a></li>
-          <li><a href="#">Gift cards</a></li>
-        </ul>
+        <h4>Shop</h4>
+        <a href="#shop">All goods</a>
+        <a href="#shop">Best sellers</a>
+        <a href="#shop">Gifts under $25</a>
+        <a href="#shop">Gift cards</a>
       </div>
       <div class="footer-col">
         <h4>Help</h4>
-        <ul>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Returns</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Write to Winston</a></li>
-        </ul>
+        <a href="#faq">Shipping &amp; dispatch</a>
+        <a href="#faq">Returns &amp; refunds</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:hello@wittyverse.com">hello@wittyverse.com</a>
       </div>
       <div class="footer-col">
         <h4>About</h4>
-        <ul>
-          <li><a href="#">This place</a></li>
-          <li><a href="#">How I source</a></li>
-          <li><a href="#">Field Notes</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
+        <a href="#proof">Dr. Yeti &amp; the dispatch</a>
+        <a href="#proof">Proof of import</a>
+        <a href="#">Press</a>
       </div>
-      <div class="footer-col footer-newsletter">
-        <h4>Stay in touch</h4>
-        <p>A short letter every other Sunday — new arrivals, restocks, the occasional regulatory advisory. Two emails a month.</p>
-        <div class="nl-form">
-          <input class="nl-input" type="text" placeholder="your@email.address">
-          <button class="nl-btn">Subscribe</button>
-        </div>
-        <div class="nl-note">Unsubscribe whenever.</div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#newsletter">The Tuesday Letter</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
       </div>
     </div>
 
-    <div class="footer-mega-logo">
-      <div class="mega-text">WITTYVERSE</div>
+    <div class="footer-trust-row">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">AMEX</span>
+      <span class="pay-icon">APPLE PAY</span>
+      <span class="pay-icon">SHOP PAY</span>
+      <span class="pay-icon">PAYPAL</span>
+      <span class="footer-trust-tail">SSL secured · 30-day guarantee</span>
     </div>
 
-    <div class="footer-bottom">
-      <span>© 2026 Witty Yeti</span>
-      <span>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Accessibility</a>
-      </span>
-    </div>
-    <div class="footer-compliance">O.O.P.S. manifest filed, Cycle 247 · NAGs quarterly audit current · Patent Office registrations on file</div>
+    <!-- COMPLIANCE — uncomment one to switch:
+      OPT B: <div class="compliance">"Sole Authorized Importer, Earth Side · Manufacturing partners undisclosed · Operator pseudonymous · Dispatch location classified."</div>
+      OPT C: <div class="compliance">"Dispatch location classified · Manufacturing partners undisclosed · Operator pseudonymous"</div>
+    -->
+    <div class="compliance">"Sole Authorized Importer, Earth Side · Operating as Wittyverse LLC · Payments via Shopify · Dispatch location classified, operator pseudonymous."</div>
+
+    <!-- SIGNOFF — uncomment one to switch:
+      OPT B: <div class="signoff">© 2026 Wittyverse LLC · Sole Authorized Importer · Earth Side</div>
+      OPT C: <div class="signoff">© 2026 Wittyverse · All paperwork on file</div>
+    -->
+    <div class="signoff">© 2026 Wittyverse LLC · — W.</div>
+
   </div>
 </footer>
+
+<!-- ============================================================
+     MOBILE STICKY (preview note — sticky bar would pin on mobile)
+     ============================================================ -->
+<div class="mobile-note">
+  <div>↓ On mobile, a sticky CTA bar pins to the bottom of the viewport. Preview:</div>
+  <!-- MOBILE CTA — uncomment one to switch:
+    OPT B: <div class="sticky-mock">Shop Now &nbsp;·&nbsp; Free ship $40+</div>
+    OPT C: <div class="sticky-mock">Get Mine &nbsp;·&nbsp; 30-day refund</div>
+  -->
+  <div class="sticky-mock">Browse Manifest &nbsp;·&nbsp; ★ 4.8</div>
+</div>
 
 </body>
 </html>
