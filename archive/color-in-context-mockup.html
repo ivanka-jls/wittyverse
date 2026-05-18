@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wittyverse — Color in Context (8 digital mediums)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Same Tier-1 globals as color-system-mockup.html */
+      --purple-100: #E2D3EE;
+      --purple-400: #6A1B9A;
+      --purple-700: #401A75;
+      --purple-900: #1A0A2E;
+      --lime-100:   #E8F8CF;
+      --lime-400:   #9EE83D;
+      --lime-700:   #7CB342;
+      --lime-900:   #4A6E25;
+      --orange-100: #FFE0CF;
+      --orange-500: #FF6B2C;
+      --orange-700: #E55A1A;
+      --orange-900: #8C320C;
+      --gray-50:    #FAF6EF;
+      --gray-100:   #EFE7D8;
+      --gray-300:   #C9BFAD;
+      --gray-500:   #847B6A;
+      --gray-700:   #4E483D;
+      --gray-900:   #25211B;
+      --cream:      #FFF4E6;
+      --ink:        #1A0A2E;
+      --white:      #FFFFFF;
+      --black:      #000000;
+
+      --state-error-50:    #FEE2E2;
+      --state-error-500:   #C92A2A;
+      --state-error-700:   #842121;
+      --state-warning-50:  #FFF4D6;
+      --state-warning-500: #F59F00;
+      --state-warning-700: #966400;
+      --state-success-50:  #DDF4E0;
+      --state-success-500: #2F9E44;
+      --state-success-700: #1B6B2A;
+
+      --font-display: 'Big Shoulders Display', sans-serif;
+      --font-accent:  'Lilita One', sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--gray-100);
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 48px 32px 96px;
+    }
+
+    .page-wrap { max-width: 1320px; margin: 0 auto; }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 44px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .page-lead {
+      max-width: 760px;
+      font-size: 16px;
+      color: var(--gray-700);
+      margin-bottom: 64px;
+    }
+
+    /* Each scenario frame */
+    .scenario {
+      margin-bottom: 80px;
+    }
+    .scenario-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+      margin-bottom: 6px;
+    }
+    .scenario-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-style: italic;
+      font-size: 24px;
+      transform: skewX(-5deg);
+      display: inline-block;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .scenario-caption {
+      font-size: 13px;
+      color: var(--gray-700);
+      margin-bottom: 20px;
+      max-width: 720px;
+    }
+    .scenario-frame {
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 0 var(--ink);
+      background: var(--white);
+    }
+
+    /* ============ SCENARIO 1 — DESKTOP HERO (PURPLE CHROME) ============ */
+    .hero-desktop {
+      width: 100%;
+      height: 600px;
+      background: var(--purple-400);
+      background-image: radial-gradient(circle at 20% 30%, var(--purple-700) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, var(--purple-900) 0%, transparent 50%);
+      color: var(--cream);
+      padding: 40px 64px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      position: relative;
+    }
+    .hero-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 64px;
+    }
+    .hero-nav-wordmark {
+      font-family: var(--font-accent);
+      font-size: 32px;
+      letter-spacing: 0.02em;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--orange-500);
+      text-shadow: 4px 4px 0 var(--purple-900), 8px 8px 0 var(--orange-700);
+    }
+    .hero-nav-links {
+      display: flex;
+      gap: 32px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-nav-links a { color: var(--cream); text-decoration: none; }
+    .hero-nav-links a.active { color: var(--lime-400); }
+    .hero-content { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+      margin-bottom: 16px;
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 76px;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      transform: skewX(-6deg);
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--orange-500);
+      text-shadow: 3px 3px 0 var(--purple-900);
+    }
+    .hero-sub {
+      font-size: 16px;
+      max-width: 460px;
+      color: var(--cream);
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+    .cta-row { display: flex; gap: 20px; }
+    .cta {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border: 3px solid var(--ink);
+      border-radius: 10px;
+      cursor: pointer;
+      transform: skewX(-6deg);
+    }
+    .cta-inner { display: inline-block; transform: skewX(6deg); }
+    .cta-primary {
+      background: var(--ink);
+      color: var(--lime-400);
+      box-shadow: 4px 4px 0 var(--orange-500), 8px 8px 0 var(--ink);
+    }
+    .cta-secondary {
+      background: var(--cream);
+      color: var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .hero-product-card {
+      background: var(--orange-500);
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 8px 8px 0 var(--ink), 16px 16px 0 var(--lime-400);
+      transform: rotate(2deg);
+      color: var(--ink);
+    }
+    .hero-product-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 28px;
+      transform: skewX(-5deg);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .hero-product-cycle {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+    .hero-product-image {
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      height: 180px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 80px;
+      font-weight: 900;
+      color: var(--purple-400);
+      transform: skewX(-6deg);
+    }
+    .hero-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: var(--lime-400);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      box-shadow: 3px 3px 0 var(--ink);
+      transform: rotate(4deg);
+    }
+
+    /* ============ SCENARIO 2 — MOBILE HERO ============ */
+    .mobile-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 40px 0;
+      background: var(--gray-100);
+    }
+    .mobile-frame {
+      width: 375px;
+      height: 700px;
+      border: 12px solid var(--ink);
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+    .mobile-status {
+      height: 28px;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--cream);
+    }
+    .mobile-hero {
+      background: var(--purple-400);
+      background-image: radial-gradient(circle at 100% 0%, var(--purple-700) 0%, transparent 70%);
+      height: 100%;
+      padding: 16px 20px;
+      color: var(--cream);
+    }
+    .mobile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .mobile-wordmark {
+      font-family: var(--font-accent);
+      font-size: 24px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--orange-500);
+      text-shadow: 3px 3px 0 var(--purple-900), 5px 5px 0 var(--orange-700);
+    }
+    .mobile-menu { font-size: 22px; color: var(--cream); }
+    .mobile-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+      margin-bottom: 12px;
+    }
+    .mobile-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 44px;
+      line-height: 0.95;
+      transform: skewX(-6deg);
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .mobile-headline em { font-style: italic; color: var(--orange-500); text-shadow: 2px 2px 0 var(--purple-900); }
+    .mobile-sub {
+      font-size: 14px;
+      color: var(--cream);
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+    .mobile-cta {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 15px;
+      text-transform: uppercase;
+      padding: 14px 22px;
+      background: var(--ink);
+      color: var(--lime-400);
+      border: 3px solid var(--ink);
+      border-radius: 10px;
+      box-shadow: 4px 4px 0 var(--orange-500), 8px 8px 0 var(--ink);
+      transform: skewX(-6deg);
+      display: inline-block;
+    }
+    .mobile-cta-inner { display: inline-block; transform: skewX(6deg); }
+    .mobile-product {
+      margin-top: 36px;
+      background: var(--orange-500);
+      border: 3px solid var(--ink);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 6px 6px 0 var(--ink);
+      transform: rotate(-1deg);
+      color: var(--ink);
+    }
+    .mobile-product-img {
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      height: 120px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--purple-400);
+      margin-bottom: 10px;
+    }
+    .mobile-product-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 20px;
+      transform: skewX(-5deg);
+      display: inline-block;
+    }
+    .mobile-product-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.7;
+    }
+
+    /* ============ SCENARIO 3 — PRODUCT GRID (CREAM LONG-FORM) ============ */
+    .product-grid-bg {
+      background: var(--cream);
+      padding: 48px 40px;
+    }
+    .pg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+    .pg-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 44px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--ink);
+    }
+    .pg-title em { color: var(--orange-700); }
+    .pg-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple-700);
+    }
+    .pg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--white);
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 8px 0 var(--ink);
+      position: relative;
+      overflow: visible;
+    }
+    .product-card-img {
+      height: 180px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 900;
+      font-size: 72px;
+      color: var(--ink);
+      transform: skewX(-5deg);
+      margin-bottom: 12px;
+    }
+    .product-card-cycle {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple-700);
+      margin-bottom: 4px;
+    }
+    .product-card-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-style: italic;
+      font-size: 20px;
+      transform: skewX(-5deg);
+      display: inline-block;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .product-card-price {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--ink);
+    }
+    .product-card-price small {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-700);
+    }
+    .product-badge {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      box-shadow: 2px 2px 0 var(--ink);
+      transform: rotate(2deg);
+      font-weight: 700;
+    }
+    .badge-marquee { background: var(--orange-500); color: var(--ink); }
+    .badge-fresh   { background: var(--lime-400); color: var(--ink); }
+    .badge-low     { background: var(--state-warning-500); color: var(--ink); }
+    .badge-sold    { background: var(--state-error-500); color: var(--cream); }
+
+    /* ============ SCENARIO 4 — EMAIL PROMO ============ */
+    .email-wrap {
+      background: var(--gray-300);
+      padding: 32px;
+      display: flex;
+      justify-content: center;
+    }
+    .email {
+      width: 600px;
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 0 var(--ink);
+    }
+    .email-header {
+      background: var(--ink);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .email-wordmark {
+      font-family: var(--font-accent);
+      font-size: 22px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--orange-500);
+      text-shadow: 2px 2px 0 var(--purple-900), 4px 4px 0 var(--orange-700);
+    }
+    .email-cycle {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+    }
+    .email-body { padding: 36px 32px; color: var(--ink); }
+    .email-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple-700);
+      margin-bottom: 12px;
+    }
+    .email-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 40px;
+      line-height: 1;
+      transform: skewX(-6deg);
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .email-headline em { color: var(--orange-700); }
+    .email-body p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--gray-900);
+      margin-bottom: 16px;
+    }
+    .email-cta {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 16px;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      background: var(--ink);
+      color: var(--lime-400);
+      border: 3px solid var(--ink);
+      border-radius: 10px;
+      box-shadow: 4px 4px 0 var(--orange-500);
+      transform: skewX(-6deg);
+      display: inline-block;
+      margin: 12px 0 24px;
+    }
+    .email-cta-inner { display: inline-block; transform: skewX(6deg); }
+    .email-callout {
+      background: var(--orange-100);
+      border: 2px solid var(--orange-700);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--orange-900);
+    }
+    .email-footer {
+      background: var(--gray-100);
+      padding: 20px 24px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-700);
+      border-top: 2px solid var(--ink);
+    }
+
+    /* ============ SCENARIO 5 — INSTAGRAM SQUARE ============ */
+    .ig-wrap { display: flex; justify-content: center; padding: 32px; background: var(--gray-300); }
+    .ig-card {
+      width: 540px;
+      height: 540px;
+      background: var(--purple-400);
+      background-image: radial-gradient(circle at 70% 80%, var(--purple-700) 0%, transparent 60%);
+      border: 2px solid var(--ink);
+      padding: 36px;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .ig-stamp {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: var(--lime-400);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      transform: rotate(6deg);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .ig-wordmark {
+      font-family: var(--font-accent);
+      font-size: 28px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--orange-500);
+      text-shadow: 3px 3px 0 var(--purple-900), 6px 6px 0 var(--orange-700);
+      margin-bottom: 40px;
+    }
+    .ig-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 60px;
+      line-height: 0.95;
+      transform: skewX(-6deg);
+      color: var(--cream);
+    }
+    .ig-headline em { color: var(--lime-400); font-style: italic; }
+    .ig-cycle {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange-500);
+      margin-top: 28px;
+    }
+    .ig-product-mini {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      background: var(--orange-500);
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 4px 4px 0 var(--ink);
+      transform: rotate(-3deg);
+      width: 140px;
+    }
+    .ig-product-mini-img {
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      height: 90px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 900;
+      font-size: 40px;
+      color: var(--purple-400);
+    }
+
+    /* ============ SCENARIO 6 — DISPLAY AD BANNER ============ */
+    .banner-wrap { display: flex; justify-content: center; padding: 24px; background: var(--gray-300); }
+    .banner {
+      width: 728px;
+      height: 90px;
+      background: var(--purple-400);
+      background-image: linear-gradient(90deg, var(--purple-700) 0%, var(--purple-400) 50%, var(--purple-700) 100%);
+      border: 2px solid var(--ink);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 0 24px;
+      color: var(--cream);
+    }
+    .banner-wordmark {
+      font-family: var(--font-accent);
+      font-size: 22px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--orange-500);
+      text-shadow: 2px 2px 0 var(--purple-900), 4px 4px 0 var(--orange-700);
+    }
+    .banner-msg {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1;
+      transform: skewX(-6deg);
+      color: var(--cream);
+    }
+    .banner-msg em { color: var(--lime-400); font-style: italic; }
+    .banner-cta {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      background: var(--ink);
+      color: var(--lime-400);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      box-shadow: 3px 3px 0 var(--orange-500);
+      transform: skewX(-6deg);
+      display: inline-block;
+    }
+    .banner-cta-inner { display: inline-block; transform: skewX(6deg); }
+
+    /* ============ SCENARIO 7 — APP / ADMIN UI ============ */
+    .app-shell {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      height: 640px;
+    }
+    .app-sidebar {
+      background: var(--purple-400);
+      padding: 24px 16px;
+      color: var(--cream);
+      border-right: 2px solid var(--ink);
+    }
+    .app-sidebar-brand {
+      font-family: var(--font-accent);
+      font-size: 22px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--orange-500);
+      text-shadow: 2px 2px 0 var(--purple-900), 4px 4px 0 var(--orange-700);
+      margin-bottom: 32px;
+    }
+    .app-nav-section { margin-bottom: 24px; }
+    .app-nav-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+      margin-bottom: 10px;
+    }
+    .app-nav-item {
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cream);
+      cursor: pointer;
+      margin-bottom: 4px;
+    }
+    .app-nav-item.active {
+      background: var(--ink);
+      color: var(--lime-400);
+      box-shadow: 3px 3px 0 var(--orange-500);
+    }
+    .app-main {
+      background: var(--cream);
+      padding: 28px 32px;
+      overflow: hidden;
+    }
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .app-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 32px;
+      transform: skewX(-5deg);
+      display: inline-block;
+      color: var(--ink);
+    }
+    .app-cta {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      background: var(--ink);
+      color: var(--lime-400);
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 var(--orange-500);
+      transform: skewX(-6deg);
+      display: inline-block;
+    }
+    .app-cta-inner { display: inline-block; transform: skewX(6deg); }
+    .app-table {
+      width: 100%;
+      background: var(--white);
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 0 var(--ink);
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .app-table thead th {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 700;
+    }
+    .app-table tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 13px;
+      color: var(--ink);
+    }
+    .app-table tbody tr:last-child td { border-bottom: none; }
+    .app-table tbody tr:hover td { background: var(--purple-100); }
+    .app-status {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid;
+      font-weight: 700;
+    }
+    .app-status-shipped  { background: var(--state-success-50); color: var(--state-success-700); border-color: var(--state-success-500); }
+    .app-status-pending  { background: var(--state-warning-50); color: var(--state-warning-700); border-color: var(--state-warning-500); }
+    .app-status-blocked  { background: var(--state-error-50); color: var(--state-error-700); border-color: var(--state-error-500); }
+    .app-status-active   { background: var(--lime-100); color: var(--lime-900); border-color: var(--lime-700); }
+    .app-status-marquee  { background: var(--orange-100); color: var(--orange-900); border-color: var(--orange-700); }
+
+    /* ============ SCENARIO 8 — LATE-NIGHT DARK MODE ============ */
+    .late-night {
+      background: var(--ink);
+      background-image:
+        radial-gradient(circle at 15% 50%, var(--purple-700) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(106, 27, 154, 0.4) 0%, transparent 50%);
+      padding: 56px 64px;
+      color: var(--cream);
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .ln-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+      margin-bottom: 16px;
+    }
+    .ln-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 60px;
+      line-height: 0.95;
+      transform: skewX(-6deg);
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .ln-headline em { color: var(--orange-500); text-shadow: 3px 3px 0 var(--purple-900); }
+    .ln-sub { font-size: 15px; opacity: 0.85; max-width: 440px; margin-bottom: 24px; }
+    .ln-cta {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 16px;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      background: var(--lime-400);
+      color: var(--ink);
+      border: 3px solid var(--lime-400);
+      border-radius: 10px;
+      box-shadow: 4px 4px 0 var(--orange-500), 8px 8px 0 var(--purple-700);
+      transform: skewX(-6deg);
+      display: inline-block;
+    }
+    .ln-cta-inner { display: inline-block; transform: skewX(6deg); }
+    .ln-stamp {
+      background: var(--orange-500);
+      border: 3px solid var(--ink);
+      border-radius: 12px;
+      padding: 20px;
+      width: 220px;
+      box-shadow: 6px 6px 0 var(--ink), 12px 12px 0 var(--lime-400);
+      transform: rotate(-3deg);
+      color: var(--ink);
+    }
+    .ln-stamp-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 22px;
+      transform: skewX(-5deg);
+      display: inline-block;
+    }
+    .ln-stamp-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <div class="page-title">Color in Context</div>
+  <p class="page-lead">
+    Eight realistic digital scenarios using the proposed R2 / Winston-storefront palette. Every color here is one of the tokens defined in <code style="font-family: var(--font-mono);">color-system-mockup.html</code> — no new hex values introduced. Sections below let us see how the palette behaves in actual application, not just on swatches.
+  </p>
+
+  <!-- ============ 1. DESKTOP HERO ============ -->
+  <div class="scenario" id="s1">
+    <div class="scenario-label">Scenario 1 · Desktop website hero</div>
+    <div class="scenario-title">Landing page — purple chrome mode</div>
+    <div class="scenario-caption">1200×600. The default "lights down, neon up" landing surface. Stress-tests purple-as-ground + lime-CTA + orange-accent simultaneously. The card on the right adds the lime + orange double-stacked shadow.</div>
+    <div class="scenario-frame">
+      <div class="hero-desktop">
+        <div class="hero-badge">Cycle 247</div>
+        <div class="hero-nav">
+          <div class="hero-nav-wordmark">WITTYVERSE</div>
+          <div class="hero-nav-links">
+            <a href="#" class="active">Catalog</a>
+            <a href="#">About Winston</a>
+            <a href="#">Cycle Log</a>
+            <a href="#">Cart · 0</a>
+          </div>
+        </div>
+        <div class="hero-content">
+          <div>
+            <div class="hero-eyebrow">Imports · Cycle 247 · 14,200 Units</div>
+            <h1 class="hero-headline">Shockingly good <em>gag gifts</em>, freshly imported.</h1>
+            <p class="hero-sub">Dr. W. Yeti PhD has been bringing back the absurdest things he could find since he opened the portal in '23. New shipment every cycle. Once they're gone, they're gone.</p>
+            <div class="cta-row">
+              <button class="cta cta-primary"><span class="cta-inner">Browse the Catalog</span></button>
+              <button class="cta cta-secondary"><span class="cta-inner">Read the Log</span></button>
+            </div>
+          </div>
+          <div class="hero-product-card">
+            <div class="hero-product-cycle">Cycle 247 · Dock 04</div>
+            <div class="hero-product-title">Yeti-Fur Floss</div>
+            <div class="hero-product-image">YF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 2. MOBILE HERO ============ -->
+  <div class="scenario" id="s2">
+    <div class="scenario-label">Scenario 2 · Mobile website hero</div>
+    <div class="scenario-title">Same content, 375px viewport</div>
+    <div class="scenario-caption">Tests whether the wordmark + headline + CTA hierarchy survives a narrow viewport. The orange-and-lime double-stacked CTA shadow becomes more dominant at this scale.</div>
+    <div class="scenario-frame">
+      <div class="mobile-wrap">
+        <div class="mobile-frame">
+          <div class="mobile-status"><span>9:41</span><span>WV</span></div>
+          <div class="mobile-hero">
+            <div class="mobile-top">
+              <div class="mobile-wordmark">WITTYVERSE</div>
+              <div class="mobile-menu">☰</div>
+            </div>
+            <div class="mobile-eyebrow">Cycle 247 · Dock 04</div>
+            <h1 class="mobile-headline">Shockingly <em>good</em> gag gifts.</h1>
+            <p class="mobile-sub">Imported by Dr. W. Yeti PhD. New shipment every cycle.</p>
+            <button class="mobile-cta"><span class="mobile-cta-inner">Browse Catalog</span></button>
+            <div class="mobile-product">
+              <div class="mobile-product-img">YF</div>
+              <div class="mobile-product-title">Yeti-Fur Floss</div>
+              <div class="mobile-product-meta">$24 · 14,200 in dock</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 3. PRODUCT GRID (CREAM) ============ -->
+  <div class="scenario" id="s3">
+    <div class="scenario-label">Scenario 3 · Product grid (long-form mode)</div>
+    <div class="scenario-title">Catalog on cream background</div>
+    <div class="scenario-caption">The cream-anchored long-form mode. Six products in a 3-column grid, all four badge variants visible at once — Marquee (orange), Fresh (lime), Low Stock (warning), Sold Out (error). Tests whether brand badges + state badges coexist without confusion.</div>
+    <div class="scenario-frame">
+      <div class="product-grid-bg">
+        <div class="pg-header">
+          <div class="pg-title">The <em>Catalog</em> · Cycle 247</div>
+          <div class="pg-tag">14,200 units · Dock 04 · Restocked Tuesday</div>
+        </div>
+        <div class="pg-grid">
+          <div class="product-card">
+            <div class="product-badge badge-marquee">New Cycle</div>
+            <div class="product-card-img" style="background: var(--orange-100);">YF</div>
+            <div class="product-card-cycle">Cycle 247 · 247.3</div>
+            <div class="product-card-title">Yeti-Fur Floss</div>
+            <div class="product-card-price">$24<small> · 12 ct</small></div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge badge-fresh">Fresh</div>
+            <div class="product-card-img" style="background: var(--lime-100);">IP</div>
+            <div class="product-card-cycle">Cycle 247 · 247.1</div>
+            <div class="product-card-title">Interdimensional Postage</div>
+            <div class="product-card-price">$18<small> · 25 stamps</small></div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge badge-low">Low Stock</div>
+            <div class="product-card-img" style="background: var(--purple-100);">RT</div>
+            <div class="product-card-cycle">Cycle 246 · 246.7</div>
+            <div class="product-card-title">Replacement Toes</div>
+            <div class="product-card-price">$32<small> · pair</small></div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge badge-sold">Sold Out</div>
+            <div class="product-card-img" style="background: var(--gray-100); color: var(--gray-500);">??</div>
+            <div class="product-card-cycle">Cycle 245 · 245.2</div>
+            <div class="product-card-title">Wittyverse Postcards</div>
+            <div class="product-card-price">$14<small> · pack of 6</small></div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge badge-fresh">Fresh</div>
+            <div class="product-card-img" style="background: var(--cream);">ME</div>
+            <div class="product-card-cycle">Cycle 247 · 247.2</div>
+            <div class="product-card-title">Mood Equalizer Pills</div>
+            <div class="product-card-price">$28<small> · 30 ct</small></div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge badge-marquee">New Cycle</div>
+            <div class="product-card-img" style="background: var(--orange-100);">PT</div>
+            <div class="product-card-cycle">Cycle 247 · 247.4</div>
+            <div class="product-card-title">Portable Thunder</div>
+            <div class="product-card-price">$42<small> · 1 jar</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 4. EMAIL PROMO ============ -->
+  <div class="scenario" id="s4">
+    <div class="scenario-label">Scenario 4 · Email — promotional</div>
+    <div class="scenario-title">Cycle restock announcement</div>
+    <div class="scenario-caption">600px width, cream body. Email clients often de-saturate slightly and strip CSS — testing whether the brand reads with conservative layout + a single saturated CTA. The orange callout is a hint of the marquee surface inside an email.</div>
+    <div class="scenario-frame">
+      <div class="email-wrap">
+        <div class="email">
+          <div class="email-header">
+            <div class="email-wordmark">WITTYVERSE</div>
+            <div class="email-cycle">Cycle 247 · Newsletter 04</div>
+          </div>
+          <div class="email-body">
+            <div class="email-eyebrow">Fresh from Dock 04</div>
+            <h2 class="email-headline">Cycle 247 just <em>cleared customs</em>.</h2>
+            <p>Dear Cycle Subscriber — 14,200 units released this morning. The Yeti-Fur Floss came back stronger than last cycle, the Interdimensional Postage finally arrived after a Cycle 245 delay, and we found something new in the dock that's hard to describe (read on).</p>
+            <p>The portal stays open through Friday. After that, anything unsold goes back into the dock and waits for the next opening. You know how it is.</p>
+            <button class="email-cta"><span class="email-cta-inner">Browse Cycle 247</span></button>
+            <div class="email-callout">
+              <strong>Heads up:</strong> Replacement Toes sold out in two cycles last year. If you missed them, this is the one to grab early.
+            </div>
+            <p style="font-size: 13px; color: var(--gray-700);">— Dr. W. Yeti PhD<br>Authorized Earth-side Importer · Wittyverse</p>
+          </div>
+          <div class="email-footer">
+            Unsubscribe · Manage cycles · Wittyverse · "Authorized for Earth distribution since Cycle 244"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 5. INSTAGRAM SQUARE ============ -->
+  <div class="scenario" id="s5">
+    <div class="scenario-label">Scenario 5 · Social — Instagram square</div>
+    <div class="scenario-title">Cycle drop announcement</div>
+    <div class="scenario-caption">1080×1080 (rendered at 540×540). Social cards compete in a crowded feed — the lime stamp + orange product mini have to read in &lt;1 second of scroll.</div>
+    <div class="scenario-frame">
+      <div class="ig-wrap">
+        <div class="ig-card">
+          <div class="ig-stamp">Cycle 247 · LIVE</div>
+          <div class="ig-wordmark">WITTYVERSE</div>
+          <h2 class="ig-headline">14,200 units<br>just <em>cleared</em><br>the portal.</h2>
+          <div class="ig-cycle">Dock 04 · Restock Tuesday</div>
+          <div class="ig-product-mini">
+            <div class="ig-product-mini-img">YF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 6. DISPLAY AD BANNER ============ -->
+  <div class="scenario" id="s6">
+    <div class="scenario-label">Scenario 6 · Display ad — leaderboard banner</div>
+    <div class="scenario-title">728×90 — the 1-second test</div>
+    <div class="scenario-caption">Standard top-of-page banner. The brand has 1 second of attention. Does the wordmark + lime CTA read? Or does the palette become unreadable noise at this aspect?</div>
+    <div class="scenario-frame">
+      <div class="banner-wrap">
+        <div class="banner">
+          <div class="banner-wordmark">WITTYVERSE</div>
+          <div class="banner-msg">Cycle 247 <em>cleared customs</em>.</div>
+          <button class="banner-cta"><span class="banner-cta-inner">Browse →</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 7. APP / ADMIN UI ============ -->
+  <div class="scenario" id="s7">
+    <div class="scenario-label">Scenario 7 · App / admin dashboard</div>
+    <div class="scenario-title">Inventory manager for the Wittyverse dock</div>
+    <div class="scenario-caption">1024 wide, ~640 tall. Purple chrome sidebar + cream main area. All four state colors (success/warning/error/info-as-purple) coexisting in a table alongside the brand's marquee + active badges. Tests whether the loud palette holds up under information density.</div>
+    <div class="scenario-frame">
+      <div class="app-shell">
+        <div class="app-sidebar">
+          <div class="app-sidebar-brand">WITTYVERSE</div>
+          <div class="app-nav-section">
+            <div class="app-nav-eyebrow">Operations</div>
+            <div class="app-nav-item active">Dock 04 · Inventory</div>
+            <div class="app-nav-item">Customs Queue</div>
+            <div class="app-nav-item">Cycle Schedule</div>
+            <div class="app-nav-item">Customer Letters</div>
+          </div>
+          <div class="app-nav-section">
+            <div class="app-nav-eyebrow">Catalog</div>
+            <div class="app-nav-item">Products · 47</div>
+            <div class="app-nav-item">Stock Levels</div>
+            <div class="app-nav-item">Reorder</div>
+          </div>
+        </div>
+        <div class="app-main">
+          <div class="app-header">
+            <div class="app-title">Dock 04 · <span style="color: var(--orange-700);">Cycle 247</span></div>
+            <button class="app-cta"><span class="app-cta-inner">+ New Manifest</span></button>
+          </div>
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Product</th>
+                <th>Cycle</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Tag</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>247.3</td>
+                <td>Yeti-Fur Floss</td>
+                <td>247</td>
+                <td>14,200</td>
+                <td><span class="app-status app-status-shipped">Cleared</span></td>
+                <td><span class="app-status app-status-marquee">Marquee</span></td>
+              </tr>
+              <tr>
+                <td>247.1</td>
+                <td>Interdimensional Postage</td>
+                <td>247</td>
+                <td>8,400</td>
+                <td><span class="app-status app-status-shipped">Cleared</span></td>
+                <td><span class="app-status app-status-active">Fresh</span></td>
+              </tr>
+              <tr>
+                <td>246.7</td>
+                <td>Replacement Toes</td>
+                <td>246</td>
+                <td>312</td>
+                <td><span class="app-status app-status-pending">Awaiting Customs</span></td>
+                <td><span class="app-status app-status-active">Low Stock</span></td>
+              </tr>
+              <tr>
+                <td>245.2</td>
+                <td>Wittyverse Postcards</td>
+                <td>245</td>
+                <td>0</td>
+                <td><span class="app-status app-status-blocked">Sold Out</span></td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>247.4</td>
+                <td>Portable Thunder</td>
+                <td>247</td>
+                <td>2,800</td>
+                <td><span class="app-status app-status-shipped">Cleared</span></td>
+                <td><span class="app-status app-status-marquee">Marquee</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 8. LATE-NIGHT DARK MODE ============ -->
+  <div class="scenario" id="s8">
+    <div class="scenario-label">Scenario 8 · Late-night dark mode</div>
+    <div class="scenario-title">Pure-ink ground with neon accents</div>
+    <div class="scenario-caption">When chrome mode goes one level darker — ink ground with the lime CTA reversed (lime-on-ink as the button, not lime-text-on-ink-button). Tests whether the palette has a "darkest" register beyond purple-chrome.</div>
+    <div class="scenario-frame">
+      <div class="late-night">
+        <div>
+          <div class="ln-eyebrow">After Hours · Dock 04</div>
+          <h1 class="ln-headline">The portal closes <em>Friday</em>.</h1>
+          <p class="ln-sub">Cycle 247 ends at midnight, Pacific. Anything unsold goes back into the dock until the next opening. Dr. W. Yeti is not taking inquiries.</p>
+          <button class="ln-cta"><span class="ln-cta-inner">Grab Before Friday →</span></button>
+        </div>
+        <div class="ln-stamp">
+          <div class="ln-stamp-title">14,200 units</div>
+          <div class="ln-stamp-meta">Released · Cycle 247</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cream vs Warm-off-white vs Pure white — visual A/B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple-100: #E2D3EE;
+      --purple-400: #6A1B9A;
+      --purple-700: #401A75;
+      --purple-900: #1A0A2E;
+      --lime-100:   #E8F8CF;
+      --lime-400:   #9EE83D;
+      --orange-100: #FFE0CF;
+      --orange-500: #FF6B2C;
+      --orange-700: #E55A1A;
+      --gray-100:   #EFE7D8;
+      --gray-300:   #C9BFAD;
+      --gray-500:   #847B6A;
+      --gray-700:   #4E483D;
+      --ink:        #1A0A2E;
+
+      --state-error-500:   #C92A2A;
+      --state-warning-500: #F59F00;
+      --state-success-500: #2F9E44;
+
+      --font-display: 'Big Shoulders Display', sans-serif;
+      --font-accent:  'Lilita One', sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--gray-300);
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 32px 24px 64px;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 34px;
+      transform: skewX(-6deg);
+      display: inline-block;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .page-lead {
+      max-width: 760px;
+      font-size: 14px;
+      color: var(--gray-700);
+      margin-bottom: 32px;
+    }
+
+    /* three-column grid of variants */
+    .triple {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1700px;
+    }
+    .variant {
+      border: 2px solid var(--ink);
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .variant-label {
+      background: var(--ink);
+      color: var(--gray-100);
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .variant-label .hex {
+      color: var(--lime-400);
+      font-weight: 600;
+      margin-left: 6px;
+    }
+
+    /* the surface that changes */
+    .surface { padding: 28px 22px; min-height: 700px; }
+    .surface-cream { background: #FFF4E6; }   /* current */
+    .surface-warm  { background: #FAF6EF; }   /* warm off-white, less saturated */
+    .surface-white { background: #FFFFFF; }   /* pure white */
+
+    /* Identical content for all three variants */
+    .catalog-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+    .catalog-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-style: italic;
+      font-size: 28px;
+      transform: skewX(-5deg);
+      display: inline-block;
+      color: var(--ink);
+    }
+    .catalog-title em {
+      font-style: italic;
+      color: var(--orange-500);
+      font-weight: 900;
+    }
+    .catalog-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-700);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      box-shadow: 0 6px 0 var(--ink);
+      overflow: hidden;
+      position: relative;
+    }
+    .card-bg {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bg-orange { background: var(--orange-100); }
+    .bg-lime   { background: var(--lime-100); }
+    .bg-purple { background: var(--purple-100); }
+    .bg-gray   { background: var(--gray-300); }
+
+    .monogram {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 56px;
+      transform: skewX(-6deg);
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border: 1.5px solid var(--ink);
+      border-radius: 4px;
+    }
+    .badge-marquee { background: var(--orange-500); color: var(--ink); }
+    .badge-fresh   { background: var(--lime-400); color: var(--ink); }
+    .badge-low     { background: var(--state-warning-500); color: var(--ink); }
+    .badge-sold    { background: var(--state-error-500); color: var(--gray-100); }
+
+    .card-meta {
+      padding: 12px 14px 14px;
+    }
+    .card-sku {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-700);
+      margin-bottom: 2px;
+    }
+    .card-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-style: italic;
+      font-size: 17px;
+      transform: skewX(-4deg);
+      display: inline-block;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .card-price {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .card-price-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--gray-700);
+      margin-left: 4px;
+    }
+
+    /* below grid: a body-copy strip to test long-form readability */
+    .body-copy {
+      margin-top: 26px;
+      padding: 18px 22px;
+      border: 2px dashed var(--gray-500);
+      border-radius: 6px;
+    }
+    .body-copy h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-style: italic;
+      font-size: 14px;
+      transform: skewX(-4deg);
+      display: inline-block;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .body-copy p {
+      font-size: 13px;
+      color: var(--gray-700);
+    }
+    .body-copy p + p { margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">Cream vs warm-off-white vs pure white.</div>
+  <p class="page-lead">Three identical product grids, identical state badges, identical body copy. Only the surface beneath them changes. Tests: does the cream do real brand work, or is it warmth-for-warmth's-sake?</p>
+
+  <div class="triple">
+
+    <!-- A: CREAM (current) -->
+    <div class="variant">
+      <div class="variant-label">Variant A · Cream<span class="hex">#FFF4E6</span></div>
+      <div class="surface surface-cream">
+        <div class="catalog-head">
+          <div class="catalog-title">The <em>Catalog</em></div>
+          <div class="catalog-meta">14,200 units · Cycle 247</div>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="badge badge-marquee">New Cycle</div>
+            <div class="card-bg bg-orange"><div class="monogram">YF</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 247 · 247.3</div>
+              <div class="card-name">Yeti-Fur Floss</div>
+              <div class="card-price">$24<span class="card-price-meta"> · 12 ct</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-fresh">Fresh</div>
+            <div class="card-bg bg-lime"><div class="monogram">IP</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 247 · 247.1</div>
+              <div class="card-name">Interdimensional Postage</div>
+              <div class="card-price">$18<span class="card-price-meta"> · 25 stamps</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-low">Low Stock</div>
+            <div class="card-bg bg-purple"><div class="monogram">RT</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 246 · 246.7</div>
+              <div class="card-name">Replacement Toes</div>
+              <div class="card-price">$32<span class="card-price-meta"> · pair</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-sold">Sold Out</div>
+            <div class="card-bg bg-gray"><div class="monogram">??</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 245 · 245.2</div>
+              <div class="card-name">Wittyverse Postcards</div>
+              <div class="card-price">$14<span class="card-price-meta"> · pack of 6</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="body-copy">
+          <h3>About this cycle</h3>
+          <p>Dr. W. Yeti PhD has been bringing back the absurdest things he could find since he opened the portal in '23. New shipment every cycle. Once they're gone, they're gone.</p>
+          <p>Authorized for Earth distribution since Cycle 244. Customer letters welcome.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- B: WARM OFF-WHITE (less saturated) -->
+    <div class="variant">
+      <div class="variant-label">Variant B · Warm off-white<span class="hex">#FAF6EF</span></div>
+      <div class="surface surface-warm">
+        <div class="catalog-head">
+          <div class="catalog-title">The <em>Catalog</em></div>
+          <div class="catalog-meta">14,200 units · Cycle 247</div>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="badge badge-marquee">New Cycle</div>
+            <div class="card-bg bg-orange"><div class="monogram">YF</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 247 · 247.3</div>
+              <div class="card-name">Yeti-Fur Floss</div>
+              <div class="card-price">$24<span class="card-price-meta"> · 12 ct</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-fresh">Fresh</div>
+            <div class="card-bg bg-lime"><div class="monogram">IP</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 247 · 247.1</div>
+              <div class="card-name">Interdimensional Postage</div>
+              <div class="card-price">$18<span class="card-price-meta"> · 25 stamps</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-low">Low Stock</div>
+            <div class="card-bg bg-purple"><div class="monogram">RT</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 246 · 246.7</div>
+              <div class="card-name">Replacement Toes</div>
+              <div class="card-price">$32<span class="card-price-meta"> · pair</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-sold">Sold Out</div>
+            <div class="card-bg bg-gray"><div class="monogram">??</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 245 · 245.2</div>
+              <div class="card-name">Wittyverse Postcards</div>
+              <div class="card-price">$14<span class="card-price-meta"> · pack of 6</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="body-copy">
+          <h3>About this cycle</h3>
+          <p>Dr. W. Yeti PhD has been bringing back the absurdest things he could find since he opened the portal in '23. New shipment every cycle. Once they're gone, they're gone.</p>
+          <p>Authorized for Earth distribution since Cycle 244. Customer letters welcome.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- C: PURE WHITE -->
+    <div class="variant">
+      <div class="variant-label">Variant C · Pure white<span class="hex">#FFFFFF</span></div>
+      <div class="surface surface-white">
+        <div class="catalog-head">
+          <div class="catalog-title">The <em>Catalog</em></div>
+          <div class="catalog-meta">14,200 units · Cycle 247</div>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="badge badge-marquee">New Cycle</div>
+            <div class="card-bg bg-orange"><div class="monogram">YF</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 247 · 247.3</div>
+              <div class="card-name">Yeti-Fur Floss</div>
+              <div class="card-price">$24<span class="card-price-meta"> · 12 ct</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-fresh">Fresh</div>
+            <div class="card-bg bg-lime"><div class="monogram">IP</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 247 · 247.1</div>
+              <div class="card-name">Interdimensional Postage</div>
+              <div class="card-price">$18<span class="card-price-meta"> · 25 stamps</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-low">Low Stock</div>
+            <div class="card-bg bg-purple"><div class="monogram">RT</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 246 · 246.7</div>
+              <div class="card-name">Replacement Toes</div>
+              <div class="card-price">$32<span class="card-price-meta"> · pair</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="badge badge-sold">Sold Out</div>
+            <div class="card-bg bg-gray"><div class="monogram">??</div></div>
+            <div class="card-meta">
+              <div class="card-sku">Cycle 245 · 245.2</div>
+              <div class="card-name">Wittyverse Postcards</div>
+              <div class="card-price">$14<span class="card-price-meta"> · pack of 6</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="body-copy">
+          <h3>About this cycle</h3>
+          <p>Dr. W. Yeti PhD has been bringing back the absurdest things he could find since he opened the portal in '23. New shipment every cycle. Once they're gone, they're gone.</p>
+          <p>Authorized for Earth distribution since Cycle 244. Customer letters welcome.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

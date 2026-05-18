@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wittyverse · Typography in use — Bowlby + BSD + Lilita compositions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Bowlby+One&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="brand-guidelines/tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--cream); }
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.55;
+      padding: 0 0 96px;
+    }
+
+    /* Header band */
+    .topband {
+      background: var(--purple-400);
+      color: var(--cream);
+      padding: 32px 40px 28px;
+      border-bottom: 4px solid var(--ink);
+      box-shadow: 0 6px 0 var(--ink);
+      margin-bottom: 56px;
+    }
+    .topband-inner { max-width: 1240px; margin: 0 auto; }
+    .topband-eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+      margin-bottom: 10px;
+    }
+    .topband-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(32px, 4.5vw, 48px);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+      transform: skewX(-5deg);
+      transform-origin: left;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .topband-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+    }
+    .topband-meta a { color: var(--cream); text-decoration: underline; }
+
+    main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    section { margin-bottom: 72px; }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+      padding: 4px 12px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--orange-100);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(26px, 3.6vw, 36px);
+      text-transform: uppercase;
+      transform: skewX(-5deg);
+      transform-origin: left;
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .section-subtitle {
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(26, 10, 46, 0.78);
+      margin-bottom: 24px;
+      max-width: 780px;
+    }
+
+    /* Composition card — design + annotation grid */
+    .composition {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px) {
+      .composition { grid-template-columns: 1fr; }
+    }
+    .frame {
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 0 6px 0 var(--ink);
+      overflow: hidden;
+      position: relative;
+      min-height: 320px;
+    }
+    .annotations {
+      background: var(--white);
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 0 6px 0 var(--ink);
+      padding: 22px 24px;
+    }
+    .annotations h3 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--purple-700);
+      transform: skewX(-5deg);
+      transform-origin: left;
+      margin-bottom: 10px;
+    }
+    .anno-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .anno-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      align-items: start;
+    }
+    .anno-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--purple-400);
+      color: var(--cream);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--ink);
+    }
+    .anno-list li:nth-child(2) .anno-num { background: var(--lime-400); color: var(--ink); }
+    .anno-list li:nth-child(3) .anno-num { background: var(--orange-500); color: var(--ink); }
+    .anno-list li:nth-child(4) .anno-num { background: var(--purple-700); color: var(--cream); }
+    .anno-list li:nth-child(5) .anno-num { background: var(--ink); color: var(--lime-400); }
+    .anno-list li:nth-child(6) .anno-num { background: var(--state-success-500); color: var(--white); }
+    .anno-face {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transform: skewX(-5deg);
+      transform-origin: left;
+      display: inline-block;
+      margin-right: 6px;
+      color: var(--orange-700);
+    }
+    .anno-rule {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 10px;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+    .anno-rule strong {
+      color: var(--lime-400);
+      font-family: var(--font-display);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transform: skewX(-3deg);
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    /* === HERO COMPOSITION === */
+    .hero-frame {
+      background: var(--purple-400);
+      background-image:
+        radial-gradient(ellipse at 20% 30%, var(--purple-400) 0%, var(--purple-700) 75%, var(--purple-900) 100%),
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: cover, 4px 4px;
+      color: var(--cream);
+      padding: 32px 36px 38px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-height: 480px;
+    }
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-wordmark {
+      font-family: var(--font-accent);
+      font-weight: 400;
+      font-size: 32px;
+      color: var(--orange-500);
+      text-transform: uppercase;
+      transform: skewX(-6deg);
+      transform-origin: left;
+      text-shadow: 2px 2px 0 var(--ink), 4px 4px 0 var(--lime-400);
+      display: inline-block;
+      padding: 0 4px 6px 4px;
+    }
+    .hero-monotag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+      background: var(--ink);
+      border: 1.5px solid var(--orange-500);
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    .hero-banner {
+      font-family: var(--font-pulp);
+      font-weight: 400;
+      font-size: clamp(40px, 5.5vw, 64px);
+      line-height: 0.95;
+      color: var(--orange-500);
+      letter-spacing: 0.005em;
+      text-transform: uppercase;
+      text-shadow: 4px 4px 0 var(--ink), 8px 8px 0 var(--lime-400);
+      transform: skewX(-7deg);
+      transform-origin: left;
+      margin-top: 12px;
+      max-width: 92%;
+      padding: 0 4px 10px 4px;
+    }
+    .hero-subhead {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(20px, 2.4vw, 28px);
+      color: var(--cream);
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      line-height: 1;
+      transform: skewX(-6deg);
+      transform-origin: left;
+      margin-top: 4px;
+      max-width: 85%;
+    }
+    .hero-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255, 244, 230, 0.85);
+      max-width: 65%;
+      margin-top: 8px;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-self: flex-start;
+      background: var(--ink);
+      color: var(--lime-400);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--purple-700);
+      margin-top: 8px;
+      text-decoration: none;
+    }
+
+    /* === ARTICLE COMPOSITION === */
+    .article-frame {
+      background: var(--cream);
+      padding: 36px 40px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 480px;
+    }
+    .article-eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange-700);
+    }
+    .article-h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(32px, 4.5vw, 48px);
+      text-transform: uppercase;
+      letter-spacing: 0.005em;
+      line-height: 1;
+      transform: skewX(-6deg);
+      transform-origin: left;
+      color: var(--ink);
+      max-width: 90%;
+    }
+    .article-h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(22px, 3vw, 30px);
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      transform: skewX(-6deg);
+      transform-origin: left;
+      color: var(--purple-700);
+      margin-top: 12px;
+    }
+    .article-h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      transform: skewX(-5deg);
+      transform-origin: left;
+      color: var(--orange-700);
+      margin-top: 6px;
+    }
+    .article-body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+      max-width: 92%;
+    }
+    .article-body em {
+      font-style: italic;
+      color: var(--purple-700);
+    }
+    .article-no-bowlby {
+      margin-top: 4px;
+      padding: 8px 12px;
+      background: var(--lime-100);
+      border: 1.5px dashed var(--ink);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    /* === SOCIAL AD COMPOSITION === */
+    .social-row {
+      display: grid;
+      grid-template-columns: 480px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 920px) {
+      .social-row { grid-template-columns: 1fr; }
+    }
+    .social-frame {
+      width: 480px;
+      max-width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--purple-400);
+      background-image:
+        radial-gradient(ellipse at 30% 30%, var(--purple-400) 0%, var(--purple-700) 70%, var(--purple-900) 100%),
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: cover, 4px 4px;
+      color: var(--cream);
+      border: 3px solid var(--ink);
+      border-radius: 16px;
+      box-shadow: 0 6px 0 var(--ink);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .social-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .social-wordmark {
+      font-family: var(--font-accent);
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--orange-500);
+      text-transform: uppercase;
+      transform: skewX(-6deg);
+      transform-origin: left;
+      text-shadow: 2px 2px 0 var(--ink), 4px 4px 0 var(--lime-400);
+      display: inline-block;
+      padding: 0 3px 4px 3px;
+    }
+    .social-monotag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime-400);
+      background: var(--ink);
+      border: 1.5px solid var(--orange-500);
+      padding: 4px 8px;
+      border-radius: 3px;
+    }
+    .social-banner {
+      font-family: var(--font-pulp);
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 72px);
+      line-height: 0.9;
+      color: var(--orange-500);
+      letter-spacing: 0.005em;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 0 var(--ink), 6px 6px 0 var(--lime-400);
+      transform: skewX(-7deg);
+      transform-origin: left;
+      padding: 0 4px 8px 0;
+      align-self: flex-start;
+    }
+    .social-support {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--cream);
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      transform: skewX(-6deg);
+      transform-origin: left;
+      margin-top: 4px;
+    }
+    .social-cta {
+      display: inline-flex;
+      align-self: flex-start;
+      background: var(--ink);
+      color: var(--lime-400);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: 2px solid var(--ink);
+      box-shadow: 3px 3px 0 var(--purple-700);
+      text-decoration: none;
+      margin-top: 8px;
+    }
+
+    /* Summary card */
+    .rule-summary {
+      background: var(--ink);
+      color: var(--cream);
+      border: 3px solid var(--ink);
+      border-radius: 14px;
+      box-shadow: 0 4px 0 var(--ink);
+      padding: 28px 32px;
+    }
+    .rule-summary h2 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--lime-400);
+      transform: skewX(-5deg);
+      transform-origin: left;
+      margin-bottom: 12px;
+    }
+    .rule-summary ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rule-summary li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .rule-summary li::before {
+      content: '→';
+      color: var(--lime-400);
+      font-family: var(--font-display);
+      font-weight: 900;
+    }
+    .rule-summary code {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: rgba(158, 232, 61, 0.18);
+      color: var(--lime-100);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .endbar {
+      max-width: 1240px;
+      margin: 56px auto 0;
+      padding: 20px 40px;
+      border-top: 4px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-family: var(--font-body);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: rgba(26, 10, 46, 0.65);
+    }
+    .endbar a { color: var(--purple-700); }
+  </style>
+</head>
+<body>
+
+<header class="topband">
+  <div class="topband-inner">
+    <div class="topband-eyebrow">Typography in use</div>
+    <h1 class="topband-title">How the five faces work together</h1>
+    <div class="topband-meta">2026-05-15 · Canon: <a href="brand-guidelines/#typography">brand-guidelines</a> · One-pager: <a href="brand-one-pager/">brand-one-pager</a></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================
+       Intro
+  ============================================================ -->
+  <section>
+    <span class="section-eyebrow">Premise</span>
+    <h2 class="section-title">Five faces, three compositions</h2>
+    <p class="section-subtitle">Three live compositions below show the canon in action — a homepage hero (where Bowlby earns its one-per-page use), an article page (BSD-only territory, no Bowlby), and a social ad (a single dramatic moment). Annotations on the right of each frame name what's what and why.</p>
+  </section>
+
+  <!-- ============================================================
+       §1 — Homepage hero composition
+  ============================================================ -->
+  <section>
+    <span class="section-eyebrow">§1 · Homepage hero</span>
+    <h2 class="section-title">Bowlby earns its keep</h2>
+    <p class="section-subtitle">The one surface where the entire face system is on display. Bowlby gets the loudest line; BSD handles the subhead and CTA; Lilita marks the brand; Inter handles the body; mono carries the deep-canon tag.</p>
+
+    <div class="composition">
+      <div class="frame hero-frame">
+        <div class="hero-top">
+          <div class="hero-wordmark">WITTYVERSE</div>
+          <div class="hero-monotag">CYCLE 247 · RESTOCK</div>
+        </div>
+        <div class="hero-banner">Astounding<br>new imports</div>
+        <div class="hero-subhead">Six instruments. One field journal. Direct from the portal.</div>
+        <p class="hero-body">Hand-inspected before export. Free shipping over $50. Restocked every cycle — sign up and you'll know first.</p>
+        <a href="#" class="hero-cta">Shop the catalog →</a>
+      </div>
+
+      <div class="annotations">
+        <h3>What's what · why</h3>
+        <ul class="anno-list">
+          <li>
+            <div class="anno-num">1</div>
+            <div><span class="anno-face">Lilita One</span>The wordmark. ALL CAPS, skewX(-6°), orange + ink + lime stack. Smaller in the hero than in the hero-banner — it's the brand mark, not the loud line.</div>
+          </li>
+          <li>
+            <div class="anno-num">2</div>
+            <div><span class="anno-face">JetBrains Mono</span>The deep-canon tag in the top-right. Lets R1 (in-universe canon) peek through the R2 storefront chrome.</div>
+          </li>
+          <li>
+            <div class="anno-num">3</div>
+            <div><span class="anno-face">Bowlby One</span>The single loudest line on the page. Pulp-magazine-cover register, skewX(-7°), same orange + ink + lime stack as the wordmark for poster cohesion. <strong>One use per page</strong> — this is it.</div>
+          </li>
+          <li>
+            <div class="anno-num">4</div>
+            <div><span class="anno-face">BSD 900</span>The subhead. Cream on chrome, skewX(-6°). Sits as the supporting headline under the Bowlby moment — same poster family, just smaller and quieter.</div>
+          </li>
+          <li>
+            <div class="anno-num">5</div>
+            <div><span class="anno-face">Inter 400-500</span>The body copy. 14-16px, sentence case, line-height 1.55. Does the reading; never tries to be the headline.</div>
+          </li>
+          <li>
+            <div class="anno-num">6</div>
+            <div><span class="anno-face">BSD 900</span>The CTA. Same display face as the subhead, just smaller and packed into a button. Lime on ink for the CTA-canon pairing.</div>
+          </li>
+        </ul>
+        <div class="anno-rule">
+          <strong>Rule:</strong> Bowlby is allowed here because the hero is the brand's single loudest spread. If you add a second Bowlby line further down the page, the first one stops landing.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       §2 — Article page composition
+  ============================================================ -->
+  <section>
+    <span class="section-eyebrow">§2 · Article / long-form page</span>
+    <h2 class="section-title">Where Bowlby never appears</h2>
+    <p class="section-subtitle">A product page, blog post, doc, or checkout. These surfaces exist for reading, not for poster moments. BSD does all display work; Inter does the body; Bowlby is consciously absent. If you add Bowlby here you cheapen its use on the surfaces where it actually earns its keep.</p>
+
+    <div class="composition">
+      <div class="frame article-frame">
+        <div class="article-eyebrow">FIELD GUIDE · ISSUE 12</div>
+        <h1 class="article-h1">How yeti-tracking actually works</h1>
+        <p class="article-body">Six instruments, one field journal, three months of testing. Cycle 247 wasn't the first portal expedition we ran — it was just the first one where the instruments came back legible.</p>
+        <h2 class="article-h2">Field-tested by Winston</h2>
+        <p class="article-body">Winston's first attempt used a barometer he found at a Tuesday market, plus what he described as "a hunch about the elevation." We've improved on both — the new kit ships with a <em>calibrated</em> altimeter and the hunches have been replaced with cycle-locked thermal readings.</p>
+        <h3 class="article-h3">Caveats and edge cases</h3>
+        <p class="article-body">The kit does not work below 4,000m. The kit does not work after dark. The kit does not work when the portal is closed (please check the cycle calendar). For all other cases, see the troubleshooting appendix at the back.</p>
+        <span class="article-no-bowlby">No Bowlby anywhere on this surface</span>
+      </div>
+
+      <div class="annotations">
+        <h3>What's what · why</h3>
+        <ul class="anno-list">
+          <li>
+            <div class="anno-num">1</div>
+            <div><span class="anno-face">Inter 800 eyebrow</span>The "FIELD GUIDE · ISSUE 12" label. 11px uppercase letter-spaced 0.14em. Standard Inter eyebrow treatment.</div>
+          </li>
+          <li>
+            <div class="anno-num">2</div>
+            <div><span class="anno-face">BSD 900 H1</span>The page headline. Skew -6°, ink on cream. This is the loudest line the article gets — and it's only as loud as BSD allows, which is just right for reading-focused surfaces.</div>
+          </li>
+          <li>
+            <div class="anno-num">3</div>
+            <div><span class="anno-face">Inter 400-500</span>Body copy. Sentence case, italic <em>only</em> for emphasis (em / cite). Never set the body in the display face.</div>
+          </li>
+          <li>
+            <div class="anno-num">4</div>
+            <div><span class="anno-face">BSD 900 H2</span>Section header. Skew -6°, purple-700. Same face as H1, smaller, different colour to establish hierarchy.</div>
+          </li>
+          <li>
+            <div class="anno-num">5</div>
+            <div><span class="anno-face">BSD 800 H3</span>Sub-section header. Skew -5°, orange-700. Lighter weight (800 instead of 900) so it sits visually under H2.</div>
+          </li>
+        </ul>
+        <div class="anno-rule">
+          <strong>Rule:</strong> Long-form pages have headings, not banners. Bowlby would feel like a billboard glued onto a magazine spread — it'd cheapen both the article and the next Bowlby moment.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       §3 — Social ad composition
+  ============================================================ -->
+  <section>
+    <span class="section-eyebrow">§3 · Social ad / 1:1 square</span>
+    <h2 class="section-title">Self-contained pulp moment</h2>
+    <p class="section-subtitle">Instagram post, ad creative, retail-poster moment. 1:1 frame. The whole point of this surface is to BE a Bowlby moment — so Bowlby takes the centre and everything else supports.</p>
+
+    <div class="social-row">
+      <div class="social-frame">
+        <div class="social-top">
+          <div class="social-wordmark">WITTYVERSE</div>
+          <div class="social-monotag">CYCLE 247</div>
+        </div>
+        <div class="social-banner">Restock<br>tuesday</div>
+        <div>
+          <div class="social-support">Free shipping over $50</div>
+          <a href="#" class="social-cta">Shop now →</a>
+        </div>
+      </div>
+
+      <div class="annotations">
+        <h3>What's what · why</h3>
+        <ul class="anno-list">
+          <li>
+            <div class="anno-num">1</div>
+            <div><span class="anno-face">Lilita One small</span>Top-left wordmark. Smaller than the banner — establishes WHO is shouting, not WHAT.</div>
+          </li>
+          <li>
+            <div class="anno-num">2</div>
+            <div><span class="anno-face">JetBrains Mono</span>Top-right deep-canon tag. Anchors the surface in Wittyverse worldbuilding.</div>
+          </li>
+          <li>
+            <div class="anno-num">3</div>
+            <div><span class="anno-face">Bowlby One</span>The shout. Two-line, biggest possible glyph size, dramatic skew. This is the whole reason the surface exists.</div>
+          </li>
+          <li>
+            <div class="anno-num">4</div>
+            <div><span class="anno-face">BSD 900</span>Support copy below the banner — "Free shipping over $50". Smaller, cream, never competes with the Bowlby above it.</div>
+          </li>
+          <li>
+            <div class="anno-num">5</div>
+            <div><span class="anno-face">BSD 900 CTA</span>Same face as the support, packed into a button. Lime on ink for CTA-canon.</div>
+          </li>
+        </ul>
+        <div class="anno-rule">
+          <strong>Rule:</strong> 1 Bowlby line per surface — even when the surface is 90% Bowlby by visual weight. If you want a second loud line on a social ad, drop one and pick the stronger.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       §4 — Summary
+  ============================================================ -->
+  <section>
+    <div class="rule-summary">
+      <h2>Rule shorthand</h2>
+      <ul>
+        <li>If the line needs to be the brand's loudest moment on this surface → <code>--font-pulp</code> (Bowlby One). One per page max.</li>
+        <li>If the line is display copy but not THE moment → <code>--font-display</code> (Big Shoulders Display). Subheads, section heads, card titles, CTAs, eyebrows.</li>
+        <li>If the line is the wordmark or W monogram → <code>--font-accent</code> (Lilita One). Nothing else.</li>
+        <li>If the line is the regulatory tag or CYCLE 247 microline → <code>--font-mono</code> (JetBrains Mono). Nothing else.</li>
+        <li>Everything else → <code>--font-body</code> (Inter, for now — see body-face reconsideration in flight).</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<div class="endbar">
+  <span>Wittyverse · Typography in use · 2026-05-15</span>
+  <span><a href="brand-guidelines/">Back to brand-guidelines</a></span>
+</div>
+
+</body>
+</html>

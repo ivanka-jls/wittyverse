@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wittyverse — wireframe + copy options (plain)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Courier New', 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #222;
+  background: #fff;
+  max-width: 820px;
+  margin: 40px auto 100px;
+  padding: 0 28px;
+}
+.intro { background: #f7f7f7; padding: 18px 20px; margin-bottom: 36px; font-size: 13px; }
+.intro h1 { font-size: 17px; margin-bottom: 12px; }
+.intro p { margin-bottom: 6px; }
+.intro p:last-child { margin-bottom: 0; }
+.intro ul { margin: 6px 0 6px 22px; }
+.intro li { margin-bottom: 3px; }
+
+.section { margin-bottom: 48px; padding-top: 18px; border-top: 2px solid #222; }
+.section-id { font-size: 11px; letter-spacing: 0.14em; color: #888; margin-bottom: 4px; }
+.section-name { font-size: 16px; font-weight: bold; margin-bottom: 4px; }
+.section-meta { font-size: 12px; color: #666; font-style: italic; margin-bottom: 16px; }
+
+.slot { margin: 18px 0 6px; }
+.slot-label { font-size: 11px; letter-spacing: 0.10em; color: #444; text-transform: uppercase; font-weight: bold; margin-bottom: 6px; }
+.slot-meta { font-size: 11px; letter-spacing: 0.08em; color: #888; text-transform: uppercase; margin-left: 6px; font-weight: normal; }
+.opt { display: flex; gap: 10px; padding: 5px 0 5px 0; }
+.opt-letter { flex: 0 0 18px; font-weight: bold; color: #888; }
+.opt-body { flex: 1; }
+.opt-body em.angle { color: #999; font-size: 11px; font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+.headline { font-size: 18px; line-height: 1.35; font-weight: bold; }
+
+.fixed { padding: 6px 0; color: #444; }
+.note { font-size: 12px; color: #777; font-style: italic; margin-top: 8px; }
+.role { font-style: italic; color: #888; font-size: 11px; }
+hr.dot { border: 0; border-top: 1px dotted #bbb; margin: 14px 0; }
+
+.qa { margin: 14px 0 18px; padding: 10px 12px; background: #fafafa; }
+.qa-label { font-size: 11px; letter-spacing: 0.10em; color: #444; text-transform: uppercase; font-weight: bold; margin-bottom: 4px; }
+.qa-opt { padding: 4px 0; }
+.qa-letter { display: inline-block; min-width: 18px; font-weight: bold; color: #888; }
+.q-body { font-weight: bold; }
+.a-body { padding: 6px 0 6px 20px; color: #333; }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Wittyverse.com — plain copy wireframe (3 options per slot)</h1>
+  <p>Sections per design plan (<code>docs/plans/2026-05-15-wittyverse-landing-v1-design.md</code>). No styling beyond readability. For copy/voice judgment only.</p>
+  <p><strong>R2</strong> = Dr. Yeti speaking (loud first-person, Popeil × Mays × Barnum × Bronner). <strong>R1</strong> = the operation documenting itself (deadpan plural).</p>
+  <p><strong>Copy direction</strong> (calibrated against memory): sell <em>goods, scarcity, guarantee</em> — not the founder myth. Winston is opportunistic, not heroic. Pitchman energy. The bio drips through <em>while</em> the pitch hammers the offer.</p>
+  <p><strong>"Cycle" purge:</strong> removed from all v1 chrome — competes with Tuesday instead of reinforcing it. Tuesday is the ritual. <em>Manifest</em> is the inventory unit. (Cycle stays available as later depth-stack flavor; out of v1 scope.)</p>
+  <p>Each slot shows three directional variants — A / B / C — built to be remixed. Pick one per slot or steal lines across.</p>
+</div>
+
+<!-- ============ §1 MARQUEE ============ -->
+<div class="section">
+  <div class="section-id">§1 — SITEWIDE</div>
+  <div class="section-name">Marquee Strip</div>
+  <div class="section-meta">R1 · 3–5 short items separated by ✦ · rotating loop on every page</div>
+
+  <div class="slot">
+    <div class="slot-label">Full rotation</div>
+
+    <div class="opt">
+      <div class="opt-letter">A</div>
+      <div class="opt-body">
+        <em class="angle">Shipping-led</em>
+        ✦ FREE EARTH-SIDE SHIPPING OVER $40 · ✦ DISPATCHED TUESDAYS FROM NC · ✦ NEW MANIFEST EVERY TUESDAY ✦
+      </div>
+    </div>
+    <div class="opt">
+      <div class="opt-letter">B</div>
+      <div class="opt-body">
+        <em class="angle">Status-led (scarcity)</em>
+        ✦ TUESDAY'S MANIFEST IS LIVE · ✦ 6 UNITS REMAINING · ✦ NEXT DISPATCH TUE 14:00 ET · ✦ FREE SHIPPING OVER $40 ✦
+      </div>
+    </div>
+    <div class="opt">
+      <div class="opt-letter">C</div>
+      <div class="opt-body">
+        <em class="angle">Credential-led (brass plate)</em>
+        ✦ SOLE AUTHORIZED IMPORTER, EARTH SIDE · ✦ DISPATCHED TUESDAYS · ✦ MANUFACTURING PARTNERS UNDISCLOSED · ✦ FREE SHIPPING OVER $40 ✦
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ §2 MASTHEAD ============ -->
+<div class="section">
+  <div class="section-id">§2</div>
+  <div class="section-name">Masthead</div>
+  <div class="section-meta">Wordmark + kicker + status + nav · Search nav cut for v1</div>
+
+  <div class="slot">
+    <div class="slot-label">Wordmark <span class="slot-meta">fixed</span></div>
+    <div class="fixed"><strong>WITTYVERSE</strong></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Kicker line <span class="slot-meta">R2 · under wordmark</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Operator framing</em>Founded, named &amp; operated by Dr. W. Yeti PhD</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Audacity</em>Imported personally by Dr. W. Yeti PhD — the only man with the paperwork</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Brass plate</em>Dr. W. Yeti PhD · Sole Authorized Importer · Dispatched Tuesdays</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Status pill <span class="slot-meta">R1 · replaces "CYCLE 247"</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Time-anchored</em>NEXT DISPATCH · TUE 14:00 ET</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Scarcity</em>MANIFEST LIVE · 6 UNITS REMAINING</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Dock status</em>DOCK OPEN · CLOSES TUE 23:59</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Nav items</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Catalog · About · Help</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Shop · The Operator · Help</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">The Manifest · The Operator · Help</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Right side <span class="slot-meta">fixed</span></div>
+    <div class="fixed">[account] [cart]</div>
+  </div>
+</div>
+
+<!-- ============ §3 HERO ============ -->
+<div class="section">
+  <div class="section-id">§3</div>
+  <div class="section-name">Hero</div>
+  <div class="section-meta">R2 first-person Dr. Yeti · visual rule: NEVER face (goods / dock / hands)</div>
+
+  <div class="slot">
+    <div class="slot-label">Eyebrow <span class="slot-meta">small line above headline</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">TUESDAY'S MANIFEST · LIVE NOW</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">FRESH THROUGH THE DOCK · DISPATCHED TUESDAY</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">OPEN UNTIL TUE 23:59 ET</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Headline <span class="slot-meta">R2 · sell the goods, not the founder myth</span></div>
+    <div class="opt">
+      <div class="opt-letter">A</div>
+      <div class="opt-body">
+        <em class="angle">Scarcity-led</em>
+        <div class="headline">"FIFTY UNITS ON THE DOCK MONDAY MORNING. ZERO BY THURSDAY. I MEAN IT."</div>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="opt-letter">B</div>
+      <div class="opt-body">
+        <em class="angle">Guarantee-led</em>
+        <div class="headline">"IF IT DOESN'T LAND THE JOKE WHEN THEY UNWRAP IT, I'LL REFUND IT MYSELF."</div>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="opt-letter">C</div>
+      <div class="opt-body">
+        <em class="angle">Audacity-led</em>
+        <div class="headline">"GAG GIFTS YOU CANNOT BUY ANYWHERE ELSE ON THIS PLANET. I CHECKED."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Subline <span class="slot-meta">R2 · credential beat</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Brass plate</em>Dr. W. Yeti PhD — sole authorized importer, Earth side. Dispatched Tuesdays from NC.</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Personal stake</em>Personally pulled from the dock. Personally signed for. Personally on the hook. — W.</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Possession-of-paperwork</em>I have the paperwork. Nobody else does. New manifest every Tuesday.</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Aggregate rating <span class="slot-meta">fixed · directly under headline</span></div>
+    <div class="fixed">★ 4.8 (2,400 reviews)</div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Primary CTA</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Browse the manifest</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Shop Tuesday's dispatch</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">See what cleared customs</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Secondary CTA</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Sign for the dispatch list →</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">The Winston Dispatch →</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">What is this place? →</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Trust microcopy <span class="slot-meta">R2 · directly under CTAs</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Logistics</em>30-day returns · ships Tuesdays from NC. — W.</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Personal guarantee</em>Personally guaranteed. Refund's on me. — W.</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Hybrid</em>Free shipping over $40. Refund's on me if it doesn't land. — W.</div></div>
+  </div>
+
+  <div class="note">[visual: goods / dock / hands — NEVER face]</div>
+</div>
+
+<!-- ============ §4 BROWSE GRID ============ -->
+<div class="section">
+  <div class="section-id">§4</div>
+  <div class="section-name">Browse Grid</div>
+  <div class="section-meta">R1 · 4 tiles · cut from 6 ("By occasion" and "New this cycle" dropped)</div>
+
+  <div class="slot">
+    <div class="slot-label">Tile 1 — for the unimpressable</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">For the one who's seen everything</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">For the in-law who has it all</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">For the un-impressable</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Tile 2 — desk goods</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Desk-keepers</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Office contraband</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Things that live on a desk</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Tile 3 — share-worthy</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Things they'll text a photo of</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Things that travel by group chat</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Goods that explain themselves</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Tile 4 — price tier</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Under $25</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Under $25 · stocking weight</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Affordable nonsense (under $25)</div></div>
+  </div>
+</div>
+
+<!-- ============ §5 BEST SELLERS ============ -->
+<div class="section">
+  <div class="section-id">§5</div>
+  <div class="section-name">Best Sellers</div>
+  <div class="section-meta">4 product cards · per-card Winston endorsement · Trust Seal Cluster beside each Quick-Add</div>
+
+  <div class="slot">
+    <div class="slot-label">Section header <span class="slot-meta">"Cycle" purged — pick replacement</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Plain English</em>Selling Fast Right Now</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">R2 · time-anchored</em>Dr. Yeti's Picks for Tuesday</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">R1 · operational</em>Moving Off the Dock Fastest</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Per-card Winston endorsement <span class="slot-meta">R2 · one short line on each card</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Personal pick. — W.</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">I'd hand this to my brother-in-law. — W.</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Personally guaranteed. — W.</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Trust microcopy beside Quick-Add <span class="slot-meta">R2</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Personally guaranteed. If it doesn't land the joke, I'll refund it myself. — W.</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Refund's on me if they don't laugh. — W.</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Doesn't land? I'll eat my credentials. — W.</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Product card description <span class="slot-meta">R1 · template for all cards</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Current (verbose)</em>One unit. Origin: Wittyverse dimension. Classification: novelty consumer good, gift-grade. Dispatched Tuesdays from NC under standard consumer-goods entry. No assembly required. No returns on opened items. No questions answered regarding manufacturing.</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Leaner</em>One unit. Origin: Wittyverse dimension. Dispatched Tuesdays from NC. Gift-grade. Returns: unopened only. Manufacturing partners not disclosed.</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Driest</em>One unit. Sourced Wittyverse. Dispatched Tuesday, NC. Sealed only for return. Manufacturing partners undisclosed by operator request.</div></div>
+  </div>
+
+  <div class="note">[Trust Seal Cluster beside each Quick-Add: lol cert · Personal Guarantee W. · Sole Authorized Importer · Dispatched Tuesdays NC — fixed component]</div>
+</div>
+
+<!-- ============ §6 WINSTON ANSWERS ============ -->
+<div class="section">
+  <div class="section-id">§6 — NEW</div>
+  <div class="section-name">Winston Answers</div>
+  <div class="section-meta">FAQ · Q in R2 (Winston asking himself) · A in R1 (operation answering)</div>
+
+  <div class="slot">
+    <div class="slot-label">Section header</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Winston Answers</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">What I Get Asked Most</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Frequently Asked of the Operator</div></div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-label">Q&amp;A 1 — speed</div>
+    <div class="qa-opt"><span class="qa-letter">A</span><span class="q-body">Q: "How fast can you get one of these into a customer's hands? Because I personally hate waiting."</span></div>
+    <div class="qa-opt"><span class="qa-letter">B</span><span class="q-body">Q: "Listen — when does my brother-in-law get this in his hands? I will not have him kept waiting."</span></div>
+    <div class="qa-opt"><span class="qa-letter">C</span><span class="q-body">Q: "Speed."</span></div>
+    <div class="a-body"><strong>A:</strong> Orders received by Monday 11:59pm ET ship the following Tuesday from North Carolina. Domestic transit: 3–6 business days. Tracking provided. Tuesdays are the only dispatch window.</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-label">Q&amp;A 2 — returns</div>
+    <div class="qa-opt"><span class="qa-letter">A</span><span class="q-body">Q: "Returns? Yes. Refunds? Also yes. I built this business on guarantees."</span></div>
+    <div class="qa-opt"><span class="qa-letter">B</span><span class="q-body">Q: "Look — if the gift doesn't land, I refund it. End of policy."</span></div>
+    <div class="qa-opt"><span class="qa-letter">C</span><span class="q-body">Q: "What is your refund policy."</span></div>
+    <div class="a-body"><strong>A:</strong> Unopened items: 30 days, full refund. Opened items: not returnable (gift-goods classification). Defective items: replaced or refunded at operator discretion.</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-label">Q&amp;A 3 — what arrives in the box</div>
+    <div class="qa-opt"><span class="qa-letter">A</span><span class="q-body">Q: "What's in the box? I want them to feel like a king when they open it."</span></div>
+    <div class="qa-opt"><span class="qa-letter">B</span><span class="q-body">Q: "I personally pack every shipment. Tell them what they're getting."</span></div>
+    <div class="qa-opt"><span class="qa-letter">C</span><span class="q-body">Q: "Box contents."</span></div>
+    <div class="a-body"><strong>A:</strong> One unit. Original packaging. Operator-signed dispatch slip. Tracking and dispatch date printed on outer label. No promotional inserts.</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-label">Q&amp;A 4 — is this a real store</div>
+    <div class="qa-opt"><span class="qa-letter">A</span><span class="q-body">Q: "I get asked this constantly. Yes. This is a real store. Real units. Real shipping. I'm a real person."</span></div>
+    <div class="qa-opt"><span class="qa-letter">B</span><span class="q-body">Q: "Real store. Real units. Real shipping. I'm pseudonymous, not imaginary."</span></div>
+    <div class="qa-opt"><span class="qa-letter">C</span><span class="q-body">Q: "Is this a real store."</span></div>
+    <div class="a-body"><strong>A:</strong> Wittyverse is a registered LLC in North Carolina. Payments processed by Shopify. Tracking issued by USPS or UPS. Operator pseudonymous (legal name on file with relevant authorities).</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-label">Q&amp;A 5 — international shipping</div>
+    <div class="qa-opt"><span class="qa-letter">A</span><span class="q-body">Q: "International? Currently no. I am not authorized to clear those customs. Yet."</span></div>
+    <div class="qa-opt"><span class="qa-letter">B</span><span class="q-body">Q: "We don't ship outside the United States at present. Working on it. — W."</span></div>
+    <div class="qa-opt"><span class="qa-letter">C</span><span class="q-body">Q: "Do you ship internationally."</span></div>
+    <div class="a-body"><strong>A:</strong> Domestic US only at this time. International dispatch pending the relevant paperwork.</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-label">Q&amp;A 6 — who is Dr. Yeti (optional)</div>
+    <div class="qa-opt"><span class="qa-letter">A</span><span class="q-body">Q: "Who am I? The sole authorized importer of Wittyverse goods. Earth side. That is all I'm authorized to say."</span></div>
+    <div class="qa-opt"><span class="qa-letter">B</span><span class="q-body">Q: "Look — Dr. W. Yeti PhD, sole importer. The rest is none of anyone's business."</span></div>
+    <div class="qa-opt"><span class="qa-letter">C</span><span class="q-body">Q: "Who is the operator."</span></div>
+    <div class="a-body"><strong>A:</strong> Dr. W. Yeti PhD, sole authorized importer. Credentials on file. Further biographical detail withheld at operator discretion.</div>
+  </div>
+</div>
+
+<!-- ============ §7 TRANSMISSION FEED ============ -->
+<div class="section">
+  <div class="section-id">§7</div>
+  <div class="section-name">Transmission Feed</div>
+  <div class="section-meta">letters TO Dr. Yeti · replaces generic testimonial row · social proof shaped as in-universe mail</div>
+
+  <div class="slot">
+    <div class="slot-label">Section header</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Letters to the Operator</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">The Transmission Feed</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Mail to Dr. Yeti</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Aggregate rating <span class="slot-meta">fixed · repeats hero number</span></div>
+    <div class="fixed">★ 4.8 · 2,400 reviews</div>
+  </div>
+
+  <hr class="dot">
+
+  <div class="slot">
+    <div class="slot-label">Letter 1 — happy customer <span class="slot-meta">re: Headlight Fluid</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Warm storyteller</em>"Doc — sent the Headlight Fluid to my BIL for his birthday and his face when he unscrewed the cap was the best $19 I've ever spent. Tuesday dispatch landed Friday. Perfect."<br>— Sarah K., Ohio</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Receipts</em>"Doc — Headlight Fluid arrived Friday (you said Tuesday dispatch, you weren't kidding). BIL nearly cried laughing. Worth every dollar."<br>— Sarah K., OH</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Tightest</em>"Sent it to my brother-in-law. He laughed for ten minutes. You delivered."<br>— Sarah K., OH (re: Headlight Fluid)</div></div>
+  </div>
+
+  <hr class="dot">
+
+  <div class="slot">
+    <div class="slot-label">Letter 2 — slight grievance <span class="slot-meta">re: Reality Stabilizer</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Polite complaint</em>"Mr. Yeti — my Reality Stabilizer arrived with the seal slightly bent and I would just like the record to reflect that. Otherwise satisfactory."<br>— K. Norven</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Brisk note</em>"Dr. Yeti, seal was bent on arrival. Item works fine. Just noting it."<br>— K. Norven</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Bureaucrat</em>"Sir: bent seal. Functional. Noting for the record."<br>— K. Norven</div></div>
+  </div>
+
+  <hr class="dot">
+
+  <div class="slot">
+    <div class="slot-label">Letter 3 — confused but pleased <span class="slot-meta">re: Dehydrated Water</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Full story</em>"Doc — bought the Dehydrated Water as a joke. My wife actually tried to add water to it. We laughed for an hour. I don't know what this place is but I'll be back Tuesday."<br>— Dave B.</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Punchline</em>"Bought Dehydrated Water expecting a gag. Got a gag. Wife tried to rehydrate it. 10/10."<br>— Dave B.</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Cryptic</em>"Don't know what I bought. Don't care. Coming back Tuesday."<br>— Dave B.</div></div>
+  </div>
+
+  <hr class="dot">
+
+  <div class="slot">
+    <div class="slot-label">Letter 4 — pure mystery <span class="slot-meta">no product ref</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Redacted</em>"[redacted]"<br>— anonymous</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Whistle-blow</em>"Tell my supervisor I never wrote this."<br>— anonymous</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Wordless</em>[no message · signed with a thumbprint]</div></div>
+  </div>
+</div>
+
+<!-- ============ §8 AT THE COUNTER ============ -->
+<div class="section">
+  <div class="section-id">§8</div>
+  <div class="section-name">At the Counter</div>
+  <div class="section-meta">inverted from original wireframe — lol cert is the centerpiece · NEVER a clear face</div>
+
+  <div class="slot">
+    <div class="slot-label">Section eyebrow</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">About the Operator</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">The Counter</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">About Dr. Yeti</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Bio one-liner <span class="slot-meta">R2 · short, signed</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">No-interview stance</em>"I do not give interviews. I do not pose. I send goods Tuesdays. That is the entire operation. — W."</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Credentials-on-the-wall</em>"Sole authorized importer, Earth side. The credentials are on the wall. The goods ship Tuesday. — W."</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">None-of-your-business</em>"I'm Dr. W. Yeti PhD. I have the paperwork. I dispatch Tuesdays. The rest is none of your business. — W."</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Cert caption <span class="slot-meta">R1 · beside the lol-cert image</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Sole Authorized Importer Certificate · Issued: Patent Office · Status: Active · Renewal: Annual</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Authorization Document · Patent Office · Operator: Dr. W. Yeti PhD · Status: Active</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Certificate of Authorization · Patent Office · Sole Earth-Side Importer · On File</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Tertiary CTA</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Read full About →</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">The whole story →</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">How this happened →</div></div>
+  </div>
+
+  <div class="note">[optional visual: signed photo with face obscured by stamp — never a clear face]</div>
+</div>
+
+<!-- ============ §9 NEWSLETTER ============ -->
+<div class="section">
+  <div class="section-id">§9</div>
+  <div class="section-name">Newsletter — "The Winston Dispatch"</div>
+  <div class="section-meta">R2 · one signed letter every Tuesday</div>
+
+  <div class="slot">
+    <div class="slot-label">Section heading</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">The Winston Dispatch</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Get the Tuesday Letter</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Sign for the Dispatch List</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Pitch line <span class="slot-meta">R2</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Full (current)</em>"The Winston Dispatch — one signed letter from me each Tuesday, telling you exactly what cleared the dock, what almost didn't, and what I'd hand to my own brother-in-law. No filler, no algorithm, no committee. Subscribe and you'll never miss a manifest. — W."</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Leaner</em>"One signed letter every Tuesday. What cleared the dock, what didn't, what I'd hand my brother-in-law. No algorithm. No committee. — W."</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Driest</em>"A letter from me, every Tuesday. Goods that cleared customs. Goods that didn't. — W."</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Email field placeholder</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Earth-sector email address</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Your email</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Where to send the dispatch</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Submit button</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Subscribe</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Sign for the dispatch list</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Send me the Tuesday letter</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Below-form microcopy <span class="slot-meta">R1</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">No spam · just the dispatch list every Tuesday</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">One email per Tuesday. Unsubscribe anytime.</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">Tuesday letter. Nothing else. Unsubscribe anytime.</div></div>
+  </div>
+</div>
+
+<!-- ============ §10 FOOTER ============ -->
+<div class="section">
+  <div class="section-id">§10</div>
+  <div class="section-name">Footer</div>
+  <div class="section-meta">4-column link grid + compliance microline + sign-off</div>
+
+  <div class="slot">
+    <div class="slot-label">Column headers <span class="slot-meta">fixed</span></div>
+    <div class="fixed">SHOP · HELP · ABOUT · CONNECT</div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Compliance microline <span class="slot-meta">R1 · the brand-canon block</span></div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body"><em class="angle">Full (current)</em>"Sole Authorized Importer, Earth Side · Manufacturing partners undisclosed · Location classified, competitive reasons · Operator pseudonymous, by necessity · Dispatched Tuesdays from NC."</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body"><em class="angle">Leaner</em>"Sole Authorized Importer, Earth Side · Manufacturing partners undisclosed · Operator pseudonymous · Dispatched Tuesdays from NC."</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body"><em class="angle">Driest</em>"Dispatched Tuesdays from NC · Manufacturing partners undisclosed · Operator pseudonymous"</div></div>
+  </div>
+
+  <div class="slot">
+    <div class="slot-label">Sign-off</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">© 2026 Wittyverse · — W.</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">© 2026 Wittyverse LLC · Sole Authorized Importer · Earth Side</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">© 2026 Wittyverse · All paperwork on file</div></div>
+  </div>
+</div>
+
+<!-- ============ MOBILE STICKY CTA ============ -->
+<div class="section">
+  <div class="section-id">— SITEWIDE ON MOBILE</div>
+  <div class="section-name">Mobile Sticky CTA Bar</div>
+  <div class="section-meta">60%+ of impulse-gift traffic is mobile · single button + rating</div>
+
+  <div class="slot">
+    <div class="slot-label">Sticky button label</div>
+    <div class="opt"><div class="opt-letter">A</div><div class="opt-body">Browse the manifest &nbsp;·&nbsp; ★ 4.8</div></div>
+    <div class="opt"><div class="opt-letter">B</div><div class="opt-body">Tuesday's dispatch → &nbsp;·&nbsp; ★ 4.8</div></div>
+    <div class="opt"><div class="opt-letter">C</div><div class="opt-body">See what's on the dock &nbsp;·&nbsp; ★ 4.8</div></div>
+  </div>
+</div>
+
+<!-- ============ DEPTH STACK ============ -->
+<div class="section">
+  <div class="section-id">— SITEWIDE ENHANCEMENT</div>
+  <div class="section-name">Depth Stack</div>
+  <div class="section-meta">layered on after static page ships · scroll-triggered margin notes, hover popups, return-visit unlocks</div>
+  <div class="note">No copy decisions at v1 launch. Tone target: "postcards arriving, never spooky." Banned triggers: idle-time, mouse-jiggle, autoplay popups. This is where any future "Cycle" references could live as Easter-egg flavor without competing with Tuesday in chrome.</div>
+</div>
+
+</body>
+</html>

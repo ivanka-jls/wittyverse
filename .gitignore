@@ -5,3 +5,6 @@
 
 # Git worktrees (isolated per-task working copies)
 .worktrees/
+
+# Local scratch — playwright screenshots, verification shots, process boards
+.scratch/
