@@ -1,5 +1,80 @@
 [
   {
+    "version": "0.14",
+    "date": "2026-05-18",
+    "changes": [
+      "Brand-docs cleanup Steps 3 + 4 complete — brand-bible/ is retired, homepage and one-pager cross-refs updated.",
+      "Step 3 (Redirect): brand-bible/index.html replaced with a single notice page — 'Brand Bible → two homes now.' — that links to brand-guidelines/ (for storefront work) and wittyversecodex.netlify.app (for world canon). Self-contained inline styling, no JS, no external CSS dependency. Existing bookmarks and external links still resolve.",
+      "Step 3 (cleanup): brand-bible/build.js and brand-bible/styles.css deleted — no longer referenced. The brand-bible/ folder now contains only the notice page. Source markdown at D:/Claude/Workspace/Wittyverse/derived/brand/brand-bible.md stays archived as historical reference (outside the repo).",
+      "Step 4 (homepage card swap): index.html Brand Reference row now has Wittyverse Codex card replacing the Brand Bible card. Card links to https://wittyversecodex.netlify.app/ (external, target=_blank). Tags updated to 'World canon / Truths, Entities, Stories / External app ↗'. brand-guidelines and brand-one-pager cards retained unchanged.",
+      "Cross-ref scrub: brand-one-pager/index.html updated 2 brand-bible links — header 'Canon' link and 'Next-card' navigation both point to wittyversecodex.netlify.app now (with the eyebrow re-labeled 'World canon' since that's what the codex covers, not the storefront brand book).",
+      "Brand-docs cleanup is DONE. Six batches of content ports (v0.8–v0.13) + this finishing batch. The brand-bible/ legacy is retired as Redirect; brand-guidelines/ is the single storefront brand book; wittyverse-codex is the world bible. Three documents that were tangled are now three documents with clear, non-overlapping roles."
+    ]
+  },
+  {
+    "version": "0.13",
+    "date": "2026-05-18",
+    "changes": [
+      "Voice: ported the complete Voice Codex (R1 Superprompt Attachment) as new #voice-codex block, placed at the bottom of #voice between Sample Copy and the trust-seal-cluster. This is the largest substantive port of the brand-docs cleanup — the keeper flagged in the Inventory Delta and preserved per the 2026-05-15 audit (which dropped the single embodied R1 anchor in favor of unified R1 DNA + format-specific personas).",
+      "Voice Codex contents (10 sub-sections): §1 Voice Summary (The Onion × Hitchhiker's × Omega Mart positioning) · §2 The R1 Anchor (DNA: deadpan, printer-jam emotional scale, 'Tuesday to them', exasperation not amazement, never references our world) + the 4-question R1 Voice Test · §3 Voice Attributes (Deadpan / Specific / Grounded / Committed / Warm-in-background / Escalating) · §4 The Humor Spectrum + §4b Writer's Toolkit (Escalation / Beat / Callback / Rule of Three / Subversion / Irony / Hyperbole / Parody / Satire / Non-sequitur / Power of Two) · §5 Anti-Voice & Banned Content (R1 ban-list — distinct from the R2 ban-list above; in-universe specific) + Hard No-Gos + Gray Areas · §6 Drift Patterns (Excitement Leak / Wink / Half-Commit / Emoji Substitute / Explanation / Character Break) · §7 Format-Specific Registers (Advice Columns / PSAs / News Articles / Product Copy / Wittyverse Storefront Toggle — 5 distinct personas implementing the shared DNA) · §8 Vocabulary Pairs (4 tables: Product Descriptions / Reactions / Side Effects / Engagement) · §9 Smart/Silly Ratio (80/20) · §10 Internal Logic Checklist (10 pre-publish gates).",
+      "All R1 ban-list content (§5) is now bundled inside the Voice Codex keeper as locked decision (per Inventory Delta — port R1 list inside Voice Codex, port R2 list separately). The R2 ban-list under #banned-r2 (v0.11) and the R1 ban-list inside #voice-codex are now clearly labeled and physically separated.",
+      "All substantive content ports from the brand bible are complete. Brand-docs cleanup Step 2 (Port) is done. Next: Step 3 (retire brand-bible/ via Redirect notice page) and Step 4 (homepage card swap — drop brand-bible card, add wittyverse-codex card)."
+    ]
+  },
+  {
+    "version": "0.12",
+    "date": "2026-05-18",
+    "changes": [
+      "Quick Reference: added 5th tile 'Key Decision Filter' — full-width banner across the grid bottom — ports the §0 one-pager's filter line (the one piece from §0 that wasn't already covered by the existing 4 tiles). Reads: 'Before any decision, ask: Is this shockingly good? Would someone be genuinely shocked that a gag gift is this well-made, this funny, this dense? If anything less than yes — keep going.'",
+      "Strategy: ported §9 Origin Narrative (Earth-side / Johnny arc) as new #origin canon-card — the Industry Insider archetype, the Boulder → JLS Trading → Witty Yeti → Wittyverse story arc, and Why This Story Is Credible. Closes with a note that the in-universe origin (Winston's portal discovery) is internal canon only and lives in the wittyverse-codex, governed by the Storefront Discipline rule already in #voice.",
+      "Visual System: prepended new #visual-direction canon-card as a strategic intro before Logo / Color / Typography — ports §12 Creative Direction Seeds (partial). Contains: The Core Visual Tension (premium craft applied to absurd content), Visual Mood & Aesthetic Direction, What the Brand Looks Like vs. Never Looks Like (Liquid Death / Omega Mart / The Onion aspirations + Party City anti-pattern), Experience Principles. Skips the obsolete 2021 yeti-mark / Rubber Vloeren 'Existing Visual Assets' subsection per Inventory Delta — superseded by the canonical v2 type stack and color palette already documented below.",
+      "Brand-docs cleanup Batch 5 (refactor/brand-docs-cleanup worktree). Only one substantive port remains: the Voice Codex R1 Keeper (largest remaining piece — 10 sub-sections of the post-flip R1 superprompt) → #voice. Then Step 3 (brand-bible Redirect) and Step 4 (homepage card swap)."
+    ]
+  },
+  {
+    "version": "0.11",
+    "date": "2026-05-18",
+    "changes": [
+      "Voice: ported §9 Storefront Discipline as new #storefront-discipline block, placed right after the existing Persona vs. Man R1/R2 register grid. Documents the storefront-geography rule that pairs with 'Voice everywhere. Face nowhere.' — NEVER name NC/Himalayas/cave/portal/real surname; CAN name Winston/Dr. W. Yeti PhD/the Wittyverse. The mystery is the product.",
+      "Voice: ported R2 Banned Words & Phrases (Appendix B) as new #banned-r2 block, placed right after the Do/Don't grid (voice.json-driven 7-rule list). 10-category master ban-list (Hype, Internet Slang, Generic Gift Language, Engagement Bait, Emoji Clusters, Off-Brand Territory, Performative Emotion, Corporate Filler, Punctuation Violations, Humor Narration) — ~80 banned items total. Explicitly labeled R2 / Storefront, with a note pointing to the future R1 in-universe ban-list inside the Voice Codex keeper (still to be ported).",
+      "Voice: ported R2 Vocabulary Guidance as new #lexicon-r2 block, placed right after #messaging-hierarchy. Two tables — Key Phrases OK in R2 (the Wittyverse, O.O.P.S., 'jokes on every surface', etc.) and Deep Canon R1-Only (specific directives, minor character names, locations, in-universe units). Closes with a pointer to wittyverse-codex for world-canon entities (R2 page documents surface rules; codex documents the universe).",
+      "Voice section page-order now reads: Brand Personality → Operator Personality → Persona vs. Man + R1/R2 grid → Storefront Discipline → Do/Don't grid → R2 Banned → Messaging Framework → Messaging Hierarchy → R2 Vocabulary Guidance → Sample Copy → trust-seal-cluster. Abstract → concrete → rules → vocabulary → samples.",
+      "Brand-docs cleanup Batch 4 (refactor/brand-docs-cleanup worktree). Remaining ports: §9 Origin Narrative (storefront-side Johnny arc) → #strategy, §12 Creative Direction Seeds (partial) → #visual-system, and the Voice Codex R1 Keeper (largest substantive remaining port — 10 sub-sections) → #voice. Then Step 3 (brand-bible Redirect) and Step 4 (homepage update)."
+    ]
+  },
+  {
+    "version": "0.10",
+    "date": "2026-05-18",
+    "changes": [
+      "Customer: ported §8 Brand-Customer Relationship as new #relationship canon-card — co-conspirator metaphor ('the customer becomes the party hero'), Functional Implications, and Tone & Interactions guidance. Joins the existing tier/journey/anti-persona card under #customer.",
+      "Strategy: ported Appendix A Common Decisions as new #common-decisions canon-card — 10-row scenario table mapping decision questions to on-brand answers and the governing Brand Value (or positioning sacrifice). Designed as a reach-for reference when a new decision needs precedent.",
+      "Voice: ported §11 Messaging Hierarchy as new #messaging-hierarchy block, placed right after the existing Messaging Framework (tagline / value-prop / boilerplate) — distinct purpose: short slogans vs. ranked system. Contains Core Message + 4 Supporting Messages (each with proof points) + Priority Order for which message leads on a given surface.",
+      "Customer: dropped the legacy `../brand-bible/#2-target-customer` link from #customer canon-links (per Inventory Delta §D cross-refs scrub list). Workspace markdown archive link retained.",
+      "Brand-docs cleanup Batch 3 (refactor/brand-docs-cleanup worktree). Remaining ports: R2 Banned Words → #voice (storefront ban-list), Voice Codex R1 keeper → #voice (largest remaining substantive port — full superprompt with 10 sub-sections), §12 Creative Direction Seeds (partial) → #visual-system intro, §9 Origin storefront-side + Storefront Discipline rule. Then Step 3 (brand-bible retirement, Redirect) and Step 4 (homepage index update)."
+    ]
+  },
+  {
+    "version": "0.9",
+    "date": "2026-05-18",
+    "changes": [
+      "Voice & Messaging: added new #personality subsection inside #voice, placed above the R1/R2 register grid — ports §6 Brand Personality from the brand bible (Wickedly Clever / Unflappably Deadpan / Generous With Joy / Obsessively Crafted / Mischievous Not Malicious, each with Is / Is not / Guardrail) + the Party Test. Resolves the §6 reconciliation flagged in the Inventory Delta: this is the abstract brand DNA, distinct from the Winston operator voice attributes below it. Order is now abstract → concrete (Brand Personality → Operator Personality → R1/R2 Persona vs Man → register tiles).",
+      "Voice: existing 'Personality' h3 (voice.json-driven, Winston operator voice attributes) renamed to 'Operator Personality (Winston Voice Attributes)' + clarifying sub-line — disambiguates from the new abstract Brand Personality block above.",
+      "Strategy & Positioning: ported two more audited bible sections as standalone canon-cards under #strategy — #mantra (§7 Brand Mantra: 'Shockingly good laughter', usage cases, Johnny's verbatim North Star, mantra-vs-North-Star pairing) and #proof-points (§10 Proof Point Inventory: Structural / Functional / Emotional advantages + Proof-to-Benefit Map table).",
+      "styles.css: added .canon-card blockquote rule (purple left border + tint background) for the Johnny North Star quote in #mantra, and .canon-card table / th / td rules (orange-deep uppercase header, dashed ink dividers — matches contrast-table aesthetic) for the Proof-to-Benefit Map and any future canon-card tables.",
+      "Brand-docs cleanup Batch 2 (refactor/brand-docs-cleanup worktree). Remaining ports: §8 Customer-Relationship extension → #customer, §11 Messaging Hierarchy → #voice, R2 Banned Words → #voice, Voice Codex R1 keeper → #voice, Appendix A Common Decisions → #strategy, plus §9 origin/§12 visual seeds/lexicon split decisions."
+    ]
+  },
+  {
+    "version": "0.8",
+    "date": "2026-05-18",
+    "changes": [
+      "Strategy & Positioning section: ported three new audited sections from the brand bible into #strategy as standalone canon-cards — #competitive (§3 Competitive Landscape: direct/indirect competitors, positioning map, white space, category conventions, points of parity/difference), #mission-vision (§4 Mission & Vision statements), and #values (§5 Brand Values: five operating values × {Definition, Trade-off Pair, Decision Scenarios})",
+      "Each new card carries its own anchor id for direct linking and its own canon-links row back to the bible markdown source",
+      "styles.css: added .canon-card h4 rule (purple-deep, uppercase, 14px) for sub-block headings inside the new cards — needed by the dense Competitive Landscape and Values cards where h3 alone wasn't enough hierarchy",
+      "Brand-docs cleanup Batch 1 (refactor/brand-docs-cleanup worktree). Step 1 Inventory Delta and Step 2 pre-port decisions are in docs/plans/2026-05-15-brand-docs-cleanup.md. Subsequent batches will port §6 Personality, §7 Mantra, §8 Customer-Relationship extension, §10 Proof Points, §11 Messaging Hierarchy, the Voice Codex R1 keeper, R2 ban-list, and Appendix A Common Decisions."
+    ]
+  },
+  {
     "version": "0.7",
     "date": "2026-05-15",
     "changes": [
