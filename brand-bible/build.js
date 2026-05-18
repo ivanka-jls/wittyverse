@@ -82,8 +82,8 @@ const SECTION_BOUNDARIES = [
   {
     match: /^Voice Codex /,
     label: 'Voice Codex — R1 Superprompt Attachment',
-    status: 'blocked',
-    note: 'Register-1 (in-universe) voice rules. Locked tightly to Codex worldbuilding; revisits when Codex content is finalized.',
+    status: 'audited',
+    note: 'Register-1 (in-universe) voice rules. Persona Anchor reworked 2026-05-15 — single embodied anchor dropped in favor of unifying R1 DNA (deadpan / printer-jam scale / Tuesday-to-them / never references our world); format-specific personas live in §7 Format-Specific Registers.',
   },
   { match: /^Appendix:\s*Known Wittyverse Canon/, label: 'Appendix — Known Wittyverse Canon', status: 'blocked' },
   {
@@ -306,7 +306,7 @@ const HTML = `<!DOCTYPE html>
   <title>Wittyverse — Brand Bible</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Bowlby+One&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../brand-guidelines/tokens.css">
   <link rel="stylesheet" href="styles.css">
 </head>

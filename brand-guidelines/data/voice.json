@@ -1,61 +1,69 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "presets": {
     "canon": {
       "label": "Canon",
       "rules": {
         "personality": [
-          "Personality attribute 1 — placeholder",
-          "Personality attribute 2 — placeholder",
-          "Personality attribute 3 — placeholder"
+          "Showman",
+          "Off-the-books importer",
+          "Deadpan when documenting",
+          "Loud when selling",
+          "Performatively secretive",
+          "Brass-plate confident",
+          "Never apologetic, never garish"
         ],
         "do": [
-          "Do rule 1 — placeholder for a voice principle.",
-          "Do rule 2 — placeholder.",
-          "Do rule 3 — placeholder.",
-          "Do rule 4 — placeholder.",
-          "Do rule 5 — placeholder."
+          "Speak in Dr. W. Yeti PhD's first-person on R2 surfaces — headlines, CTAs, About copy, hero, newsletter, signed guarantees.",
+          "Use the operation's bureaucratic plural ('we', 'the dock', 'this consignment') in R1 — product cards, shipping details, FAQ answers, return policy, compliance lines.",
+          "Treat secrecy as marketing. 'Location classified · competitive reasons' is a brag, not a hedge.",
+          "Sign with W. — the signed stamp is the operator's face.",
+          "Credentials, brass plates, sole-importer language: lean in. Mock-academic credentialed identity is the pitch tool.",
+          "Use P.T. Barnum × Ron Popeil × Dr. Bronner's energy in R2: superlatives, exclusives, personally-guaranteed.",
+          "Match the surface to the register and keep them clean — R2 voice on storefront chrome, R1 voice on in-universe content."
         ],
         "dont": [
-          "Don't rule 1 — placeholder for an anti-pattern.",
-          "Don't rule 2 — placeholder.",
-          "Don't rule 3 — placeholder.",
-          "Don't rule 4 — placeholder.",
-          "Don't rule 5 — placeholder."
+          "Don't depict Winston's face. No headshot, no clear-face illustration, no avatar — silhouette, back-of-head, hands-only, or face-obscured-by-stamp only.",
+          "Don't use Winston's real surname, the portal's location, or factory partners anywhere customer-facing. The alias is the cover.",
+          "Don't apologize for the off-the-books framing — performative secrecy is the brand virtue, not a liability.",
+          "Don't mix R1 and R2 on the same surface. A product card stays deadpan; the hero stays loud.",
+          "Don't write R2 in third person. Dr. Yeti speaks as 'I', signs as W., and means it.",
+          "Don't slip into 'lol so quirky' hype, all-caps screaming, or shock-as-substitute-for-craft. Showman is not the same as garish.",
+          "Don't break the kayfabe. No knowing winks, no 'just kidding', no fourth-wall jokes about the dimension being fictional."
         ]
       },
       "messaging": {
-        "tagline": "Tagline placeholder.",
-        "value_prop": "Value proposition placeholder — one sentence about why this product matters to its customer.",
-        "boilerplate": "Boilerplate placeholder. This is a 2-3 sentence company description that gets reused across press, partnerships, and footer-level introductions. Made deliberately long enough to test how multi-line copy renders in the layout."
+        "tagline": "Quirky goods. Sole importer. Earth.",
+        "value_prop": "Premium-craft gag goods imported from a dimension only Dr. W. Yeti PhD has the paperwork for — engineered to land the joke the first second someone unwraps it.",
+        "boilerplate": "Wittyverse is the Earth-side storefront for goods sourced from the Wittyverse dimension by Dr. W. Yeti PhD, sole authorized importer. Inventory is dispatched Tuesdays from North Carolina under standard consumer-goods classification. Operator pseudonymous · by necessity. Manufacturing partners undisclosed."
       },
       "surfaces": {
         "homepage_hero": {
-          "headline": "BIG HEADLINE GOES HERE",
-          "subline": "Supporting line placeholder — short copy that sits under the hero headline, around 15-20 words to test the layout rhythm.",
-          "cta": "CTA Placeholder"
+          "headline": "I FOUND A DIMENSION. I NAMED IT AFTER ME. THE GOODS ARE LIVE.",
+          "subline": "Dr. W. Yeti PhD — sole authorized importer, Earth side. Dock open Tuesdays.",
+          "cta": "Browse the Manifest"
         },
         "product_card": {
-          "name": "Product Name Placeholder",
-          "description": "Product description placeholder — 10-15 words explaining what the product is and why someone might want it.",
+          "name": "Item · Manifest Entry",
+          "description": "One unit. Origin: Wittyverse dimension. Classification: novelty consumer good. Dispatched Tuesdays, NC. No assembly required, no returns on opened items, no questions answered about manufacturing.",
           "price": "$XX.XX",
-          "cta": "Add to cart"
+          "cta": "Add to crate"
         },
         "footer": {
-          "tagline": "Footer tagline placeholder.",
-          "small_print": "© 2026 Wittyverse. Small-print placeholder line."
+          "tagline": "Operator pseudonymous · by necessity.",
+          "small_print": "© 2026 Wittyverse · Sole Authorized Importer, Earth Side · Manufacturing partners undisclosed · Location classified, competitive reasons · Dispatched Tuesdays from NC"
         },
         "instagram_post": {
-          "caption": "Instagram caption placeholder. This is where short-form social copy will live — written deliberately long enough to test how multi-line captions render in the IG mockup, including a couple of #hashtag placeholders. #wittyverse #placeholder"
+          "caption": "Personally inspected every unit on this pallet before it left the dock. If it doesn't land the joke, I'll eat my own credentials. — W. #wittyverse #soleimporter #dispatchedtuesdays"
         },
         "x_post": {
-          "post_text": "Post text placeholder for X — 1-2 short lines designed to test how a tweet renders next to its link card preview.",
-          "card_title": "Link card title placeholder (50-60 chars)",
-          "card_description": "Link card description placeholder — the line that appears under the title in an X link card preview, usually 100-160 characters."
+          "post_text": "New consignment cleared the dock this morning. Three units I'd personally hand to my worst enemy at a dinner party. Manifest live now. — W.",
+          "card_title": "Wittyverse — Tuesday's Manifest is live",
+          "card_description": "Dr. W. Yeti PhD, sole authorized importer. Dispatched Tuesdays. Location classified, competitive reasons."
         },
         "youtube_video": {
-          "title": "YouTube Video Title Placeholder — Click-Worthy",
-          "channel_name": "Wittyverse"
+          "title": "I Brought 47 Items Back Through The Dock Last Week — Here's What Cleared Customs",
+          "channel_name": "The Winston Dispatch"
         }
       }
     }

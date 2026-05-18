@@ -1,21 +1,168 @@
 :root {
-  /* Populated by JS at runtime from tokens.json (active_preset).
-     These fallbacks ensure pre-JS render still looks correct. */
-  --color-purple:        #6A1B9A;
-  --color-purple-mid:    #5C27A3;
-  --color-purple-deep:   #401A75;
-  --color-purple-darker: #1A0A2E;
-  --color-lime:          #9EE83D;
-  --color-lime-deep:     #7CB342;
-  --color-orange:        #FF6B2C;
-  --color-orange-deep:   #E55A1A;
-  --color-cream:         #FFF4E6;
-  --color-white:         #FFFFFF;
-  --color-ink:           #1A0A2E;
+  /* ==========================================================================
+   * TIER 1 — RAW TOKENS (brand truth)
+   * Static defaults. tokens.json (active_preset) overrides --color-* at runtime
+   * for the live palette switcher; the new ramp tokens (--purple-400 etc.)
+   * are not currently preset-swappable.
+   * ========================================================================== */
 
-  --font-display: 'Big Shoulders Display', sans-serif;
-  --font-accent:  'Lilita One', sans-serif;
-  --font-body:    'Inter', system-ui, sans-serif;
+  /* Brand · Purple */
+  --purple-100: #E2D3EE;       /* tints — card backgrounds, light surfaces */
+  --purple-400: #6A1B9A;       /* canon purple */
+  --purple-700: #401A75;       /* sustained chrome, deep surfaces, CTA shadow stop */
+  --purple-900: #1A0A2E;       /* === ink */
+
+  /* Brand · Lime */
+  --lime-100:   #E8F8CF;
+  --lime-400:   #9EE83D;       /* canon lime · wordmark + monogram back-shadow (v0.7.1) */
+  --lime-700:   #7CB342;       /* deep lime · structural */
+  --lime-900:   #4A6E25;       /* legible lime on cream */
+
+  /* Brand · Orange */
+  --orange-100: #FFE0CF;
+  --orange-500: #FF6B2C;       /* canon orange · wordmark + monogram fill */
+  --orange-700: #E55A1A;       /* deep orange · structural · marquee deep */
+  --orange-900: #8C320C;       /* legible orange on cream */
+
+  /* Neutrals · warm gray ramp */
+  --gray-50:    #FAF6EF;
+  --gray-100:   #EFE7D8;
+  --gray-300:   #C9BFAD;
+  --gray-500:   #847B6A;
+  --gray-700:   #4E483D;
+  --gray-900:   #25211B;
+
+  /* Named anchors */
+  --cream:      #FFF4E6;
+  --ink:        #1A0A2E;
+  --white:      #FFFFFF;
+  --black:      #000000;
+
+  /* State colors — v0.7: success swapped to teal to break the brand-lime ambiguity */
+  --state-error-50:    #FEE2E2;
+  --state-error-500:   #C92A2A;
+  --state-error-700:   #842121;
+  --state-warning-50:  #FFF4D6;
+  --state-warning-500: #F59F00;
+  --state-warning-700: #966400;
+  --state-success-50:  #DCF5E0;
+  --state-success-500: #1F8B3D;   /* forest green — saturation/lightness sibling to error red */
+  --state-success-700: #0F5E26;
+  --state-info-50:     #E8DFF4;
+  --state-info-500:    #6A1B9A;
+  --state-info-700:    #401A75;
+
+  /* --------------------------------------------------------------------------
+   * Backwards-compat aliases — pre-v0.7 names.
+   * tokens.json overrides these at runtime; the var() chain ensures any
+   * pre-JS render and preset switching still resolve to the right values.
+   * -------------------------------------------------------------------------- */
+  --color-purple:        var(--purple-400);
+  --color-purple-mid:    #5C27A3;             /* gradient mid-stop — not part of the 4-step ramp */
+  --color-purple-deep:   var(--purple-700);
+  --color-purple-darker: var(--ink);
+  --color-lime:          var(--lime-400);
+  --color-lime-deep:     var(--lime-700);
+  --color-orange:        var(--orange-500);
+  --color-orange-deep:   var(--orange-700);
+  --color-cream:         var(--cream);
+  --color-white:         var(--white);
+  --color-ink:           var(--ink);
+
+  /* ==========================================================================
+   * TIER 2 — SEMANTIC TOKENS (purpose)
+   * Cream is the GROUND. White is what LIFTS off the ground.
+   * ========================================================================== */
+
+  /* Surfaces */
+  --surface-default:     var(--cream);         /* page ground — long-form mode */
+  --surface-elevated:    var(--white);         /* cards, repeating units */
+  --surface-input:       var(--white);         /* form inputs — max legibility of typed text */
+  --surface-overlay:     var(--white);         /* modals, dialogs, sheets — lift off any ground */
+  --surface-chrome:      var(--purple-400);    /* hero / marquee / showman moments */
+  --surface-chrome-deep: var(--purple-700);    /* sustained chrome — long sidebars, dashboards */
+  --surface-inverse:     var(--ink);
+  --surface-marquee:     var(--orange-500);
+
+  /* Text */
+  --text-primary:           var(--ink);
+  --text-subdued:           var(--gray-700);
+  --text-on-chrome:         var(--cream);      /* default text on purple */
+  --text-running-on-chrome: var(--cream);      /* multi-line on purple — NEVER lime */
+  --text-on-inverse:        var(--cream);
+  --text-link:              var(--purple-400);
+  --text-link-on-chrome:    var(--lime-400);   /* short labels only */
+
+  /* Actions */
+  --action-primary-bg:     var(--ink);
+  --action-primary-fg:     var(--lime-400);
+  --action-primary-shadow: var(--purple-700);
+  --action-secondary-bg:   var(--cream);
+  --action-secondary-fg:   var(--ink);
+  --action-accent-bg:      var(--orange-500);
+  --action-accent-fg:      var(--ink);
+
+  /* Borders + accents */
+  --border-default: var(--ink);
+  --border-subtle:  var(--gray-300);
+  --accent-marquee: var(--orange-500);
+  --accent-pop:     var(--lime-400);
+
+  /* Interactive states — per action token */
+  --action-primary-bg-hover:     #2A1545;        /* ink lightened ~6% */
+  --action-primary-fg-hover:     var(--lime-100);
+  --action-primary-bg-active:    var(--ink);
+  --action-primary-fg-active:    var(--lime-700);
+  --action-primary-focus-ring:   var(--lime-400);
+
+  --action-secondary-bg-hover:   #FFEAD0;
+  --action-secondary-fg-hover:   var(--purple-700);
+  --action-secondary-bg-active:  var(--gray-100);
+  --action-secondary-fg-active:  var(--ink);
+  --action-secondary-focus-ring: var(--purple-400);
+
+  --action-accent-bg-hover:      #FF8050;        /* orange lightened */
+  --action-accent-fg-hover:      var(--ink);
+  --action-accent-bg-active:     var(--orange-700);
+  --action-accent-fg-active:     var(--ink);
+  --action-accent-focus-ring:    var(--purple-700);
+
+  --action-disabled-bg:          var(--gray-300);
+  --action-disabled-fg:          var(--gray-500);
+  --action-disabled-shadow:      var(--gray-500);
+
+  /* ==========================================================================
+   * TIER 3 — COMPONENT TOKENS
+   * ========================================================================== */
+  --card-bg:          var(--surface-elevated);
+  --card-border:      var(--border-default);
+  --card-shadow:      0 8px 0 var(--ink);
+  --cta-shadow-stack: 4px 4px 0 var(--ink), 8px 8px 0 var(--purple-700);
+
+  /* ==========================================================================
+   * Type, layout (unchanged from v0.6)
+   * ========================================================================== */
+  --font-display: 'Big Shoulders Display', sans-serif;        /* H1-H4, card titles, CTAs, eyebrows */
+  --font-accent:  'Lilita One', sans-serif;                   /* wordmark + W monogram ONLY */
+  --font-pulp:    'Bowlby One', sans-serif;                   /* secondary display — hero banner, marquee, ad headline (1 use per page max) */
+  --font-body:    'Public Sans', 'Inter', system-ui, sans-serif; /* body, labels, nav, kicker — civic-tech humanist, matches Winston's "authorized importer" register (swapped from Inter 2026-05-15; Inter retained as fallback) */
+  --font-mono:    'JetBrains Mono', monospace;                /* CYCLE 247 / regulatory microline */
 
   --topbar-height: 64px;
+}
+
+/* ============================================================================
+ * Chrome mode override — wrap a region with [data-surface="chrome"] to flip
+ * cream-ground ↔ purple-ground while keeping every other token consistent.
+ * --surface-input + --surface-overlay stay WHITE (typed-text legibility,
+ * modal lift). Long-form text uses --text-running-on-chrome (cream), not
+ * --text-link-on-chrome (lime — short labels only).
+ * ============================================================================ */
+[data-surface="chrome"] {
+  --surface-default:  var(--purple-400);
+  --surface-elevated: var(--purple-700);
+  --text-primary:     var(--cream);
+  --text-subdued:     rgba(255, 244, 230, 0.7);
+  --text-link:        var(--lime-400);
+  --border-default:   var(--ink);
 }

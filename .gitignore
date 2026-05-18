@@ -1,0 +1,4 @@
+# Local Claude Code / MCP / Playwright workspace files
+.claude/
+.mcp.json
+.playwright-mcp/

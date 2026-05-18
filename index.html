@@ -6,7 +6,7 @@
 <title>Wittyverse — Design Explorations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -27,7 +27,7 @@
   body {
     background: var(--purple-mid);
     color: var(--white);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Public Sans', 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     min-height: 100vh;
@@ -97,12 +97,11 @@
   .hero-title {
     font-family: 'Big Shoulders Display', sans-serif;
     font-weight: 900;
-    font-style: italic;
     font-size: clamp(48px, 7vw, 88px);
     color: var(--white);
     line-height: 0.92;
     text-transform: uppercase;
-    text-shadow: 4px 4px 0 var(--ink), 8px 8px 0 var(--orange-deep);
+    text-shadow: 4px 4px 0 var(--ink), 8px 8px 0 var(--lime);
     margin-bottom: 16px;
     transform: skewX(-6deg);
     position: relative;
@@ -211,7 +210,6 @@
   .card-title {
     font-family: 'Big Shoulders Display', sans-serif;
     font-weight: 900;
-    font-style: italic;
     font-size: 32px;
     color: var(--purple-deep);
     line-height: 1;
@@ -222,7 +220,7 @@
   }
 
   .card-meta {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Public Sans', 'Inter', sans-serif;
     font-size: 11px;
     font-weight: 700;
     color: var(--orange-deep);
@@ -232,7 +230,7 @@
   }
 
   .card-desc {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Public Sans', 'Inter', sans-serif;
     font-size: 14px;
     line-height: 1.6;
     color: var(--ink);
@@ -247,7 +245,7 @@
     margin-bottom: 20px;
   }
   .card-tag {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Public Sans', 'Inter', sans-serif;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -271,7 +269,6 @@
     color: var(--ink);
     font-family: 'Big Shoulders Display', sans-serif;
     font-weight: 900;
-    font-style: italic;
     font-size: 18px;
     padding: 12px 24px;
     border-radius: 40px;
@@ -358,7 +355,7 @@
   </div>
   <div style="display: flex; justify-content: center;">
     <a class="card" style="max-width: 720px; width: 100%; background: #fff;" href="homepage-wireframe.html">
-      <div class="card-corner" style="background: var(--ink); color: var(--cream); font-family: 'Inter', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em;">WIREFRAME</div>
+      <div class="card-corner" style="background: var(--ink); color: var(--cream); font-family: 'Public Sans', 'Inter', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.1em;">WIREFRAME</div>
       <h2 class="card-title">Homepage<br>Wireframe</h2>
       <div class="card-meta">8 sections · functions + WV features called out · no visual design</div>
       <p class="card-desc">Plain structural mockup of the Wittyverse.com homepage. Eight sections — marquee, masthead, hero, browse grid, social proof, "At the Counter" Winston block, newsletter opt-in, footer — each with its function and unique-Wittyverse features annotated. Grayscale, system fonts. Design treatment is deferred until structure is locked. Editable section-by-section in the HTML.</p>
@@ -440,7 +437,7 @@
       <span class="card-cta">Open bible →</span>
     </a>
     <a class="card latest" style="max-width: 500px; flex: 1 1 380px;" href="brand-guidelines/">
-      <div class="card-corner">v0.1</div>
+      <div class="card-corner">v0.7</div>
       <h2 class="card-title">Brand<br>Guidelines</h2>
       <div class="card-meta">Living reference · Compare lab</div>
       <p class="card-desc">Single-page brand book for Wittyverse. Quick-reference cheat sheet up top (palette, type, voice in a sentence), full color system with WCAG ratios, typography scale, logo + avatar small-size coverage, voice rules, and 6 live surface mockups (homepage hero, product card, footer, IG, X, YouTube) that re-render when you toggle between voice/palette presets. Visual canon is settled; voice and strategy ship as clearly-marked placeholders to be filled in later.</p>
@@ -450,6 +447,18 @@
         <span class="card-tag orange">Living doc</span>
       </div>
       <span class="card-cta">Open guidelines →</span>
+    </a>
+    <a class="card latest" style="max-width: 500px; flex: 1 1 380px;" href="brand-one-pager/">
+      <div class="card-corner">v0.7</div>
+      <h2 class="card-title">Brand<br>One-Pager</h2>
+      <div class="card-meta">Designer hand-off · Quick reference</div>
+      <p class="card-desc">Condensed reference doc designed for hand-off — what an external designer or contractor needs to design FOR Wittyverse without reading the full guidelines. Two-register split (R2 storefront vs R1 canon), the 11 canon hues, the 6 canon pairings, the 6 usage rules, four typefaces with specimens + scale, and a do/don't composition list. Cream-ground, print-friendly, fits on one screen with light scrolling.</p>
+      <div class="card-tags">
+        <span class="card-tag purple">Hand-off</span>
+        <span class="card-tag lime">Designer-ready</span>
+        <span class="card-tag orange">Print-friendly</span>
+      </div>
+      <span class="card-cta">Open one-pager →</span>
     </a>
   </div>
 </section>

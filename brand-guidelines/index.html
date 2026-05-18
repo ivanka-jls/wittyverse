@@ -6,7 +6,7 @@
   <title>Wittyverse — Brand Guidelines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Big+Shoulders+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Bowlby+One&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -66,7 +66,7 @@
         </div>
         <div class="quick-card">
           <div class="quick-label">Display Type</div>
-          <div class="quick-type-sample" style="font-family: var(--font-display); font-style: italic; font-weight: 900; font-size: 32px; transform: skewX(-6deg);">WITTYVERSE</div>
+          <div class="quick-type-sample" style="font-family: var(--font-display); font-weight: 900; font-size: 32px; transform: skewX(-6deg);">WITTYVERSE</div>
         </div>
         <div class="quick-card">
           <div class="quick-label">Voice in One Sentence</div>
@@ -161,13 +161,33 @@
         </div>
       </div>
     </section>
-    <section id="voice" class="placeholder-content">
+    <section id="voice">
       <h2>Voice &amp; Messaging</h2>
-      <div class="placeholder-banner">⚠ Placeholder content — voice canon to be drafted later</div>
+      <p class="section-subtitle">v0.2 — encodes the two-register rule (R2 storefront chrome / R1 in-universe operation) and the canon principle that governs every customer-facing surface: <strong>Voice everywhere. Face nowhere.</strong></p>
 
       <div class="voice-personality">
         <h3>Personality</h3>
         <ul class="voice-attrs" id="voice-attrs"></ul>
+      </div>
+
+      <div class="voice-personality">
+        <h3>Persona vs. Man</h3>
+        <p style="margin-bottom: 16px;"><strong>Voice everywhere. Face nowhere.</strong> Winston's operation is off-the-books — the portal is secret, his real surname is erased, the manufacturing dock is hidden. He depends on the alias for plausible-deniability cover. So on every customer-facing surface, <strong>Dr. W. Yeti PhD</strong> (the alias, the credentials, the signed stamp, the brass-plate energy) is always present. <strong>Winston the man</strong> (real face, real name, portal location, factory) is never present. The signed W. is the operator's face — that's the only face the brand shows.</p>
+        <div class="register-grid">
+          <div class="register-tile register-tile--r2">
+            <div class="register-eyebrow">R2 — STOREFRONT CHROME</div>
+            <div class="register-title">Dr. W. Yeti PhD, speaking</div>
+            <div class="register-body">Loud, first-person, self-promoting. P.T. Barnum × Ron Popeil × Dr. Bronner's packaging energy. Lives in: headlines, CTAs, endorsements, About copy, hero, newsletter ("The Winston Dispatch"), Winston-attributed guarantees.</div>
+            <div class="register-tag">"I personally inspected this pallet. — W."</div>
+          </div>
+          <div class="register-tile register-tile--r1">
+            <div class="register-eyebrow">R1 — IN-UNIVERSE OPERATION</div>
+            <div class="register-title">The operation, documenting itself</div>
+            <div class="register-body">Bureaucratic plural. Customs-form deadpan. NOT Winston speaking — the cargo and the operation in neutral terms. Lives in: product cards, shipping details, FAQ answers, compliance microlines, return policy.</div>
+            <div class="register-tag">"One unit. Dispatched Tuesdays, NC."</div>
+          </div>
+        </div>
+        <p style="margin-top: 16px;"><strong>Do:</strong> show silhouettes, back-of-head, hands-only, or a face obscured by the signed-W. stamp when a "portrait" is unavoidable. &nbsp; <strong>Don't:</strong> show Winston's face, use his real surname, or reveal portal location / manufacturing partners — anywhere, ever.</p>
       </div>
 
       <div class="voice-rules-grid">
@@ -192,19 +212,62 @@
 
       <div class="voice-samples">
         <h3>Sample Copy</h3>
-        <p class="section-subtitle">Sample copy renders from voice.json. Toggle voice preset above to compare variants when more than one exists.</p>
+        <p class="section-subtitle">Both registers, side by side. Read these once and you can write more in the same voice. R2 = Dr. Yeti speaking. R1 = the operation documenting itself.</p>
+
         <div class="sample-card">
-          <div class="sample-label">Homepage Hero Headline</div>
+          <div class="sample-label">Hero Headline — R2 (Dr. Yeti)</div>
           <div class="sample-content" id="sample-hero-headline"></div>
         </div>
+
         <div class="sample-card">
-          <div class="sample-label">Instagram Caption</div>
+          <div class="sample-label">Product Description — R1 (Operation)</div>
+          <div class="sample-content">One unit. Origin: Wittyverse dimension. Classification: novelty consumer good, gift-grade. Dispatched Tuesdays from NC under standard consumer-goods entry. No assembly required. No returns on opened items. No questions answered regarding manufacturing.</div>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-label">FAQ Q&amp;A — Split (Q in R2, A in R1)</div>
+          <div class="sample-content">
+            <p><strong>Q (Dr. Yeti, R2):</strong> "How fast can you get one of these into a customer's hands? Because I personally hate waiting."</p>
+            <p style="margin-top: 8px;"><strong>A (Operation, R1):</strong> Orders received by Monday 11:59pm ET ship the following Tuesday from North Carolina. Domestic transit: 3–6 business days. Tracking is provided. Tuesdays are the only dispatch window.</p>
+          </div>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-label">Newsletter Pitch — "The Winston Dispatch" (R2)</div>
+          <div class="sample-content">"The Winston Dispatch — one signed letter from me each Tuesday, telling you exactly what cleared the dock, what almost didn't, and what I'd hand to my own brother-in-law. No filler, no algorithm, no committee. Subscribe and you'll never miss a manifest. — W."</div>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-label">Trust Microcopy — beside Quick-Add CTA (R2)</div>
+          <div class="sample-content">"Personally guaranteed. If it doesn't land the joke, I'll refund it myself. — W."</div>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-label">Compliance Microline — Footer (R1, declarative-secrecy)</div>
+          <div class="sample-content">Sole Authorized Importer, Earth Side · Manufacturing partners undisclosed · Location classified, competitive reasons · Operator pseudonymous, by necessity · Dispatched Tuesdays from NC.</div>
+        </div>
+
+        <div class="sample-card">
+          <div class="sample-label">Instagram Caption — R2 (cross-reference)</div>
           <div class="sample-content" id="sample-ig-caption"></div>
         </div>
+
         <div class="sample-card">
-          <div class="sample-label">YouTube Title</div>
+          <div class="sample-label">YouTube Title — "The Winston Dispatch" channel (R2)</div>
           <div class="sample-content" id="sample-yt-title"></div>
         </div>
+      </div>
+
+      <div class="voice-personality" id="trust-seal-cluster">
+        <h3>Trust Seal Cluster · reusable component</h3>
+        <p style="margin-bottom: 12px;">A grouped set of seals/stamps that surfaces next to every primary CTA — Add to crate, Subscribe, Browse the Manifest, Checkout. Same four members, same order, every time. The cluster is how the operation signs every transactional moment without ever showing Winston's face. Treat it like a logo lockup: don't reorder, don't substitute, don't isolate a single seal.</p>
+        <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 6px;">
+          <li><strong>Patent Office lol cert</strong> — thumbnail of the canon "only paperwork that exists."</li>
+          <li><strong>Personal Guarantee · W.</strong> — signed stamp. Dr. Yeti's hand on every order.</li>
+          <li><strong>Sole Authorized Importer · Earth</strong> — brass-plate badge. Performative exclusivity.</li>
+          <li><strong>Dispatched Tuesdays · NC</strong> — operational stamp. Concrete enough to feel real, vague enough to disclose nothing.</li>
+        </ul>
+        <p style="margin-top: 16px;"><strong>Placement:</strong> immediately adjacent to the primary CTA (right side on desktop, beneath on mobile). Cluster reads at-a-glance as a unit; individual seal meaning is secondary to the overall trust signal.</p>
       </div>
     </section>
     <section id="visual-system"><h2>Visual System</h2>
@@ -291,144 +354,456 @@
       </section>
       <section id="color">
         <h3>Color</h3>
+        <p class="section-subtitle">v0.7 — surface system + register split + six usage rules. The palette earns its loudness from Winston's importer storefront brief. The rules keep it from turning into a fight between accents.</p>
 
+        <!-- ============================================
+             CARD 1 — Two registers (R1/R2)
+        ============================================ -->
         <div class="color-card">
-          <h4>Palette</h4>
-          <div class="palette-grid">
-            <div class="color-tile" style="background: var(--color-purple)">
-              <div class="color-tile-name">Purple</div>
-              <div class="color-tile-hex">#6A1B9A</div>
-              <div class="color-tile-rgb">rgb(106, 27, 154)</div>
+          <h4>Two registers</h4>
+          <p class="section-subtitle">Wittyverse runs on a deliberate split. This Color section governs R2 — Winston's storefront chrome. R1 — in-universe content — lives in canon and follows its own deadpan rules. The joke is in the proximity.</p>
+          <div class="register-grid">
+            <div class="register-tile register-tile--r2">
+              <div class="register-eyebrow">R2 — STOREFRONT CHROME</div>
+              <div class="register-title">Winston the importer</div>
+              <div class="register-body">Loud, showman, candy-bar / patent-medicine / theme-park signage. Saturated polychrome is the point. This is where this palette lives.</div>
+              <div class="register-strip">
+                <span class="register-swatch" style="background: var(--purple-400)" title="purple-400"></span>
+                <span class="register-swatch" style="background: var(--lime-400)" title="lime-400"></span>
+                <span class="register-swatch" style="background: var(--orange-500)" title="orange-500"></span>
+                <span class="register-swatch" style="background: var(--cream); border-color: var(--ink)" title="cream"></span>
+                <span class="register-swatch" style="background: var(--ink)" title="ink"></span>
+              </div>
+              <div class="register-tag">"premium craft applied to absurd retail"</div>
             </div>
-            <div class="color-tile" style="background: var(--color-purple-deep)">
-              <div class="color-tile-name">Purple Deep</div>
-              <div class="color-tile-hex">#401A75</div>
-              <div class="color-tile-rgb">rgb(64, 26, 117)</div>
+            <div class="register-tile register-tile--r1">
+              <div class="register-eyebrow">R1 — IN-UNIVERSE CANON</div>
+              <div class="register-title">Wittyverse content</div>
+              <div class="register-body">Deadpan, bureaucratic, customs-paperwork. Restrained editorial palette. Never wink. Governed by the brand bible, not this page.</div>
+              <div class="register-strip">
+                <span class="register-swatch" style="background: var(--cream); border-color: var(--ink)" title="cream"></span>
+                <span class="register-swatch" style="background: var(--ink)" title="ink"></span>
+                <span class="register-swatch" style="background: var(--gray-300)" title="gray-300"></span>
+                <span class="register-swatch" style="background: var(--gray-700)" title="gray-700"></span>
+              </div>
+              <div class="register-tag">Mono CYCLE 247 tag is the only R1 element that peeks through R2</div>
             </div>
-            <div class="color-tile color-tile--dark" style="background: var(--color-purple-darker)">
-              <div class="color-tile-name">Purple Darker</div>
-              <div class="color-tile-hex">#1A0A2E</div>
-              <div class="color-tile-rgb">rgb(26, 10, 46)</div>
+          </div>
+          <div class="why">
+            <strong>Why split:</strong> v1 of the site applied R1 (editorial/restrained) rules to R2 (the storefront chrome) — it was rejected as "tasteful, dead, indistinguishable from any high-design magazine site." The brief wants loud, character-led, genre-committed retail. Don't apply R1 rules to R2 artifacts.
+          </div>
+        </div>
+
+        <!-- ============================================
+             CARD 2 — Palette · 11 hues × 4 steps
+        ============================================ -->
+        <div class="color-card">
+          <h4>Palette · ramps</h4>
+          <p class="section-subtitle">Each brand hue lives as a 4-step ramp. <code>-400/-500</code> is the canonical value used in the wordmark and identity assets; <code>-100</code> tints are how brand DNA enters dense layouts (card backings, badges-at-rest); <code>-700</code> is the deep variant for shadows and sustained chrome; <code>-900</code> is the legible variant on cream.</p>
+
+          <div class="ramp-row">
+            <div class="ramp-label">Purple</div>
+            <div class="ramp-tiles">
+              <div class="ramp-step ramp-step--light" style="background: var(--purple-100)"><div class="ramp-step-name">purple-100</div><div class="ramp-step-hex">#E2D3EE</div><div class="ramp-step-use">tints, card backings</div></div>
+              <div class="ramp-step" style="background: var(--purple-400)"><div class="ramp-step-name">purple-400 <span class="ramp-canon">★</span></div><div class="ramp-step-hex">#6A1B9A</div><div class="ramp-step-use">canon · chrome</div></div>
+              <div class="ramp-step" style="background: var(--purple-700)"><div class="ramp-step-name">purple-700</div><div class="ramp-step-hex">#401A75</div><div class="ramp-step-use">sustained chrome, CTA shadow</div></div>
+              <div class="ramp-step ramp-step--dark" style="background: var(--purple-900)"><div class="ramp-step-name">purple-900</div><div class="ramp-step-hex">#1A0A2E</div><div class="ramp-step-use">= ink</div></div>
             </div>
-            <div class="color-tile color-tile--light" style="background: var(--color-lime)">
-              <div class="color-tile-name">Lime</div>
-              <div class="color-tile-hex">#9EE83D</div>
-              <div class="color-tile-rgb">rgb(158, 232, 61)</div>
+          </div>
+
+          <div class="ramp-row">
+            <div class="ramp-label">Lime</div>
+            <div class="ramp-tiles">
+              <div class="ramp-step ramp-step--light" style="background: var(--lime-100)"><div class="ramp-step-name">lime-100</div><div class="ramp-step-hex">#E8F8CF</div><div class="ramp-step-use">tints, hover-fg</div></div>
+              <div class="ramp-step ramp-step--light" style="background: var(--lime-400)"><div class="ramp-step-name">lime-400 <span class="ramp-canon">★</span></div><div class="ramp-step-hex">#9EE83D</div><div class="ramp-step-use">canon · CTA fg, pop</div></div>
+              <div class="ramp-step ramp-step--light" style="background: var(--lime-700)"><div class="ramp-step-name">lime-700</div><div class="ramp-step-hex">#7CB342</div><div class="ramp-step-use">deep lime · structural</div></div>
+              <div class="ramp-step" style="background: var(--lime-900)"><div class="ramp-step-name">lime-900</div><div class="ramp-step-hex">#4A6E25</div><div class="ramp-step-use">legible lime on cream</div></div>
             </div>
-            <div class="color-tile" style="background: var(--color-orange)">
-              <div class="color-tile-name">Orange</div>
-              <div class="color-tile-hex">#FF6B2C</div>
-              <div class="color-tile-rgb">rgb(255, 107, 44)</div>
+          </div>
+
+          <div class="ramp-row">
+            <div class="ramp-label">Orange</div>
+            <div class="ramp-tiles">
+              <div class="ramp-step ramp-step--light" style="background: var(--orange-100)"><div class="ramp-step-name">orange-100</div><div class="ramp-step-hex">#FFE0CF</div><div class="ramp-step-use">tints, soft warmth</div></div>
+              <div class="ramp-step" style="background: var(--orange-500)"><div class="ramp-step-name">orange-500 <span class="ramp-canon">★</span></div><div class="ramp-step-hex">#FF6B2C</div><div class="ramp-step-use">canon · marquee, accent</div></div>
+              <div class="ramp-step" style="background: var(--orange-700)"><div class="ramp-step-name">orange-700</div><div class="ramp-step-hex">#E55A1A</div><div class="ramp-step-use">deep orange · structural</div></div>
+              <div class="ramp-step" style="background: var(--orange-900)"><div class="ramp-step-name">orange-900</div><div class="ramp-step-hex">#8C320C</div><div class="ramp-step-use">legible orange on cream</div></div>
             </div>
-            <div class="color-tile color-tile--light" style="background: var(--color-cream)">
-              <div class="color-tile-name">Cream</div>
-              <div class="color-tile-hex">#FFF4E6</div>
-              <div class="color-tile-rgb">rgb(255, 244, 230)</div>
+          </div>
+
+          <div class="ramp-row">
+            <div class="ramp-label">Gray</div>
+            <div class="ramp-tiles ramp-tiles--six">
+              <div class="ramp-step ramp-step--light" style="background: var(--gray-50)"><div class="ramp-step-name">gray-50</div><div class="ramp-step-hex">#FAF6EF</div></div>
+              <div class="ramp-step ramp-step--light" style="background: var(--gray-100)"><div class="ramp-step-name">gray-100</div><div class="ramp-step-hex">#EFE7D8</div></div>
+              <div class="ramp-step ramp-step--light" style="background: var(--gray-300)"><div class="ramp-step-name">gray-300</div><div class="ramp-step-hex">#C9BFAD</div></div>
+              <div class="ramp-step" style="background: var(--gray-500)"><div class="ramp-step-name">gray-500</div><div class="ramp-step-hex">#847B6A</div></div>
+              <div class="ramp-step" style="background: var(--gray-700)"><div class="ramp-step-name">gray-700</div><div class="ramp-step-hex">#4E483D</div></div>
+              <div class="ramp-step" style="background: var(--gray-900)"><div class="ramp-step-name">gray-900</div><div class="ramp-step-hex">#25211B</div></div>
             </div>
-            <div class="color-tile color-tile--dark" style="background: var(--color-ink)">
-              <div class="color-tile-name">Ink</div>
-              <div class="color-tile-hex">#1A0A2E</div>
-              <div class="color-tile-rgb">rgb(26, 10, 46)</div>
+          </div>
+
+          <div class="ramp-row">
+            <div class="ramp-label">Anchors</div>
+            <div class="ramp-tiles ramp-tiles--three">
+              <div class="ramp-step ramp-step--light" style="background: var(--cream)"><div class="ramp-step-name">cream <span class="ramp-canon">★</span></div><div class="ramp-step-hex">#FFF4E6</div><div class="ramp-step-use">the GROUND</div></div>
+              <div class="ramp-step ramp-step--light" style="background: var(--white); box-shadow: inset 0 0 0 1px var(--gray-300)"><div class="ramp-step-name">white</div><div class="ramp-step-hex">#FFFFFF</div><div class="ramp-step-use">LIFTS off ground</div></div>
+              <div class="ramp-step" style="background: var(--ink)"><div class="ramp-step-name">ink <span class="ramp-canon">★</span></div><div class="ramp-step-hex">#1A0A2E</div><div class="ramp-step-use">text + inverse ground</div></div>
+            </div>
+          </div>
+
+          <div class="ramp-row">
+            <div class="ramp-label">State <span class="ramp-label-note">(non-brand)</span></div>
+            <div class="ramp-tiles ramp-tiles--four">
+              <div class="ramp-step" style="background: var(--state-success-500)"><div class="ramp-step-name">success</div><div class="ramp-step-hex">#1F8B3D</div><div class="ramp-step-use">forest green · paired w/ error red</div></div>
+              <div class="ramp-step" style="background: var(--state-error-500)"><div class="ramp-step-name">error</div><div class="ramp-step-hex">#C92A2A</div></div>
+              <div class="ramp-step ramp-step--light" style="background: var(--state-warning-500)"><div class="ramp-step-name">warning</div><div class="ramp-step-hex">#F59F00</div></div>
+              <div class="ramp-step" style="background: var(--state-info-500)"><div class="ramp-step-name">info</div><div class="ramp-step-hex">#6A1B9A</div><div class="ramp-step-use">= purple-400</div></div>
             </div>
           </div>
 
           <div class="why">
-            <strong>Why:</strong> Purple anchors the brand world; lime + orange create the high-contrast pop pair (CTA + accent) that signals energy; ink + cream are the high-legibility text pair across light/dark surfaces.
+            <strong>v0.7.1 tune:</strong> state-success stays green (<code>#1F8B3D</code>) but is tuned to read as a sibling of state-error red (<code>#C92A2A</code>) — same saturation register, complementary perceptual weight, so positive/negative reads feel like the same family. Distinct hue from brand lime (135° vs 85°) keeps the two greens unambiguous in dense displays; rule 6 below covers the edge case where both appear in the same column.
           </div>
         </div>
 
+        <!-- ============================================
+             CARD 3 — Token architecture · 3 tiers
+        ============================================ -->
         <div class="color-card">
-          <h4>Depth &amp; utility tokens</h4>
-          <p class="section-subtitle">Used inside gradients, shadow stacks, and structural surfaces. Reference for code; rarely chosen standalone.</p>
-          <div class="palette-grid">
-            <div class="color-tile" style="background: var(--color-purple-mid)">
-              <div class="color-tile-name">Purple Mid</div>
-              <div class="color-tile-hex">#5C27A3</div>
-              <div class="color-tile-rgb">rgb(92, 39, 163)</div>
-            </div>
-            <div class="color-tile" style="background: var(--color-lime-deep)">
-              <div class="color-tile-name">Lime Deep</div>
-              <div class="color-tile-hex">#7CB342</div>
-              <div class="color-tile-rgb">rgb(124, 179, 66)</div>
-            </div>
-            <div class="color-tile" style="background: var(--color-orange-deep)">
-              <div class="color-tile-name">Orange Deep</div>
-              <div class="color-tile-hex">#E55A1A</div>
-              <div class="color-tile-rgb">rgb(229, 90, 26)</div>
-            </div>
-            <div class="color-tile color-tile--light" style="background: var(--color-white)">
-              <div class="color-tile-name">White</div>
-              <div class="color-tile-hex">#FFFFFF</div>
-              <div class="color-tile-rgb">rgb(255, 255, 255)</div>
-            </div>
-          </div>
-          <div class="why">
-            <strong>Why these exist:</strong> Purple Mid is the mid-stop of the cosmic radial gradient (between Purple and Purple Deep). Lime Deep is the white-fill wordmark's back-shadow color. Orange Deep is the orange-fill wordmark + monogram-primary back-shadow color — the locked stack is <code>4px ink, 8px orange-deep</code>. White is reserved for accents inside other surfaces — never the brand ground.
-          </div>
-        </div>
+          <h4>Token architecture · 3 tiers</h4>
+          <p class="section-subtitle">Raw values get a brand-truth name (Tier 1). Tier 2 maps purpose to those names (<code>--surface-default</code>, <code>--action-primary-bg</code>). Tier 3 binds purpose into a specific component slot (<code>--card-bg</code>, <code>--cta-shadow-stack</code>). UI code should read Tier 2 and 3 — never reach down to Tier 1 hex values.</p>
 
-        <div class="color-card">
-          <h4>Pairings</h4>
-          <p class="section-subtitle">Canonical color combinations and their roles.</p>
-          <div class="pairings-grid">
-            <div class="pairing-tile" style="background: var(--color-ink); color: var(--color-lime);">
-              <div class="pairing-label">Primary CTA</div>
-              <div class="pairing-sample">Lime on Ink</div>
-            </div>
-            <div class="pairing-tile" style="background: var(--color-purple); color: var(--color-cream);">
-              <div class="pairing-label">Hero / brand chrome</div>
-              <div class="pairing-sample">Cream on Purple</div>
-            </div>
-            <div class="pairing-tile" style="background: var(--color-cream); color: var(--color-ink);">
-              <div class="pairing-label">Body / cards</div>
-              <div class="pairing-sample">Ink on Cream</div>
-            </div>
-            <div class="pairing-tile" style="background: var(--color-lime); color: var(--color-ink);">
-              <div class="pairing-label">Active / Highlight</div>
-              <div class="pairing-sample">Ink on Lime</div>
-            </div>
-            <div class="pairing-tile" style="background: var(--color-orange); color: var(--color-ink);">
-              <div class="pairing-label">Accent / Marquee</div>
-              <div class="pairing-sample">Ink on Orange</div>
-            </div>
-            <div class="pairing-tile" style="background: var(--color-purple-deep); color: var(--color-lime);">
-              <div class="pairing-label">Pulled-quote / Why box</div>
-              <div class="pairing-sample">Lime on Purple Deep</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="color-card">
-          <h4>Accessibility (WCAG 2.1)</h4>
-          <p class="section-subtitle">Contrast ratios for the canon pairings. Body copy must meet AA (4.5:1) at minimum.</p>
-          <table class="contrast-table">
+          <table class="token-tiers-table">
             <thead>
-              <tr><th>Pairing</th><th>Ratio</th><th>Normal</th><th>Large</th></tr>
+              <tr>
+                <th>Tier 1 — Raw</th>
+                <th>Tier 2 — Semantic</th>
+                <th>Tier 3 — Component</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>Ink on Cream</td><td>17.16:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Ink on White</td><td>18.64:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Cream on Ink</td><td>17.16:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Lime on Ink</td><td>12.48:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Cream on Purple</td><td>8.65:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Lime on Purple</td><td>6.29:1</td><td><span class="badge pass">AA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Orange on Ink</td><td>6.56:1</td><td><span class="badge pass">AA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Ink on Lime</td><td>12.48:1</td><td><span class="badge pass">AAA</span></td><td><span class="badge pass">AAA</span></td></tr>
-              <tr><td>Orange on Cream <em>(decorative only)</em></td><td>2.62:1</td><td><span class="badge fail">FAIL</span></td><td><span class="badge fail">FAIL</span></td></tr>
+              <tr><td><code>--cream</code></td><td><code>--surface-default</code></td><td>page ground</td></tr>
+              <tr><td><code>--white</code></td><td><code>--surface-elevated</code></td><td><code>--card-bg</code></td></tr>
+              <tr><td><code>--white</code></td><td><code>--surface-input</code> <span class="new-pill">new</span></td><td>form field background</td></tr>
+              <tr><td><code>--white</code></td><td><code>--surface-overlay</code> <span class="new-pill">new</span></td><td>modal / sheet / dialog</td></tr>
+              <tr><td><code>--purple-400</code></td><td><code>--surface-chrome</code></td><td>hero / marquee / showman moments</td></tr>
+              <tr><td><code>--purple-700</code></td><td><code>--surface-chrome-deep</code> <span class="new-pill">new</span></td><td>sustained chrome — sidebars, dashboards</td></tr>
+              <tr><td><code>--ink</code></td><td><code>--action-primary-bg</code></td><td>primary CTA background</td></tr>
+              <tr><td><code>--lime-400</code></td><td><code>--action-primary-fg</code></td><td>primary CTA text</td></tr>
+              <tr><td><code>--orange-500</code></td><td><code>--action-accent-bg</code></td><td>accent CTA / marquee</td></tr>
+              <tr><td><code>--cream</code></td><td><code>--text-running-on-chrome</code> <span class="new-pill">new</span></td><td>multi-line text on purple (NEVER lime)</td></tr>
+              <tr><td><code>--lime-400</code></td><td><code>--text-link-on-chrome</code></td><td>short labels on purple</td></tr>
             </tbody>
           </table>
 
-          <div class="dark-light-note">
-            <h4>Dark / Light Mode Notes</h4>
-            <p>The page is purposefully dark-leaning (purple gradient background) by default — Wittyverse is a "lights down, neon up" brand. For longer-form text surfaces (blog, docs, product pages) flip to a cream-dominant background with ink text — same palette, just a different anchor. Avoid switching mid-page.</p>
-            <ul>
-              <li>✓ Default surfaces (hero, marquee, social): purple-dark anchor with cream/lime text</li>
-              <li>✓ Long-form surfaces (article, doc): cream anchor with ink text, purple/orange as accents only</li>
-              <li>✗ Don't use orange on cream for body copy (fails AA — decorative use only)</li>
-              <li>✗ Don't auto-invert via OS preference; the brand has a default mood</li>
-            </ul>
+          <div class="why">
+            <strong>What's new in v0.7:</strong> four semantic tokens added — <code>--surface-input</code>, <code>--surface-overlay</code>, <code>--surface-chrome-deep</code>, and <code>--text-running-on-chrome</code>. Cream is the ground; white is what LIFTS off it (cards, inputs, modals). Purple has two jobs: chrome moments (<code>-400</code>) and sustained surfaces (<code>-700</code>) — never use <code>-400</code> for surfaces the eye dwells on for &gt;5 seconds.
           </div>
         </div>
+
+        <!-- ============================================
+             CARD 4 — Six usage rules
+        ============================================ -->
+        <div class="color-card">
+          <h4>Six usage rules</h4>
+          <p class="section-subtitle">Tested in eight real digital media (hero, mobile, product grid, email, social, banner ad, dashboard, dark mode). Without these rules the palette becomes a fight between accents — with them it stays confident polychrome.</p>
+
+          <ol class="usage-rules">
+            <li class="usage-rule">
+              <div class="usage-rule-num">1</div>
+              <div class="usage-rule-body">
+                <div class="usage-rule-title">Pick ONE saturated lead per screen.</div>
+                <p>Lime <em>or</em> orange leads. The other plays supporting (shadow, minor tag, footer accent). Both saturated at full volume = competing carnivals.</p>
+              </div>
+            </li>
+            <li class="usage-rule">
+              <div class="usage-rule-num">2</div>
+              <div class="usage-rule-body">
+                <div class="usage-rule-title">Purple has two jobs — use two values.</div>
+                <p><code>--surface-chrome</code> (<code>purple-400</code>) for hero / marquee / header strip / ad backdrop / CTA shadow. <code>--surface-chrome-deep</code> (<code>purple-700</code>) for sustained surfaces (long sidebars, dashboards, dark-mode grounds). Don't use <code>-400</code> for surfaces the eye dwells on.</p>
+              </div>
+            </li>
+            <li class="usage-rule">
+              <div class="usage-rule-num">3</div>
+              <div class="usage-rule-body">
+                <div class="usage-rule-title">Cream is the data ground.</div>
+                <p>Any layout with dense reading, tables, grids, or repeating cards → cream surface. The saturated palette earns its keep on chrome / accents / single moments. Never on data layers.</p>
+              </div>
+            </li>
+            <li class="usage-rule">
+              <div class="usage-rule-num">4</div>
+              <div class="usage-rule-body">
+                <div class="usage-rule-title">Light tints (<code>-100</code>) bring brand DNA into dense layouts.</div>
+                <p>Product cards, callouts, badges-at-rest → use <code>purple-100</code>, <code>lime-100</code>, <code>orange-100</code>. Saturated <code>-400</code> / <code>-500</code> reserved for attention.</p>
+              </div>
+            </li>
+            <li class="usage-rule">
+              <div class="usage-rule-num">5</div>
+              <div class="usage-rule-body">
+                <div class="usage-rule-title">Max one stacked-shadow element per visual section.</div>
+                <p>The lime+orange / orange+lime stacked shadow is the brand's signature. Two of them within ~600px muddies the focal point. Reserve for the primary CTA <em>or</em> the hero card, not both.</p>
+              </div>
+            </li>
+            <li class="usage-rule">
+              <div class="usage-rule-num">6</div>
+              <div class="usage-rule-body">
+                <div class="usage-rule-title">State green and brand lime — keep them apart in dense data.</div>
+                <p>State-success (<code>#1F8B3D</code>) and brand lime (<code>#9EE83D</code>) live in distinct hue families (135° vs 85°) and are unambiguous at normal sizes. At small sizes or in dense tables / dashboards where both render as colored chips, prefer spatial separation — split brand tags and status into two columns with header labels.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- ============================================
+             CARD 5 — Interactive states
+        ============================================ -->
+        <div class="color-card">
+          <h4>Interactive states</h4>
+          <p class="section-subtitle">Every action × five states. The "default" sample is a real interactive button — hover, focus, and click work. The other four show the resting visual for each state.</p>
+
+          <div class="state-grid">
+            <div class="state-grid-header"></div>
+            <div class="state-grid-header">Default</div>
+            <div class="state-grid-header">Hover</div>
+            <div class="state-grid-header">Active</div>
+            <div class="state-grid-header">Focus</div>
+            <div class="state-grid-header">Disabled</div>
+
+            <div class="state-row-label">Primary<br><span>ink + lime</span></div>
+            <button class="state-btn state-btn--primary">Add to cart</button>
+            <div class="state-btn state-btn--primary state-static state-static--primary-hover">Add to cart</div>
+            <div class="state-btn state-btn--primary state-static state-static--primary-active">Add to cart</div>
+            <div class="state-btn state-btn--primary state-static state-static--primary-focus">Add to cart</div>
+            <div class="state-btn state-btn--primary state-static state-static--disabled">Add to cart</div>
+
+            <div class="state-row-label">Secondary<br><span>cream + ink</span></div>
+            <button class="state-btn state-btn--secondary">Learn more</button>
+            <div class="state-btn state-btn--secondary state-static state-static--secondary-hover">Learn more</div>
+            <div class="state-btn state-btn--secondary state-static state-static--secondary-active">Learn more</div>
+            <div class="state-btn state-btn--secondary state-static state-static--secondary-focus">Learn more</div>
+            <div class="state-btn state-btn--secondary state-static state-static--disabled">Learn more</div>
+
+            <div class="state-row-label">Accent<br><span>orange + ink</span></div>
+            <button class="state-btn state-btn--accent">Shop sale</button>
+            <div class="state-btn state-btn--accent state-static state-static--accent-hover">Shop sale</div>
+            <div class="state-btn state-btn--accent state-static state-static--accent-active">Shop sale</div>
+            <div class="state-btn state-btn--accent state-static state-static--accent-focus">Shop sale</div>
+            <div class="state-btn state-btn--accent state-static state-static--disabled">Shop sale</div>
+          </div>
+
+          <div class="why">
+            <strong>Pattern:</strong> hover lifts toward you (translate −2,−2; shadow compresses; fg shifts lighter). Active presses into shadow (translate +4,+4; shadow flattens; fg shifts darker). Focus = 3px ring offset 4px in a high-contrast hue. Disabled = gray-300 / gray-500 / not-allowed.
+          </div>
+        </div>
+
+        <!-- ============================================
+             CARD 6 — Pairings & contrast matrix
+        ============================================ -->
+        <div class="color-card">
+          <h4>Pairings &amp; contrast</h4>
+          <p class="section-subtitle">All ratios computed live from the token values — if a token changes upstream, this section updates with it. Body text must meet AA (4.5:1). Decorative / large-only use can sit at 3:1.</p>
+
+          <div class="contrast-matrix-wrap">
+            <h5 class="subcard-title">Matrix · 8 surfaces × 8 text colors</h5>
+            <table class="contrast-matrix" id="contrast-matrix">
+              <!-- populated by inline script below -->
+            </table>
+            <div class="matrix-legend">
+              <span class="badge pass">AAA</span> 7:1+ &nbsp;
+              <span class="badge pass">AA</span> 4.5:1+ &nbsp;
+              <span class="badge passlg">AA-LG</span> 3:1+ (large text only) &nbsp;
+              <span class="badge fail">FAIL</span> &lt;3:1
+            </div>
+          </div>
+
+          <h5 class="subcard-title">Canon pairings</h5>
+          <p class="section-subtitle">The combinations that appear repeatedly across the brand. Use these first; verify any new pairing against the matrix above.</p>
+          <div class="pairings-grid">
+            <div class="pairing-tile" style="background: var(--ink); color: var(--lime-400);">
+              <div class="pairing-label">Primary CTA</div>
+              <div class="pairing-sample">Lime on Ink</div>
+              <div class="pairing-ratio" data-fg="--lime-400" data-bg="--ink">—</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--purple-400); color: var(--cream);">
+              <div class="pairing-label">Hero / brand chrome</div>
+              <div class="pairing-sample">Cream on Purple</div>
+              <div class="pairing-ratio" data-fg="--cream" data-bg="--purple-400">—</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--cream); color: var(--ink);">
+              <div class="pairing-label">Body / cards</div>
+              <div class="pairing-sample">Ink on Cream</div>
+              <div class="pairing-ratio" data-fg="--ink" data-bg="--cream">—</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--lime-400); color: var(--ink);">
+              <div class="pairing-label">Active / highlight</div>
+              <div class="pairing-sample">Ink on Lime</div>
+              <div class="pairing-ratio" data-fg="--ink" data-bg="--lime-400">—</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--orange-500); color: var(--ink);">
+              <div class="pairing-label">Accent / marquee</div>
+              <div class="pairing-sample">Ink on Orange</div>
+              <div class="pairing-ratio" data-fg="--ink" data-bg="--orange-500">—</div>
+            </div>
+            <div class="pairing-tile" style="background: var(--purple-700); color: var(--lime-400);">
+              <div class="pairing-label">Pulled-quote / why box</div>
+              <div class="pairing-sample">Lime on Purple-700</div>
+              <div class="pairing-ratio" data-fg="--lime-400" data-bg="--purple-700">—</div>
+            </div>
+          </div>
+
+          <div class="why">
+            <strong>Why live:</strong> the static table in v0.6 was correct, but a hand-maintained table is exactly the artifact that drifts when token values change. Computing the ratios from the actual <code>:root</code> values means any future palette tweak surfaces here automatically. Two things worth flagging: <code>--orange-500</code> on cream sits at <code>2.62:1</code> — decorative-only, never body text. <code>--lime-400</code> on <code>--purple-400</code> at <code>6.29:1</code> is AA body / AAA large — fine for the canon "Lime on Purple" pairing, but if you ever need it at small-text sizes verify in the matrix above.
+          </div>
+        </div>
+
+        <!-- ============================================
+             CARD 7 — Dark/light · dual mode
+        ============================================ -->
+        <div class="color-card">
+          <h4>Dark/light · dual mode</h4>
+          <p class="section-subtitle">The same tokens render two registers. Wrap a region with <code>[data-surface="chrome"]</code> to flip cream-ground → purple-ground; the rest of the system follows. Same content below, two grounds. Never auto-flip via OS preference — the brand has a default mood.</p>
+
+          <div class="dual-preview">
+            <div class="dual-tile">
+              <div class="dual-tile-eyebrow">DEFAULT MODE · cream-ground</div>
+              <div class="dual-tile-body">
+                <div class="dual-mini-card">
+                  <div class="dual-mini-label">Featured import</div>
+                  <div class="dual-mini-title">Yeti-tracking kit</div>
+                  <p class="dual-mini-text">Six instruments. One field journal. Direct from Cycle 247.</p>
+                  <button class="state-btn state-btn--primary">Pre-order</button>
+                </div>
+              </div>
+              <div class="dual-tile-tag">long-form pages · product · docs · checkout</div>
+            </div>
+
+            <div class="dual-tile" data-surface="chrome">
+              <div class="dual-tile-eyebrow" style="color: var(--lime-400);">CHROME MODE · purple-ground</div>
+              <div class="dual-tile-body">
+                <div class="dual-mini-card dual-mini-card--chrome">
+                  <div class="dual-mini-label">Featured import</div>
+                  <div class="dual-mini-title">Yeti-tracking kit</div>
+                  <p class="dual-mini-text">Six instruments. One field journal. Direct from Cycle 247.</p>
+                  <button class="state-btn state-btn--primary">Pre-order</button>
+                </div>
+              </div>
+              <div class="dual-tile-tag" style="color: var(--lime-400);">hero · marquee · social · ads · dark mode</div>
+            </div>
+          </div>
+
+          <ul class="dual-rules">
+            <li>✓ Cream-ground for long-form (blog, docs, product, checkout). Ink text, brand colors as accents only.</li>
+            <li>✓ Chrome-ground for hero / marquee / social / ads / dark mode. Cream text for body; lime for short links only.</li>
+            <li>✗ Never auto-invert via OS preference — the brand has a default mood per surface type.</li>
+            <li>✗ Never switch ground mid-page; pick one anchor for the surface.</li>
+          </ul>
+        </div>
+
+        <!-- ============================================
+             Inline script — live contrast computation
+        ============================================ -->
+        <script>
+          (function () {
+            const surfaces = [
+              { name: 'cream',       token: '--cream' },
+              { name: 'white',       token: '--white' },
+              { name: 'purple-400',  token: '--purple-400' },
+              { name: 'purple-700',  token: '--purple-700' },
+              { name: 'ink',         token: '--ink' },
+              { name: 'lime-400',    token: '--lime-400' },
+              { name: 'orange-500',  token: '--orange-500' },
+              { name: 'gray-100',    token: '--gray-100' }
+            ];
+            const texts = [
+              { name: 'ink',        token: '--ink' },
+              { name: 'cream',      token: '--cream' },
+              { name: 'white',      token: '--white' },
+              { name: 'purple-400', token: '--purple-400' },
+              { name: 'purple-700', token: '--purple-700' },
+              { name: 'lime-400',   token: '--lime-400' },
+              { name: 'lime-900',   token: '--lime-900' },
+              { name: 'orange-500', token: '--orange-500' }
+            ];
+
+            function hexToRgb(hex) {
+              const v = hex.replace('#', '').trim();
+              const n = v.length === 3
+                ? v.split('').map(c => c + c).join('')
+                : v;
+              return {
+                r: parseInt(n.slice(0, 2), 16),
+                g: parseInt(n.slice(2, 4), 16),
+                b: parseInt(n.slice(4, 6), 16)
+              };
+            }
+            function rgbStringToRgb(str) {
+              const m = str.match(/rgba?\((\d+)[,\s]+(\d+)[,\s]+(\d+)/);
+              if (!m) return null;
+              return { r: +m[1], g: +m[2], b: +m[3] };
+            }
+            function parseColor(c) {
+              if (!c) return null;
+              c = c.trim();
+              if (c.startsWith('#')) return hexToRgb(c);
+              if (c.startsWith('rgb')) return rgbStringToRgb(c);
+              return null;
+            }
+            function relLum({ r, g, b }) {
+              const ch = v => {
+                v /= 255;
+                return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+              };
+              return 0.2126 * ch(r) + 0.7152 * ch(g) + 0.0722 * ch(b);
+            }
+            function contrast(fg, bg) {
+              const a = relLum(fg);
+              const b = relLum(bg);
+              const lighter = Math.max(a, b);
+              const darker  = Math.min(a, b);
+              return (lighter + 0.05) / (darker + 0.05);
+            }
+            function getTokenColor(token) {
+              const val = getComputedStyle(document.documentElement).getPropertyValue(token);
+              return parseColor(val);
+            }
+            function badge(ratio) {
+              if (ratio >= 7)   return '<span class="badge pass">AAA</span>';
+              if (ratio >= 4.5) return '<span class="badge pass">AA</span>';
+              if (ratio >= 3)   return '<span class="badge passlg">AA-LG</span>';
+              return '<span class="badge fail">FAIL</span>';
+            }
+
+            // Render matrix
+            const matrix = document.getElementById('contrast-matrix');
+            if (matrix) {
+              const head = '<thead><tr><th></th>' +
+                texts.map(t => `<th>${t.name}</th>`).join('') +
+                '</tr></thead>';
+              const rows = surfaces.map(s => {
+                const sColor = getTokenColor(s.token);
+                if (!sColor) return '';
+                const cells = texts.map(t => {
+                  const tColor = getTokenColor(t.token);
+                  if (!tColor) return '<td></td>';
+                  const r = contrast(tColor, sColor);
+                  return `<td><div class="cell-ratio">${r.toFixed(2)}</div>${badge(r)}</td>`;
+                }).join('');
+                return `<tr><th class="matrix-row-head">${s.name}</th>${cells}</tr>`;
+              }).join('');
+              matrix.innerHTML = head + '<tbody>' + rows + '</tbody>';
+            }
+
+            // Fill in pairing-tile ratios
+            document.querySelectorAll('.pairing-ratio[data-fg][data-bg]').forEach(el => {
+              const fg = getTokenColor(el.getAttribute('data-fg'));
+              const bg = getTokenColor(el.getAttribute('data-bg'));
+              if (!fg || !bg) return;
+              const r = contrast(fg, bg);
+              el.innerHTML = `${r.toFixed(2)}:1 ${badge(r)}`;
+            });
+          })();
+        </script>
       </section>
       <section id="typography">
         <h3>Typography</h3>
@@ -440,12 +815,16 @@
             <div class="type-specimen-sample type-wordmark">WITTYVERSE</div>
           </div>
           <div class="type-specimen">
-            <div class="type-specimen-label">Display · Big Shoulders Display 900 italic (Black Italic) · headings, subheadings, buttons</div>
+            <div class="type-specimen-label">Display · Big Shoulders Display 900 (regular weight, slant from CSS skew) · headings, subheadings, buttons</div>
             <div class="type-specimen-sample type-display">DELIVERED FROM CYCLE 247</div>
           </div>
           <div class="type-specimen">
-            <div class="type-specimen-label">Body · Inter 400 / 600 / 800 · running text, navigation, UI, kicker lines</div>
-            <div class="type-specimen-sample type-body">Inter sets the body, the labels, and the workhorse copy. The quick brown fox jumps over the lazy dog 0123456789.</div>
+            <div class="type-specimen-label">Pulp display · Bowlby One · hero banner, marquee strip, social ad headline · 1 use per page max</div>
+            <div class="type-specimen-sample type-pulp">ASTOUNDING NEW IMPORTS</div>
+          </div>
+          <div class="type-specimen">
+            <div class="type-specimen-label">Body · Public Sans 400 / 500 / 600 / 700 / 800 · running text, navigation, UI, kicker lines</div>
+            <div class="type-specimen-sample type-body">Public Sans sets the body, the labels, and the workhorse copy. The quick brown fox jumps over the lazy dog 0123456789.</div>
           </div>
           <div class="type-specimen">
             <div class="type-specimen-label">Mono · JetBrains Mono · CYCLE 247, regulatory microline, mono badges</div>
@@ -453,7 +832,7 @@
           </div>
 
           <div class="why">
-            <strong>Why:</strong> Four faces, four locked roles. Lilita One owns the wordmark — showman / candy-bar / theme-park signage that maps to Winston the importer-showman (full rationale in the Logo Typeface card above). Big Shoulders Display 900 italic carries the pulp-mag swagger for site display copy — headings, subheadings, buttons — but never the wordmark. Inter does the long-form readability without competing with the display voice. JetBrains Mono is the deep-canon bridge — the regulatory artifact that lets the deadpan-world layer peek through the pulp brand wrapper.
+            <strong>Why:</strong> Five faces, five locked roles. Lilita One owns the wordmark — showman / candy-bar / theme-park signage that maps to Winston the importer-showman (full rationale in the Logo Typeface card above). Big Shoulders Display 900 carries the pulp-mag swagger for site display copy — headings, subheadings, buttons — but never the wordmark. Bowlby One is the secondary "pulp display" face — reserved for hero banners, marquee strips, and social ad headlines where BSD alone doesn't land hard enough; max one use per page so it stays a moment, not a register. Public Sans (designed by the US Web Design System for federal websites) handles body — civic-tech humanist register that reinforces Winston's deadpan "authorized importer / customs broker" framing. JetBrains Mono is the deep-canon bridge — the regulatory artifact that lets the deadpan-world layer peek through the pulp brand wrapper.
           </div>
         </div>
 
@@ -466,16 +845,17 @@
             </thead>
             <tbody>
               <tr><td>Wordmark</td><td>Logo only — `WITTYVERSE`</td><td>Variable (36–88px+)</td><td>Lilita One 400 ALL CAPS, skewX(−6deg), stacked color shadow</td></tr>
-              <tr><td>Hero</td><td>Landing-page H1 (display copy)</td><td><code>clamp(48px, 7vw, 88px)</code></td><td>Big Shoulders Display 900 italic, skewX(-6deg)</td></tr>
-              <tr><td>H2</td><td>Section header</td><td><code>clamp(36px, 5vw, 56px)</code></td><td>Big Shoulders Display 900 italic, skewX(-6deg)</td></tr>
-              <tr><td>H3</td><td>Sub-section header</td><td><code>clamp(24px, 3vw, 32px)</code></td><td>Big Shoulders Display 800 italic, skewX(-5deg)</td></tr>
-              <tr><td>H4</td><td>Card / sub-block label</td><td>18-22px</td><td>Big Shoulders Display 800 italic uppercase</td></tr>
-              <tr><td>Card title</td><td>Cards, surface labels</td><td>32px</td><td>Big Shoulders Display 900 italic, skewX(-5deg)</td></tr>
-              <tr><td>CTA</td><td>Buttons</td><td>16-18px</td><td>Big Shoulders Display 900 italic uppercase</td></tr>
-              <tr><td>Body</td><td>Paragraph copy</td><td>14-16px</td><td>Inter 400-500, line-height 1.55-1.6</td></tr>
-              <tr><td>Kicker</td><td>Wordmark tagline (italic aside)</td><td>11-13px</td><td>Inter italic 500-600</td></tr>
-              <tr><td>Eyebrow / Label</td><td>Small caps above headings</td><td>11px</td><td>Inter 800 uppercase, letter-spacing 0.14em</td></tr>
-              <tr><td>Caption</td><td>Hex codes, small print</td><td>11-13px</td><td>Inter 600-700</td></tr>
+              <tr><td>Hero</td><td>Landing-page H1 (display copy)</td><td><code>clamp(48px, 7vw, 88px)</code></td><td>Big Shoulders Display 900, skewX(-6deg)</td></tr>
+              <tr><td>Pulp display</td><td>Hero banner / marquee / ad headline (1 use per page)</td><td><code>clamp(54px, 8vw, 96px)</code></td><td>Bowlby One 400, skewX(-7deg), stacked colour shadow</td></tr>
+              <tr><td>H2</td><td>Section header</td><td><code>clamp(36px, 5vw, 56px)</code></td><td>Big Shoulders Display 900, skewX(-6deg)</td></tr>
+              <tr><td>H3</td><td>Sub-section header</td><td><code>clamp(24px, 3vw, 32px)</code></td><td>Big Shoulders Display 800, skewX(-5deg)</td></tr>
+              <tr><td>H4</td><td>Card / sub-block label</td><td>18-22px</td><td>Big Shoulders Display 800 uppercase</td></tr>
+              <tr><td>Card title</td><td>Cards, surface labels</td><td>32px</td><td>Big Shoulders Display 900, skewX(-5deg)</td></tr>
+              <tr><td>CTA</td><td>Buttons</td><td>16-18px</td><td>Big Shoulders Display 900 uppercase</td></tr>
+              <tr><td>Body</td><td>Paragraph copy</td><td>14-16px</td><td>Public Sans 400-500, line-height 1.55-1.6</td></tr>
+              <tr><td>Kicker</td><td>Wordmark tagline (italic aside)</td><td>11-13px</td><td>Public Sans italic 500-600</td></tr>
+              <tr><td>Eyebrow / Label</td><td>Small caps above headings</td><td>11px</td><td>Public Sans 800 uppercase, letter-spacing 0.14em</td></tr>
+              <tr><td>Caption</td><td>Hex codes, small print</td><td>11-13px</td><td>Public Sans 600-700</td></tr>
               <tr><td>Mono tag</td><td>CYCLE 247 / regulatory / badges</td><td>10-12px</td><td>JetBrains Mono uppercase, letter-spacing 0.12em</td></tr>
             </tbody>
           </table>
@@ -488,20 +868,23 @@
               <h5 class="type-rules-heading">Do</h5>
               <ul class="type-rules-list type-rules-do">
                 <li>Use Lilita One ONLY for the wordmark (`WITTYVERSE`) and the W monogram.</li>
-                <li>Use Big Shoulders Display 900 italic for site display copy — headings, subheadings, buttons.</li>
-                <li>Pair Big Shoulders display headline + Inter subline (never Display + Display).</li>
+                <li>Use Big Shoulders Display 900 for site display copy — headings, subheadings, buttons.</li>
+                <li>Use Bowlby One ONLY for pulp display moments — hero banners, marquee strips, ad headlines. Maximum ONE use per page.</li>
+                <li>Pair Big Shoulders display headline + Public Sans subline (never Display + Display).</li>
                 <li>Use JetBrains Mono only as the deep-canon tag — `CYCLE 247`, regulatory microline, mono badges. 10–12px, all-caps, 0.12em tracking.</li>
-                <li>Use the skewX(−6deg) tilt on the wordmark; −5deg on the monogram; −5° to −7° on display headlines.</li>
-                <li>Reserve uppercase for the wordmark + Display headlines + eyebrows. Body stays sentence case.</li>
+                <li>Use the skewX(−6deg) tilt on the wordmark; −5deg on the monogram; −5° to −7° on display headlines; −7° on pulp display.</li>
+                <li>Reserve uppercase for the wordmark + Display headlines + eyebrows + pulp display. Body stays sentence case.</li>
               </ul>
             </div>
             <div>
               <h5 class="type-rules-heading">Don't</h5>
               <ul class="type-rules-list type-rules-dont">
                 <li>Don't render the wordmark in mixed-case (`Wittyverse`) — always ALL CAPS `WITTYVERSE` (NEVER 15).</li>
-                <li>Don't set the wordmark in Big Shoulders Display — Lilita One only (NEVER 3).</li>
+                <li>Don't set the wordmark in Big Shoulders Display or Bowlby One — Lilita One only (NEVER 3).</li>
                 <li>Don't use Lilita One for non-wordmark display, body, or accent copy — it's the wordmark face only.</li>
-                <li>Don't run body copy in Big Shoulders, Lilita, or JetBrains Mono.</li>
+                <li>Don't use Bowlby One for body, eyebrows, CTAs, navigation, or in-line emphasis. Pulp display moments only.</li>
+                <li>Don't use Bowlby One more than once per page — multiple uses dilute the "this is the loud bit" signal.</li>
+                <li>Don't run body copy in Big Shoulders, Bowlby, Lilita, or JetBrains Mono.</li>
                 <li>Don't lower the skew below −4deg or above −7deg — it loses its punch (NEVER 4).</li>
                 <li>Don't combine 3+ display weights in the same composition.</li>
                 <li>Don't justify body text — left-align everywhere.</li>
@@ -542,7 +925,7 @@
               <div class="imagery-thumb-caption">Background (1024×1024)</div>
             </div>
             <div class="imagery-thumb">
-              <div class="imagery-thumb-frame" style="background: var(--color-orange); display: flex; align-items: center; justify-content: center; color: var(--color-ink); font-family: var(--font-display); font-style: italic; font-weight: 900; font-size: 28px; transform: skewX(0deg);">
+              <div class="imagery-thumb-frame" style="background: var(--color-orange); display: flex; align-items: center; justify-content: center; color: var(--color-ink); font-family: var(--font-display); font-weight: 900; font-size: 28px; transform: skewX(0deg);">
                 <span style="transform: skewX(-6deg); display: inline-block;">v1</span>
               </div>
               <div class="imagery-thumb-caption">v1 storefront hero (live)</div>

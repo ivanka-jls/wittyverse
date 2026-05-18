@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 260" width="1600" height="260" role="img" aria-label="Wittyverse full masthead lockup">
   <title>Wittyverse full masthead — wordmark + mono Cycle 247 tag + kicker + marquee</title>
-  <desc>The brand identity lockup: orange marquee strip on top, all-caps WITTYVERSE wordmark in Lilita One with ink + orange-deep stacked shadow, mono "Cycle 247" tag to the right (deadpan-world bridge), kicker line "Operated by Winston, Dr. W. Yeti PhD" beneath, all on purple-mid masthead ground with ink bottom border.</desc>
+  <desc>The brand identity lockup: orange marquee strip on top, all-caps WITTYVERSE wordmark in Lilita One with ink + lime stacked shadow, mono "Cycle 247" tag to the right (deadpan-world bridge), kicker line "Operated by Winston, Dr. W. Yeti PhD" beneath, all on purple-mid masthead ground with ink bottom border.</desc>
   <defs>
     <style type="text/css"><![CDATA[
       @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Inter:wght@500;800&family=JetBrains+Mono:wght@700&display=swap');
@@ -53,7 +53,7 @@
 
   <g transform="translate(120, 170)">
     <g transform="skewX(-6)">
-      <text class="wm" fill="#E55A1A" x="6" y="6">WITTYVERSE</text>
+      <text class="wm" fill="#9EE83D" x="6" y="6">WITTYVERSE</text>
       <text class="wm" fill="#1A0A2E" x="3" y="3">WITTYVERSE</text>
       <text class="wm" fill="#FF6B2C" x="0" y="0">WITTYVERSE</text>
     </g>

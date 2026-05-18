@@ -1,5 +1,23 @@
 [
   {
+    "version": "0.7",
+    "date": "2026-05-15",
+    "changes": [
+      "Color section: rebuilt around the v0.7 surface-system — three-tier token architecture (raw → semantic → component), 11 hues × 4-step ramps, six usage rules tested across eight digital media",
+      "Two-register framing added (R2 storefront chrome vs R1 in-universe canon) — heads off the v1 'tasteful editorial' trap where R1 deadpan rules got mis-applied to R2 storefront",
+      "New semantic tokens: --surface-input + --surface-overlay (always white — typed-text legibility, modal lift), --surface-chrome-deep (purple-700 for sustained chrome like sidebars/dashboards), --text-running-on-chrome (cream for multi-line on purple — lime stays for short labels only)",
+      "Cream is the GROUND; white is what LIFTS off it (cards, inputs, modals) — explicitly documented after A/B/C cream-vs-white test made the difference visible",
+      "State-success retuned from #1B6B2A → #1F8B3D — stays green, but at saturation/lightness sibling-pair to state-error red (#C92A2A) so positive/negative state colors feel like the same family. Brand-lime vs state-green ambiguity is handled by hue-family distance (135° vs 85°) plus rule 6 (keep apart in dense data) rather than by hue swap.",
+      "Wordmark canon update: the orange-fill wordmark's stacked-shadow stack is now orange (fill) · ink (4px) · lime-400 (8px) — matches the W monogram color stack. Previous canon used orange-deep as the back-shadow; .type-wordmark specimens on brand-guidelines + brand-one-pager updated. Lime-700 and orange-700 role descriptions updated accordingly (deep / structural rather than wordmark-specific). masthead-full.svg regenerated to use the lime back-shadow.",
+      "Big Shoulders Display italic correction: BSD is rendered at weight 900 (regular), with slant from CSS skewX(...), not from the italic variant. Prior canon said '900 italic'; that was layering the typeface italic ON TOP of the CSS skew, producing ~16° of compounded slant. All CSS rules using --font-display had font-style: italic removed; specimens + scale tables + bible §4D Typography updated.",
+      "Typography system expanded from four to five faces: Bowlby One added as --font-pulp — the secondary 'pulp display' face for hero banners, marquee strips, and ad headlines. One use per page max. Same stacked-shadow treatment as the wordmark (orange/ink/lime), skewX(-7deg). Bowlby One was proven in the v18-the-pulp prototype as a poster sibling to Big Shoulders Display. NEVER 3 expanded to include Bowlby One (not for the wordmark); NEVER 17 added (one-use-per-page rule).",
+      "Interactive states now documented for primary / secondary / accent CTAs (default / hover / active / focus / disabled) with full token chain",
+      "Contrast ratios now computed live from the :root token values (8 surfaces × 8 text colors matrix + per-pairing badges) — replaces the hand-maintained v0.6 table, so any future palette tweak surfaces here automatically",
+      "Backwards-compat: existing --color-purple / --color-lime / etc. aliases preserved, no breaking changes to live components",
+      "Body face swapped from Inter to Public Sans (US Web Design System, civic-tech humanist). Rationale: the brand's strongest joke is Winston pretending to run a legitimate authorized importer — mono CYCLE 247 tags, regulatory microline, customs paperwork aesthetic — and Public Sans (literally designed by the federal government for civic websites) extends that deadpan-bureaucratic register into body type itself. Body voice now reads as 'we have our paperwork in order.' Comparison page at /body-face-comparison.html documents the seven-face shortlist. Inter retained as a fallback during font load only. tokens.css + brand-guidelines + brand-one-pager + brand-bible §4D Typography all updated."
+    ]
+  },
+  {
     "version": "0.6",
     "date": "2026-05-11",
     "changes": [
