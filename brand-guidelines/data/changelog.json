@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.11",
+    "date": "2026-05-18",
+    "changes": [
+      "Voice: ported §9 Storefront Discipline as new #storefront-discipline block, placed right after the existing Persona vs. Man R1/R2 register grid. Documents the storefront-geography rule that pairs with 'Voice everywhere. Face nowhere.' — NEVER name NC/Himalayas/cave/portal/real surname; CAN name Winston/Dr. W. Yeti PhD/the Wittyverse. The mystery is the product.",
+      "Voice: ported R2 Banned Words & Phrases (Appendix B) as new #banned-r2 block, placed right after the Do/Don't grid (voice.json-driven 7-rule list). 10-category master ban-list (Hype, Internet Slang, Generic Gift Language, Engagement Bait, Emoji Clusters, Off-Brand Territory, Performative Emotion, Corporate Filler, Punctuation Violations, Humor Narration) — ~80 banned items total. Explicitly labeled R2 / Storefront, with a note pointing to the future R1 in-universe ban-list inside the Voice Codex keeper (still to be ported).",
+      "Voice: ported R2 Vocabulary Guidance as new #lexicon-r2 block, placed right after #messaging-hierarchy. Two tables — Key Phrases OK in R2 (the Wittyverse, O.O.P.S., 'jokes on every surface', etc.) and Deep Canon R1-Only (specific directives, minor character names, locations, in-universe units). Closes with a pointer to wittyverse-codex for world-canon entities (R2 page documents surface rules; codex documents the universe).",
+      "Voice section page-order now reads: Brand Personality → Operator Personality → Persona vs. Man + R1/R2 grid → Storefront Discipline → Do/Don't grid → R2 Banned → Messaging Framework → Messaging Hierarchy → R2 Vocabulary Guidance → Sample Copy → trust-seal-cluster. Abstract → concrete → rules → vocabulary → samples.",
+      "Brand-docs cleanup Batch 4 (refactor/brand-docs-cleanup worktree). Remaining ports: §9 Origin Narrative (storefront-side Johnny arc) → #strategy, §12 Creative Direction Seeds (partial) → #visual-system, and the Voice Codex R1 Keeper (largest substantive remaining port — 10 sub-sections) → #voice. Then Step 3 (brand-bible Redirect) and Step 4 (homepage update)."
+    ]
+  },
+  {
     "version": "0.10",
     "date": "2026-05-18",
     "changes": [
