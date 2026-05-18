@@ -1,5 +1,16 @@
 [
   {
+    "version": "0.9",
+    "date": "2026-05-18",
+    "changes": [
+      "Voice & Messaging: added new #personality subsection inside #voice, placed above the R1/R2 register grid — ports §6 Brand Personality from the brand bible (Wickedly Clever / Unflappably Deadpan / Generous With Joy / Obsessively Crafted / Mischievous Not Malicious, each with Is / Is not / Guardrail) + the Party Test. Resolves the §6 reconciliation flagged in the Inventory Delta: this is the abstract brand DNA, distinct from the Winston operator voice attributes below it. Order is now abstract → concrete (Brand Personality → Operator Personality → R1/R2 Persona vs Man → register tiles).",
+      "Voice: existing 'Personality' h3 (voice.json-driven, Winston operator voice attributes) renamed to 'Operator Personality (Winston Voice Attributes)' + clarifying sub-line — disambiguates from the new abstract Brand Personality block above.",
+      "Strategy & Positioning: ported two more audited bible sections as standalone canon-cards under #strategy — #mantra (§7 Brand Mantra: 'Shockingly good laughter', usage cases, Johnny's verbatim North Star, mantra-vs-North-Star pairing) and #proof-points (§10 Proof Point Inventory: Structural / Functional / Emotional advantages + Proof-to-Benefit Map table).",
+      "styles.css: added .canon-card blockquote rule (purple left border + tint background) for the Johnny North Star quote in #mantra, and .canon-card table / th / td rules (orange-deep uppercase header, dashed ink dividers — matches contrast-table aesthetic) for the Proof-to-Benefit Map and any future canon-card tables.",
+      "Brand-docs cleanup Batch 2 (refactor/brand-docs-cleanup worktree). Remaining ports: §8 Customer-Relationship extension → #customer, §11 Messaging Hierarchy → #voice, R2 Banned Words → #voice, Voice Codex R1 keeper → #voice, Appendix A Common Decisions → #strategy, plus §9 origin/§12 visual seeds/lexicon split decisions."
+    ]
+  },
+  {
     "version": "0.8",
     "date": "2026-05-18",
     "changes": [
