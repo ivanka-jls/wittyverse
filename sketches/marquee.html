@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch · Marquee middle ground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --purple-400: #6A1B9A;
+    --purple-700: #401A75;
+    --ink:        #1A0A2E;
+    --orange-500: #FF6B2C;
+    --lime-400:   #9EE83D;
+    --cream:      #FFF4E6;
+    --font-body:  'Public Sans', system-ui, sans-serif;
+    --font-mono:  'JetBrains Mono', monospace;
+  }
+
+  body {
+    background: var(--purple-400);
+    background-image: radial-gradient(ellipse at top, var(--purple-400) 0%, var(--ink) 80%);
+    color: var(--cream);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    padding: 60px 0;
+  }
+
+  .caption {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    color: var(--cream);
+    font-size: 13px;
+    line-height: 1.6;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+  }
+  .caption strong {
+    display: block;
+    color: var(--lime-400);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .caption .meta {
+    color: rgba(255,244,230,0.65);
+    margin-top: 6px;
+    font-size: 11px;
+  }
+  .spacer { height: 80px; }
+  .divider {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .divider-line {
+    border-top: 1px dashed rgba(255,244,230,0.25);
+  }
+
+  /* ============================================================
+     PROPOSED — middle ground · JetBrains Mono ticker
+     ============================================================ */
+  .topbar-proposed {
+    background: var(--orange-500);
+    color: var(--ink);
+    padding: 10px 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-top: 4px solid var(--ink);
+    border-bottom: 4px solid var(--ink);
+  }
+  .marquee-proposed {
+    display: flex;
+    gap: 48px;
+    animation: marquee 42s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee-proposed span { display: inline-flex; align-items: center; gap: 14px; }
+  .marquee-proposed span::before {
+    content: '◆';
+    color: var(--ink);
+    font-size: 12px;
+    opacity: 0.7;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ============================================================
+     CURRENT v2 — for direct comparison
+     ============================================================ */
+  .topbar-current {
+    background: var(--orange-500);
+    color: var(--ink);
+    padding: 10px 0;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-top: 4px solid var(--ink);
+    border-bottom: 4px solid var(--ink);
+  }
+  .marquee-current {
+    display: flex;
+    gap: 56px;
+    animation: marquee 42s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee-current span { display: inline-flex; align-items: center; gap: 12px; }
+  .marquee-current span::before {
+    content: '✦';
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  /* ============================================================
+     HYPNOSPACE — for reference only (original dark CRT version)
+     ============================================================ */
+  .topbar-hypnospace {
+    background: #0D0620;
+    color: #00FF88;
+    padding: 6px 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    overflow: hidden;
+    border-top: 2px solid #5C27A3;
+    border-bottom: 2px solid #5C27A3;
+    text-transform: uppercase;
+  }
+
+  /* ============================================================
+     DARK BRAND — Hypnospace-styled with brand tokens
+     ink bg · lime-400 text · orange-500 separator · JetBrains Mono
+     ============================================================ */
+  .topbar-dark-brand {
+    background: var(--ink);
+    color: var(--lime-400);
+    padding: 10px 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-top: 2px solid var(--purple-700);
+    border-bottom: 2px solid var(--purple-700);
+  }
+  .marquee-dark-brand {
+    display: flex;
+    gap: 48px;
+    animation: marquee 42s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee-dark-brand span { display: inline-flex; align-items: center; gap: 14px; }
+  .marquee-dark-brand span::before {
+    content: '◆';
+    color: var(--orange-500);
+    font-size: 12px;
+  }
+
+  /* Separator variants — same .topbar-dark-brand chrome, separator only changes */
+  .sep-middot span::before { content: '·';  font-size: 18px; line-height: 0; }
+  .sep-arrow  span::before { content: '▸';  font-size: 13px; }
+  .sep-slash  span::before { content: '//'; font-size: 12px; font-weight: 700; letter-spacing: 0; }
+  .sep-block  span::before { content: '■';  font-size: 9px; }
+  .sep-sparkle span::before { content: '✦'; font-size: 13px; }
+  .marquee-hypnospace {
+    display: flex;
+    gap: 32px;
+    animation: marquee 42s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee-hypnospace span { display: inline-flex; align-items: center; gap: 14px; }
+  .marquee-hypnospace span::before {
+    content: '◆';
+    color: var(--orange-500);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="caption">
+  <strong>Sketch · Marquee middle ground</strong>
+  Four versions stacked. Compare directly. Brand tokens only (orange-500 / ink / cream / lime-400 / purple-700).
+  <span class="meta">Sketch not wired anywhere. v2 untouched.</span>
+</div>
+
+<!-- ============================================================
+     1. PROPOSED — middle ground
+     ============================================================ -->
+<div class="caption">
+  <strong>1 · Proposed middle ground</strong>
+  JetBrains Mono 600, 13px, letter-spacing 0.10em, ◆ separator (ink @ 70%). Content mix: R2 trust + R1 in-universe ops.
+</div>
+<div class="topbar-proposed">
+  <div class="marquee-proposed">
+    <span>CYCLE 247 · DISPATCH ON SCHEDULE</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>CYCLE 247 · DISPATCH ON SCHEDULE</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="spacer"></div>
+<div class="divider"><div class="divider-line"></div></div>
+<div class="spacer"></div>
+
+<!-- ============================================================
+     2. v2 CURRENT — for comparison
+     ============================================================ -->
+<div class="caption">
+  <strong>2 · v2 current (for comparison)</strong>
+  Public Sans 800, 13px, letter-spacing 0.08em, ✦ separator. All R2 trust content.
+</div>
+<div class="topbar-current">
+  <div class="marquee-current">
+    <span>Free US shipping over $40</span>
+    <span>Dispatched from [REDACTED]</span>
+    <span>30-day money-back guarantee</span>
+    <span>4.8★ across 2,438 reviews</span>
+    <span>Free US shipping over $40</span>
+    <span>Dispatched from [REDACTED]</span>
+    <span>30-day money-back guarantee</span>
+    <span>4.8★ across 2,438 reviews</span>
+  </div>
+</div>
+
+<div class="spacer"></div>
+<div class="divider"><div class="divider-line"></div></div>
+<div class="spacer"></div>
+
+<!-- ============================================================
+     3. HYPNOSPACE — reference (off-brand, just for vibe context)
+     ============================================================ -->
+<div class="caption">
+  <strong>3 · Hypnospace original (reference only — off-brand)</strong>
+  Dark CRT bg, lime CRT green text, VT323 mono. Not brand-canon, just here so the inspiration vibe is on the page.
+</div>
+<div class="topbar-hypnospace">
+  <div class="marquee-hypnospace">
+    <span>DISPATCH STATUS: TUESDAY CYCLE 247 — ON SCHEDULE</span>
+    <span>O.O.P.S. COMPLIANCE: CURRENT</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>FREE SHIPPING ON ORDERS OVER $50</span>
+    <span>EARTH-SIDE FULFILLMENT: CHARLOTTE, NC</span>
+    <span>NAGs FILING #247-088 ON RECORD</span>
+    <span>ITEMS HAND-INSPECTED BEFORE EXPORT</span>
+    <span>DISPATCH STATUS: TUESDAY CYCLE 247 — ON SCHEDULE</span>
+    <span>O.O.P.S. COMPLIANCE: CURRENT</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>FREE SHIPPING ON ORDERS OVER $50</span>
+    <span>EARTH-SIDE FULFILLMENT: CHARLOTTE, NC</span>
+    <span>NAGs FILING #247-088 ON RECORD</span>
+    <span>ITEMS HAND-INSPECTED BEFORE EXPORT</span>
+  </div>
+</div>
+
+<div class="spacer"></div>
+<div class="divider"><div class="divider-line"></div></div>
+<div class="spacer"></div>
+
+<!-- ============================================================
+     4. DARK BRAND — Hypnospace-styled with brand tokens
+     ============================================================ -->
+<div class="caption">
+  <strong>4 · Dark brand (Hypnospace styled, on-brand)</strong>
+  Ink bg · brand lime-400 text · brand orange-500 ◆ separator · JetBrains Mono 600, 13px, 0.10em.
+  6 items (proposed mix minus "CYCLE 247 · DISPATCH ON SCHEDULE"). Borders: purple-700 hairline.
+</div>
+<div class="topbar-dark-brand">
+  <div class="marquee-dark-brand">
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="spacer"></div>
+<div class="divider"><div class="divider-line"></div></div>
+<div class="spacer"></div>
+
+<!-- ============================================================
+     VARIATION 4 — Separator options
+     Everything else identical: ink bg, lime-400 text, JetBrains Mono.
+     ============================================================ -->
+<div class="caption">
+  <strong>4 · Separator options (same chrome, varies separator only)</strong>
+  Pick one. All in brand orange-500, sized to match their shape weight.
+</div>
+
+<!-- 4a — ◆ current diamond -->
+<div class="caption" style="padding-top: 0; padding-bottom: 4px; font-size: 11px; opacity: 0.7;">4a · ◆ diamond (current)</div>
+<div class="topbar-dark-brand">
+  <div class="marquee-dark-brand">
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="caption" style="padding-top: 18px; padding-bottom: 4px; font-size: 11px; opacity: 0.7;">4b · · middot (quietest, lets the content breathe)</div>
+<div class="topbar-dark-brand">
+  <div class="marquee-dark-brand sep-middot">
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="caption" style="padding-top: 18px; padding-bottom: 4px; font-size: 11px; opacity: 0.7;">4c · ▸ triangle pointer (terminal/UI feel, matches v9 sidebar markers)</div>
+<div class="topbar-dark-brand">
+  <div class="marquee-dark-brand sep-arrow">
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="caption" style="padding-top: 18px; padding-bottom: 4px; font-size: 11px; opacity: 0.7;">4d · // double slash (echoes the wv:// protocol idea — strongest brand-narrative tie)</div>
+<div class="topbar-dark-brand">
+  <div class="marquee-dark-brand sep-slash">
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="caption" style="padding-top: 18px; padding-bottom: 4px; font-size: 11px; opacity: 0.7;">4e · ■ pixel block (8-bit ticker, very system-readout)</div>
+<div class="topbar-dark-brand">
+  <div class="marquee-dark-brand sep-block">
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="caption" style="padding-top: 18px; padding-bottom: 4px; font-size: 11px; opacity: 0.7;">4f · ✦ sparkle (carries v2's existing separator into the dark ticker)</div>
+<div class="topbar-dark-brand">
+  <div class="marquee-dark-brand sep-sparkle">
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+    <span>FREE US SHIPPING OVER $40</span>
+    <span>MEMBRANE INTEGRITY: 99.6%</span>
+    <span>30-DAY MONEY-BACK GUARANTEE</span>
+    <span>HAND-INSPECTED BEFORE EXPORT · DOCK-04</span>
+    <span>4.8★ ACROSS 2,438 REVIEWS</span>
+    <span>O.O.P.S. COMPLIANCE CURRENT · NAGs FILING #247-088</span>
+  </div>
+</div>
+
+<div class="caption" style="margin-top: 80px;">
+  <strong>Decisions to call</strong>
+  · Pick separator: 4a ◆ · 4b · · 4c ▸ · 4d // · 4e ■ · 4f ✦<br>
+  · Font weight 600 vs 500 (less bold reads more "ticker")<br>
+  · Letter-spacing 0.10em vs 0.12em (canon mono)<br>
+  · "NAGs FILING #247-088" — keep number or shorter "NAGs FILING CURRENT"?
+</div>
+
+</body>
+</html>
