@@ -123,9 +123,17 @@
 
   /* Featured (current direction) */
   .featured {
-    max-width: 820px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 20px 24px 30px;
+  }
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  @media (max-width: 880px) {
+    .featured-grid { grid-template-columns: 1fr; }
   }
 
   /* Archive (pre-v1 explorations) */
@@ -315,12 +323,12 @@
 
 <div class="topbar">
   <div class="marquee">
-    <span>Wittyverse homepage — v2 live</span>
-    <span>Iterate on the live page</span>
+    <span>v2 — live iteration target</span>
+    <span>v3 — pulp magazine variation</span>
     <span>Cycle 247 catalog</span>
     <span>Hand-inspected before export</span>
-    <span>Wittyverse homepage — v2 live</span>
-    <span>Iterate on the live page</span>
+    <span>v2 — live iteration target</span>
+    <span>v3 — pulp magazine variation</span>
     <span>Cycle 247 catalog</span>
     <span>Hand-inspected before export</span>
   </div>
@@ -328,24 +336,42 @@
 
 <section class="hero">
   <div class="hero-eyebrow">Wittyverse Storefront</div>
-  <h1 class="hero-title">The future,<br><span class="accent">v2.</span></h1>
-  <p class="hero-sub">Wittyverse homepage — iterating live. v1 below as reference.</p>
+  <h1 class="hero-title">Design <span class="accent">variations.</span></h1>
+  <p class="hero-sub">v2 — live iteration target. v3 — pulp magazine variation, same structure + content. v1 below as reference.</p>
 </section>
 
 <section class="featured">
-  <a class="card latest" href="v2-wittyverse-homepage.html">
-    <div class="card-corner">v2 · current</div>
-    <h2 class="card-title">Wittyverse<br>Homepage</h2>
-    <div class="card-meta">Live storefront · iterate here</div>
-    <p class="card-desc">The live Wittyverse homepage. Forked from v1 as the working baseline — iteration happens here from now on, no more wireframe → live translation. §6 Proof of Import (locked in <code>wireframe-plain.html</code> v7) is the next section to port in. Marquee, header, hero, shop, trust grid, mission, footer carry forward from v1 and get refined live.</p>
-    <div class="card-tags">
-      <span class="card-tag purple">Purple</span>
-      <span class="card-tag lime">Lime</span>
-      <span class="card-tag orange">Orange</span>
-      <span class="card-tag dark">Ink</span>
-    </div>
-    <span class="card-cta">Open →</span>
-  </a>
+  <div class="featured-grid">
+
+    <a class="card latest" href="v2-wittyverse-homepage.html">
+      <div class="card-corner">v2 · iterate</div>
+      <h2 class="card-title">Wittyverse<br>Homepage</h2>
+      <div class="card-meta">Live storefront · iterate here</div>
+      <p class="card-desc">The live Wittyverse homepage. Forked from v1 as the working baseline — iteration happens here from now on, no more wireframe → live translation. Marquee, masthead, hero, best sellers, browse, Proof of Import (R1 guestbook panel), FAQ, newsletter, footer.</p>
+      <div class="card-tags">
+        <span class="card-tag purple">Purple</span>
+        <span class="card-tag lime">Lime</span>
+        <span class="card-tag orange">Orange</span>
+        <span class="card-tag dark">Ink</span>
+      </div>
+      <span class="card-cta">Open v2 →</span>
+    </a>
+
+    <a class="card latest" href="v3-wittyverse-homepage.html">
+      <div class="card-corner">v3 · variation</div>
+      <h2 class="card-title">Pulp<br>Magazine</h2>
+      <div class="card-meta">Pulp catalog variation · same structure</div>
+      <p class="card-desc">v2's exact structure + content with the pulp magazine design treatment layered on top — Bowlby One pulp display on the hero, faux pulp-magazine cover illustration on the right, shelf-item product illustrations inside cards, drop-cap on Winston's letter, "2x per month" badge on the newsletter, compliance pills in the footer. Brand tokens only (purple/lime/orange/cream/ink).</p>
+      <div class="card-tags">
+        <span class="card-tag purple">Purple</span>
+        <span class="card-tag lime">Lime</span>
+        <span class="card-tag orange">Orange</span>
+        <span class="card-tag dark">Ink</span>
+      </div>
+      <span class="card-cta">Open v3 →</span>
+    </a>
+
+  </div>
 </section>
 
 <section class="archive-section" style="padding-top: 30px; padding-bottom: 10px;">

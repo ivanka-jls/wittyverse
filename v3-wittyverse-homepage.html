@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wittyverse — Out of this world gag gifts you can't buy anywhere else.</title>
+<meta name="description" content="Gag gifts from a dimension you can't visit. Personally hauled back, personally inspected, personally on the hook. — Dr. W. Yeti PhD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Bowlby+One&family=Big+Shoulders+Display:wght@700;800;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   WITTYVERSE v3 — same structure as v2, pulp magazine treatment
+   on top. Brand tokens only — purple/lime/orange/cream/ink.
+   The pulp treatment lives in: hero faux-magazine-cover,
+   shelf-item product illustrations, comic-burst stickers,
+   drop-cap letter, 2x newsletter badge, compliance pills.
+   ============================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* ---------- Canon hues (from brand-guidelines/tokens.css) ---------- */
+  --purple-100: #E2D3EE;
+  --purple-400: #6A1B9A;
+  --purple-mid: #5C27A3;
+  --purple-700: #401A75;
+  --ink:        #1A0A2E;
+  --lime-100:   #E8F8CF;
+  --lime-400:   #9EE83D;
+  --lime-700:   #7CB342;
+  --orange-100: #FFE0CF;
+  --orange-500: #FF6B2C;
+  --orange-700: #E55A1A;
+  --cream:      #FFF4E6;
+  --paper:      #F5EFDF;
+  --white:      #FFFFFF;
+  --gray-300:   #C9BFAD;
+  --gray-700:   #4E483D;
+
+  /* R1 guestbook panel tokens (in-universe artifact) */
+  --gb-bg: #0d0d0d;
+  --gb-border: #2a2a2a;
+  --gb-amber: #d4a017;
+  --gb-green: #10b981;
+  --gb-text: #d4d4d4;
+
+  /* ---------- Fonts ---------- */
+  --font-accent:  'Lilita One', sans-serif;            /* wordmark + monogram only */
+  --font-display: 'Big Shoulders Display', sans-serif; /* all H1-H4, CTAs, card titles */
+  --font-pulp:    'Bowlby One', cursive;               /* 1 use per page — hero headline */
+  --font-body:    'Public Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* canonical stacked shadow — wordmark + pulp display share this */
+  --canon-stack: 4px 4px 0 var(--ink), 8px 8px 0 var(--lime-400);
+  --canon-stack-sm: 3px 3px 0 var(--ink), 6px 6px 0 var(--lime-400);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--purple-mid);
+  background-image: radial-gradient(ellipse at top, var(--purple-400) 0%, var(--ink) 80%);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* halftone — page-wide dot overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 4px 4px;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+.mono { font-family: var(--font-mono); }
+
+/* ============================================================
+   §1 MARQUEE
+   ============================================================ */
+.topbar {
+  background: var(--orange-500);
+  color: var(--ink);
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  overflow: hidden;
+  border-bottom: 4px solid var(--ink);
+  position: relative;
+  z-index: 60;
+}
+.marquee {
+  display: flex;
+  gap: 56px;
+  animation: marquee 42s linear infinite;
+  white-space: nowrap;
+}
+.marquee span { display: inline-flex; align-items: center; gap: 12px; }
+.marquee span::before { content: '✦'; color: var(--ink); font-size: 14px; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   §2 MASTHEAD
+   ============================================================ */
+.masthead {
+  padding: 30px 0 24px;
+  position: relative;
+  z-index: 50;
+}
+.masthead-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.masthead-left { display: flex; flex-direction: column; gap: 8px; }
+.wordmark {
+  font-family: var(--font-accent);
+  font-size: clamp(34px, 4.5vw, 48px);
+  color: var(--orange-500);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  transform: skewX(-6deg);
+  transform-origin: left;
+  text-shadow: var(--canon-stack);
+}
+.kicker {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--cream);
+  max-width: 360px;
+  line-height: 1.4;
+  opacity: 0.92;
+}
+.masthead-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lime-400);
+  margin-top: 4px;
+  opacity: 0.78;
+}
+
+.masthead-center { display: flex; flex-direction: column; align-items: center; }
+.stamp {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 2px solid var(--cream);
+  background: rgba(255,244,230,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  padding: 12px;
+  color: var(--cream);
+  transform: rotate(-8deg);
+  text-transform: uppercase;
+}
+.stamp .stamp-sig {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  color: var(--lime-400);
+}
+.stamp .stamp-divider {
+  width: 60%;
+  border-top: 1px solid var(--cream);
+  margin: 4px 0;
+  opacity: 0.6;
+}
+
+.masthead-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+.status-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  border: 1px solid var(--lime-400);
+  padding: 7px 12px;
+  background: var(--ink);
+  color: var(--lime-400);
+  text-transform: uppercase;
+}
+.nav-row { display: flex; gap: 18px; align-items: center; }
+.nav-items {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--cream);
+  letter-spacing: 0.03em;
+}
+.nav-items a { margin-right: 14px; transition: color 0.15s; }
+.nav-items a:last-child { margin-right: 0; }
+.nav-items a:hover { color: var(--lime-400); }
+.icons { display: flex; gap: 8px; }
+.icon-box {
+  font-family: var(--font-mono);
+  border: 1px solid var(--cream);
+  padding: 4px 9px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--cream);
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+.icon-box:hover { background: var(--cream); color: var(--ink); }
+
+/* ============================================================
+   §3 HERO — pulp magazine cover added on the right
+   ============================================================ */
+.hero {
+  padding: 48px 0 80px;
+  position: relative;
+  z-index: 5;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-copy { display: flex; flex-direction: column; gap: 18px; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: var(--lime-400);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 3px solid var(--orange-500);
+  align-self: flex-start;
+}
+.eyebrow::before, .eyebrow::after { content: '✦'; color: var(--orange-500); }
+
+/* THE PULP HEADLINE — 1 use per page max. Bowlby One · orange fill ·
+   ink (3px) · lime (6px) back-shadow · skewX(-7deg). Canonical stack. */
+.headline-pulp {
+  font-family: var(--font-pulp);
+  font-weight: 400;
+  font-size: clamp(48px, 6.4vw, 88px);
+  line-height: 0.9;
+  color: var(--orange-500);
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  transform: skewX(-7deg);
+  transform-origin: left;
+  text-shadow: var(--canon-stack);
+  display: inline-block;
+  padding: 0 4px 8px 4px;
+  margin: 6px 0 4px;
+}
+.subline {
+  font-size: 16.5px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.6;
+  max-width: 520px;
+}
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--cream);
+  font-weight: 600;
+}
+.rating-row .stars { color: var(--lime-400); font-size: 18px; letter-spacing: -0.02em; }
+.price-line {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 14px 26px;
+  border-radius: 40px;
+  background: var(--orange-500);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 0 5px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 0 var(--ink); }
+.btn:active { transform: translateY(2px); box-shadow: 0 3px 0 var(--ink); }
+.btn-secondary { background: var(--cream); color: var(--ink); }
+.btn-secondary:hover { background: var(--white); }
+.trust-microcopy {
+  font-size: 12px;
+  color: var(--cream);
+  font-style: italic;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+.badges-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  border: 1px solid var(--cream);
+  padding: 5px 10px;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.8;
+}
+
+/* ============================================================
+   HERO COVER — faux pulp magazine cover (replaces v2 placeholder)
+   ============================================================ */
+.cover {
+  position: relative;
+  aspect-ratio: 4 / 5.2;
+  background: var(--purple-400);
+  border: 4px solid var(--ink);
+  box-shadow: 0 10px 0 var(--ink), 0 16px 32px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font-display);
+  color: var(--cream);
+}
+.cover::before {
+  /* center radial glow */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 50% 55%, rgba(158,232,61,0.18) 0%, rgba(158,232,61,0) 60%);
+  pointer-events: none;
+}
+.cover::after {
+  /* halftone dots */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.10) 1px, transparent 1px);
+  background-size: 5px 5px;
+  pointer-events: none;
+}
+
+/* top band */
+.cover-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 3;
+  flex-shrink: 0;
+}
+.cover-vol {
+  background: var(--ink);
+  color: var(--lime-400);
+  padding: 5px 9px;
+}
+.cover-cycle {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 5px 9px;
+}
+
+/* $0.95 price sticker — overlapping top-left */
+.cover-price-tag {
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  background: var(--lime-400);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  padding: 10px 14px 8px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transform: rotate(-9deg);
+  box-shadow: 3px 3px 0 var(--ink);
+  z-index: 6;
+}
+.cover-price-tag small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+
+/* "INSIDE: ..." panel */
+.cover-inside {
+  margin: 6px 18px 0;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 3;
+  position: relative;
+  border: 2px solid var(--lime-400);
+  line-height: 1.4;
+}
+.cover-inside strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.005em;
+  color: var(--lime-400);
+  margin-top: 3px;
+  text-shadow: 2px 2px 0 var(--purple-700);
+}
+
+/* central faux-product illustration */
+.cover-illo {
+  flex: 1;
+  margin: 14px 18px;
+  background: var(--purple-700);
+  border: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 14px;
+  z-index: 3;
+  position: relative;
+  text-align: center;
+  gap: 10px;
+}
+.cover-illo-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lime-400);
+  opacity: 0.9;
+}
+.cover-illo-can {
+  width: 56%;
+  max-width: 130px;
+  aspect-ratio: 4 / 7;
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ink);
+  text-align: center;
+  position: relative;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.cover-illo-can-cycle {
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.cover-illo-can-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+.cover-illo-can-meta {
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.cover-illo-can-pat {
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* NEW! starburst sticker on cover */
+.cover-burst {
+  position: absolute;
+  right: 14px;
+  top: 40%;
+  z-index: 5;
+  width: 70px;
+  height: 70px;
+  background: var(--lime-400);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  transform: rotate(13deg);
+  clip-path: polygon(50% 0%, 60% 35%, 100% 35%, 68% 57%, 80% 100%, 50% 75%, 20% 100%, 32% 57%, 0% 35%, 40% 35%);
+}
+
+/* bottom band */
+.cover-foot {
+  background: var(--ink);
+  color: var(--lime-400);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 3;
+}
+.cover-foot strong { color: var(--cream); font-weight: 700; }
+.cover-foot .star { color: var(--orange-500); }
+
+/* "OTHER SIDE" vertical flag */
+.cover-flag {
+  position: absolute;
+  left: -8px;
+  top: 54%;
+  transform: rotate(-90deg) translateX(0%);
+  transform-origin: left top;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 11px;
+  color: var(--ink);
+  background: var(--lime-400);
+  padding: 4px 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  z-index: 5;
+  white-space: nowrap;
+  border: 2px solid var(--ink);
+}
+
+/* ============================================================
+   SECTION COMMON
+   ============================================================ */
+section.block {
+  position: relative;
+  z-index: 5;
+  padding: 72px 0;
+}
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange-700);
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+.section-heading {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  transform-origin: left;
+  margin-bottom: 36px;
+}
+.block.dark .section-eyebrow { color: var(--orange-500); }
+.block.dark .section-heading { color: var(--white); text-shadow: 3px 3px 0 var(--ink), 6px 6px 0 var(--lime-400); }
+
+.block.cream {
+  background: var(--cream);
+  color: var(--ink);
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+}
+.block.paper {
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+}
+
+/* small pulp accent — used for the "★ Section name ★" eyebrows in pulp register */
+.eyebrow-star {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--orange-700);
+}
+.eyebrow-star::before, .eyebrow-star::after { content: '★'; color: var(--orange-500); }
+
+/* ============================================================
+   §4 BEST SELLERS — pulp catalog treatment on v2's structure
+   ============================================================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.product-card {
+  background: var(--white);
+  border: 4px solid var(--ink);
+  border-radius: 0;
+  padding: 0 0 18px;
+  box-shadow: 6px 6px 0 var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.18s, box-shadow 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.product-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ink);
+}
+
+/* the product "image" panel — now contains a faux shelf-item */
+.product-image {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background: var(--purple-700);
+  border-bottom: 4px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  overflow: hidden;
+}
+.product-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.10) 1px, transparent 1px);
+  background-size: 5px 5px;
+}
+.product-image.warm   { background: linear-gradient(160deg, var(--orange-700) 0%, var(--orange-500) 100%); }
+.product-image.cool   { background: linear-gradient(160deg, var(--purple-700) 0%, #2d5897 100%); }
+.product-image.lime   { background: linear-gradient(160deg, var(--lime-700) 0%, var(--lime-400) 100%); }
+.product-image.violet { background: linear-gradient(160deg, var(--purple-700) 0%, var(--purple-400) 100%); }
+
+/* the in-image faux product (shelf-item) */
+.shelf-item {
+  position: relative;
+  z-index: 2;
+  width: 58%;
+  max-width: 150px;
+  aspect-ratio: 5 / 8;
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(-2deg);
+}
+.shelf-item .si-cycle {
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.shelf-item .si-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  margin: 4px 0;
+}
+.shelf-item .si-meta {
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+.shelf-item .si-pat {
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.product-flag {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  background: var(--lime-400);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  padding: 5px 10px;
+  border: 3px solid var(--ink);
+  text-transform: uppercase;
+  z-index: 3;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.product-flag.warn { background: var(--orange-500); }
+.product-flag.prem { background: var(--cream); }
+
+/* the comic-burst sticker on product images */
+.comic-burst {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 3;
+  background: var(--cream);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  padding: 6px 12px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  text-transform: capitalize;
+  transform: rotate(-6deg);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.comic-burst.lime { background: var(--lime-400); }
+.comic-burst.orange { background: var(--orange-500); }
+
+.product-body { padding: 18px 18px 0; display: flex; flex-direction: column; gap: 8px; }
+.product-eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--orange-700);
+  font-weight: 600;
+}
+.product-eyebrow::before { content: '★ '; }
+.product-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--purple-700);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  transform-origin: left;
+}
+.product-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.55;
+}
+.price {
+  font-family: 'Bowlby One', cursive;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--orange-700);
+  transform: skewX(-5deg);
+  transform-origin: left;
+  text-shadow: 2px 2px 0 var(--ink);
+  line-height: 1;
+}
+.product-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  min-height: 70px;
+}
+.product-rating {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--orange-700);
+  font-weight: 600;
+}
+.review-snippet {
+  font-size: 12px;
+  font-style: italic;
+  color: #4a3a3a;
+  border-left: 3px solid var(--orange-500);
+  padding-left: 10px;
+  line-height: 1.5;
+}
+.product-card .product-cta-row {
+  padding: 0 18px;
+  margin-top: 4px;
+}
+.btn-quick {
+  display: block;
+  width: 100%;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  background: var(--ink);
+  color: var(--lime-400);
+  border: none;
+  padding: 10px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-quick:hover { background: var(--purple-700); color: var(--lime-400); }
+.product-card-trust {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #5a4a4a;
+  letter-spacing: 0.04em;
+  padding: 0 18px;
+}
+
+/* ============================================================
+   §5 BROWSE GRID
+   ============================================================ */
+.browse-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.tile {
+  aspect-ratio: 1 / 1;
+  background: var(--cream);
+  border: 4px solid var(--ink);
+  border-radius: 0;
+  padding: 22px;
+  display: flex;
+  align-items: flex-end;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: transform 0.18s, box-shadow 0.18s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.tile::before {
+  content: '✦';
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  color: var(--orange-500);
+  font-size: 18px;
+}
+.tile:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+.tile .tile-arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--orange-700);
+}
+
+/* ============================================================
+   §6 PROOF OF IMPORT — letter treatment with drop cap
+   ============================================================ */
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 340px);
+  gap: 56px;
+  align-items: start;
+}
+.proof-left { display: flex; flex-direction: column; gap: 32px; }
+.proof-preamble {
+  background: var(--white);
+  border: 3px solid var(--ink);
+  padding: 32px 36px 28px;
+  box-shadow: 6px 6px 0 var(--ink);
+  position: relative;
+}
+.proof-letter-label {
+  position: absolute;
+  top: -14px;
+  left: 24px;
+  background: var(--ink);
+  color: var(--lime-400);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+}
+.proof-preamble-strong {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  transform-origin: left;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.proof-preamble-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.proof-preamble-body:last-of-type { margin-bottom: 6px; }
+
+/* drop cap on first paragraph */
+.proof-preamble-body--lead::first-letter {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 0.85;
+  float: left;
+  margin: 4px 12px 0 0;
+  color: var(--orange-500);
+  text-shadow: 3px 3px 0 var(--ink), 6px 6px 0 var(--lime-400);
+}
+
+.proof-signoff {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 8px;
+}
+.stamp-mini {
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: rgba(26,10,46,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  padding: 8px;
+  transform: rotate(-6deg);
+  flex-shrink: 0;
+  color: var(--ink);
+  text-transform: uppercase;
+  transition: transform 0.25s;
+}
+.stamp-mini:hover { transform: rotate(0deg); }
+.stamp-mini .stamp-sig {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  color: var(--orange-700);
+}
+.stamp-mini .stamp-divider {
+  width: 60%;
+  border-top: 1px solid var(--ink);
+  margin: 3px 0;
+  opacity: 0.5;
+}
+.signoff-caption {
+  font-size: 12px;
+  color: #4a3a3a;
+  font-style: italic;
+  line-height: 1.55;
+  max-width: 240px;
+}
+
+/* Dark guestbook panel — R1 in-universe artifact. Resist softening. */
+.guestbook-panel {
+  background: var(--gb-bg);
+  border: 1px solid var(--gb-border);
+  padding: 18px;
+  font-family: var(--font-mono);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 0 var(--ink), 0 14px 32px rgba(0,0,0,0.4);
+}
+.guestbook-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gb-border);
+}
+.guestbook-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gb-amber);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.guestbook-meta {
+  color: #555;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gb-green);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
+  animation: live-pulse 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes live-pulse {
+  0%   { opacity: 1;    box-shadow: 0 0 0 0   rgba(16, 185, 129, 0.55); }
+  60%  { opacity: 0.45; box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+  100% { opacity: 1;    box-shadow: 0 0 0 0   rgba(16, 185, 129, 0); }
+}
+.guestbook-entries { display: flex; flex-direction: column; gap: 14px; }
+.guestbook-entry { display: flex; flex-direction: column; gap: 4px; }
+.entry-line { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.entry-handle {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+.handle-known { color: var(--gb-green); }
+.handle-anon  { color: var(--gb-amber); }
+.entry-code   { color: #666; font-size: 10px; }
+.entry-body   { color: var(--gb-text); font-size: 11.5px; line-height: 1.55; }
+.guestbook-footer {
+  padding-top: 12px;
+  border-top: 1px dashed var(--gb-border);
+  color: #777;
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-align: center;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.guestbook-footer .gb-foot-sub { opacity: 0.65; }
+
+/* ============================================================
+   §7 FAQ
+   ============================================================ */
+.faq-list { display: flex; flex-direction: column; gap: 22px; max-width: 880px; }
+.faq-item {
+  border-bottom: 2px solid rgba(26,10,46,0.18);
+  padding-bottom: 22px;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange-700);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.faq-cat::before { content: '★ '; color: var(--orange-500); }
+.faq-q {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--ink);
+  line-height: 1.2;
+  text-transform: none;
+  letter-spacing: -0.005em;
+  margin-bottom: 10px;
+  transform: skewX(-3deg);
+  transform-origin: left;
+}
+.faq-a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--purple-700);
+  padding-left: 18px;
+  border-left: 3px solid var(--orange-500);
+  max-width: 720px;
+}
+
+/* ============================================================
+   §8 NEWSLETTER — adds tilted "2x per month" badge on the left
+   ============================================================ */
+.newsletter {
+  background: var(--lime-400);
+  border-top: 4px solid var(--ink);
+  border-bottom: 4px solid var(--ink);
+  padding: 80px 0;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+.newsletter-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  align-items: center;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.fn-badge {
+  width: 150px;
+  height: 150px;
+  background: var(--orange-500);
+  color: var(--ink);
+  border: 4px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 38px;
+  line-height: 0.95;
+  text-align: center;
+  box-shadow: 5px 5px 0 var(--ink);
+  transform: rotate(-8deg);
+}
+.fn-badge small {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.newsletter-inner { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; position: relative; }
+.newsletter-eyebrow {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 700;
+}
+.newsletter-eyebrow::before, .newsletter-eyebrow::after { content: '✦'; color: var(--orange-700); }
+.newsletter-heading {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transform: skewX(-5deg);
+  transform-origin: left;
+  text-shadow: 4px 4px 0 var(--orange-500);
+}
+.newsletter-pitch {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.6;
+  max-width: 560px;
+}
+.newsletter-form-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+}
+.newsletter-form {
+  display: flex;
+  align-items: stretch;
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 6px 0 var(--ink);
+}
+.newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 22px;
+  color: var(--ink);
+  outline: none;
+}
+.newsletter-input::placeholder { color: rgba(26,10,46,0.5); }
+.newsletter-submit {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--ink);
+  color: var(--lime-400);
+  border: none;
+  padding: 14px 26px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.newsletter-submit:hover { background: var(--purple-700); }
+.newsletter-microcopy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   §9 FOOTER
+   ============================================================ */
+footer.site-footer {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 72px 0 36px;
+  position: relative;
+  z-index: 5;
+  border-top: 4px solid var(--ink);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 28px;
+  align-items: start;
+}
+.footer-brand .wordmark {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.78;
+  max-width: 260px;
+  margin-bottom: 10px;
+}
+.footer-brand-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.62;
+  line-height: 1.7;
+}
+.footer-brand-meta strong { color: var(--lime-400); font-weight: 700; }
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--orange-500);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.footer-col h4::before { content: '★ '; }
+.footer-col a, .footer-col span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--cream);
+  margin-bottom: 8px;
+  opacity: 0.78;
+  transition: opacity 0.15s, color 0.15s;
+}
+.footer-col a:hover { opacity: 1; color: var(--lime-400); }
+
+/* compliance pills row */
+.footer-compliance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-bottom: 20px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255,244,230,0.16);
+  border-bottom: 1px solid rgba(255,244,230,0.16);
+}
+.footer-comp-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.78;
+}
+.footer-comp-pill::before { content: '○ '; color: var(--lime-400); }
+
+.footer-trust-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 14px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,244,230,0.16);
+}
+.pay-icon {
+  font-family: var(--font-mono);
+  border: 1px solid var(--cream);
+  padding: 5px 10px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--cream);
+  opacity: 0.85;
+}
+.footer-trust-tail {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  opacity: 0.7;
+  margin-left: auto;
+}
+.compliance {
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--cream);
+  opacity: 0.6;
+  font-style: italic;
+  margin-bottom: 10px;
+  max-width: 800px;
+}
+.signoff {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  opacity: 0.55;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   MOBILE STICKY (preview)
+   ============================================================ */
+.mobile-note {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 36px 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  opacity: 0.7;
+  border-top: 1px solid rgba(255,244,230,0.1);
+  position: relative;
+  z-index: 5;
+}
+.mobile-note .sticky-mock {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  border: 2px solid var(--lime-400);
+  padding: 12px 18px;
+  background: var(--purple-700);
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--lime-400);
+  border-radius: 99px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1080px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .browse-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .masthead-grid { grid-template-columns: 1fr; gap: 18px; text-align: center; justify-items: center; }
+  .masthead-left { align-items: center; }
+  .masthead-right { align-items: center; }
+  .kicker { text-align: center; }
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .cover { max-width: 420px; margin: 0 auto; }
+  .proof-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .newsletter-grid { grid-template-columns: 1fr; gap: 24px; justify-items: center; text-align: center; }
+  .newsletter-inner { align-items: center; }
+  .newsletter-form-wrap { margin: 0 auto; }
+  .fn-badge { margin: 0 auto; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 18px; }
+  section.block { padding: 56px 0; }
+  .hero { padding: 36px 0 60px; }
+  .product-grid { grid-template-columns: 1fr; }
+  .browse-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tile { font-size: 17px; padding: 18px; }
+  .newsletter-form { flex-direction: column; border-radius: 16px; }
+  .newsletter-input { text-align: center; }
+  .newsletter-submit { border-radius: 0; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-trust-tail { margin-left: 0; width: 100%; }
+  .cta-row .btn { font-size: 16px; padding: 12px 22px; }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+  .live-dot { animation: none; }
+  .stamp-mini { transition: none; }
+  .product-card, .tile { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     §1 MARQUEE
+     ============================================================ -->
+<div class="topbar">
+  <div class="marquee">
+    <span>Free US shipping over $40</span>
+    <span>Dispatched from [REDACTED]</span>
+    <span>30-day money-back guarantee</span>
+    <span>4.8★ across 2,438 reviews</span>
+    <span>Free US shipping over $40</span>
+    <span>Dispatched from [REDACTED]</span>
+    <span>30-day money-back guarantee</span>
+    <span>4.8★ across 2,438 reviews</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     §2 MASTHEAD
+     ============================================================ -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-grid">
+
+      <div class="masthead-left">
+        <a class="wordmark" href="#">Wittyverse</a>
+        <div class="kicker">"Out of this world gag gifts you can't buy anywhere else."</div>
+        <div class="masthead-meta">Vol. 247 · Cycle 247 · Dispatch from Charlotte, NC</div>
+      </div>
+
+      <div class="masthead-center">
+        <div class="stamp">
+          <span>Dr. W. Yeti PhD</span>
+          <div class="stamp-divider"></div>
+          <div class="stamp-sig">W.</div>
+          <div class="stamp-divider"></div>
+          <span>Sole Authorized · Earth Side</span>
+        </div>
+      </div>
+
+      <div class="masthead-right">
+        <div class="status-pill">0d 4h 22m until ▓▓▓▓▓▓</div>
+        <div class="nav-row">
+          <div class="nav-items"><a>Shop</a><a>Gifts Under $25</a><a>Guarantee</a><a>About</a></div>
+          <div class="icons">
+            <a class="icon-box">acct</a>
+            <a class="icon-box">cart</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     §3 HERO — adds pulp magazine cover on the right (replaces v2 placeholder image)
+     ============================================================ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">This week's manifest · live now</div>
+
+        <!-- THE PULP HEADLINE — 1 use per page max (canonical pulp display) -->
+        <h1 class="headline-pulp">Gag gifts from a dimension you can't visit.</h1>
+
+        <p class="subline">Personally inspected before they leave the dock. Personally signed for. Personally on the hook if they don't land. — Dr. W. Yeti PhD</p>
+
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span>4.8 from 2,438 verified buyers</span>
+        </div>
+
+        <div class="price-line">Starts at $19 · Free shipping over $40 · 30-day refund guarantee</div>
+
+        <div class="cta-row">
+          <a class="btn" href="#shop">Browse the Manifest →</a>
+          <a class="btn btn-secondary" href="#newsletter">Get the Tuesday letter →</a>
+        </div>
+
+        <div class="trust-microcopy">30-day refund · Free shipping $40+ · "If they don't laugh, refund's on me." — W.</div>
+
+        <div class="badges-row">
+          <span class="badge">30-day money-back</span>
+          <span class="badge">Sole authorized importer</span>
+          <span class="badge">Free shipping $40+</span>
+          <span class="badge">Personally inspected</span>
+        </div>
+
+      </div>
+
+      <!-- The faux pulp magazine cover -->
+      <div class="cover" aria-hidden="true">
+
+        <div class="cover-band">
+          <span class="cover-vol">Vol. 247 · No. 4</span>
+          <span class="cover-cycle">Cycle 247</span>
+        </div>
+
+        <div class="cover-price-tag">
+          $0.95
+          <small>· Newsstand</small>
+        </div>
+
+        <div class="cover-flag">★ The Other Side ★</div>
+
+        <div class="cover-inside">
+          Inside:
+          <strong>This week's manifest</strong>
+        </div>
+
+        <div class="cover-illo">
+          <div class="cover-illo-tag">DOCK-04 · MANIFEST 247.04</div>
+          <div class="cover-illo-can">
+            <span class="cover-illo-can-cycle">Cycle 247</span>
+            <span class="cover-illo-can-name">Dehyd.<br>Water</span>
+            <span class="cover-illo-can-meta">16 OZ<br>CONTAINS NOTHING<br>ADD WATER TO<br>RECONSTITUTE</span>
+            <span class="cover-illo-can-pat">Patent: lol</span>
+          </div>
+        </div>
+
+        <div class="cover-burst">NEW!</div>
+
+        <div class="cover-foot">
+          <span><span class="star">★</span> Cycle 247</span>
+          <span><strong>DOCK-04</strong></span>
+          <span><span class="star">★</span> Wittyverse Press</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §4 BEST SELLERS — pulp catalog treatment
+     ============================================================ -->
+<section class="block cream" id="shop">
+  <div class="wrap">
+    <div class="eyebrow-star">Cycle 247 · This week's manifest</div>
+    <h2 class="section-heading">This week's best sellers</h2>
+
+    <div class="product-grid">
+
+      <!-- Card 1 — Headlight Fluid -->
+      <div class="product-card">
+        <span class="product-flag">Top seller</span>
+        <div class="product-image cool">
+          <div class="shelf-item">
+            <span class="si-cycle">Cycle 247</span>
+            <span class="si-name">Headlt.<br>Fluid</span>
+            <span class="si-meta">8 OZ · BLUE GLASS<br>PROPERLY AGED</span>
+            <span class="si-pat">HF-08</span>
+          </div>
+          <span class="comic-burst lime">Cleared!</span>
+        </div>
+        <div class="product-body">
+          <p class="product-eyebrow">A classic, properly executed.</p>
+          <div class="product-name">Headlight Fluid</div>
+          <p class="product-meta">HF-08 · 1 per cycle</p>
+          <div class="price">$19</div>
+          <p class="product-desc">One 8 oz bottle of "fluid" for headlights that don't need fluid. Hand it to your brother-in-law. Wait for the question. Watch his face when nobody answers.</p>
+          <div class="product-rating">★ 4.9 · 412 reviews · 31 bought this week</div>
+          <div class="review-snippet">"BIL went silent for a full minute. Worth $19." — Dave B., TX</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick">Quick add — $19</button></div>
+        <div class="product-card-trust">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <!-- Card 2 — Reality Stabilizer -->
+      <div class="product-card">
+        <span class="product-flag warn">Heavy</span>
+        <div class="product-image violet">
+          <div class="shelf-item">
+            <span class="si-cycle">Cycle 247</span>
+            <span class="si-name">Reality<br>Stabilizer</span>
+            <span class="si-meta">BRASS &amp; GLASS<br>WEIGHTED · BOXED</span>
+            <span class="si-pat">RS-A4</span>
+          </div>
+          <span class="comic-burst orange">Verified!</span>
+        </div>
+        <div class="product-body">
+          <p class="product-eyebrow">Useful, well-made, properly priced.</p>
+          <div class="product-name">Reality Stabilizer</div>
+          <p class="product-meta">RS-A4 · 3-month wait over there</p>
+          <div class="price">$34</div>
+          <p class="product-desc">One Reality Stabilizer. Brass, weighted, comes in a wooden box. Hand it to someone having a bad day. Watch them try to figure out how it works for the next twenty minutes.</p>
+          <div class="product-rating">★ 4.8 · 287 reviews · 18 bought this week</div>
+          <div class="review-snippet">"Gave it to my therapist as a joke. He kept it." — Marcus T., FL</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick">Quick add — $34</button></div>
+        <div class="product-card-trust">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <!-- Card 3 — Dehydrated Water -->
+      <div class="product-card">
+        <span class="product-flag">Bestseller</span>
+        <div class="product-image warm">
+          <div class="shelf-item">
+            <span class="si-cycle">Cycle 247</span>
+            <span class="si-name">Dehyd.<br>Water</span>
+            <span class="si-meta">16 OZ · ADD WATER<br>CONTAINS NOTHING</span>
+            <span class="si-pat">PATENT: lol</span>
+          </div>
+          <span class="comic-burst">Cleared!</span>
+        </div>
+        <div class="product-body">
+          <p class="product-eyebrow">A backpacker essential — there.</p>
+          <div class="product-name">Dehydrated Water</div>
+          <p class="product-meta">DW-16 · 16 oz · O.O.P.S.-cleared</p>
+          <div class="price">$22</div>
+          <p class="product-desc">One jar of nothing, labeled correctly. Hand it to someone. The instructions read "add water." Watch them squint at it for a long time.</p>
+          <div class="product-rating">★ 4.9 · 631 reviews · 44 bought this week</div>
+          <div class="review-snippet">"My wife actually tried to rehydrate it. We laughed for an hour." — Dave B., CA</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick">Quick add — $22</button></div>
+        <div class="product-card-trust">30-day refund · Free ship $40+. — W.</div>
+      </div>
+
+      <!-- Card 4 — TBD -->
+      <div class="product-card" style="opacity: 0.55;">
+        <span class="product-flag prem">TBD</span>
+        <div class="product-image lime">
+          <div class="shelf-item" style="background: var(--cream);">
+            <span class="si-cycle">— TBD —</span>
+            <span class="si-name">Awaiting<br>Canon</span>
+            <span class="si-meta">NEEDS 4TH PRODUCT<br>NAME FROM CODEX</span>
+            <span class="si-pat">—</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <p class="product-eyebrow">— TBD —</p>
+          <div class="product-name">— TBD —</div>
+          <p class="product-meta">—</p>
+          <div class="price">$28</div>
+          <p class="product-desc" style="font-style: italic;">Same template as cards 1–3. Needs a 4th canon product name from the codex before going live.</p>
+          <div class="product-rating">★ — · — reviews</div>
+        </div>
+        <div class="product-cta-row"><button class="btn-quick" style="opacity: 0.5; cursor: not-allowed;">Awaiting canon</button></div>
+        <div class="product-card-trust">—</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §5 BROWSE GRID
+     ============================================================ -->
+<section class="block dark">
+  <div class="wrap">
+    <div class="section-eyebrow">Browse</div>
+    <h2 class="section-heading">Find a gift</h2>
+
+    <div class="browse-grid">
+      <a class="tile" href="#">For the friend who has everything<span class="tile-arrow">→</span></a>
+      <a class="tile" href="#">Desk-keepers<span class="tile-arrow">→</span></a>
+      <a class="tile" href="#">Worth filming the unwrap<span class="tile-arrow">→</span></a>
+      <a class="tile" href="#">Gifts under $25<span class="tile-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §6 PROOF OF IMPORT — drop-cap letter + R1 guestbook panel
+     ============================================================ -->
+<section class="block cream" id="proof">
+  <div class="wrap">
+    <div class="eyebrow-star">About / Proof</div>
+    <h2 class="section-heading">100% Authentic Wittyverse Products</h2>
+
+    <div class="proof-grid">
+
+      <!-- LEFT — Winston's preamble (R2 showman) + signed mini stamp -->
+      <div class="proof-left">
+
+        <div class="proof-preamble">
+          <span class="proof-letter-label">A Letter · Cycle 247</span>
+          <div class="proof-preamble-strong">You think this is a bit. It isn't.</div>
+          <p class="proof-preamble-body proof-preamble-body--lead">Headlight Fluid is a household staple where I source it. Reality Stabilizer has a three-month waitlist over there. Dehydrated Water is a backpacker essential. Real shelves. Real ratings. Real complaints about range, packaging, durability — the usual.</p>
+          <p class="proof-preamble-body">To prove it, here is the live dispatch of the reviews in the Wittyverse. →</p>
+        </div>
+
+        <div class="proof-signoff">
+          <div class="stamp-mini">
+            <span>Dr. W. Yeti PhD</span>
+            <div class="stamp-divider"></div>
+            <div class="stamp-sig">W.</div>
+            <div class="stamp-divider"></div>
+            <span>Sole Authorized · Earth Side</span>
+          </div>
+          <div class="signoff-caption">Signed off, this week. Paperwork on file. — W.</div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — Guestbook panel (R1 in-universe artifact, resist softening) -->
+      <aside class="guestbook-panel">
+        <div class="guestbook-header">
+          <span class="guestbook-title"><span class="live-dot" aria-hidden="true"></span>Live Dispatch</span>
+          <span class="guestbook-meta">1,247 entries</span>
+        </div>
+        <div class="guestbook-entries">
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known">H. Verloen</span>
+              <span class="entry-code">c247.3</span>
+            </div>
+            <div class="entry-body">Refilled the Headlight Fluid twice this week. Winter formula doesn't last. Switched to the 16 oz.</div>
+          </div>
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known">Margene K.</span>
+              <span class="entry-code">c245.8</span>
+            </div>
+            <div class="entry-body">Husband refuses to leave without his Reality Stabilizer. We keep two now.</div>
+          </div>
+
+          <div class="guestbook-entry">
+            <div class="entry-line">
+              <span class="entry-handle handle-known">G. Strom</span>
+              <span class="entry-code">c244.1</span>
+            </div>
+            <div class="entry-body">Dehydrated Water rehydration ratio on the package is wrong. 1:1.4 actually. Knocking off one star.</div>
+          </div>
+
+        </div>
+        <div class="guestbook-footer">
+          Last sync · c247.4 · WTC 03:41<br>
+          <span class="gb-foot-sub">1,244 more in the aggregator</span>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §7 FAQ
+     ============================================================ -->
+<section class="block cream" id="faq">
+  <div class="wrap">
+    <div class="eyebrow-star">FAQ</div>
+    <h2 class="section-heading">Winston answers</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-cat">Q1 — what is this place?</div>
+        <div class="faq-q">"Is this an actual store, or are you a bit?"</div>
+        <div class="faq-a">Wittyverse is a US-registered LLC. We sell novelty consumer goods — gag gifts and quirky items. Payments processed by Shopify. Tracking via USPS/UPS. Operator pseudonymous; legal name on file with relevant authorities. Dispatch location classified (operational reasons).</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q2 — will the recipient like it?</div>
+        <div class="faq-q">"Will the recipient actually like this, or am I about to ruin a birthday?"</div>
+        <div class="faq-a">Read the customer feedback in the Live Dispatch above — actual reactions, not curated quotes. Our 30-day refund applies even on opened items if the gift didn't land. (This is unusual policy; it's deliberate.)</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q3 — is it actually good?</div>
+        <div class="faq-q">"Are these well made, or is this just cheap nonsense?"</div>
+        <div class="faq-a">All inventory is screened by the operator personally before dispatch. Materials disclosed per product. Defective units replaced or refunded. Average rating: 4.8 across 2,438 verified buyers. Specific feedback runs in the Live Dispatch above.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q4 — is buying here safe?</div>
+        <div class="faq-q">"Is paying through this site safe? Important question."</div>
+        <div class="faq-a">Checkout runs on Shopify (SSL encrypted, PCI-compliant). We accept Visa, Mastercard, Amex, Apple Pay, Shop Pay, PayPal. Card details never reach our servers.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q5 — shipping / speed</div>
+        <div class="faq-q">"How fast can you get this in their hands? Because I personally hate waiting."</div>
+        <div class="faq-a">Dispatch runs once a week (Tuesdays). Orders received before the window closes ship in the following batch. Domestic transit: 3–6 business days after dispatch. Tracking emailed when the unit leaves the dock. Free shipping on orders over $40.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q6 — returns</div>
+        <div class="faq-q">"Returns? Yes. Refunds? Also yes. I built this business on guarantees."</div>
+        <div class="faq-a">Unopened items: 30-day full refund. Opened items: 30-day refund if the gift failed to land. Defective items: always refunded or replaced. Email refunds@wittyverse.com with order #.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-cat">Q7 — international</div>
+        <div class="faq-q">"International? Currently no. I'm not authorized to clear those customs. Yet."</div>
+        <div class="faq-a">US domestic only at this time. International dispatch pending customs paperwork.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §8 NEWSLETTER — adds tilted "2x per month" orange badge
+     ============================================================ -->
+<section class="newsletter" id="newsletter">
+  <div class="wrap">
+    <div class="newsletter-grid">
+
+      <div class="fn-badge">
+        2x
+        <small>per month</small>
+      </div>
+
+      <div class="newsletter-inner">
+        <div class="newsletter-eyebrow">Sign for the dispatch list</div>
+        <h2 class="newsletter-heading">The Winston Dispatch</h2>
+        <p class="newsletter-pitch">"Tuesday morning. One short letter (~2 min read). What cleared customs this week, what didn't, which gift I'd personally hand my brother-in-law. No spam. Unsubscribe whenever. — W."</p>
+
+        <div class="newsletter-form-wrap">
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" class="newsletter-input" placeholder="Your email">
+            <button class="newsletter-submit" type="submit">Send me the Tuesday letter</button>
+          </form>
+        </div>
+
+        <div class="newsletter-microcopy">No spam · one email per week · unsubscribe anytime</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §9 FOOTER — adds compliance pills row
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="#">Wittyverse</a>
+        <p>Out of this world gag gifts you can't buy anywhere else. Personally inspected before dispatch. — Dr. W. Yeti PhD</p>
+        <div class="footer-brand-meta">
+          <strong>WTV-247-04 · DOCK-04</strong><br>
+          Vol. 247 · No. 04 · Manifest 247.04 · Cycle 247
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#shop">All goods</a>
+        <a href="#shop">Best sellers</a>
+        <a href="#shop">Gifts under $25</a>
+        <a href="#shop">Gift cards</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#faq">Shipping &amp; dispatch</a>
+        <a href="#faq">Returns &amp; refunds</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:hello@wittyverse.com">hello@wittyverse.com</a>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <a href="#proof">Dr. Yeti &amp; the dispatch</a>
+        <a href="#proof">Proof of import</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#newsletter">The Tuesday Letter</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer-compliance">
+      <span class="footer-comp-pill">O.O.P.S. Cleared · Cycle 247</span>
+      <span class="footer-comp-pill">NAGs Quarterly Audit Current</span>
+      <span class="footer-comp-pill">Patent Office Filings In Standing</span>
+      <span class="footer-comp-pill">Manifest 247.04 · Dock-04</span>
+      <span class="footer-comp-pill">Ministry of Flatulence Notified</span>
+    </div>
+
+    <div class="footer-trust-row">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">AMEX</span>
+      <span class="pay-icon">APPLE PAY</span>
+      <span class="pay-icon">SHOP PAY</span>
+      <span class="pay-icon">PAYPAL</span>
+      <span class="footer-trust-tail">SSL secured · 30-day guarantee</span>
+    </div>
+
+    <div class="compliance">"Sole Authorized Importer, Earth Side · Operating as Wittyverse LLC · Payments via Shopify · Dispatch location classified, operator pseudonymous."</div>
+    <div class="signoff">© 2026 Wittyverse LLC · — W.</div>
+
+  </div>
+</footer>
+
+<!-- ============================================================
+     MOBILE STICKY (preview note)
+     ============================================================ -->
+<div class="mobile-note">
+  <div>↓ On mobile, a sticky CTA bar pins to the bottom of the viewport. Preview:</div>
+  <div class="sticky-mock">Browse Manifest &nbsp;·&nbsp; ★ 4.8</div>
+</div>
+
+</body>
+</html>
